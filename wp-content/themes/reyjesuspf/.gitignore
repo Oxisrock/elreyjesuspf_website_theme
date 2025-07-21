@@ -1,0 +1,46 @@
+# ----------------------------------------------------------------
+# Archivos y Carpetas de Dependencias
+# ----------------------------------------------------------------
+# Se instalan con 'composer install' y 'yarn install'
+/node_modules
+/vendor
+
+# ----------------------------------------------------------------
+# Archivos de Compilación de Sage
+# ----------------------------------------------------------------
+# Estos archivos son generados por el proceso de build ('yarn build')
+# Solo debes versionar los archivos fuente en /app y /resources
+/public
+/dist # Para versiones más antiguas de Sage
+
+# ----------------------------------------------------------------
+# Información Sensible
+# ----------------------------------------------------------------
+# ¡NUNCA subas este archivo a un repositorio público!
+# Contiene las claves de la base de datos, sales y otras variables de entorno.
+.env
+wp-config.php # No debería estar en tu tema, pero se añade por seguridad.
+
+# ----------------------------------------------------------------
+# Archivos del Core de WordPress
+# ----------------------------------------------------------------
+# Tu repositorio solo debe contener el tema, no la instalación completa de WordPress.
+/wp-admin
+/wp-includes
+/uploads # Directorio de subidas de medios de los usuarios.
+
+# ----------------------------------------------------------------
+# Archivos de Sistema Operativo y Editores
+# ----------------------------------------------------------------
+.DS_Store
+Thumbs.db
+.idea
+.vscode
+*.log
+
+# ----------------------------------------------------------------
+# Logs y Archivos de Depuración
+# ----------------------------------------------------------------
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

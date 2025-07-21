@@ -1,0 +1,1145 @@
+[02-Jul-2025 21:21:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function asset_path() in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php:20
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require()
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#5 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#7 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(19): Illuminate\View\View->render()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#13 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#14 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#15 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(14): Illuminate\View\View->render()
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#21 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#22 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#23 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#24 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#25 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#26 /var/www/html/index.php(17): require('/var/www/html/w...')
+#27 {main}
+
+Next Illuminate\View\ViewException: Call to undefined function asset_path() (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php:20
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Error), 2)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(19): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(14): Illuminate\View\View->render()
+#14 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#15 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#21 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#22 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#23 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#24 /var/www/html/index.php(17): require('/var/www/html/w...')
+#25 {main}
+
+Next Illuminate\View\ViewException: Call to undefined function asset_path() (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php:20
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 1)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(14): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#14 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#15 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#16 /var/www/html/index.php(17): require('/var/www/html/w...')
+#17 {main}
+
+Next Illuminate\View\ViewException: Call to undefined function asset_path() (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php:20
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php on line 20
+[04-Jul-2025 00:03:45 UTC] PHP Warning:  filemtime(): stat failed for /var/www/html/wp-content/themes/reyjesuspf/resources/views/partials/history/new-history.blade.php in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php on line 493
+[04-Jul-2025 00:42:30 UTC] PHP Warning:  filemtime(): stat failed for /var/www/html/wp-content/themes/reyjesuspf/resources/views/partials/history/new-history.blade.php in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php on line 493
+[04-Jul-2025 00:42:47 UTC] PHP Warning:  filemtime(): stat failed for /var/www/html/wp-content/themes/reyjesuspf/resources/views/partials/history/new-history.blade.php in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php on line 493
+[04-Jul-2025 00:44:00 UTC] PHP Warning:  filemtime(): stat failed for /var/www/html/wp-content/themes/reyjesuspf/resources/views/partials/history/new-history.blade.php in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php on line 493
+[04-Jul-2025 19:11:02 UTC] PHP Warning:  filemtime(): stat failed for /var/www/html/wp-content/themes/reyjesuspf/resources/views/partials/history/new-history.blade.php in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php on line 493
+[04-Jul-2025 19:13:31 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [partials.nuestrahistoriapage-nuestrahistoria] not found. in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php:138
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php(78): Illuminate\View\FileViewFinder->findInPaths('partials.nuestr...', Array)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php(150): Illuminate\View\FileViewFinder->find('partials.nuestr...')
+#2 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(6): Illuminate\View\Factory->make('partials.nuestr...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#5 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#10 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#11 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#12 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#13 /var/www/html/index.php(17): require('/var/www/html/w...')
+#14 {main}
+
+Next Illuminate\View\ViewException: View [partials.nuestrahistoriapage-nuestrahistoria] not found. (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/front-page.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php:138
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(InvalidArgumentException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php on line 138
+[04-Jul-2025 19:13:40 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [partials.nuestrahistoriapage-nuestrahistoria] not found. in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php:138
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php(78): Illuminate\View\FileViewFinder->findInPaths('partials.nuestr...', Array)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php(150): Illuminate\View\FileViewFinder->find('partials.nuestr...')
+#2 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(6): Illuminate\View\Factory->make('partials.nuestr...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#5 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#10 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#11 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#12 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#13 /var/www/html/index.php(17): require('/var/www/html/w...')
+#14 {main}
+
+Next Illuminate\View\ViewException: View [partials.nuestrahistoriapage-nuestrahistoria] not found. (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/front-page.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php:138
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(InvalidArgumentException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php on line 138
+[04-Jul-2025 21:34:26 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Roots\asset(), 0 passed in /var/www/html/wp-content/cache/acorn/framework/views/deab8d9ff5acf62027666488ac67351d.php on line 7 and at least 1 expected in /var/www/html/wp-content/themes/reyjesuspf/vendor/roots/acorn/src/Roots/helpers.php:14
+Stack trace:
+#0 /var/www/html/wp-content/cache/acorn/framework/views/deab8d9ff5acf62027666488ac67351d.php(7): Roots\asset()
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#5 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#8 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(3): Illuminate\View\View->render()
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#13 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#14 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#15 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#16 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#17 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#18 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#19 /var/www/html/index.php(17): require('/var/www/html/w...')
+#20 {main}
+
+Next Illuminate\View\ViewException: Too few arguments to function Roots\asset(), 0 passed in /var/www/html/wp-content/cache/acorn/framework/views/deab8d9ff5acf62027666488ac67351d.php on line 7 and at least 1 expected (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/partials/pasodefe/pasodefe.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/vendor/roots/acorn/src/Roots/helpers.php:14
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(ArgumentCountError), 2)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#14 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#15 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#16 /var/www/html/index.php(17): require('/var/www/html/w...')
+#17 {main}
+
+Next Illuminate\View\ViewException: Too few arguments to function Roots\asset(), 0 passed in /var/www/html/wp-content/cache/acorn/framework/views/deab8d9ff5acf62027666488ac67351d.php on line 7 and at least 1 expected (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/partials/pasodefe/pasodefe.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/partials/pasodefe/pasodefe.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/vendor/roots/acorn/src/Roots/helpers.php:14
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/themes/reyjesuspf/vendor/roots/acorn/src/Roots/helpers.php on line 14
+[07-Jul-2025 20:20:43 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [partials.history.new-history] not found. in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php:138
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php(78): Illuminate\View\FileViewFinder->findInPaths('partials.histor...', Array)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php(150): Illuminate\View\FileViewFinder->find('partials.histor...')
+#2 /var/www/html/wp-content/cache/acorn/framework/views/cdef59d8ff7488b1dad1eac76bb173de.php(10): Illuminate\View\Factory->make('partials.histor...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#5 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#10 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#11 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#12 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#13 /var/www/html/index.php(17): require('/var/www/html/w...')
+#14 {main}
+
+Next Illuminate\View\ViewException: View [partials.history.new-history] not found. (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/about.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php:138
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(InvalidArgumentException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php on line 138
+[07-Jul-2025 20:21:12 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [partials.history.new-history] not found. in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php:138
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php(78): Illuminate\View\FileViewFinder->findInPaths('partials.histor...', Array)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php(150): Illuminate\View\FileViewFinder->find('partials.histor...')
+#2 /var/www/html/wp-content/cache/acorn/framework/views/cdef59d8ff7488b1dad1eac76bb173de.php(10): Illuminate\View\Factory->make('partials.histor...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#5 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#10 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#11 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#12 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#13 /var/www/html/index.php(17): require('/var/www/html/w...')
+#14 {main}
+
+Next Illuminate\View\ViewException: View [partials.history.new-history] not found. (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/about.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php:138
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(InvalidArgumentException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php on line 138
+[07-Jul-2025 20:21:16 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [partials.history.new-history] not found. in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php:138
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php(78): Illuminate\View\FileViewFinder->findInPaths('partials.histor...', Array)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php(150): Illuminate\View\FileViewFinder->find('partials.histor...')
+#2 /var/www/html/wp-content/cache/acorn/framework/views/cdef59d8ff7488b1dad1eac76bb173de.php(10): Illuminate\View\Factory->make('partials.histor...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#5 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#10 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#11 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#12 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#13 /var/www/html/index.php(17): require('/var/www/html/w...')
+#14 {main}
+
+Next Illuminate\View\ViewException: View [partials.history.new-history] not found. (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/about.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php:138
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(InvalidArgumentException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php on line 138
+[07-Jul-2025 20:21:27 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [partials.history.new-history] not found. in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php:138
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php(78): Illuminate\View\FileViewFinder->findInPaths('partials.histor...', Array)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php(150): Illuminate\View\FileViewFinder->find('partials.histor...')
+#2 /var/www/html/wp-content/cache/acorn/framework/views/cdef59d8ff7488b1dad1eac76bb173de.php(10): Illuminate\View\Factory->make('partials.histor...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#5 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#10 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#11 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#12 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#13 /var/www/html/index.php(17): require('/var/www/html/w...')
+#14 {main}
+
+Next Illuminate\View\ViewException: View [partials.history.new-history] not found. (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/about.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php:138
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(InvalidArgumentException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php on line 138
+[07-Jul-2025 20:27:55 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [partials.history.new-history] not found. in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php:138
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php(78): Illuminate\View\FileViewFinder->findInPaths('partials.histor...', Array)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php(150): Illuminate\View\FileViewFinder->find('partials.histor...')
+#2 /var/www/html/wp-content/cache/acorn/framework/views/cdef59d8ff7488b1dad1eac76bb173de.php(11): Illuminate\View\Factory->make('partials.histor...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#5 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#10 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#11 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#12 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#13 /var/www/html/index.php(17): require('/var/www/html/w...')
+#14 {main}
+
+Next Illuminate\View\ViewException: View [partials.history.new-history] not found. (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/about.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php:138
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(InvalidArgumentException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php on line 138
+[07-Jul-2025 20:35:43 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [partials.aboutpage.about] not found. in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php:138
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php(78): Illuminate\View\FileViewFinder->findInPaths('partials.aboutp...', Array)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php(150): Illuminate\View\FileViewFinder->find('partials.aboutp...')
+#2 /var/www/html/wp-content/cache/acorn/framework/views/cdef59d8ff7488b1dad1eac76bb173de.php(7): Illuminate\View\Factory->make('partials.aboutp...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#5 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#10 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#11 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#12 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#13 /var/www/html/index.php(17): require('/var/www/html/w...')
+#14 {main}
+
+Next Illuminate\View\ViewException: View [partials.aboutpage.about] not found. (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/about.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php:138
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(InvalidArgumentException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php on line 138
+[07-Jul-2025 23:58:09 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: Unrecognized extension in file: . in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php:322
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php(287): Illuminate\View\Factory->getEngineFromPath(false)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php(135): Illuminate\View\Factory->viewInstance(false, false, Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/roots/acorn/src/Roots/helpers.php(68): Illuminate\View\Factory->file(false, Array, Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/roots/acorn/src/Roots/globals.php(13): Roots\view(false, Array)
+#4 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): view(false, Array)
+#5 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#6 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#7 /var/www/html/index.php(17): require('/var/www/html/w...')
+#8 {main}
+  thrown in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php on line 322
+[07-Jul-2025 23:58:09 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: Unrecognized extension in file: . in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php:322
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php(287): Illuminate\View\Factory->getEngineFromPath(false)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php(135): Illuminate\View\Factory->viewInstance(false, false, Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/roots/acorn/src/Roots/helpers.php(68): Illuminate\View\Factory->file(false, Array, Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/roots/acorn/src/Roots/globals.php(13): Roots\view(false, Array)
+#4 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): view(false, Array)
+#5 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#6 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#7 /var/www/html/index.php(17): require('/var/www/html/w...')
+#8 {main}
+  thrown in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php on line 322
+[07-Jul-2025 23:58:39 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: Unrecognized extension in file: . in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php:322
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php(287): Illuminate\View\Factory->getEngineFromPath(false)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php(135): Illuminate\View\Factory->viewInstance(false, false, Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/roots/acorn/src/Roots/helpers.php(68): Illuminate\View\Factory->file(false, Array, Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/roots/acorn/src/Roots/globals.php(13): Roots\view(false, Array)
+#4 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): view(false, Array)
+#5 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#6 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#7 /var/www/html/index.php(17): require('/var/www/html/w...')
+#8 {main}
+  thrown in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php on line 322
+[07-Jul-2025 23:59:06 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: Unrecognized extension in file: . in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php:322
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php(287): Illuminate\View\Factory->getEngineFromPath(false)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php(135): Illuminate\View\Factory->viewInstance(false, false, Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/roots/acorn/src/Roots/helpers.php(68): Illuminate\View\Factory->file(false, Array, Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/roots/acorn/src/Roots/globals.php(13): Roots\view(false, Array)
+#4 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): view(false, Array)
+#5 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#6 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#7 /var/www/html/index.php(17): require('/var/www/html/w...')
+#8 {main}
+  thrown in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php on line 322
+[17-Jul-2025 20:43:00 UTC] PHP Fatal error:  Uncaught TypeError: in_array(): Argument #2 ($haystack) must be of type array, string given in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:78
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php(78): in_array('current-menu-it...', '')
+#1 /var/www/html/wp-includes/class-wp-walker.php(150): App\Walkers\TailwindNavWalker->start_el('', Object(WP_Post), 0, Array, 0)
+#2 /var/www/html/wp-includes/class-wp-walker.php(252): Walker->display_element(Object(WP_Post), Array, 2, 0, Array, '')
+#3 /var/www/html/wp-includes/post-template.php(1578): Walker->walk(Array, 2, Array, 0)
+#4 /var/www/html/wp-includes/post-template.php(1361): walk_page_tree(Array, 2, 0, Array)
+#5 /var/www/html/wp-includes/post-template.php(1493): wp_list_pages(Array)
+#6 /var/www/html/wp-includes/nav-menu-template.php(169): wp_page_menu(Array)
+#7 /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php(37): wp_nav_menu(Object(stdClass))
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#13 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#14 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#15 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(19): Illuminate\View\View->render()
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#21 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#22 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#23 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#24 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#25 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#26 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#27 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#28 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#29 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#30 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#31 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#32 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#33 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#34 /var/www/html/index.php(17): require('/var/www/html/w...')
+#35 {main}
+
+Next Illuminate\View\ViewException: in_array(): Argument #2 ($haystack) must be of type array, string given (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:78
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(TypeError), 2)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(19): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#14 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#15 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#21 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#22 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#23 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#24 /var/www/html/index.php(17): require('/var/www/html/w...')
+#25 {main}
+
+Next Illuminate\View\ViewException: in_array(): Argument #2 ($haystack) must be of type array, string given (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:78
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 1)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#14 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#15 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#16 /var/www/html/index.php(17): require('/var/www/html/w...')
+#17 {main}
+
+Next Illuminate\View\ViewException: in_array(): Argument #2 ($haystack) must be of type array, string given (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:78
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 78
+[17-Jul-2025 20:44:05 UTC] PHP Fatal error:  Uncaught TypeError: in_array(): Argument #2 ($haystack) must be of type array, string given in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:78
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php(78): in_array('current-menu-it...', '')
+#1 /var/www/html/wp-includes/class-wp-walker.php(150): App\Walkers\TailwindNavWalker->start_el('', Object(WP_Post), 0, Array, 0)
+#2 /var/www/html/wp-includes/class-wp-walker.php(252): Walker->display_element(Object(WP_Post), Array, 2, 0, Array, '')
+#3 /var/www/html/wp-includes/post-template.php(1578): Walker->walk(Array, 2, Array, 0)
+#4 /var/www/html/wp-includes/post-template.php(1361): walk_page_tree(Array, 2, 0, Array)
+#5 /var/www/html/wp-includes/post-template.php(1493): wp_list_pages(Array)
+#6 /var/www/html/wp-includes/nav-menu-template.php(169): wp_page_menu(Array)
+#7 /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php(12): wp_nav_menu(Object(stdClass))
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#13 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#14 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#15 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(19): Illuminate\View\View->render()
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#21 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#22 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#23 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#24 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#25 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#26 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#27 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#28 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#29 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#30 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#31 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#32 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#33 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#34 /var/www/html/index.php(17): require('/var/www/html/w...')
+#35 {main}
+
+Next Illuminate\View\ViewException: in_array(): Argument #2 ($haystack) must be of type array, string given (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:78
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(TypeError), 2)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(19): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#14 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#15 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#21 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#22 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#23 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#24 /var/www/html/index.php(17): require('/var/www/html/w...')
+#25 {main}
+
+Next Illuminate\View\ViewException: in_array(): Argument #2 ($haystack) must be of type array, string given (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:78
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 1)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#14 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#15 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#16 /var/www/html/index.php(17): require('/var/www/html/w...')
+#17 {main}
+
+Next Illuminate\View\ViewException: in_array(): Argument #2 ($haystack) must be of type array, string given (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:78
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 78
+[17-Jul-2025 20:52:06 UTC] PHP Fatal error:  Uncaught TypeError: in_array(): Argument #2 ($haystack) must be of type array, string given in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:78
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php(78): in_array('current-menu-it...', '')
+#1 /var/www/html/wp-includes/class-wp-walker.php(150): App\Walkers\TailwindNavWalker->start_el('', Object(WP_Post), 0, Array, 0)
+#2 /var/www/html/wp-includes/class-wp-walker.php(252): Walker->display_element(Object(WP_Post), Array, 2, 0, Array, '')
+#3 /var/www/html/wp-includes/post-template.php(1578): Walker->walk(Array, 2, Array, 0)
+#4 /var/www/html/wp-includes/post-template.php(1361): walk_page_tree(Array, 2, 0, Array)
+#5 /var/www/html/wp-includes/post-template.php(1493): wp_list_pages(Array)
+#6 /var/www/html/wp-includes/nav-menu-template.php(169): wp_page_menu(Array)
+#7 /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php(12): wp_nav_menu(Object(stdClass))
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#13 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#14 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#15 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(19): Illuminate\View\View->render()
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#21 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#22 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#23 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#24 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#25 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#26 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#27 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#28 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#29 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#30 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#31 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#32 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#33 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#34 /var/www/html/index.php(17): require('/var/www/html/w...')
+#35 {main}
+
+Next Illuminate\View\ViewException: in_array(): Argument #2 ($haystack) must be of type array, string given (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:78
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(TypeError), 2)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(19): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#14 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#15 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#21 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#22 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#23 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#24 /var/www/html/index.php(17): require('/var/www/html/w...')
+#25 {main}
+
+Next Illuminate\View\ViewException: in_array(): Argument #2 ($haystack) must be of type array, string given (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:78
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 1)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#14 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#15 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#16 /var/www/html/index.php(17): require('/var/www/html/w...')
+#17 {main}
+
+Next Illuminate\View\ViewException: in_array(): Argument #2 ($haystack) must be of type array, string given (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:78
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 78
+[17-Jul-2025 20:52:11 UTC] PHP Fatal error:  Uncaught TypeError: in_array(): Argument #2 ($haystack) must be of type array, string given in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:78
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php(78): in_array('current-menu-it...', '')
+#1 /var/www/html/wp-includes/class-wp-walker.php(150): App\Walkers\TailwindNavWalker->start_el('', Object(WP_Post), 0, Array, 6)
+#2 /var/www/html/wp-includes/class-wp-walker.php(252): Walker->display_element(Object(WP_Post), Array, 2, 0, Array, '')
+#3 /var/www/html/wp-includes/post-template.php(1578): Walker->walk(Array, 2, Array, 6)
+#4 /var/www/html/wp-includes/post-template.php(1361): walk_page_tree(Array, 2, 6, Array)
+#5 /var/www/html/wp-includes/post-template.php(1493): wp_list_pages(Array)
+#6 /var/www/html/wp-includes/nav-menu-template.php(169): wp_page_menu(Array)
+#7 /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php(12): wp_nav_menu(Object(stdClass))
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#13 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#14 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#15 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(19): Illuminate\View\View->render()
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#21 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#22 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#23 /var/www/html/wp-content/cache/acorn/framework/views/cdef59d8ff7488b1dad1eac76bb173de.php(15): Illuminate\View\View->render()
+#24 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#25 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#26 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#27 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#28 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#29 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#30 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#31 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#32 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#33 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#34 /var/www/html/index.php(17): require('/var/www/html/w...')
+#35 {main}
+
+Next Illuminate\View\ViewException: in_array(): Argument #2 ($haystack) must be of type array, string given (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:78
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(TypeError), 2)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(19): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/cache/acorn/framework/views/cdef59d8ff7488b1dad1eac76bb173de.php(15): Illuminate\View\View->render()
+#14 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#15 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#21 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#22 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#23 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#24 /var/www/html/index.php(17): require('/var/www/html/w...')
+#25 {main}
+
+Next Illuminate\View\ViewException: in_array(): Argument #2 ($haystack) must be of type array, string given (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:78
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 1)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/cdef59d8ff7488b1dad1eac76bb173de.php(15): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#14 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#15 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#16 /var/www/html/index.php(17): require('/var/www/html/w...')
+#17 {main}
+
+Next Illuminate\View\ViewException: in_array(): Argument #2 ($haystack) must be of type array, string given (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:78
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 78
+[17-Jul-2025 20:53:29 UTC] PHP Warning:  Attempt to read property "before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 78
+[17-Jul-2025 20:53:29 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 80
+[17-Jul-2025 20:53:29 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 80
+[17-Jul-2025 20:53:29 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 85
+[17-Jul-2025 20:53:29 UTC] PHP Warning:  Attempt to read property "before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 78
+[17-Jul-2025 20:53:29 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 80
+[17-Jul-2025 20:53:29 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 80
+[17-Jul-2025 20:53:29 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 85
+[17-Jul-2025 20:53:29 UTC] PHP Warning:  Attempt to read property "before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 78
+[17-Jul-2025 20:53:29 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 80
+[17-Jul-2025 20:53:29 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 80
+[17-Jul-2025 20:53:29 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 85
+[17-Jul-2025 20:53:29 UTC] PHP Warning:  Attempt to read property "before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 78
+[17-Jul-2025 20:53:29 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 80
+[17-Jul-2025 20:53:29 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 80
+[17-Jul-2025 20:53:29 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 85
+[17-Jul-2025 20:53:29 UTC] PHP Warning:  Attempt to read property "before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 78
+[17-Jul-2025 20:53:29 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 80
+[17-Jul-2025 20:53:29 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 80
+[17-Jul-2025 20:53:29 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 85
+[17-Jul-2025 20:55:21 UTC] PHP Fatal error:  Uncaught TypeError: in_array(): Argument #2 ($haystack) must be of type array, string given in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:78
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php(78): in_array('current-menu-it...', '')
+#1 /var/www/html/wp-includes/class-wp-walker.php(150): App\Walkers\TailwindNavWalker->start_el('', Object(WP_Post), 0, Array, 0)
+#2 /var/www/html/wp-includes/class-wp-walker.php(252): Walker->display_element(Object(WP_Post), Array, 2, 0, Array, '')
+#3 /var/www/html/wp-includes/post-template.php(1578): Walker->walk(Array, 2, Array, 0)
+#4 /var/www/html/wp-includes/post-template.php(1361): walk_page_tree(Array, 2, 0, Array)
+#5 /var/www/html/wp-includes/post-template.php(1493): wp_list_pages(Array)
+#6 /var/www/html/wp-includes/nav-menu-template.php(169): wp_page_menu(Array)
+#7 /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php(12): wp_nav_menu(Object(stdClass))
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#13 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#14 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#15 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(19): Illuminate\View\View->render()
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#21 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#22 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#23 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#24 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#25 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#26 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#27 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#28 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#29 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#30 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#31 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#32 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#33 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#34 /var/www/html/index.php(17): require('/var/www/html/w...')
+#35 {main}
+
+Next Illuminate\View\ViewException: in_array(): Argument #2 ($haystack) must be of type array, string given (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:78
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(TypeError), 2)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(19): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#14 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#15 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#21 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#22 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#23 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#24 /var/www/html/index.php(17): require('/var/www/html/w...')
+#25 {main}
+
+Next Illuminate\View\ViewException: in_array(): Argument #2 ($haystack) must be of type array, string given (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:78
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 1)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#14 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#15 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#16 /var/www/html/index.php(17): require('/var/www/html/w...')
+#17 {main}
+
+Next Illuminate\View\ViewException: in_array(): Argument #2 ($haystack) must be of type array, string given (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:78
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 78
+[17-Jul-2025 20:58:11 UTC] PHP Warning:  Attempt to read property "before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 147
+[17-Jul-2025 20:58:11 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 20:58:11 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 20:58:11 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 155
+[17-Jul-2025 20:58:11 UTC] PHP Warning:  Attempt to read property "before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 147
+[17-Jul-2025 20:58:11 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 20:58:11 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 20:58:11 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 155
+[17-Jul-2025 20:58:11 UTC] PHP Warning:  Attempt to read property "before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 147
+[17-Jul-2025 20:58:11 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 20:58:11 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 20:58:11 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 155
+[17-Jul-2025 20:58:11 UTC] PHP Warning:  Attempt to read property "before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 147
+[17-Jul-2025 20:58:11 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 20:58:11 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 20:58:11 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 155
+[17-Jul-2025 20:58:11 UTC] PHP Warning:  Attempt to read property "before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 147
+[17-Jul-2025 20:58:11 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 20:58:11 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 20:58:11 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 155
+[17-Jul-2025 21:06:51 UTC] PHP Fatal error:  Uncaught TypeError: in_array(): Argument #2 ($haystack) must be of type array, string given in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:82
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php(82): in_array('current-menu-it...', '')
+#1 /var/www/html/wp-includes/class-wp-walker.php(150): App\Walkers\TailwindNavWalker->start_el('', Object(WP_Post), 0, Object(stdClass), 0)
+#2 /var/www/html/wp-includes/class-wp-walker.php(252): Walker->display_element(Object(WP_Post), Array, 2, 0, Array, '')
+#3 /var/www/html/wp-includes/post-template.php(1578): Walker->walk(Array, 2, Array, 0)
+#4 /var/www/html/wp-includes/post-template.php(1361): walk_page_tree(Array, 2, 0, Array)
+#5 /var/www/html/wp-includes/post-template.php(1493): wp_list_pages(Array)
+#6 /var/www/html/wp-includes/nav-menu-template.php(169): wp_page_menu(Array)
+#7 /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php(12): wp_nav_menu(Object(stdClass))
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#13 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#14 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#15 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(19): Illuminate\View\View->render()
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#21 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#22 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#23 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#24 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#25 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#26 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#27 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#28 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#29 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#30 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#31 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#32 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#33 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#34 /var/www/html/index.php(17): require('/var/www/html/w...')
+#35 {main}
+
+Next Illuminate\View\ViewException: in_array(): Argument #2 ($haystack) must be of type array, string given (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:82
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(TypeError), 2)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(19): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#14 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#15 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#21 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#22 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#23 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#24 /var/www/html/index.php(17): require('/var/www/html/w...')
+#25 {main}
+
+Next Illuminate\View\ViewException: in_array(): Argument #2 ($haystack) must be of type array, string given (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:82
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 1)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#14 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#15 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#16 /var/www/html/index.php(17): require('/var/www/html/w...')
+#17 {main}
+
+Next Illuminate\View\ViewException: in_array(): Argument #2 ($haystack) must be of type array, string given (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php:82
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 82
+[17-Jul-2025 21:08:30 UTC] PHP Warning:  Attempt to read property "before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 147
+[17-Jul-2025 21:08:30 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 21:08:30 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 21:08:30 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 155
+[17-Jul-2025 21:08:30 UTC] PHP Warning:  Attempt to read property "before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 147
+[17-Jul-2025 21:08:30 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 21:08:30 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 21:08:30 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 155
+[17-Jul-2025 21:08:30 UTC] PHP Warning:  Attempt to read property "before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 147
+[17-Jul-2025 21:08:30 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 21:08:30 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 21:08:30 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 155
+[17-Jul-2025 21:08:30 UTC] PHP Warning:  Attempt to read property "before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 147
+[17-Jul-2025 21:08:30 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 21:08:30 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 21:08:30 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 155
+[17-Jul-2025 21:08:30 UTC] PHP Warning:  Attempt to read property "before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 147
+[17-Jul-2025 21:08:30 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 21:08:30 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 21:08:30 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 155
+[17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 147
+[17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 155
+[17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 147
+[17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 155
+[17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 147
+[17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 155
+[17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 147
+[17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 155
+[17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 147
+[17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
+[17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 155
