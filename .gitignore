@@ -3,3 +3,6 @@
 /uploads # Directorio de subidas de medios de los usuarios.
 /wp-content/cache
 wp-config.php
+wp-content/database/*
+*.log
+wp-content/mu-plugins/sqlite-database-integration/*

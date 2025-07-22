@@ -13,7 +13,7 @@
                 <div class="text-left md:order-last">
                     <h3 class="text-3xl font-bold text-gray-800">Evangelizar</h3>
                     <p class="mt-4 text-gray-600 leading-relaxed ">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                       Entrenar, equipar y ayudar a los creyentes a cumplir su propósito y llamado. 
                     </p>
                 </div>
                 <div>
@@ -29,7 +29,7 @@
                 <div class="text-left md:text-right md:order-first">
                     <h3 class="text-3xl font-bold text-gray-800">Afirmar</h3>
                     <p class="mt-4 text-gray-600 leading-relaxed">
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
+                        Nuestra misión es compartir las buenas nuevas del Evangelio y llevar a las personas a tener una relación personal con Dios por medio de la persona de Jesucristo.
                     </p>
                 </div>
                 <div class="md:order-last">
@@ -45,7 +45,7 @@
                 <div class="text-left md:order-last">
                     <h3 class="text-3xl font-bold text-gray-800">Discipular</h3>
                     <p class="mt-4 text-gray-600 leading-relaxed">
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste.
+                        Llamados a través el poder sobrenatural a esta Generación.
                     </p>
                 </div>
                 <div>
@@ -61,7 +61,7 @@
                 <div class="text-left md:text-right md:order-first">
                     <h3 class="text-3xl font-bold text-gray-800">Enviar</h3>
                     <p class="mt-4 text-gray-600 leading-relaxed">
-                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.
+                        Ruta de Crecimiento Nuestra pasión es entrenar, equipar, movilizar y empoderar a cada miembro para alcanzar al perdido a través de lo sobrenatural, así como también ayudar a cada nuevo creyente a comenzar su camino mediante el proceso de la visión. En el ministerio tenemos líderes entrenados y empoderados para ayudar a cada creyente a crecer en su relación con Dios y convertirse en discípulos maduros de Jesús que puedan seguir expandiendo el Reino en la tierra.
                     </p>
                 </div>
                 <div class="md:order-last">
