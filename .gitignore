@@ -2,3 +2,4 @@
 /wp-includes
 /uploads # Directorio de subidas de medios de los usuarios.
 /wp-content/cache
+wp-config.php
