@@ -65,7 +65,7 @@
                     </p>
                 </div>
                 <div class="md:order-last">
-                    <img src="@asset('images/vision-page/enviar.webp')" alt="Enviar" class="rounded-3xl mb-8 w-full h-[470px] object-top object-cover">
+                    <img src="@asset('images/yoconstruyo-page/PXL_20250617_143812090.PORTRAIT.jpg')" alt="Enviar" class="rounded-3xl mb-8 w-full h-[470px] object-top object-cover">
                 </div>
             </div>
 
