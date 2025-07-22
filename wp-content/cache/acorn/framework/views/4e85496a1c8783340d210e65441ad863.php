@@ -1,11 +1,11 @@
 <?php $__env->startSection('content'); ?>
-    <?php echo $__env->make('partials.heropage.heropage', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-    <?php echo $__env->make('partials.pasodefe.pasodefe', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-    <?php echo $__env->make('partials.multimediapage.multimedia', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-    <?php echo $__env->make('partials.eventspage.events', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-    <?php echo $__env->make('partials.nuestrahistoriapage.nuestrahistoria', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-    <?php echo $__env->make('partials.new-pastora.pastora', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-    <?php echo $__env->make('partials.contact.contactn', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+    <?php echo $__env->make('partials.Homepage.heropage.heropage', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+    <?php echo $__env->make('partials.Homepage.pasodefe.pasodefe', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+    <?php echo $__env->make('partials.Homepage.multimediapage.multimedia', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+    <?php echo $__env->make('partials.Homepage.eventspage.events', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+    <?php echo $__env->make('partials.Homepage.nuestrahistoriapage.nuestrahistoria', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+    <?php echo $__env->make('partials.Homepage.new-pastora.pastora', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+    <?php echo $__env->make('partials.Homepage.contact.contactn', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
 <?php $__env->stopSection(); ?>
 

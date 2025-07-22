@@ -5,7 +5,7 @@
 @extends('layouts.minimal')
 
 @section('content')
-    @include('partials.formpage.form')
+    @include('partials.Contactopage.formpage.form')
 {{--   
     @while(have_posts()) @php(the_post())
         @include('partials.page-header')

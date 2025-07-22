@@ -4,11 +4,11 @@
 
 <?php $__env->startSection('content'); ?>
 
-    <?php echo $__env->make('partials.aboutpage.about', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-    <?php echo $__env->make('partials.somospage.somos', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-    <?php echo $__env->make('partials.visionpage.vision', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-    <?php echo $__env->make('partials.aportepage.aporte', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-    <?php echo $__env->make('partials.contact.contactn', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+    <?php echo $__env->make('partials.NuestraIglesiapage.aboutpage.about', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+    <?php echo $__env->make('partials.NuestraIglesiapage.somospage.somos', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+    <?php echo $__env->make('partials.NuestraIglesiapage.visionpage.vision', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+    <?php echo $__env->make('partials.NuestraIglesiapage.aportepage.aporte', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+    <?php echo $__env->make('partials.Homepage.contact.contactn', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
 <?php $__env->stopSection(); ?>
 

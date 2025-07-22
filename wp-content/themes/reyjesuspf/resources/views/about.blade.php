@@ -6,11 +6,11 @@
 
 @section('content')
 
-    @include('partials.aboutpage.about')
-    @include('partials.somospage.somos')
-    @include('partials.visionpage.vision')
-    @include('partials.aportepage.aporte')
-    @include('partials.contact.contactn')
+    @include('partials.NuestraIglesiapage.aboutpage.about')
+    @include('partials.NuestraIglesiapage.somospage.somos')
+    @include('partials.NuestraIglesiapage.visionpage.vision')
+    @include('partials.NuestraIglesiapage.aportepage.aporte')
+    @include('partials.Homepage.contact.contactn')
 {{--   
     @while(have_posts()) @php(the_post())
         @include('partials.page-header')

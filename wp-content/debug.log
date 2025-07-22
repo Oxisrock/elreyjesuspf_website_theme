@@ -1143,3 +1143,43 @@ Stack trace:
 [17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "link_before" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
 [17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "link_after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 149
 [17-Jul-2025 21:11:43 UTC] PHP Warning:  Attempt to read property "after" on array in /var/www/html/wp-content/themes/reyjesuspf/app/Walkers/TailwindNavWalker.php on line 155
+[22-Jul-2025 20:21:48 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: View [partials.yoconstrutopage.yoconstruyo] not found. in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php:138
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php(78): Illuminate\View\FileViewFinder->findInPaths('partials.yocons...', Array)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Factory.php(150): Illuminate\View\FileViewFinder->find('partials.yocons...')
+#2 /var/www/html/wp-content/cache/acorn/framework/views/dc966d021c38ce71e1a26dd8bc910081.php(7): Illuminate\View\Factory->make('partials.yocons...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#5 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#10 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#11 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#12 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#13 /var/www/html/index.php(17): require('/var/www/html/w...')
+#14 {main}
+
+Next Illuminate\View\ViewException: View [partials.yoconstrutopage.yoconstruyo] not found. (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/yoconstruyopage.blade.php) in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php:138
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(InvalidArgumentException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/FileViewFinder.php on line 138
+[22-Jul-2025 21:48:00 UTC] PHP Warning:  filemtime(): stat failed for /var/www/html/wp-content/themes/reyjesuspf/resources/views/partials/heropage/heropage.blade.php in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php on line 493
+[22-Jul-2025 21:48:00 UTC] PHP Warning:  filemtime(): stat failed for /var/www/html/wp-content/themes/reyjesuspf/resources/views/partials/pasodefe/pasodefe.blade.php in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php on line 493
+[22-Jul-2025 21:48:00 UTC] PHP Warning:  filemtime(): stat failed for /var/www/html/wp-content/themes/reyjesuspf/resources/views/partials/eventspage/events.blade.php in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php on line 493
+[22-Jul-2025 21:48:00 UTC] PHP Warning:  filemtime(): stat failed for /var/www/html/wp-content/themes/reyjesuspf/resources/views/partials/nuestrahistoriapage/nuestrahistoria.blade.php in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php on line 493
+[22-Jul-2025 21:48:00 UTC] PHP Warning:  filemtime(): stat failed for /var/www/html/wp-content/themes/reyjesuspf/resources/views/partials/new-pastora/pastora.blade.php in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php on line 493
+[22-Jul-2025 21:55:11 UTC] PHP Warning:  filemtime(): stat failed for /var/www/html/wp-content/themes/reyjesuspf/resources/views/partials/aportepage/aporte.blade.php in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php on line 493
+[22-Jul-2025 21:55:11 UTC] PHP Warning:  filemtime(): stat failed for /var/www/html/wp-content/themes/reyjesuspf/resources/views/partials/contact/contactn.blade.php in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php on line 493
+[22-Jul-2025 21:57:28 UTC] PHP Warning:  filemtime(): stat failed for /var/www/html/wp-content/themes/reyjesuspf/resources/views/partials/Eventosspage/eventospage/eventos.blade.php in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php on line 493
+[22-Jul-2025 21:57:35 UTC] PHP Warning:  filemtime(): stat failed for /var/www/html/wp-content/themes/reyjesuspf/resources/views/partials/Eventosspage/eventospage/eventos.blade.php in /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php on line 493
