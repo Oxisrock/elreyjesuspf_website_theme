@@ -126,4 +126,6 @@ add_action('widgets_init', function () {
 /**
  * Cargar archivos personalizados.
  */
-require_once get_template_directory() . '/app/events.php';
+require_once get_template_directory() . '/app/cpt/events.php';
+require_once get_template_directory() . '/app/cpt/multimedia.php';
+require_once get_template_directory() . '/app/cpt/fap.php';

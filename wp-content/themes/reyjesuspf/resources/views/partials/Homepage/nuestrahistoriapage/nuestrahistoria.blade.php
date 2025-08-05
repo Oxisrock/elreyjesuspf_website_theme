@@ -5,20 +5,20 @@
             <div class="flex flex-col w-full">
                 
                 <div class="block md:hidden">
-                    <img src="@asset('images/nuestrahistoria-page/DSC_0548.jpg')" alt="Equipo de ReyCristo (Móvil)" 
+                    <img src="<?php the_field('imagen_nuestra_historia', 'option'); ?>" alt="Equipo de ReyCristo (Móvil)" 
                          class="rounded-xl mb-8 w-full h-full object-top object-cover">
                 </div>
 
                 <div class="hidden md:block">
-                    <img src="@asset('images/nuestrahistoria-page/DSC_0548.jpg')" alt="Equipo de ReyCristo (Escritorio)" 
+                    <img src="<?php the_field('imagen_nuestra_historia', 'option'); ?>" alt="Equipo de ReyCristo (Escritorio)" 
                          class="rounded-xl mb-8 w-full h-[300px] max-h-[400px] object-top object-cover">
                 </div>
 
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                    Nuestra historia
+                    <?php the_field('titulo_nuestra_historia', 'option'); ?>
                 </h2>
                 <p class="text-gray-600 leading-relaxed mb-8">
-                    Rey Cristo nació del deseo de compartir el amor de Dios y brindar un espacio de esperanza y fe para todos. Desde nuestros humildes comienzos, hemos crecido gracias al compromiso de nuestra comunidad y la guía de la Palabra. A lo largo de los años, hemos construido una familia unida en Cristo, fortalecida por la oración, la enseñanza y el servicio.
+                    <?php the_field('descripcion_nuestra_historia', 'option'); ?>
                 </p>
                 <div class="flex items-center space-x-6">
                     <a href="#" class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-full shadow-sm hover:bg-blue-700 transition-colors">
@@ -38,14 +38,12 @@
                         <div class="flex items-center mb-1">
                             <div class="bg-indigo-600 rounded-full h-4 w-4 border-gray-200 border-2 z-10">
                             </div>
-                            <div class="text-blue-600 font-semibold text-2xl flex-1 ml-4 md:ml-10 font-sans">2019</div>
+                            <div class="text-blue-600 font-semibold text-2xl flex-1 ml-4 md:ml-10 font-sans"><?php the_field('historia_titulo_1', 'option'); ?></div>
                         </div>
                         <div class="ml-10 md:ml-14">
-                            <h3 class="text-lg font-sans font-semibold">Nuestros inicios</h3>
+                            <h3 class="text-lg font-sans font-semibold"><?php the_field('historia_sub_titulo_1', 'option'); ?></h3>
                             <p class="font-sans text-gray-600">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos tenetur, suscipit atque et
-                                nulla dolores unde maiores doloribus nemo possimus commodi totam consectetur temporibus odit
-                                velit illo repellendus provident vitae.
+                                <?php the_field('historia_descripcion_1', 'option'); ?>
                             </p>
                         </div>
                     </li>
@@ -53,14 +51,12 @@
                         <div class="flex items-center mb-1">
                             <div class="bg-indigo-600 rounded-full h-4 w-4 border-gray-200 border-2 z-10">
                             </div>
-                            <div class="text-blue-600 font-semibold text-2xl flex-1 ml-4 md:ml-10 font-sans">2021</div>
+                            <div class="text-blue-600 font-semibold text-2xl flex-1 ml-4 md:ml-10 font-sans"><?php the_field('historia_titulo_2', 'option'); ?></div>
                         </div>
                         <div class="ml-10 md:ml-14">
-                            <h3 class="text-lg font-sans font-semibold">Empezamos a construir nuestro sueño</h3>
+                            <h3 class="text-lg font-sans font-semibold"><?php the_field('historia_sub_titulo_2', 'option'); ?></h3>
                             <p class="font-sans text-gray-600">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos tenetur, suscipit atque et
-                                nulla dolores unde maiores doloribus nemo possimus commodi totam consectetur temporibus odit
-                                velit illo repellendus provident vitae.
+                                <?php the_field('historia_descripcion_2', 'option'); ?>
                             </p>
                         </div>
                     </li>
@@ -68,14 +64,12 @@
                         <div class="flex items-center mb-1">
                             <div class="bg-indigo-600 rounded-full h-4 w-4 border-gray-200 border-2 z-10">
                             </div>
-                            <div class="text-blue-600 font-semibold text-2xl flex-1 ml-4 md:ml-10 font-sans">2025</div>
+                            <div class="text-blue-600 font-semibold text-2xl flex-1 ml-4 md:ml-10 font-sans"><?php the_field('historia_titulo_3', 'option'); ?></div>
                         </div>
                         <div class="ml-10 md:ml-14">
-                            <h3 class="text-lg font-sans font-semibold">Somos mas de 1000 almas dedicadas a Dios</h3>
+                            <h3 class="text-lg font-sans font-semibold"><?php the_field('historia_sub_titulo_3', 'option'); ?></h3>
                             <p class="font-sans text-gray-600">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos tenetur, suscipit atque et
-                                nulla dolores unde maiores doloribus nemo possimus commodi totam consectetur temporibus odit
-                                velit illo repellendus provident vitae.
+                               <?php the_field('historia_descripcion_3', 'option'); ?>
                             </p>
                         </div>
                     </li>

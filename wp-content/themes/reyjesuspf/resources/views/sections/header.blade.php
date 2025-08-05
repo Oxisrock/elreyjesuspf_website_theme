@@ -2,7 +2,7 @@
     <div class="container mx-auto px-6 md:px-8 lg:px-12">
         <div class="flex justify-between items-center py-4">
             <div class="flex items-center space-x-2">
-                <img src="@asset('images/header-page/Logoiglesiaazul.png')" alt="Logo" class="max-h-8 max-w-full"> <span
+                <img src="<?php the_field('logo', 'option'); ?>" alt="Logo" class="max-h-8 max-w-full"> <span
                     class="text-gray-800 font-bold text-xl">El Rey Jesús</span>
             </div>
 

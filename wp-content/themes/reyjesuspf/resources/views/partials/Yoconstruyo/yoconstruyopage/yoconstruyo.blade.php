@@ -1,7 +1,7 @@
     <style>
         .hero-background-overlay {
             /* Asegúrate de que la ruta a tu imagen sea correcta */
-            background-image: url('@asset('images/yoconstruyo-page/IMG-20221125-WA0111 (1).jpg')');
+            background-image: url('<?php the_field('imagen_de_yo_construyo' ); ?>');
             background-position: center center;
             background-size: cover;
             /* No es necesario 'opacity' aquí si usamos 'background-color' con alpha */
@@ -16,10 +16,10 @@
 
             <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
                 <h1 class="text-4xl sm:text-5xl md:text-5xl font-extrabold leading-tight mb-6">
-                    ¡Manos a la Obra!
+                    <?php the_field('titulo_yo_construyo' ); ?>
                 </h1>
                 <p class="text-lg sm:text-xl md:text-xl font-medium mb-10 leading-relaxed">
-                    Tu Siembra en <span class="text-blue-400">#YoConstruyo</span>, es un aporte para el Templo donde tus generaciones conocerán la presencia de Dios.
+                    <?php the_field('subtitulo_yo_construyo' ); ?>
                 </p>
 
                 <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">

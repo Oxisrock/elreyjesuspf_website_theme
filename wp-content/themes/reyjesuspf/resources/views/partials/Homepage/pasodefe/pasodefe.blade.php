@@ -4,19 +4,16 @@
         <div class="flex flex-col lg:flex-row items-center">
 
             <div class="w-full lg:w-1/2 mb-8 lg:mb-0">
-                <img class="object-cover w-full h-auto rounded-xl" src="@asset('images/pasodefe-page/DSC_0077.jpg')"
+                <img class="object-cover w-full h-auto rounded-xl" src="<?php the_field('imagen_paso_de_fe', 'option'); ?>"
                     alt="Persona en un escenario frente a una multitud con luces">
             </div>
 
             <div class="w-full lg:w-1/2 p-6 lg:p-20">
                 <h2 class="text-2xl font-bold text-gray-800 mb-4">
-                    Da el Primer Paso de FE hacia una Vida Sobrenatural
+                    <?php the_field('titulo_paso_de_fe', 'option'); ?>
                 </h2>
                 <p class="text-gray-600 text-sm mb-8">
-                    Jesús vino a enseñar su amor sobrenatural a través de la fe, vino a darte poder, vino a restaurar tu
-                    vida. Creemos en milagros, en salvación y en el gran poder de Dios. <br><br>
-                    Únete a una familia espiritual que te impulsa a vivir en lo sobrenatural, guiado por el amor de
-                    Dios.
+                    <?php the_field('descripcion_paso_de_fe', 'option'); ?>
                 </p>
                 <form>
                     <div class="mb-6">

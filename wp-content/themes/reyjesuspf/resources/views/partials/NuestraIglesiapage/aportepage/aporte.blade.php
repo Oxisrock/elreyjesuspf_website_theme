@@ -5,19 +5,17 @@
 
                 <div class="text-center md:text-left">
                     <h2 class="text-3xl md:text-4xl font-bold text-blue-600 leading-tight">
-                        Ayúdanos a construir<br>el reino de Dios
+                        <?php the_field('aporte_titulo', 'option' ); ?>
                     </h2>
                 </div>
 
                 <div class="flex flex-col space-y-6">
                     <div class="space-y-4 text-gray-700 text-sm md:text-md">
                         <p>
-                            Sé parte del crecimiento de nuestra iglesia y apóyanos en esta
-                            misión. Con tu ayuda, creamos un hogar de oración y esperanza.
+                            <?php the_field('aporte_descripcion_1', 'option' ); ?>
                         </p>
                         <p>
-                            Ayúdanos a hacer realidad la construcción de nuestro templo. Con
-                            tu donación, contribuyes a un espacio de encuentro, oración y crecimiento espiritual.
+                            <?php the_field('aporte_descripcion_2', 'option' ); ?>
                         </p>
                     </div>
                     

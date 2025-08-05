@@ -1,6 +1,6 @@
 <style>
     /* Estilos adicionales para un aspecto más pulido si es necesario */
-    @import url('@asset('images/hero-page/Un camino de fe.13f7f6.jpg')');
+    @import url('<?php the_field('imagen_de_inicio_de_sesion', 'option'); ?>');
 
     body {
         font-family: 'Poppins', sans-serif;
@@ -11,7 +11,7 @@
     <div class="flex flex-col md:flex-row min-h-screen">
 
         <div class="hidden md:flex w-full md:w-3/5 md:h-auto relative bg-cover bg-center"
-             style="background-image: url('@asset('images/hero-page/Un camino de fe.13f7f6.jpg')');">
+             style="background-image: url('<?php the_field('imagen_de_inicio_de_sesion', 'option'); ?>');">
             
             <div class="absolute inset-0 w-full h-full overflow-hidden">
                 <div class="absolute h-3/5 w-[150%] bg-cyan-600/20 transform -skew-y-12 top-[-10%] left-[-25%]"></div>
@@ -21,10 +21,10 @@
         <div class="w-full md:w-2/5 bg-white flex flex-col justify-between p-6 sm:p-8 md:p-12">
             <div class="w-full max-w-sm mx-auto my-auto">
                 <div class="flex items-center justify-center">
-                    <img src="@asset('images/header-page/Logoiglesiaazul.png')" alt="Logo de la iglesia" class="h-14 w-14 mb-8">
+                    <img src="<?php the_field('logo', 'option'); ?>" alt="Logo de la iglesia" class="h-14 w-14 mb-8">
                 </div>
-                <h1 class="text-2xl text-center font-bold text-blue-600 mb-2">Inicia sesión</h1>
-                <p class="text-sm text-gray-500 text-center mb-8">Recibe invitaciones directamente a tu correo <br>electrónico y participa en nuestros eventos.</p>
+                <h1 class="text-2xl text-center font-bold text-blue-600 mb-2"><?php the_field('titulo_de_inicio_de_sesion', 'option'); ?></h1>
+                <p class="text-sm text-gray-500 text-center mb-8"><?php the_field('descripcion_de_inicio_de_sesion', 'option'); ?></p>
 
                 <form action="#" method="POST">
                     <div class="mb-4">

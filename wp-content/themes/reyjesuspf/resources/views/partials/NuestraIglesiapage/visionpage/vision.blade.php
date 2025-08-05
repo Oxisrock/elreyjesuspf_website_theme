@@ -11,13 +11,13 @@
                     <div class="absolute w-4 h2 bg-blue-500 rounded-full"></div>
                 </div>
                 <div class="text-left md:order-last">
-                    <h3 class="text-3xl font-bold text-gray-800">Evangelizar</h3>
+                    <h3 class="text-3xl font-bold text-gray-800"><?php the_field('evangelizar_titulo' ); ?></h3>
                     <p class="mt-4 text-gray-600 leading-relaxed ">
-                       Entrenar, equipar y ayudar a los creyentes a cumplir su propósito y llamado. 
+                       <?php the_field('evangelizar_descripcion' ); ?>
                     </p>
                 </div>
                 <div>
-                    <img src="@asset('images/vision-page/evangelizar .jpg')" alt="Evangelizar" class="rounded-3xl w-[450px] h-auto object-cover">
+                    <img src="<?php the_field('evangelizar_foto' ); ?>" alt="Evangelizar" class="rounded-3xl w-[450px] h-auto object-cover">
                 </div>
             </div>
 
@@ -27,13 +27,13 @@
                     <div class="absolute w-4 h-2 bg-blue-500 rounded-full"></div>
                 </div>
                 <div class="text-left md:text-right md:order-first">
-                    <h3 class="text-3xl font-bold text-gray-800">Afirmar</h3>
+                    <h3 class="text-3xl font-bold text-gray-800"><?php the_field('afirmar_titulo' ); ?></h3>
                     <p class="mt-4 text-gray-600 leading-relaxed">
-                        Nuestra misión es compartir las buenas nuevas del Evangelio y llevar a las personas a tener una relación personal con Dios por medio de la persona de Jesucristo.
+                        <?php the_field('afirmar_descripcion' ); ?>
                     </p>
                 </div>
                 <div class="md:order-last">
-                    <img src="@asset('images/vision-page/Afirmar .webp')" alt="Afirmar" class="rounded-2xl w-full h-[450px] object-cover">
+                    <img src="<?php the_field('afirmar_foto' ); ?>" alt="Afirmar" class="rounded-2xl w-full h-[450px] object-cover">
                 </div>
             </div>
 
@@ -43,13 +43,13 @@
                     <div class="absolute w-4 h-2 bg-blue-500 rounded-full"></div>
                 </div>
                 <div class="text-left md:order-last">
-                    <h3 class="text-3xl font-bold text-gray-800">Discipular</h3>
+                    <h3 class="text-3xl font-bold text-gray-800"><?php the_field('discipular_titulo' ); ?></h3>
                     <p class="mt-4 text-gray-600 leading-relaxed">
-                        Llamados a través el poder sobrenatural a esta Generación.
+                       <?php the_field('discipular_descripcion' ); ?>
                     </p>
                 </div>
                 <div>
-                    <img src="@asset('images/vision-page/Discipular.webp')" alt="Discipular" class="rounded-3xl w-[470px] h-auto object-cover">
+                    <img src="<?php the_field('discipular_foto' ); ?>" alt="Discipular" class="rounded-3xl w-[470px] h-auto object-cover">
                 </div>
             </div>
 
@@ -59,13 +59,13 @@
                     <div class="absolute w-4 h-2 bg-blue-500 rounded-full"></div>
                 </div>
                 <div class="text-left md:text-right md:order-first">
-                    <h3 class="text-3xl font-bold text-gray-800">Enviar</h3>
+                    <h3 class="text-3xl font-bold text-gray-800"><?php the_field('enviar_titulo' ); ?></h3>
                     <p class="mt-4 text-gray-600 leading-relaxed">
-                        Ruta de Crecimiento Nuestra pasión es entrenar, equipar, movilizar y empoderar a cada miembro para alcanzar al perdido a través de lo sobrenatural, así como también ayudar a cada nuevo creyente a comenzar su camino mediante el proceso de la visión. En el ministerio tenemos líderes entrenados y empoderados para ayudar a cada creyente a crecer en su relación con Dios y convertirse en discípulos maduros de Jesús que puedan seguir expandiendo el Reino en la tierra.
+                        <?php the_field('enviar_descripcion' ); ?>
                     </p>
                 </div>
                 <div class="md:order-last">
-                    <img src="@asset('images/vision-page/enviar.webp')" alt="Enviar" class="rounded-3xl mb-8 w-full h-[470px] object-top object-cover">
+                    <img src="<?php the_field('enviar_foto' ); ?>" class="rounded-3xl mb-8 w-full h-[470px] object-top object-cover">
                 </div>
             </div>
 

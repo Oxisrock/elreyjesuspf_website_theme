@@ -5,11 +5,11 @@
             <div class="w-full max-w-sm mx-auto">
                 
                 <div class="flex items-center justify-center">
-                    <img src="@asset('images/header-page/Logoiglesiaazul.png')" alt="Logo de la iglesia" class="h-14 w-14 mb-6">
+                    <img src="<?php the_field('logo', 'option'); ?>" alt="Logo de la iglesia" class="h-14 w-14 mb-6">
                 </div>
 
-                <h1 class="text-2xl font-bold text-center text-blue-600 mb-2">Ponte en Contacto</h1>
-                <p class="text-base text-gray-500 mb-8 text-center">Estamos aquí para servirte. <br>Déjanos tu mensaje y te responderemos pronto.</p>
+                <h1 class="text-2xl font-bold text-center text-blue-600 mb-2"><?php the_field('titulo_contactos_page', 'option'); ?></h1>
+                <p class="text-base text-gray-500 mb-8 text-center"><?php the_field('descripcion_contactos_page', 'option'); ?></p>
 
                 <form action="https://formspree.io/f/TU_ID_UNICO" method="POST" class="space-y-4">
                     
@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div class="hidden md:flex w-3/5 relative bg-cover bg-center" style="background-image: url('@asset('images/hero-page/Un camino de fe.13f7f6.jpg')');">
+        <div class="hidden md:flex w-3/5 relative bg-cover bg-center" style="background-image: url('<?php the_field('imagen_de_contactos', 'option'); ?>');">
             <div class="absolute inset-0 w-full h-full overflow-hidden">
                 <div class="absolute h-3/5 w-[150%] bg-cyan-600/20 transform -skew-y-12 top-[-10%] left-[-25%]"></div>
                 <div class="absolute h-3/5 w-[150%] bg-cyan-600/20 transform -skew-y-12 bottom-[-10%] left-[-25%]"></div>

@@ -1,6 +1,6 @@
 <style>
     /* Opcional: para una fuente que coincida mejor con la imagen */
-    @import url('@asset('images/hero-page/Un camino de fe.13f7f6.jpg')');
+    @import url('<?php the_field('imagen_de_registrarme', 'option'); ?>');
     body {
         font-family: 'Poppins', sans-serif;
     }
@@ -12,11 +12,11 @@
         <div class="w-full md:w-2/5 bg-white flex flex-col justify-center p-6 sm:p-8 md:p-12">
             <div class="w-full max-w-sm mx-auto">
                 <div class="flex items-center justify-center">
-                    <img src="@asset('images/header-page/Logoiglesiaazul.png')" alt="Logo de la iglesia" class="h-14 w-14 mb-8">
+                    <img src="<?php the_field('logo', 'option'); ?>" alt="Logo de la iglesia" class="h-14 w-14 mb-8">
                 </div>
 
-                <h1 class="text-2xl font-bold text-center text-blue-600 mb-2">Crea tu cuenta</h1>
-                <p class="text-sm text-gray-500 mb-8 text-center">Recibe invitaciones directamente a tu correo <br>electrónico y participa en nuestros eventos.</p>
+                <h1 class="text-2xl font-bold text-center text-blue-600 mb-2"><?php the_field('titulo_de_registrarme', 'option'); ?></h1>
+                <p class="text-sm text-gray-500 mb-8 text-center"><?php the_field('descripcion_de_registrarme', 'option'); ?></p>
 
                 <form action="#" method="POST" class="space-y-4">
                     <input type="text" placeholder="Nombre Completo" class="w-full px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <div class="hidden md:flex w-full md:w-3/5 md:h-auto relative bg-cover bg-center" style="background-image: url('@asset('images/hero-page/Un camino de fe.13f7f6.jpg')');">
+        <div class="hidden md:flex w-full md:w-3/5 md:h-auto relative bg-cover bg-center" style="background-image: url('<?php the_field('imagen_de_registrarme', 'option'); ?>');">
             <div class="absolute inset-0 w-full h-full overflow-hidden">
                 <div class="absolute h-3/5 w-[150%] bg-cyan-600/20 transform -skew-y-12 top-[-10%] left-[-25%]"></div>
                 <div class="absolute h-3/5 w-[150%] bg-cyan-600/20 transform -skew-y-12 bottom-[-10%] left-[-25%]"></div>

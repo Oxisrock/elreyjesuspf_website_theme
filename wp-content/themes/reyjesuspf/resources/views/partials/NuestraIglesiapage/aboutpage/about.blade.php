@@ -6,19 +6,19 @@
             
             <div class="text-center md:text-left space-y-4">
                 <h1 class="text-3xl sm:text-5xl font-bold text-blue-600">
-                    Siembra para el <br>Templo de dios
+                    <?php the_field('titulo_about' ); ?>
                 </h1>
                 <p class="text-medium text-gray-600 italic">
-                    "Labrar piedra para edificar la palabra de Dios"
+                    <?php the_field('parabola'); ?>
                 </p>
                 <p class="text-base text-black-500 font-bold">
-                    - 1 Crónicas 22:2
+                    <?php the_field('versiculo'); ?>
                 </p>
             </div>
 
             <div class="flex justify-center p-4">
                 <div class="rounded-2xl overflow-hidden">
-                    <img src="@asset('images/about-page/IMG-20221125-WA0134.jpg')" alt="Construcción del templo" class="rounded-xl w-full h-[300px] md:h-[450px] object-cover object-top">
+                    <img src="<?php the_field('imagen_about'); ?>" alt="Construcción del templo" class="rounded-xl w-full h-[300px] md:h-[450px] object-cover object-top">
                 </div>
             </div>
 
