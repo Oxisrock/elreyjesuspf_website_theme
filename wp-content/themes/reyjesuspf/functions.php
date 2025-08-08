@@ -307,3 +307,391 @@ function filtrar_multimedia_handler() {
 // Enganchamos la función a las acciones de AJAX de WordPress
 add_action('wp_ajax_filtrar_multimedia', __NAMESPACE__ . '\\filtrar_multimedia_handler');       // Para usuarios logueados
 add_action('wp_ajax_nopriv_filtrar_multimedia', __NAMESPACE__ . '\\filtrar_multimedia_handler'); // Para usuarios no logueados
+
+// 1. FUNCIÓN PARA MOSTRAR EL CAMPO EN LA PÁGINA DE PERFIL
+// Se ejecuta cuando se muestra el perfil de un usuario.
+add_action( 'show_user_profile', __NAMESPACE__ . '\\jj_mostrar_campo_telefono_en_perfil' );
+add_action( 'edit_user_profile', __NAMESPACE__ . '\\jj_mostrar_campo_telefono_en_perfil' );
+
+function jj_mostrar_campo_telefono_en_perfil( $user ) {
+    // Obtenemos el teléfono guardado para este usuario.
+    $telefono = get_user_meta( $user->ID, 'phone', true );
+    ?>
+    <h3>Información Adicional</h3>
+    <table class="form-table">
+        <tr>
+            <th><label for="phone">Número de Teléfono</label></th>
+            <td>
+                <input type="text" name="phone" id="phone" value="<?php echo esc_attr( $telefono ); ?>" class="regular-text" />
+                <p class="description">Número de contacto del usuario.</p>
+            </td>
+        </tr>
+    </table>
+    <?php
+}
+
+// 2. FUNCIÓN PARA GUARDAR EL CAMPO CUANDO SE ACTUALIZA EL PERFIL
+// Se ejecuta cuando el usuario hace clic en "Actualizar perfil".
+add_action( 'personal_options_update', __NAMESPACE__ . '\\jj_guardar_campo_telefono_del_perfil' );
+add_action( 'edit_user_profile_update', __NAMESPACE__ . '\\jj_guardar_campo_telefono_del_perfil' );
+
+function jj_guardar_campo_telefono_del_perfil( $user_id ) {
+    // Verificación de seguridad: ¿el usuario actual tiene permiso?
+    if ( ! current_user_can( 'edit_user', $user_id ) ) {
+        return false;
+    }
+
+    // Si el campo 'phone' fue enviado, lo limpiamos y guardamos.
+    if ( isset( $_POST['phone'] ) ) {
+        $telefono_sanitizado = sanitize_text_field( $_POST['phone'] );
+        update_user_meta( $user_id, 'phone', $telefono_sanitizado );
+    }
+}
+
+function crear_tabla_contactos_personalizada() {
+    global $wpdb;
+    // El prefijo de la tabla de WordPress (ej. 'wp_') seguido del nombre de nuestra tabla.
+    $nombre_tabla = $wpdb->prefix . 'contactos_entradas';
+    $charset_collate = $wpdb->get_charset_collate();
+
+    // Si la tabla no existe, la creamos.
+    if($wpdb->get_var("SHOW TABLES LIKE '$nombre_tabla'") != $nombre_tabla) {
+        $sql = "CREATE TABLE $nombre_tabla (
+            id mediumint(9) NOT NULL AUTO_INCREMENT,
+            fecha datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+            nombre varchar(100) NOT NULL,
+            email varchar(100) NOT NULL,
+            asunto varchar(255) NOT NULL,
+            mensaje text NOT NULL,
+            PRIMARY KEY  (id)
+        ) $charset_collate;";
+
+        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+        dbDelta($sql);
+    }
+}
+
+// Ejecutamos la función. Recuerda comentarla o borrarla después del primer uso.
+crear_tabla_contactos_personalizada();
+
+// Enganchamos nuestra función al 'action' que definimos en el formulario
+// 'admin_post_nopriv_' es para usuarios no logueados
+add_action('admin_post_nopriv_procesar_formulario_contacto', __NAMESPACE__ . '\\mi_procesador_de_formularios');
+// 'admin_post_' es para usuarios logueados
+add_action('admin_post_procesar_formulario_contacto', __NAMESPACE__ . '\\mi_procesador_de_formularios');
+
+function mi_procesador_de_formularios() {
+    global $wpdb;
+    $nombre_tabla = $wpdb->prefix . 'contactos_entradas';
+
+    // 1. Verificar el Nonce de seguridad
+    if ( !isset($_POST['mi_nonce']) || !wp_verify_nonce($_POST['mi_nonce'], 'mi_form_contacto_nonce') ) {
+        die('¡Falló la verificación de seguridad!');
+    }
+
+    // 2. Limpiar y sanitizar los datos recibidos del formulario
+    $nombre  = sanitize_text_field($_POST['nombre']);
+    $email   = sanitize_email($_POST['email']);
+    $asunto  = sanitize_text_field($_POST['asunto']);
+    $mensaje = sanitize_textarea_field($_POST['mensaje']);
+
+    // 3. Insertar los datos en nuestra tabla personalizada
+    $wpdb->insert(
+        $nombre_tabla,
+        array(
+            'fecha'   => current_time('mysql'),
+            'nombre'  => $nombre,
+            'email'   => $email,
+            'asunto'  => $asunto,
+            'mensaje' => $mensaje,
+        )
+    );
+
+    // 4. Enviar correos
+
+    // --- INICIO DE CAMBIOS Y CORRECCIONES ---
+
+    // 4.1. Preparamos TODAS las variables que necesitamos para los correos
+    
+    // Para el correo del Administrador
+    $admin_email = get_option('admin_email');
+    $admin_asunto = "Nuevo mensaje de contacto de: $nombre";
+    $admin_cuerpo = "Has recibido un nuevo mensaje a través del formulario de contacto:\n\n";
+    $admin_cuerpo .= "Nombre: $nombre\n";
+    $admin_cuerpo .= "Correo: $email\n";
+    $admin_cuerpo .= "Asunto: $asunto\n";
+    $admin_cuerpo .= "Mensaje:\n$mensaje\n";
+    
+    // Para el correo del Usuario (aquí integramos tu código)
+    // Obtenemos la URL del logo usando get_field() porque estamos en PHP
+    // Nota: Debes tener el plugin Advanced Custom Fields activo.
+    $logo_url = get_field('logo_en_negro', 'option');
+
+    // Aquí está el código que querías integrar, preparado para el correo
+    $url_inicio = esc_url(home_url('/'));
+    $titulo_sitio = esc_attr(get_bloginfo('name'));
+    
+    // Construimos el enlace con estilo para que se vea bien en el correo
+    $enlace_html = '<a href="' . $url_inicio . '" title="' . $titulo_sitio . '" style="color: #ffffff; text-decoration: none;">' . $titulo_sitio . '</a>';
+
+    // 4.2. Construimos el cuerpo del correo del usuario de forma limpia
+    
+    // Corregimos el Content-Type a UTF-8
+    $headers = array('Content-Type: text/html; charset=UTF-8');
+    $usuario_asunto = "¡Hemos recibido tu mensaje!";
+
+    // Usamos la sintaxis HEREDOC (<<<HTML) para escribir el HTML sin problemas con las comillas
+    $usuario_cuerpo = <<<HTML
+    <!DOCTYPE html>
+    <html lang="es">
+    <head><title>$usuario_asunto</title></head>
+    <body style="margin: 0; padding: 0; background-color: #ffffff; font-family: 'Georgia', serif;">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td align="center">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+                        <tr>
+                            <td align="center" style="padding: 40px 0;">
+                                <img src="$logo_url" alt="Logo de la Iglesia" width="120" style="display: block;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0 30px 30px 30px; text-align: center;">
+                                <h1 style="color: #333; margin: 0; font-weight: normal;">Hola, $nombre</h1>
+                                <p style="color: #555; font-size: 18px; line-height: 1.6; margin: 20px 0;">
+                                    Gracias por tu confianza al contactarnos. Hemos recibido tu mensaje y lo valoramos profundamente.
+                                </p>
+                                <p style="color: #555; font-size: 18px; line-height: 1.6; margin: 20px 0;">
+                                    Mientras atendemos tu solicitud, queremos compartir contigo una promesa para recordarte que Dios está contigo:
+                                </p>
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 30px 0;">
+                                    <tr>
+                                        <td align="center" style="padding: 20px; border-left: 3px solid #bda071;">
+                                            <p style="color: #555; font-size: 17px; line-height: 1.7; font-style: italic; margin: 0;">
+                                                ¡Levántate y resplandece que tu luz ha llegado!
+                                                ¡La gloria del Señor brilla sobre ti!
+                                                Mira, las tinieblas cubren la tierra
+                                                y una densa oscuridad se cierne sobre los pueblos.
+                                                Pero la aurora del Señor brillará sobre ti;
+                                                ¡sobre ti se manifestará su gloria!<br>
+                                                <span style="display: block; margin-top: 10px; font-style: normal;">- Isaías 60:1-2</span>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#1520A6" style="padding: 25px 30px;">
+                                <p style="color: #ffffff; font-family: Arial, sans-serif; font-size: 14px; text-align: center; margin: 0;">
+                                    En Su amor y servicio,<br>
+                                    $enlace_html
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+    </html>
+HTML;
+
+    // --- FIN DE CAMBIOS Y CORRECCIONES ---
+
+    // 4.3. Enviamos los correos
+    wp_mail($email, $usuario_asunto, $usuario_cuerpo, $headers);
+
+    // 5. Redirigir al usuario
+    $url_contacto = home_url('/contacto'); // <-- ¡Asegúrate de que esta es la URL de tu página de contacto!
+    $url_con_mensaje = add_query_arg('enviado', 'true', $url_contacto);
+    wp_redirect($url_con_mensaje);
+    exit;
+}
+
+// Añadir una nueva página al menú de administración
+add_action('admin_menu', __NAMESPACE__ . '\\mi_menu_de_entradas_de_contacto');
+
+function mi_menu_de_entradas_de_contacto() {
+    add_menu_page(
+        'Entradas de Contacto',      // Título de la página
+        'Entradas Contacto',         // Título del menú
+        'manage_options',            // Capacidad requerida para verla
+        'entradas-contacto-slug',    // Slug único para la página
+        'mi_contenido_pagina_entradas', // Función que renderiza el contenido
+        'dashicons-email-alt',       // Ícono del menú
+        25                           // Posición en el menú
+    );
+}
+
+// La función que muestra el contenido de la página (la tabla)
+function mi_contenido_pagina_entradas() {
+    global $wpdb;
+    $nombre_tabla = $wpdb->prefix . 'contactos_entradas';
+    $entradas = $wpdb->get_results("SELECT * FROM $nombre_tabla ORDER BY fecha DESC");
+    ?>
+    <div class="wrap">
+        <h1>Entradas del Formulario de Contacto</h1>
+        <table class="wp-list-table widefat fixed striped">
+            <thead>
+                <tr>
+                    <th style="width:150px;">Fecha</th>
+                    <th style="width:150px;">Nombre</th>
+                    <th style="width:200px;">Correo</th>
+                    <th>Asunto</th>
+                    <th>Mensaje</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (empty($entradas)) : ?>
+                    <tr>
+                        <td colspan="5">No hay entradas todavía.</td>
+                    </tr>
+                <?php else : ?>
+                    <?php foreach ($entradas as $entrada) : ?>
+                        <tr>
+                            <td><?php echo esc_html($entrada->fecha); ?></td>
+                            <td><?php echo esc_html($entrada->nombre); ?></td>
+                            <td><?php echo esc_html($entrada->email); ?></td>
+                            <td><?php echo esc_html($entrada->asunto); ?></td>
+                            <td><?php echo esc_html($entrada->mensaje); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php
+}
+// 1. AÑADIR LA PÁGINA DE SUBMENÚ PARA LOS REGISTROS
+// ======================================================
+function add_event_registrations_submenu_page() {
+    add_submenu_page(
+        'edit.php?post_type=events',       // El slug del menú padre (tu CPT de eventos)
+        'Registros de Eventos',            // Título de la página
+        'Registros',                       // Título en el menú
+        'manage_options',                  // Capacidad requerida para verla
+        'event-registrations',             // Slug de esta página de menú
+        'render_event_registrations_page'  // Función que mostrará el contenido de la página
+    );
+}
+add_action('admin_menu', __NAMESPACE__ . '\\add_event_registrations_submenu_page');
+
+// 2. FUNCIÓN PARA MOSTRAR EL CONTENIDO DE LA PÁGINA DE REGISTROS
+// =================================================================
+function render_event_registrations_page() {
+    ?>
+    <div class="wrap">
+        <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
+        <p>Aquí se listan todos los correos electrónicos registrados para cada evento.</p>
+
+        <?php
+        // Preparamos una consulta para obtener todos los eventos
+        $events_query = new WP_Query(array(
+            'post_type' => 'events',
+            'posts_per_page' => -1, // Obtener todos los eventos
+            'post_status' => 'publish',
+        ));
+
+        if ($events_query->have_posts()) :
+            while ($events_query->have_posts()) : $events_query->the_post();
+                // Por cada evento, obtenemos los correos registrados en su meta-campo
+                $registrations = get_post_meta(get_the_ID(), '_event_registrations', true);
+
+                // Solo mostramos el evento si tiene al menos un registro
+                if (!empty($registrations) && is_array($registrations)) {
+                    ?>
+                    <div class="postbox">
+                        <h2 class="hndle"><span><?php the_title(); ?></span></h2>
+                        <div class="inside">
+                            <p><strong>Total de registrados: <?php echo count($registrations); ?></strong></p>
+                            <ul>
+                                <?php foreach ($registrations as $email) : ?>
+                                    <li><?php echo esc_html($email); ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    </div>
+                    <?php
+                }
+            endwhile;
+            wp_reset_postdata();
+        else :
+            echo '<p>No hay eventos con registros todavía.</p>';
+        endif;
+        ?>
+    </div>
+    <?php
+}
+
+
+// 3. ENCOLAR SCRIPTS Y PASAR VARIABLES A JAVASCRIPT
+// ====================================================
+function enqueue_event_registration_scripts() {
+    // Solo cargar este script en las páginas individuales del CPT 'events'
+    if (is_singular('events')) {
+        // Registra el script. Asegúrate de que la ruta sea correcta.
+        // Crea una carpeta 'js' en tu tema y dentro el archivo 'event-registration.js'
+        wp_enqueue_script(
+            'event-registration-ajax',
+            get_stylesheet_directory_uri() . '/resources/scripts/event-registration.js',
+            array('jquery'), // Dependencia
+            '1.0',           // Versión
+            true             // Cargar en el footer
+        );
+
+        // Pasamos datos de PHP a JavaScript de forma segura
+        wp_localize_script('event-registration-ajax', 'event_reg_ajax_obj', array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce'    => wp_create_nonce('event_registration_nonce')
+        ));
+    }
+}
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_event_registration_scripts');
+
+
+// 4. MANEJADOR AJAX PARA PROCESAR EL REGISTRO
+// ===============================================
+function handle_event_registration() {
+    // 1. Seguridad: Verificar el nonce
+    check_ajax_referer('event_registration_nonce', 'nonce');
+
+    // 2. Validar y sanitizar los datos de entrada
+    if (!isset($_POST['email']) || !is_email($_POST['email'])) {
+        wp_send_json_error(array('message' => 'Por favor, introduce un correo electrónico válido.'));
+        return;
+    }
+    if (!isset($_POST['event_id']) || !absint($_POST['event_id'])) {
+        wp_send_json_error(array('message' => 'ID de evento no válido.'));
+        return;
+    }
+
+    $email = sanitize_email($_POST['email']);
+    $event_id = absint($_POST['event_id']);
+
+    // 3. Obtener los registros existentes para este evento
+    $registrations = get_post_meta($event_id, '_event_registrations', true);
+    if (empty($registrations) || !is_array($registrations)) {
+        $registrations = array();
+    }
+
+    // 4. Comprobar si el correo ya está registrado para evitar duplicados
+    if (in_array($email, $registrations)) {
+        wp_send_json_error(array('message' => 'Este correo ya está registrado para el evento.'));
+        return;
+    }
+
+    // 5. Añadir el nuevo correo y actualizar el campo meta
+    $registrations[] = $email;
+    $success = update_post_meta($event_id, '_event_registrations', $registrations);
+
+    if ($success) {
+        wp_send_json_success(array('message' => '¡Gracias! Te has registrado correctamente.'));
+    } else {
+        wp_send_json_error(array('message' => 'Hubo un error al procesar tu registro. Inténtalo de nuevo.'));
+    }
+}
+// Enganchar la función para usuarios logueados y no logueados
+add_action('wp_ajax_register_to_event', __NAMESPACE__ . '\\handle_event_registration');
+add_action('wp_ajax_nopriv_register_to_event', __NAMESPACE__ . '\\handle_event_registration');
+

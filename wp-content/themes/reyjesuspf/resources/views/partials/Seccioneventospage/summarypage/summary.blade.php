@@ -2,33 +2,33 @@
 
     <div class="container mx-auto max-w-14xl">
         <div class="text-left pl-4 md:pl-10">
-        <?php
-        // Asegúrate de que estamos en una publicación individual de tu CPT
-        if (is_singular('events')) {
-            global $post; // Objeto del post actual
-        
-            // 1. Enlace al Archivo del CPT (Ej: "Eventos")
-            $post_type = get_post_type_object(get_post_type());
-            if ($post_type) {
-                echo '<a href="' . get_post_type_archive_link($post_type->name) . '"><span class="text-sm font-semibold text-black-600">' . esc_html($post_type->labels->name) . '</span></a>';
-                echo '<span class="separator"> › </span>';
+            <?php
+            // Asegúrate de que estamos en una publicación individual de tu CPT
+            if (is_singular('events')) {
+                global $post; // Objeto del post actual
+            
+                // 1. Enlace al Archivo del CPT (Ej: "Eventos")
+                $post_type = get_post_type_object(get_post_type());
+                if ($post_type) {
+                    echo '<a href="' . get_post_type_archive_link($post_type->name) . '"><span class="text-sm font-semibold text-black-600">' . esc_html($post_type->labels->name) . '</span></a>';
+                    echo '<span class="separator"> › </span>';
+                }
+            
+                // 2. Enlace a la Categoría del Evento (Término de la Taxonomía, ej: "ELIAP")
+                // Reemplaza 'tu_taxonomia_slug' con el slug de tu taxonomía (ej: 'tipo_de_evento')
+                $terms = get_the_terms($post->ID, 'tipo_evento');
+            
+                if (!empty($terms) && !is_wp_error($terms)) {
+                    // Usamos el primer término asignado al evento
+                    $the_term = $terms[0];
+                    echo '<a href="' . get_term_link($the_term) . '"><span class="text-sm font-semibold text-black-600">' . esc_html($the_term->name) . '</span></a>';
+                    echo '<span class="separator"> › </span>';
+                }
+            
+                // 3. Título del Evento Actual (no es un enlace, ej: "ELIAP 2025")
+                echo '<span class="text-sm font-semibold text-blue-600">' . get_the_title() . '</span>';
             }
-        
-            // 2. Enlace a la Categoría del Evento (Término de la Taxonomía, ej: "ELIAP")
-            // Reemplaza 'tu_taxonomia_slug' con el slug de tu taxonomía (ej: 'tipo_de_evento')
-            $terms = get_the_terms($post->ID, 'tipo_evento');
-        
-            if (!empty($terms) && !is_wp_error($terms)) {
-                // Usamos el primer término asignado al evento
-                $the_term = $terms[0];
-                echo '<a href="' . get_term_link($the_term) . '"><span class="text-sm font-semibold text-black-600">' . esc_html($the_term->name) . '</span></a>';
-                echo '<span class="separator"> › </span>';
-            }
-        
-            // 3. Título del Evento Actual (no es un enlace, ej: "ELIAP 2025")
-            echo '<span class="text-sm font-semibold text-blue-600">' . get_the_title() . '</span>';
-        }
-        ?>
+            ?>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-10 rounded-xl overflow-hidden">
 
@@ -75,18 +75,29 @@
                         <div class="w-10 h-10 rounded-full bg-yellow-300 border-2 border-white"></div>
                     </div>
                 </div>
+
                 <div class="space-y-2 md:order-5 order-5">
-                    <div class="flex flex-col md:flex-row w-full items-center space-y-2 md:space-y-0 md:space-x-2">
 
-                        <input type="email" placeholder="Ingresa tu correo electrónico"
-                            class="w-full p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    <!-- 1. Envolvemos todo en una etiqueta <form> -->
+                    <form id="event-registration-form" class="space-y-2">
+                        <div class="flex flex-col md:flex-row w-full items-center space-y-2 md:space-y-0 md:space-x-2">
 
-                        <button
-                            class="w-[340px] md:w-[100px] flex-shrink-0 bg-blue-600 text-white py-2 px-7 rounded-full hover:bg-blue-700 transition-colors">
-                            Enviar
-                        </button>
+                            <!-- 2. Añadimos un campo oculto para el ID del evento -->
+                            <input type="hidden" name="event_id" value="<?php echo get_the_ID(); ?>">
 
-                    </div>
+                            <!-- 3. Añadimos un 'name' al input del correo -->
+                            <input type="email" name="email" placeholder="Ingresa tu correo electrónico" required
+                                class="w-full p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+                            <button type="submit"
+                                class="w-[340px] md:w-[100px] flex-shrink-0 bg-blue-600 text-white py-2 px-7 rounded-full hover:bg-blue-700 transition-colors">
+                                Enviar
+                            </button>
+
+                        </div>
+                        <!-- 4. Contenedor para mostrar mensajes de éxito o error -->
+                        <div id="form-messages" class="text-sm text-center mt-2"></div>
+                    </form>
 
                     <p class="text-sm md:text-xs text-zinc-500 md:text-gray-500 md:order-6 order-6">
                         Al hacer clic en Registrarse, confirma que está de acuerdo con nuestros <a href="#"

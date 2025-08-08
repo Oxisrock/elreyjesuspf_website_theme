@@ -4127,3 +4127,1097 @@ Stack trace:
 #2 /var/www/html/wp-admin/admin-ajax.php(192): do_action('wp_ajax_filtrar...')
 #3 {main}
   thrown in /var/www/html/wp-includes/class-wp-hook.php on line 324
+[05-Aug-2025 23:09:00 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "handle_custom_registration" not found or invalid function name in /var/www/html/wp-includes/class-wp-hook.php:324
+Stack trace:
+#0 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#1 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#2 /var/www/html/wp-settings.php(727): do_action('init')
+#3 /var/www/html/wp-config.php(102): require_once('/var/www/html/w...')
+#4 /var/www/html/wp-load.php(50): require_once('/var/www/html/w...')
+#5 /var/www/html/wp-admin/admin-ajax.php(22): require_once('/var/www/html/w...')
+#6 {main}
+  thrown in /var/www/html/wp-includes/class-wp-hook.php on line 324
+[05-Aug-2025 23:09:23 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "handle_custom_registration" not found or invalid function name in /var/www/html/wp-includes/class-wp-hook.php:324
+Stack trace:
+#0 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#1 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#2 /var/www/html/wp-settings.php(727): do_action('init')
+#3 /var/www/html/wp-config.php(102): require_once('/var/www/html/w...')
+#4 /var/www/html/wp-load.php(50): require_once('/var/www/html/w...')
+#5 /var/www/html/wp-admin/admin.php(35): require_once('/var/www/html/w...')
+#6 /var/www/html/wp-admin/users.php(11): require_once('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-includes/class-wp-hook.php on line 324
+[05-Aug-2025 23:09:24 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "handle_custom_registration" not found or invalid function name in /var/www/html/wp-includes/class-wp-hook.php:324
+Stack trace:
+#0 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#1 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#2 /var/www/html/wp-settings.php(727): do_action('init')
+#3 /var/www/html/wp-config.php(102): require_once('/var/www/html/w...')
+#4 /var/www/html/wp-load.php(50): require_once('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(13): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-includes/class-wp-hook.php on line 324
+[05-Aug-2025 23:36:01 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "handle_custom_registration" not found or invalid function name in /var/www/html/wp-includes/class-wp-hook.php:324
+Stack trace:
+#0 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#1 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#2 /var/www/html/wp-settings.php(727): do_action('init')
+#3 /var/www/html/wp-config.php(102): require_once('/var/www/html/w...')
+#4 /var/www/html/wp-load.php(50): require_once('/var/www/html/w...')
+#5 /var/www/html/wp-admin/admin-ajax.php(22): require_once('/var/www/html/w...')
+#6 {main}
+  thrown in /var/www/html/wp-includes/class-wp-hook.php on line 324
+[05-Aug-2025 23:36:04 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "handle_custom_registration" not found or invalid function name in /var/www/html/wp-includes/class-wp-hook.php:324
+Stack trace:
+#0 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#1 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#2 /var/www/html/wp-settings.php(727): do_action('init')
+#3 /var/www/html/wp-config.php(102): require_once('/var/www/html/w...')
+#4 /var/www/html/wp-load.php(50): require_once('/var/www/html/w...')
+#5 /var/www/html/wp-admin/admin-ajax.php(22): require_once('/var/www/html/w...')
+#6 {main}
+  thrown in /var/www/html/wp-includes/class-wp-hook.php on line 324
+[05-Aug-2025 23:36:40 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "handle_custom_registration" not found or invalid function name in /var/www/html/wp-includes/class-wp-hook.php:324
+Stack trace:
+#0 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#1 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#2 /var/www/html/wp-settings.php(727): do_action('init')
+#3 /var/www/html/wp-config.php(102): require_once('/var/www/html/w...')
+#4 /var/www/html/wp-load.php(50): require_once('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(13): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-includes/class-wp-hook.php on line 324
+[05-Aug-2025 23:36:41 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "handle_custom_registration" not found or invalid function name in /var/www/html/wp-includes/class-wp-hook.php:324
+Stack trace:
+#0 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#1 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#2 /var/www/html/wp-settings.php(727): do_action('init')
+#3 /var/www/html/wp-config.php(102): require_once('/var/www/html/w...')
+#4 /var/www/html/wp-load.php(50): require_once('/var/www/html/w...')
+#5 /var/www/html/wp-blog-header.php(13): require_once('/var/www/html/w...')
+#6 /var/www/html/index.php(17): require('/var/www/html/w...')
+#7 {main}
+  thrown in /var/www/html/wp-includes/class-wp-hook.php on line 324
+[06-Aug-2025 22:27:24 UTC] PHP Fatal error:  Uncaught ParseError: syntax error, unexpected token ":", expecting "(" in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php:22
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#6 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(20): Illuminate\View\View->render()
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#13 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#14 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#15 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#21 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#22 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#23 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#24 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#25 /var/www/html/index.php(17): require('/var/www/html/w...')
+#26 {main}
+
+Next Illuminate\View\ViewException: syntax error, unexpected token ":", expecting "(" (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php:22
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(ParseError), 2)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(20): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#14 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#15 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#21 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#22 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#23 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#24 /var/www/html/index.php(17): require('/var/www/html/w...')
+#25 {main}
+
+Next Illuminate\View\ViewException: syntax error, unexpected token ":", expecting "(" (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php:22
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 1)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#14 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#15 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#16 /var/www/html/index.php(17): require('/var/www/html/w...')
+#17 {main}
+
+Next Illuminate\View\ViewException: syntax error, unexpected token ":", expecting "(" (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php:22
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php on line 22
+[06-Aug-2025 22:27:38 UTC] PHP Fatal error:  Uncaught ParseError: syntax error, unexpected token ":", expecting "(" in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php:22
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#6 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(20): Illuminate\View\View->render()
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#13 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#14 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#15 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#21 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#22 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#23 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#24 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#25 /var/www/html/index.php(17): require('/var/www/html/w...')
+#26 {main}
+
+Next Illuminate\View\ViewException: syntax error, unexpected token ":", expecting "(" (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php:22
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(ParseError), 2)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(20): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#14 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#15 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#21 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#22 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#23 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#24 /var/www/html/index.php(17): require('/var/www/html/w...')
+#25 {main}
+
+Next Illuminate\View\ViewException: syntax error, unexpected token ":", expecting "(" (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php:22
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 1)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#14 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#15 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#16 /var/www/html/index.php(17): require('/var/www/html/w...')
+#17 {main}
+
+Next Illuminate\View\ViewException: syntax error, unexpected token ":", expecting "(" (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php:22
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php on line 22
+[06-Aug-2025 22:27:59 UTC] PHP Fatal error:  Uncaught ParseError: syntax error, unexpected token ":", expecting "(" in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php:22
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#6 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(20): Illuminate\View\View->render()
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#13 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#14 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#15 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#21 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#22 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#23 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#24 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#25 /var/www/html/index.php(17): require('/var/www/html/w...')
+#26 {main}
+
+Next Illuminate\View\ViewException: syntax error, unexpected token ":", expecting "(" (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php:22
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(ParseError), 2)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(20): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#14 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#15 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#21 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#22 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#23 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#24 /var/www/html/index.php(17): require('/var/www/html/w...')
+#25 {main}
+
+Next Illuminate\View\ViewException: syntax error, unexpected token ":", expecting "(" (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php:22
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 1)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#14 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#15 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#16 /var/www/html/index.php(17): require('/var/www/html/w...')
+#17 {main}
+
+Next Illuminate\View\ViewException: syntax error, unexpected token ":", expecting "(" (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php:22
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php on line 22
+[06-Aug-2025 22:28:04 UTC] PHP Fatal error:  Uncaught ParseError: syntax error, unexpected token ":", expecting "(" in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php:22
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#6 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(20): Illuminate\View\View->render()
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#13 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#14 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#15 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#21 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#22 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#23 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#24 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#25 /var/www/html/index.php(17): require('/var/www/html/w...')
+#26 {main}
+
+Next Illuminate\View\ViewException: syntax error, unexpected token ":", expecting "(" (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php:22
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(ParseError), 2)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/872aeea5bc83526cef78522aea6c4ac7.php(20): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#14 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#15 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#16 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#17 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#18 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#19 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#20 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#21 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#22 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#23 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#24 /var/www/html/index.php(17): require('/var/www/html/w...')
+#25 {main}
+
+Next Illuminate\View\ViewException: syntax error, unexpected token ":", expecting "(" (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php:22
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 1)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/cache/acorn/framework/views/4e85496a1c8783340d210e65441ad863.php(12): Illuminate\View\View->render()
+#6 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(123): require('/var/www/html/w...')
+#7 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/filesystem/Filesystem.php(124): Illuminate\Filesystem\Filesystem::Illuminate\Filesystem\{closure}()
+#8 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(57): Illuminate\Filesystem\Filesystem->getRequire('/var/www/html/w...', Array)
+#9 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#10 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#11 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#12 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#13 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#14 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#15 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#16 /var/www/html/index.php(17): require('/var/www/html/w...')
+#17 {main}
+
+Next Illuminate\View\ViewException: syntax error, unexpected token ":", expecting "(" (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) (View: /var/www/html/wp-content/themes/reyjesuspf/resources/views/sections/header.blade.php) in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php:22
+Stack trace:
+#0 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/PhpEngine.php(59): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(Illuminate\View\ViewException), 0)
+#1 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/Engines/CompilerEngine.php(74): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/html/w...', Array)
+#2 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(208): Illuminate\View\Engines\CompilerEngine->get('/var/www/html/w...', Array)
+#3 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(191): Illuminate\View\View->getContents()
+#4 /var/www/html/wp-content/themes/reyjesuspf/vendor/illuminate/view/View.php(160): Illuminate\View\View->renderContents()
+#5 /var/www/html/wp-content/themes/reyjesuspf/index.php(3): Illuminate\View\View->render()
+#6 /var/www/html/wp-includes/template-loader.php(106): include('/var/www/html/w...')
+#7 /var/www/html/wp-blog-header.php(19): require_once('/var/www/html/w...')
+#8 /var/www/html/index.php(17): require('/var/www/html/w...')
+#9 {main}
+  thrown in /var/www/html/wp-content/cache/acorn/framework/views/027b0c36f4d7b8601abe9b556f9efdec.php on line 22
+[07-Aug-2025 22:37:22 UTC] PHP Parse error:  syntax error, unexpected token "?" in /var/www/html/wp-content/themes/reyjesuspf/functions.php on line 461
+[07-Aug-2025 22:37:22 UTC] PHP Warning:  Trying to access array offset on false in /var/www/html/wp-includes/class-wp-recovery-mode-email-service.php on line 367
+[07-Aug-2025 22:37:22 UTC] PHP Warning:  Trying to access array offset on false in /var/www/html/wp-includes/class-wp-recovery-mode-email-service.php on line 368
+[07-Aug-2025 23:49:31 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:49:31' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=3, last_attempt_gmt='2025-08-07 23:49:31', last_attempt_local='2025-08-07 19:49:31'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=3, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2025-08-07 23:49:31, pending, 2025-08-07 23:49:31, 2025-08-07 19:49:31</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4166 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(3, 25, NULL, '', '')
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#6 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#7 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#8 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#9 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#10 {main}</pre>
+ for query UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:49:31' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=3, last_attempt_gmt='2025-08-07 23:49:31', last_attempt_local='2025-08-07 19:49:31' made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, ActionScheduler_QueueRunner->do_batch, ActionScheduler_HybridStore->stake_claim, ActionScheduler_DBStore->stake_claim, ActionScheduler_DBStore->claim_actions, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[07-Aug-2025 23:49:31 UTC] PHP Fatal error:  Uncaught RuntimeException: Unable to claim actions. Database error: <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:49:31' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=3, last_attempt_gmt='2025-08-07 23:49:31', last_attempt_local='2025-08-07 19:49:31'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=3, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2025-08-07 23:49:31, pending, 2025-08-07 23:49:31, 2025-08-07 19:49:31</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4166 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(3, 25, NULL, '', '')
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#6 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#7 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#8 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#9 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#10 {main}</pre>
+. in /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php:1019
+Stack trace:
+#0 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(3, 25, NULL, '', '')
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#4 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#5 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#7 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#8 {main}
+  thrown in /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php on line 1019
+[07-Aug-2025 23:51:00 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:51:00' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=4, last_attempt_gmt='2025-08-07 23:51:00', last_attempt_local='2025-08-07 19:51:00'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=4, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2025-08-07 23:51:00, pending, 2025-08-07 23:51:00, 2025-08-07 19:51:00</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4166 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(4, 25, NULL, '', '')
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#6 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#7 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#8 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#9 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#10 {main}</pre>
+ for query UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:51:00' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=4, last_attempt_gmt='2025-08-07 23:51:00', last_attempt_local='2025-08-07 19:51:00' made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, ActionScheduler_QueueRunner->do_batch, ActionScheduler_HybridStore->stake_claim, ActionScheduler_DBStore->stake_claim, ActionScheduler_DBStore->claim_actions, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[07-Aug-2025 23:51:00 UTC] PHP Fatal error:  Uncaught RuntimeException: Unable to claim actions. Database error: <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:51:00' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=4, last_attempt_gmt='2025-08-07 23:51:00', last_attempt_local='2025-08-07 19:51:00'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=4, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2025-08-07 23:51:00, pending, 2025-08-07 23:51:00, 2025-08-07 19:51:00</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4166 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(4, 25, NULL, '', '')
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#6 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#7 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#8 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#9 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#10 {main}</pre>
+. in /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php:1019
+Stack trace:
+#0 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(4, 25, NULL, '', '')
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#4 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#5 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#7 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#8 {main}
+  thrown in /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php on line 1019
+[07-Aug-2025 23:51:03 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:51:03' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=5, last_attempt_gmt='2025-08-07 23:51:03', last_attempt_local='2025-08-07 19:51:03'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=5, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2025-08-07 23:51:03, pending, 2025-08-07 23:51:03, 2025-08-07 19:51:03</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4166 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(5, 25, NULL, '', '')
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#6 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('Async Request')
+#7 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#8 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#10 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/lib/WP_Async_Request.php(174): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#11 /var/www/html/wp-includes/class-wp-hook.php(324): WP_Async_Request->maybe_handle('')
+#12 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#13 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#14 /var/www/html/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#15 {main}</pre>
+ for query UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:51:03' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=5, last_attempt_gmt='2025-08-07 23:51:03', last_attempt_local='2025-08-07 19:51:03' made by do_action('wp_ajax_as_async_request_queue_runner'), WP_Hook->do_action, WP_Hook->apply_filters, WP_Async_Request->maybe_handle, ActionScheduler_AsyncRequest_QueueRunner->handle, do_action('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, ActionScheduler_QueueRunner->do_batch, ActionScheduler_HybridStore->stake_claim, ActionScheduler_DBStore->stake_claim, ActionScheduler_DBStore->claim_actions, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[07-Aug-2025 23:51:03 UTC] PHP Fatal error:  Uncaught RuntimeException: Unable to claim actions. Database error: <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:51:03' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=5, last_attempt_gmt='2025-08-07 23:51:03', last_attempt_local='2025-08-07 19:51:03'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=5, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2025-08-07 23:51:03, pending, 2025-08-07 23:51:03, 2025-08-07 19:51:03</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4166 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(5, 25, NULL, '', '')
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#6 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('Async Request')
+#7 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#8 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#10 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/lib/WP_Async_Request.php(174): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#11 /var/www/html/wp-includes/class-wp-hook.php(324): WP_Async_Request->maybe_handle('')
+#12 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#13 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#14 /var/www/html/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#15 {main}</pre>
+. in /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php:1019
+Stack trace:
+#0 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(5, 25, NULL, '', '')
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#4 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('Async Request')
+#5 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#7 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#8 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/lib/WP_Async_Request.php(174): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): WP_Async_Request->maybe_handle('')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#13 {main}
+  thrown in /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php on line 1019
+[07-Aug-2025 23:52:12 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:52:12' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=6, last_attempt_gmt='2025-08-07 23:52:12', last_attempt_local='2025-08-07 19:52:12'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=6, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2025-08-07 23:52:12, pending, 2025-08-07 23:52:12, 2025-08-07 19:52:12</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4166 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(6, 25, NULL, '', '')
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#6 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#7 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#8 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#9 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#10 {main}</pre>
+ for query UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:52:12' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=6, last_attempt_gmt='2025-08-07 23:52:12', last_attempt_local='2025-08-07 19:52:12' made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, ActionScheduler_QueueRunner->do_batch, ActionScheduler_HybridStore->stake_claim, ActionScheduler_DBStore->stake_claim, ActionScheduler_DBStore->claim_actions, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[07-Aug-2025 23:52:12 UTC] PHP Fatal error:  Uncaught RuntimeException: Unable to claim actions. Database error: <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:52:12' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=6, last_attempt_gmt='2025-08-07 23:52:12', last_attempt_local='2025-08-07 19:52:12'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=6, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2025-08-07 23:52:12, pending, 2025-08-07 23:52:12, 2025-08-07 19:52:12</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4166 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(6, 25, NULL, '', '')
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#6 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#7 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#8 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#9 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#10 {main}</pre>
+. in /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php:1019
+Stack trace:
+#0 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(6, 25, NULL, '', '')
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#4 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#5 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#7 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#8 {main}
+  thrown in /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php on line 1019
+[07-Aug-2025 23:52:13 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:52:13' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=7, last_attempt_gmt='2025-08-07 23:52:13', last_attempt_local='2025-08-07 19:52:13'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=7, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2025-08-07 23:52:13, pending, 2025-08-07 23:52:13, 2025-08-07 19:52:13</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4166 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(7, 25, NULL, '', '')
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#6 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('Async Request')
+#7 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#8 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#10 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/lib/WP_Async_Request.php(174): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#11 /var/www/html/wp-includes/class-wp-hook.php(324): WP_Async_Request->maybe_handle('')
+#12 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#13 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#14 /var/www/html/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#15 {main}</pre>
+ for query UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:52:13' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=7, last_attempt_gmt='2025-08-07 23:52:13', last_attempt_local='2025-08-07 19:52:13' made by do_action('wp_ajax_as_async_request_queue_runner'), WP_Hook->do_action, WP_Hook->apply_filters, WP_Async_Request->maybe_handle, ActionScheduler_AsyncRequest_QueueRunner->handle, do_action('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, ActionScheduler_QueueRunner->do_batch, ActionScheduler_HybridStore->stake_claim, ActionScheduler_DBStore->stake_claim, ActionScheduler_DBStore->claim_actions, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[07-Aug-2025 23:52:13 UTC] PHP Fatal error:  Uncaught RuntimeException: Unable to claim actions. Database error: <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:52:13' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=7, last_attempt_gmt='2025-08-07 23:52:13', last_attempt_local='2025-08-07 19:52:13'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=7, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2025-08-07 23:52:13, pending, 2025-08-07 23:52:13, 2025-08-07 19:52:13</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4166 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(7, 25, NULL, '', '')
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#6 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('Async Request')
+#7 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#8 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#10 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/lib/WP_Async_Request.php(174): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#11 /var/www/html/wp-includes/class-wp-hook.php(324): WP_Async_Request->maybe_handle('')
+#12 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#13 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#14 /var/www/html/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#15 {main}</pre>
+. in /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php:1019
+Stack trace:
+#0 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(7, 25, NULL, '', '')
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#4 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('Async Request')
+#5 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#7 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#8 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/lib/WP_Async_Request.php(174): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): WP_Async_Request->maybe_handle('')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#13 {main}
+  thrown in /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php on line 1019
+[07-Aug-2025 23:53:53 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:53:53' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=8, last_attempt_gmt='2025-08-07 23:53:53', last_attempt_local='2025-08-07 19:53:53'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=8, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2025-08-07 23:53:53, pending, 2025-08-07 23:53:53, 2025-08-07 19:53:53</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4166 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(8, 25, NULL, '', '')
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#6 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#7 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#8 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#9 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#10 {main}</pre>
+ for query UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:53:53' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=8, last_attempt_gmt='2025-08-07 23:53:53', last_attempt_local='2025-08-07 19:53:53' made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, ActionScheduler_QueueRunner->do_batch, ActionScheduler_HybridStore->stake_claim, ActionScheduler_DBStore->stake_claim, ActionScheduler_DBStore->claim_actions, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[07-Aug-2025 23:53:53 UTC] PHP Fatal error:  Uncaught RuntimeException: Unable to claim actions. Database error: <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:53:53' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=8, last_attempt_gmt='2025-08-07 23:53:53', last_attempt_local='2025-08-07 19:53:53'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=8, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2025-08-07 23:53:53, pending, 2025-08-07 23:53:53, 2025-08-07 19:53:53</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4166 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(8, 25, NULL, '', '')
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#6 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#7 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#8 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#9 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#10 {main}</pre>
+. in /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php:1019
+Stack trace:
+#0 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(8, 25, NULL, '', '')
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#4 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#5 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#7 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#8 {main}
+  thrown in /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php on line 1019
+[07-Aug-2025 23:53:54 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:53:54' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=9, last_attempt_gmt='2025-08-07 23:53:54', last_attempt_local='2025-08-07 19:53:54'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=9, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2025-08-07 23:53:54, pending, 2025-08-07 23:53:54, 2025-08-07 19:53:54</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4166 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(9, 25, NULL, '', '')
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#6 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('Async Request')
+#7 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#8 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#10 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/lib/WP_Async_Request.php(174): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#11 /var/www/html/wp-includes/class-wp-hook.php(324): WP_Async_Request->maybe_handle('')
+#12 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#13 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#14 /var/www/html/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#15 {main}</pre>
+ for query UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:53:54' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=9, last_attempt_gmt='2025-08-07 23:53:54', last_attempt_local='2025-08-07 19:53:54' made by do_action('wp_ajax_as_async_request_queue_runner'), WP_Hook->do_action, WP_Hook->apply_filters, WP_Async_Request->maybe_handle, ActionScheduler_AsyncRequest_QueueRunner->handle, do_action('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, ActionScheduler_QueueRunner->do_batch, ActionScheduler_HybridStore->stake_claim, ActionScheduler_DBStore->stake_claim, ActionScheduler_DBStore->claim_actions, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[07-Aug-2025 23:53:54 UTC] PHP Fatal error:  Uncaught RuntimeException: Unable to claim actions. Database error: <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:53:54' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=9, last_attempt_gmt='2025-08-07 23:53:54', last_attempt_local='2025-08-07 19:53:54'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=9, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2025-08-07 23:53:54, pending, 2025-08-07 23:53:54, 2025-08-07 19:53:54</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4166 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(9, 25, NULL, '', '')
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#6 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('Async Request')
+#7 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#8 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#10 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/lib/WP_Async_Request.php(174): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#11 /var/www/html/wp-includes/class-wp-hook.php(324): WP_Async_Request->maybe_handle('')
+#12 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#13 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#14 /var/www/html/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#15 {main}</pre>
+. in /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php:1019
+Stack trace:
+#0 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(9, 25, NULL, '', '')
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#4 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('Async Request')
+#5 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#7 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#8 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/lib/WP_Async_Request.php(174): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): WP_Async_Request->maybe_handle('')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#13 {main}
+  thrown in /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php on line 1019
+[07-Aug-2025 23:55:09 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:55:09' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=10, last_attempt_gmt='2025-08-07 23:55:09', last_attempt_local='2025-08-07 19:55:09'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=10, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2025-08-07 23:55:09, pending, 2025-08-07 23:55:09, 2025-08-07 19:55:09</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4166 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(10, 25, NULL, '', '')
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#6 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#7 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#8 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#9 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#10 {main}</pre>
+ for query UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:55:09' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=10, last_attempt_gmt='2025-08-07 23:55:09', last_attempt_local='2025-08-07 19:55:09' made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, ActionScheduler_QueueRunner->do_batch, ActionScheduler_HybridStore->stake_claim, ActionScheduler_DBStore->stake_claim, ActionScheduler_DBStore->claim_actions, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[07-Aug-2025 23:55:09 UTC] PHP Fatal error:  Uncaught RuntimeException: Unable to claim actions. Database error: <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:55:09' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=10, last_attempt_gmt='2025-08-07 23:55:09', last_attempt_local='2025-08-07 19:55:09'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=10, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2025-08-07 23:55:09, pending, 2025-08-07 23:55:09, 2025-08-07 19:55:09</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4166 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(10, 25, NULL, '', '')
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#6 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#7 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#8 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#9 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#10 {main}</pre>
+. in /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php:1019
+Stack trace:
+#0 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(10, 25, NULL, '', '')
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'WP Cron')
+#4 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#5 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#7 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#8 {main}
+  thrown in /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php on line 1019
+[07-Aug-2025 23:55:12 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:55:12' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=11, last_attempt_gmt='2025-08-07 23:55:12', last_attempt_local='2025-08-07 19:55:12'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=11, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2025-08-07 23:55:12, pending, 2025-08-07 23:55:12, 2025-08-07 19:55:12</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4166 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(11, 25, NULL, '', '')
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#6 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('Async Request')
+#7 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#8 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#10 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/lib/WP_Async_Request.php(174): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#11 /var/www/html/wp-includes/class-wp-hook.php(324): WP_Async_Request->maybe_handle('')
+#12 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#13 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#14 /var/www/html/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#15 {main}</pre>
+ for query UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:55:12' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=11, last_attempt_gmt='2025-08-07 23:55:12', last_attempt_local='2025-08-07 19:55:12' made by do_action('wp_ajax_as_async_request_queue_runner'), WP_Hook->do_action, WP_Hook->apply_filters, WP_Async_Request->maybe_handle, ActionScheduler_AsyncRequest_QueueRunner->handle, do_action('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, ActionScheduler_QueueRunner->do_batch, ActionScheduler_HybridStore->stake_claim, ActionScheduler_DBStore->stake_claim, ActionScheduler_DBStore->claim_actions, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[07-Aug-2025 23:55:12 UTC] PHP Fatal error:  Uncaught RuntimeException: Unable to claim actions. Database error: <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt <= '2025-08-07 23:55:12' AND status='pending' ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=11, last_attempt_gmt='2025-08-07 23:55:12', last_attempt_local='2025-08-07 19:55:12'</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN | (no parameters)</li>
+<li>Executing: UPDATE wp_actionscheduler_actions t1 JOIN ( SELECT action_id from wp_actionscheduler_actions WHERE claim_id = 0 AND scheduled_date_gmt &lt;= :param0  AND status=:param1  ORDER BY priority ASC, attempts ASC, scheduled_date_gmt ASC, action_id ASC LIMIT 25 FOR UPDATE ) t2 ON t1.action_id = t2.action_id SET claim_id=11, last_attempt_gmt=:param2 , last_attempt_local=:param3  | parameters: 2025-08-07 23:55:12, pending, 2025-08-07 23:55:12, 2025-08-07 19:55:12</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+Error occurred at line 4166 in Function <code>handle_error</code>. Error message was: SQLSTATE[HY000]: General error: 1 near "t1": syntax error.
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(287): WP_SQLite_Translator->get_error_message()
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(1014): WP_SQLite_DB->query('UPDATE wp_actio...')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(11, 25, NULL, '', '')
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#4 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#5 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#6 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('Async Request')
+#7 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#8 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#9 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#10 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/lib/WP_Async_Request.php(174): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#11 /var/www/html/wp-includes/class-wp-hook.php(324): WP_Async_Request->maybe_handle('')
+#12 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#13 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#14 /var/www/html/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#15 {main}</pre>
+. in /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php:1019
+Stack trace:
+#0 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php(861): ActionScheduler_DBStore->claim_actions(11, 25, NULL, '', '')
+#1 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php(253): ActionScheduler_DBStore->stake_claim(25, NULL, Array, '')
+#2 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(179): ActionScheduler_HybridStore->stake_claim(25)
+#3 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(158): ActionScheduler_QueueRunner->do_batch(25, 'Async Request')
+#4 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('Async Request')
+#5 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#6 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#7 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/ActionScheduler_AsyncRequest_QueueRunner.php(48): do_action('action_schedule...', 'Async Request')
+#8 /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/lib/WP_Async_Request.php(174): ActionScheduler_AsyncRequest_QueueRunner->handle()
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): WP_Async_Request->maybe_handle('')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-admin/admin-ajax.php(192): do_action('wp_ajax_as_asyn...')
+#13 {main}
+  thrown in /var/www/html/wp-content/plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_DBStore.php on line 1019
