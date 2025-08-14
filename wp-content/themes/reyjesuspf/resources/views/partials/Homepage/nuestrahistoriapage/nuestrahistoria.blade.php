@@ -21,10 +21,10 @@
                     <?php the_field('descripcion_nuestra_historia', 'option'); ?>
                 </p>
                 <div class="flex items-center space-x-6">
-                    <a href="#" class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-full shadow-sm hover:bg-blue-700 transition-colors">
-                        Sembrar
+                    <a href="/siembra" class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-full shadow-sm hover:bg-blue-700 transition-colors">
+                        <?php the_field('boton_hero_page_2', 'option'); ?>
                     </a>
-                    <a href="#" class="text-blue-600 font-semibold flex items-center space-x-2 hover:underline">
+                    <a href="/quienes-somos" class="text-blue-600 font-semibold flex items-center space-x-2 hover:underline">
                         <span>Conoce más</span>
                         <span>&gt;</span>
                     </a>

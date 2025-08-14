@@ -1,35 +1,36 @@
     <style>
         .hero-background-overlay {
             /* Asegúrate de que la ruta a tu imagen sea correcta */
-            background-image: url('<?php the_field('imagen_de_yo_construyo' ); ?>');
+            background-image: url('<?php the_field('imagen_de_yo_construyo'); ?>');
             background-position: center center;
             background-size: cover;
             /* No es necesario 'opacity' aquí si usamos 'background-color' con alpha */
         }
     </style>
-<div class="bg-zinc-950">
+    <div class="bg-zinc-950">
 
-    <div class="font-sans antialiased">
-        <div class="relative h-screen flex items-center justify-center text-white">
-            <div class="absolute inset-0 hero-background-overlay"></div>
-            <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="font-sans antialiased">
+            <div class="relative h-screen flex items-center justify-center text-white">
+                <div class="absolute inset-0 hero-background-overlay"></div>
+                <div class="absolute inset-0 bg-black opacity-60"></div>
 
-            <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-                <h1 class="text-4xl sm:text-5xl md:text-5xl font-extrabold leading-tight mb-6">
-                    <?php the_field('titulo_yo_construyo' ); ?>
-                </h1>
-                <p class="text-lg sm:text-xl md:text-xl font-medium mb-10 leading-relaxed">
-                    <?php the_field('subtitulo_yo_construyo' ); ?>
-                </p>
+                <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+                    <h1 class="text-4xl sm:text-5xl md:text-5xl font-extrabold leading-tight mb-6">
+                        <?php the_field('titulo_yo_construyo'); ?>
+                    </h1>
+                    <p class="text-lg sm:text-xl md:text-xl font-medium mb-10 leading-relaxed">
+                        <?php the_field('subtitulo_yo_construyo'); ?>
+                    </p>
 
-                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                    <button
-                        class="w-full sm:w-auto bg-blue-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75">
-                        Sembrar
-                    </button>
+                    <div
+                        class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="/siembra"
+                            class="w-full sm:w-auto bg-blue-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
+                            <?php the_field('boton_hero_page_2', 'option'); ?>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-</div>
+    </div>

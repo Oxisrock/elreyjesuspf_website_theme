@@ -68,10 +68,10 @@ wp_get_current_user(); ?>
             </div>
 
             <div class="md:hidden flex items-center space-x-4">
-                <button
+                <a href="/siembra"
                     class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300">
-                    Sembrar
-                </button>
+                    <?php the_field('boton_hero_page_2', 'option'); ?>
+                </a>
                 <button id="open-menu-button" class="text-gray-600 hover:text-blue-600 focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
@@ -123,10 +123,36 @@ wp_get_current_user(); ?>
                 Registrarme
             </a>
             <?php else: ?>
-            <div class="flex items-center gap-x-3 p-2 mb-2">
-                <img class="h-8 w-8 rounded-full" src="<?php echo esc_url(get_avatar_url($current_user->ID)); ?>" alt="Avatar">
-                <span class="text-sm font-semibold text-gray-800">Hello, <?php echo esc_html($current_user->display_name); ?></span>
-            </div>
+            <!-- Dropdown menu for logged-in users (code from the previous artifact) -->
+                <div x-data="{ open: false }" class="relative inline-block text-left">
+                    <button @click="open = !open" type="button"
+                        class="inline-flex w-full justify-content-left gap-x-2 rounded-md bg-white px-3 py-2 text-sm font-semibold transition-colors duration-150 hover:text-blue-600"
+                        :class="{ 'text-blue-600 bg-gray-50': open, 'text-gray-900': !open }" id="menu-button"
+                        aria-expanded="true" aria-haspopup="true">
+                        Hola, <?php echo esc_html($current_user->display_name); ?>
+
+                        <!-- MODIFIED ICON with dynamic classes and transitions -->
+                        <i class="fa-solid fa-chevron-down transition-transform duration-200"
+                            :class="{ 'rotate-180 text-blue-600': open, 'text-gray-400': !open }"></i>
+                    </button>
+                    <div x-show="open" @click.away="open = false" x-transition:enter="transition ease-out duration-100"
+                        x-transition:enter-start="transform opacity-0 scale-95"
+                        x-transition:enter-end="transform opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-75"
+                        x-transition:leave-start="transform opacity-100 scale-100"
+                        x-transition:leave-end="transform opacity-0 scale-95"
+                        class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                        role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1"
+                        style="display: none;">
+                        <div class="py-1" role="none">
+                            <a href="<?php echo wp_logout_url(home_url()); ?>"
+                                class="text-gray-700 block px-4 py-2 text-sm  hover:text-blue-600"
+                                role="menuitem" tabindex="-1" id="menu-item-0">
+                                Cerrar sesion
+                            </a>
+                        </div>
+                    </div>
+                </div>
             <a href="<?php echo esc_url(wp_logout_url(home_url())); ?>"
                 class="my-button w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded-md text-center">
                 Cerrar Sesion

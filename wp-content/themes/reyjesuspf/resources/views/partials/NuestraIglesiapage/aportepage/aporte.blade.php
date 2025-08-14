@@ -20,8 +20,8 @@
                     </div>
                     
                     <div class="flex items-center justify-center md:justify-start space-x-6 mt-4">
-                        <a href="#" class="bg-blue-600 text-white font-semibold px-8 py-2 rounded-full hover:bg-blue-700 transition-colors duration-300">
-                            Sembrar
+                        <a href="/siembra" class="bg-blue-600 text-white font-semibold px-8 py-2 rounded-full hover:bg-blue-700 transition-colors duration-300">
+                            <?php the_field('boton_hero_page_2', 'option'); ?>
                         </a>
                         <a href="/sign-up" class="text-blue-600 font-semibold flex items-center group">
                             Registrarme

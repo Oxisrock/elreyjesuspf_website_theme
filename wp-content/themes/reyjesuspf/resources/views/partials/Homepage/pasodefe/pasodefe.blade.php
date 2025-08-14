@@ -15,19 +15,23 @@
                 <p class="text-gray-600 text-sm mb-8">
                     <?php the_field('descripcion_paso_de_fe', 'option'); ?>
                 </p>
-                <form>
+                <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST">
                     <div class="mb-6">
-                        <input type="text" id="nombre-completo" name="nombre-completo" placeholder="Nombre Completo"
+                        <input type="text" id="nombre-completo" name="nombre" placeholder="Nombre Completo"
                             class="w-full p-2 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
                     <div class="mb-6">
-                        <input type="email" id="correo" name="correo" placeholder="Correo electrónico"
+                        <input type="email" id="correo" name="email" placeholder="Correo electrónico"
                             class="w-full p-2 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
                     <p class="text-xs text-gray-500 mb-6">
                         Al hacer clic en registrarme, acepto nuestros <a href="#"
                             class="text-blue-600 hover:underline">Términos y condiciones</a>.
                     </p>
+
+                    <input type="hidden" name="action" value="procesar_formulario_boletines">
+                    <?php wp_nonce_field('mi_form_boletin_nonce', 'mi_nonce'); ?>
+
                     <button type="submit"
                         class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
                         Registrarme
