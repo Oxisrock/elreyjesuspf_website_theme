@@ -8,7 +8,7 @@
                     transmisiones en vivo.
                 </p>
             </div>
-            <div class="flex border-b border-gray-200 mb-14 overflow-x-auto md:justify-center no-scrollbar">
+            <div class="flex  mb-14 overflow-x-auto md:justify-center no-scrollbar">
                 <nav class="flex space-x-6" id="filtros-multimedia">
 
                     {{-- Enlace "Todo", con data-slug="all" para identificarlo en JS --}}

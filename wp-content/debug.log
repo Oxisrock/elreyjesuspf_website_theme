@@ -23575,3 +23575,543 @@ SQLSTATE[HY000]: General error: 1 near "LIMIT": syntax error
 #12 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
 #13 {main}</pre>
  for query DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_send_enqueued_email' AND status = 'complete' LIMIT 10 made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, do_action('action_scheduler_after_process_queue'), WP_Hook->do_action, WP_Hook->apply_filters, WPMailSMTP\Tasks\Queue\SendEnqueuedEmailTask->cleanup, WPMailSMTP\Tasks\Task->remove_completed, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Aug-2025 23:43:36 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_queue_process' AND status = 'complete' LIMIT 10</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN IMMEDIATE | (no parameters)</li>
+<li>Executing: DELETE FROM `wp_actionscheduler_actions` WHERE `hook` = &#039;wp_mail_smtp_queue_process&#039; AND `status` = &#039;complete&#039; LIMIT 10 | (no parameters)</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+SQLSTATE[HY000]: General error: 1 near "LIMIT": syntax error
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite-ast/class-wp-sqlite-driver.php(719): WP_SQLite_Driver->new_driver_exception('SQLSTATE[HY000]...', 'HY000', Object(PDOException))
+#1 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(537): WP_SQLite_Driver->query('DELETE FROM wp_...')
+#2 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(449): WP_SQLite_DB->_do_query('DELETE FROM wp_...')
+#3 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Task.php(385): WP_SQLite_DB->query('DELETE FROM wp_...')
+#4 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Queue/ProcessQueueTask.php(82): WPMailSMTP\Tasks\Task->remove_completed(10)
+#5 /var/www/html/wp-includes/class-wp-hook.php(324): WPMailSMTP\Tasks\Queue\ProcessQueueTask->cleanup('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-content/plugins/wp-mail-smtp/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(163): do_action('action_schedule...')
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#13 {main}</pre>
+ for query DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_queue_process' AND status = 'complete' LIMIT 10 made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, do_action('action_scheduler_after_process_queue'), WP_Hook->do_action, WP_Hook->apply_filters, WPMailSMTP\Tasks\Queue\ProcessQueueTask->cleanup, WPMailSMTP\Tasks\Task->remove_completed, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Aug-2025 23:43:36 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_send_enqueued_email' AND status = 'complete' LIMIT 10</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN IMMEDIATE | (no parameters)</li>
+<li>Executing: DELETE FROM `wp_actionscheduler_actions` WHERE `hook` = &#039;wp_mail_smtp_send_enqueued_email&#039; AND `status` = &#039;complete&#039; LIMIT 10 | (no parameters)</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+SQLSTATE[HY000]: General error: 1 near "LIMIT": syntax error
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite-ast/class-wp-sqlite-driver.php(719): WP_SQLite_Driver->new_driver_exception('SQLSTATE[HY000]...', 'HY000', Object(PDOException))
+#1 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(537): WP_SQLite_Driver->query('DELETE FROM wp_...')
+#2 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(449): WP_SQLite_DB->_do_query('DELETE FROM wp_...')
+#3 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Task.php(385): WP_SQLite_DB->query('DELETE FROM wp_...')
+#4 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Queue/SendEnqueuedEmailTask.php(95): WPMailSMTP\Tasks\Task->remove_completed(10)
+#5 /var/www/html/wp-includes/class-wp-hook.php(324): WPMailSMTP\Tasks\Queue\SendEnqueuedEmailTask->cleanup('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-content/plugins/wp-mail-smtp/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(163): do_action('action_schedule...')
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#13 {main}</pre>
+ for query DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_send_enqueued_email' AND status = 'complete' LIMIT 10 made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, do_action('action_scheduler_after_process_queue'), WP_Hook->do_action, WP_Hook->apply_filters, WPMailSMTP\Tasks\Queue\SendEnqueuedEmailTask->cleanup, WPMailSMTP\Tasks\Task->remove_completed, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Aug-2025 23:44:07 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_queue_process' AND status = 'complete' LIMIT 10</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN IMMEDIATE | (no parameters)</li>
+<li>Executing: DELETE FROM `wp_actionscheduler_actions` WHERE `hook` = &#039;wp_mail_smtp_queue_process&#039; AND `status` = &#039;complete&#039; LIMIT 10 | (no parameters)</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+SQLSTATE[HY000]: General error: 1 near "LIMIT": syntax error
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite-ast/class-wp-sqlite-driver.php(719): WP_SQLite_Driver->new_driver_exception('SQLSTATE[HY000]...', 'HY000', Object(PDOException))
+#1 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(537): WP_SQLite_Driver->query('DELETE FROM wp_...')
+#2 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(449): WP_SQLite_DB->_do_query('DELETE FROM wp_...')
+#3 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Task.php(385): WP_SQLite_DB->query('DELETE FROM wp_...')
+#4 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Queue/ProcessQueueTask.php(82): WPMailSMTP\Tasks\Task->remove_completed(10)
+#5 /var/www/html/wp-includes/class-wp-hook.php(324): WPMailSMTP\Tasks\Queue\ProcessQueueTask->cleanup('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-content/plugins/wp-mail-smtp/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(163): do_action('action_schedule...')
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#13 {main}</pre>
+ for query DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_queue_process' AND status = 'complete' LIMIT 10 made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, do_action('action_scheduler_after_process_queue'), WP_Hook->do_action, WP_Hook->apply_filters, WPMailSMTP\Tasks\Queue\ProcessQueueTask->cleanup, WPMailSMTP\Tasks\Task->remove_completed, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Aug-2025 23:44:07 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_send_enqueued_email' AND status = 'complete' LIMIT 10</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN IMMEDIATE | (no parameters)</li>
+<li>Executing: DELETE FROM `wp_actionscheduler_actions` WHERE `hook` = &#039;wp_mail_smtp_send_enqueued_email&#039; AND `status` = &#039;complete&#039; LIMIT 10 | (no parameters)</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+SQLSTATE[HY000]: General error: 1 near "LIMIT": syntax error
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite-ast/class-wp-sqlite-driver.php(719): WP_SQLite_Driver->new_driver_exception('SQLSTATE[HY000]...', 'HY000', Object(PDOException))
+#1 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(537): WP_SQLite_Driver->query('DELETE FROM wp_...')
+#2 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(449): WP_SQLite_DB->_do_query('DELETE FROM wp_...')
+#3 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Task.php(385): WP_SQLite_DB->query('DELETE FROM wp_...')
+#4 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Queue/SendEnqueuedEmailTask.php(95): WPMailSMTP\Tasks\Task->remove_completed(10)
+#5 /var/www/html/wp-includes/class-wp-hook.php(324): WPMailSMTP\Tasks\Queue\SendEnqueuedEmailTask->cleanup('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-content/plugins/wp-mail-smtp/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(163): do_action('action_schedule...')
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#13 {main}</pre>
+ for query DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_send_enqueued_email' AND status = 'complete' LIMIT 10 made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, do_action('action_scheduler_after_process_queue'), WP_Hook->do_action, WP_Hook->apply_filters, WPMailSMTP\Tasks\Queue\SendEnqueuedEmailTask->cleanup, WPMailSMTP\Tasks\Task->remove_completed, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Aug-2025 23:45:35 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_queue_process' AND status = 'complete' LIMIT 10</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN IMMEDIATE | (no parameters)</li>
+<li>Executing: DELETE FROM `wp_actionscheduler_actions` WHERE `hook` = &#039;wp_mail_smtp_queue_process&#039; AND `status` = &#039;complete&#039; LIMIT 10 | (no parameters)</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+SQLSTATE[HY000]: General error: 1 near "LIMIT": syntax error
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite-ast/class-wp-sqlite-driver.php(719): WP_SQLite_Driver->new_driver_exception('SQLSTATE[HY000]...', 'HY000', Object(PDOException))
+#1 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(537): WP_SQLite_Driver->query('DELETE FROM wp_...')
+#2 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(449): WP_SQLite_DB->_do_query('DELETE FROM wp_...')
+#3 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Task.php(385): WP_SQLite_DB->query('DELETE FROM wp_...')
+#4 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Queue/ProcessQueueTask.php(82): WPMailSMTP\Tasks\Task->remove_completed(10)
+#5 /var/www/html/wp-includes/class-wp-hook.php(324): WPMailSMTP\Tasks\Queue\ProcessQueueTask->cleanup('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-content/plugins/wp-mail-smtp/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(163): do_action('action_schedule...')
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#13 {main}</pre>
+ for query DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_queue_process' AND status = 'complete' LIMIT 10 made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, do_action('action_scheduler_after_process_queue'), WP_Hook->do_action, WP_Hook->apply_filters, WPMailSMTP\Tasks\Queue\ProcessQueueTask->cleanup, WPMailSMTP\Tasks\Task->remove_completed, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Aug-2025 23:45:35 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_send_enqueued_email' AND status = 'complete' LIMIT 10</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN IMMEDIATE | (no parameters)</li>
+<li>Executing: DELETE FROM `wp_actionscheduler_actions` WHERE `hook` = &#039;wp_mail_smtp_send_enqueued_email&#039; AND `status` = &#039;complete&#039; LIMIT 10 | (no parameters)</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+SQLSTATE[HY000]: General error: 1 near "LIMIT": syntax error
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite-ast/class-wp-sqlite-driver.php(719): WP_SQLite_Driver->new_driver_exception('SQLSTATE[HY000]...', 'HY000', Object(PDOException))
+#1 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(537): WP_SQLite_Driver->query('DELETE FROM wp_...')
+#2 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(449): WP_SQLite_DB->_do_query('DELETE FROM wp_...')
+#3 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Task.php(385): WP_SQLite_DB->query('DELETE FROM wp_...')
+#4 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Queue/SendEnqueuedEmailTask.php(95): WPMailSMTP\Tasks\Task->remove_completed(10)
+#5 /var/www/html/wp-includes/class-wp-hook.php(324): WPMailSMTP\Tasks\Queue\SendEnqueuedEmailTask->cleanup('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-content/plugins/wp-mail-smtp/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(163): do_action('action_schedule...')
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#13 {main}</pre>
+ for query DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_send_enqueued_email' AND status = 'complete' LIMIT 10 made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, do_action('action_scheduler_after_process_queue'), WP_Hook->do_action, WP_Hook->apply_filters, WPMailSMTP\Tasks\Queue\SendEnqueuedEmailTask->cleanup, WPMailSMTP\Tasks\Task->remove_completed, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Aug-2025 23:46:09 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_queue_process' AND status = 'complete' LIMIT 10</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN IMMEDIATE | (no parameters)</li>
+<li>Executing: DELETE FROM `wp_actionscheduler_actions` WHERE `hook` = &#039;wp_mail_smtp_queue_process&#039; AND `status` = &#039;complete&#039; LIMIT 10 | (no parameters)</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+SQLSTATE[HY000]: General error: 1 near "LIMIT": syntax error
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite-ast/class-wp-sqlite-driver.php(719): WP_SQLite_Driver->new_driver_exception('SQLSTATE[HY000]...', 'HY000', Object(PDOException))
+#1 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(537): WP_SQLite_Driver->query('DELETE FROM wp_...')
+#2 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(449): WP_SQLite_DB->_do_query('DELETE FROM wp_...')
+#3 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Task.php(385): WP_SQLite_DB->query('DELETE FROM wp_...')
+#4 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Queue/ProcessQueueTask.php(82): WPMailSMTP\Tasks\Task->remove_completed(10)
+#5 /var/www/html/wp-includes/class-wp-hook.php(324): WPMailSMTP\Tasks\Queue\ProcessQueueTask->cleanup('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-content/plugins/wp-mail-smtp/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(163): do_action('action_schedule...')
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#13 {main}</pre>
+ for query DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_queue_process' AND status = 'complete' LIMIT 10 made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, do_action('action_scheduler_after_process_queue'), WP_Hook->do_action, WP_Hook->apply_filters, WPMailSMTP\Tasks\Queue\ProcessQueueTask->cleanup, WPMailSMTP\Tasks\Task->remove_completed, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Aug-2025 23:46:09 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_send_enqueued_email' AND status = 'complete' LIMIT 10</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN IMMEDIATE | (no parameters)</li>
+<li>Executing: DELETE FROM `wp_actionscheduler_actions` WHERE `hook` = &#039;wp_mail_smtp_send_enqueued_email&#039; AND `status` = &#039;complete&#039; LIMIT 10 | (no parameters)</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+SQLSTATE[HY000]: General error: 1 near "LIMIT": syntax error
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite-ast/class-wp-sqlite-driver.php(719): WP_SQLite_Driver->new_driver_exception('SQLSTATE[HY000]...', 'HY000', Object(PDOException))
+#1 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(537): WP_SQLite_Driver->query('DELETE FROM wp_...')
+#2 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(449): WP_SQLite_DB->_do_query('DELETE FROM wp_...')
+#3 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Task.php(385): WP_SQLite_DB->query('DELETE FROM wp_...')
+#4 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Queue/SendEnqueuedEmailTask.php(95): WPMailSMTP\Tasks\Task->remove_completed(10)
+#5 /var/www/html/wp-includes/class-wp-hook.php(324): WPMailSMTP\Tasks\Queue\SendEnqueuedEmailTask->cleanup('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-content/plugins/wp-mail-smtp/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(163): do_action('action_schedule...')
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#13 {main}</pre>
+ for query DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_send_enqueued_email' AND status = 'complete' LIMIT 10 made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, do_action('action_scheduler_after_process_queue'), WP_Hook->do_action, WP_Hook->apply_filters, WPMailSMTP\Tasks\Queue\SendEnqueuedEmailTask->cleanup, WPMailSMTP\Tasks\Task->remove_completed, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Aug-2025 23:47:27 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_queue_process' AND status = 'complete' LIMIT 10</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN IMMEDIATE | (no parameters)</li>
+<li>Executing: DELETE FROM `wp_actionscheduler_actions` WHERE `hook` = &#039;wp_mail_smtp_queue_process&#039; AND `status` = &#039;complete&#039; LIMIT 10 | (no parameters)</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+SQLSTATE[HY000]: General error: 1 near "LIMIT": syntax error
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite-ast/class-wp-sqlite-driver.php(719): WP_SQLite_Driver->new_driver_exception('SQLSTATE[HY000]...', 'HY000', Object(PDOException))
+#1 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(537): WP_SQLite_Driver->query('DELETE FROM wp_...')
+#2 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(449): WP_SQLite_DB->_do_query('DELETE FROM wp_...')
+#3 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Task.php(385): WP_SQLite_DB->query('DELETE FROM wp_...')
+#4 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Queue/ProcessQueueTask.php(82): WPMailSMTP\Tasks\Task->remove_completed(10)
+#5 /var/www/html/wp-includes/class-wp-hook.php(324): WPMailSMTP\Tasks\Queue\ProcessQueueTask->cleanup('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-content/plugins/wp-mail-smtp/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(163): do_action('action_schedule...')
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#13 {main}</pre>
+ for query DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_queue_process' AND status = 'complete' LIMIT 10 made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, do_action('action_scheduler_after_process_queue'), WP_Hook->do_action, WP_Hook->apply_filters, WPMailSMTP\Tasks\Queue\ProcessQueueTask->cleanup, WPMailSMTP\Tasks\Task->remove_completed, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Aug-2025 23:47:27 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_send_enqueued_email' AND status = 'complete' LIMIT 10</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN IMMEDIATE | (no parameters)</li>
+<li>Executing: DELETE FROM `wp_actionscheduler_actions` WHERE `hook` = &#039;wp_mail_smtp_send_enqueued_email&#039; AND `status` = &#039;complete&#039; LIMIT 10 | (no parameters)</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+SQLSTATE[HY000]: General error: 1 near "LIMIT": syntax error
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite-ast/class-wp-sqlite-driver.php(719): WP_SQLite_Driver->new_driver_exception('SQLSTATE[HY000]...', 'HY000', Object(PDOException))
+#1 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(537): WP_SQLite_Driver->query('DELETE FROM wp_...')
+#2 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(449): WP_SQLite_DB->_do_query('DELETE FROM wp_...')
+#3 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Task.php(385): WP_SQLite_DB->query('DELETE FROM wp_...')
+#4 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Queue/SendEnqueuedEmailTask.php(95): WPMailSMTP\Tasks\Task->remove_completed(10)
+#5 /var/www/html/wp-includes/class-wp-hook.php(324): WPMailSMTP\Tasks\Queue\SendEnqueuedEmailTask->cleanup('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-content/plugins/wp-mail-smtp/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(163): do_action('action_schedule...')
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#13 {main}</pre>
+ for query DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_send_enqueued_email' AND status = 'complete' LIMIT 10 made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, do_action('action_scheduler_after_process_queue'), WP_Hook->do_action, WP_Hook->apply_filters, WPMailSMTP\Tasks\Queue\SendEnqueuedEmailTask->cleanup, WPMailSMTP\Tasks\Task->remove_completed, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Aug-2025 23:48:08 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_queue_process' AND status = 'complete' LIMIT 10</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN IMMEDIATE | (no parameters)</li>
+<li>Executing: DELETE FROM `wp_actionscheduler_actions` WHERE `hook` = &#039;wp_mail_smtp_queue_process&#039; AND `status` = &#039;complete&#039; LIMIT 10 | (no parameters)</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+SQLSTATE[HY000]: General error: 1 near "LIMIT": syntax error
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite-ast/class-wp-sqlite-driver.php(719): WP_SQLite_Driver->new_driver_exception('SQLSTATE[HY000]...', 'HY000', Object(PDOException))
+#1 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(537): WP_SQLite_Driver->query('DELETE FROM wp_...')
+#2 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(449): WP_SQLite_DB->_do_query('DELETE FROM wp_...')
+#3 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Task.php(385): WP_SQLite_DB->query('DELETE FROM wp_...')
+#4 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Queue/ProcessQueueTask.php(82): WPMailSMTP\Tasks\Task->remove_completed(10)
+#5 /var/www/html/wp-includes/class-wp-hook.php(324): WPMailSMTP\Tasks\Queue\ProcessQueueTask->cleanup('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-content/plugins/wp-mail-smtp/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(163): do_action('action_schedule...')
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#13 {main}</pre>
+ for query DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_queue_process' AND status = 'complete' LIMIT 10 made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, do_action('action_scheduler_after_process_queue'), WP_Hook->do_action, WP_Hook->apply_filters, WPMailSMTP\Tasks\Queue\ProcessQueueTask->cleanup, WPMailSMTP\Tasks\Task->remove_completed, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Aug-2025 23:48:08 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_send_enqueued_email' AND status = 'complete' LIMIT 10</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN IMMEDIATE | (no parameters)</li>
+<li>Executing: DELETE FROM `wp_actionscheduler_actions` WHERE `hook` = &#039;wp_mail_smtp_send_enqueued_email&#039; AND `status` = &#039;complete&#039; LIMIT 10 | (no parameters)</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+SQLSTATE[HY000]: General error: 1 near "LIMIT": syntax error
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite-ast/class-wp-sqlite-driver.php(719): WP_SQLite_Driver->new_driver_exception('SQLSTATE[HY000]...', 'HY000', Object(PDOException))
+#1 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(537): WP_SQLite_Driver->query('DELETE FROM wp_...')
+#2 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(449): WP_SQLite_DB->_do_query('DELETE FROM wp_...')
+#3 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Task.php(385): WP_SQLite_DB->query('DELETE FROM wp_...')
+#4 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Queue/SendEnqueuedEmailTask.php(95): WPMailSMTP\Tasks\Task->remove_completed(10)
+#5 /var/www/html/wp-includes/class-wp-hook.php(324): WPMailSMTP\Tasks\Queue\SendEnqueuedEmailTask->cleanup('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-content/plugins/wp-mail-smtp/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(163): do_action('action_schedule...')
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#13 {main}</pre>
+ for query DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_send_enqueued_email' AND status = 'complete' LIMIT 10 made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, do_action('action_scheduler_after_process_queue'), WP_Hook->do_action, WP_Hook->apply_filters, WPMailSMTP\Tasks\Queue\SendEnqueuedEmailTask->cleanup, WPMailSMTP\Tasks\Task->remove_completed, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Aug-2025 23:51:21 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_queue_process' AND status = 'complete' LIMIT 10</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN IMMEDIATE | (no parameters)</li>
+<li>Executing: DELETE FROM `wp_actionscheduler_actions` WHERE `hook` = &#039;wp_mail_smtp_queue_process&#039; AND `status` = &#039;complete&#039; LIMIT 10 | (no parameters)</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+SQLSTATE[HY000]: General error: 1 near "LIMIT": syntax error
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite-ast/class-wp-sqlite-driver.php(719): WP_SQLite_Driver->new_driver_exception('SQLSTATE[HY000]...', 'HY000', Object(PDOException))
+#1 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(537): WP_SQLite_Driver->query('DELETE FROM wp_...')
+#2 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(449): WP_SQLite_DB->_do_query('DELETE FROM wp_...')
+#3 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Task.php(385): WP_SQLite_DB->query('DELETE FROM wp_...')
+#4 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Queue/ProcessQueueTask.php(82): WPMailSMTP\Tasks\Task->remove_completed(10)
+#5 /var/www/html/wp-includes/class-wp-hook.php(324): WPMailSMTP\Tasks\Queue\ProcessQueueTask->cleanup('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-content/plugins/wp-mail-smtp/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(163): do_action('action_schedule...')
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#13 {main}</pre>
+ for query DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_queue_process' AND status = 'complete' LIMIT 10 made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, do_action('action_scheduler_after_process_queue'), WP_Hook->do_action, WP_Hook->apply_filters, WPMailSMTP\Tasks\Queue\ProcessQueueTask->cleanup, WPMailSMTP\Tasks\Task->remove_completed, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Aug-2025 23:51:21 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_send_enqueued_email' AND status = 'complete' LIMIT 10</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN IMMEDIATE | (no parameters)</li>
+<li>Executing: DELETE FROM `wp_actionscheduler_actions` WHERE `hook` = &#039;wp_mail_smtp_send_enqueued_email&#039; AND `status` = &#039;complete&#039; LIMIT 10 | (no parameters)</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+SQLSTATE[HY000]: General error: 1 near "LIMIT": syntax error
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite-ast/class-wp-sqlite-driver.php(719): WP_SQLite_Driver->new_driver_exception('SQLSTATE[HY000]...', 'HY000', Object(PDOException))
+#1 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(537): WP_SQLite_Driver->query('DELETE FROM wp_...')
+#2 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(449): WP_SQLite_DB->_do_query('DELETE FROM wp_...')
+#3 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Task.php(385): WP_SQLite_DB->query('DELETE FROM wp_...')
+#4 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Queue/SendEnqueuedEmailTask.php(95): WPMailSMTP\Tasks\Task->remove_completed(10)
+#5 /var/www/html/wp-includes/class-wp-hook.php(324): WPMailSMTP\Tasks\Queue\SendEnqueuedEmailTask->cleanup('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-content/plugins/wp-mail-smtp/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(163): do_action('action_schedule...')
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#13 {main}</pre>
+ for query DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_send_enqueued_email' AND status = 'complete' LIMIT 10 made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, do_action('action_scheduler_after_process_queue'), WP_Hook->do_action, WP_Hook->apply_filters, WPMailSMTP\Tasks\Queue\SendEnqueuedEmailTask->cleanup, WPMailSMTP\Tasks\Task->remove_completed, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Aug-2025 23:53:08 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_queue_process' AND status = 'complete' LIMIT 10</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN IMMEDIATE | (no parameters)</li>
+<li>Executing: DELETE FROM `wp_actionscheduler_actions` WHERE `hook` = &#039;wp_mail_smtp_queue_process&#039; AND `status` = &#039;complete&#039; LIMIT 10 | (no parameters)</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+SQLSTATE[HY000]: General error: 1 near "LIMIT": syntax error
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite-ast/class-wp-sqlite-driver.php(719): WP_SQLite_Driver->new_driver_exception('SQLSTATE[HY000]...', 'HY000', Object(PDOException))
+#1 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(537): WP_SQLite_Driver->query('DELETE FROM wp_...')
+#2 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(449): WP_SQLite_DB->_do_query('DELETE FROM wp_...')
+#3 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Task.php(385): WP_SQLite_DB->query('DELETE FROM wp_...')
+#4 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Queue/ProcessQueueTask.php(82): WPMailSMTP\Tasks\Task->remove_completed(10)
+#5 /var/www/html/wp-includes/class-wp-hook.php(324): WPMailSMTP\Tasks\Queue\ProcessQueueTask->cleanup('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-content/plugins/wp-mail-smtp/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(163): do_action('action_schedule...')
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#13 {main}</pre>
+ for query DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_queue_process' AND status = 'complete' LIMIT 10 made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, do_action('action_scheduler_after_process_queue'), WP_Hook->do_action, WP_Hook->apply_filters, WPMailSMTP\Tasks\Queue\ProcessQueueTask->cleanup, WPMailSMTP\Tasks\Task->remove_completed, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Aug-2025 23:53:08 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_send_enqueued_email' AND status = 'complete' LIMIT 10</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN IMMEDIATE | (no parameters)</li>
+<li>Executing: DELETE FROM `wp_actionscheduler_actions` WHERE `hook` = &#039;wp_mail_smtp_send_enqueued_email&#039; AND `status` = &#039;complete&#039; LIMIT 10 | (no parameters)</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+SQLSTATE[HY000]: General error: 1 near "LIMIT": syntax error
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite-ast/class-wp-sqlite-driver.php(719): WP_SQLite_Driver->new_driver_exception('SQLSTATE[HY000]...', 'HY000', Object(PDOException))
+#1 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(537): WP_SQLite_Driver->query('DELETE FROM wp_...')
+#2 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(449): WP_SQLite_DB->_do_query('DELETE FROM wp_...')
+#3 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Task.php(385): WP_SQLite_DB->query('DELETE FROM wp_...')
+#4 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Queue/SendEnqueuedEmailTask.php(95): WPMailSMTP\Tasks\Task->remove_completed(10)
+#5 /var/www/html/wp-includes/class-wp-hook.php(324): WPMailSMTP\Tasks\Queue\SendEnqueuedEmailTask->cleanup('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-content/plugins/wp-mail-smtp/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(163): do_action('action_schedule...')
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#13 {main}</pre>
+ for query DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_send_enqueued_email' AND status = 'complete' LIMIT 10 made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, do_action('action_scheduler_after_process_queue'), WP_Hook->do_action, WP_Hook->apply_filters, WPMailSMTP\Tasks\Queue\SendEnqueuedEmailTask->cleanup, WPMailSMTP\Tasks\Task->remove_completed, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Aug-2025 23:54:08 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_queue_process' AND status = 'complete' LIMIT 10</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN IMMEDIATE | (no parameters)</li>
+<li>Executing: DELETE FROM `wp_actionscheduler_actions` WHERE `hook` = &#039;wp_mail_smtp_queue_process&#039; AND `status` = &#039;complete&#039; LIMIT 10 | (no parameters)</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+SQLSTATE[HY000]: General error: 1 near "LIMIT": syntax error
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite-ast/class-wp-sqlite-driver.php(719): WP_SQLite_Driver->new_driver_exception('SQLSTATE[HY000]...', 'HY000', Object(PDOException))
+#1 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(537): WP_SQLite_Driver->query('DELETE FROM wp_...')
+#2 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(449): WP_SQLite_DB->_do_query('DELETE FROM wp_...')
+#3 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Task.php(385): WP_SQLite_DB->query('DELETE FROM wp_...')
+#4 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Queue/ProcessQueueTask.php(82): WPMailSMTP\Tasks\Task->remove_completed(10)
+#5 /var/www/html/wp-includes/class-wp-hook.php(324): WPMailSMTP\Tasks\Queue\ProcessQueueTask->cleanup('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-content/plugins/wp-mail-smtp/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(163): do_action('action_schedule...')
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#13 {main}</pre>
+ for query DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_queue_process' AND status = 'complete' LIMIT 10 made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, do_action('action_scheduler_after_process_queue'), WP_Hook->do_action, WP_Hook->apply_filters, WPMailSMTP\Tasks\Queue\ProcessQueueTask->cleanup, WPMailSMTP\Tasks\Task->remove_completed, WP_SQLite_DB->query, WP_SQLite_DB->print_error
+[14-Aug-2025 23:54:08 UTC] WordPress database error <div style="clear:both">&nbsp;</div>
+<div class="queries" style="clear:both;margin-bottom:2px;border:red dotted thin;">
+<p>MySQL query:</p>
+<p>DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_send_enqueued_email' AND status = 'complete' LIMIT 10</p>
+<p>Queries made or created this session were:</p>
+<ol>
+<li>Executing: BEGIN IMMEDIATE | (no parameters)</li>
+<li>Executing: DELETE FROM `wp_actionscheduler_actions` WHERE `hook` = &#039;wp_mail_smtp_send_enqueued_email&#039; AND `status` = &#039;complete&#039; LIMIT 10 | (no parameters)</li>
+<li>Executing: ROLLBACK | (no parameters)</li>
+</ol>
+</div>
+<div style="clear:both;margin-bottom:2px;border:red dotted thin;" class="error_message" style="border-bottom:dotted blue thin;">
+SQLSTATE[HY000]: General error: 1 near "LIMIT": syntax error
+</div>
+<p>Backtrace:</p>
+<pre>#0 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite-ast/class-wp-sqlite-driver.php(719): WP_SQLite_Driver->new_driver_exception('SQLSTATE[HY000]...', 'HY000', Object(PDOException))
+#1 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(537): WP_SQLite_Driver->query('DELETE FROM wp_...')
+#2 /var/www/html/wp-content/mu-plugins/sqlite-database-integration/wp-includes/sqlite/class-wp-sqlite-db.php(449): WP_SQLite_DB->_do_query('DELETE FROM wp_...')
+#3 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Task.php(385): WP_SQLite_DB->query('DELETE FROM wp_...')
+#4 /var/www/html/wp-content/plugins/wp-mail-smtp/src/Tasks/Queue/SendEnqueuedEmailTask.php(95): WPMailSMTP\Tasks\Task->remove_completed(10)
+#5 /var/www/html/wp-includes/class-wp-hook.php(324): WPMailSMTP\Tasks\Queue\SendEnqueuedEmailTask->cleanup('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-content/plugins/wp-mail-smtp/vendor/woocommerce/action-scheduler/classes/ActionScheduler_QueueRunner.php(163): do_action('action_schedule...')
+#9 /var/www/html/wp-includes/class-wp-hook.php(324): ActionScheduler_QueueRunner->run('WP Cron')
+#10 /var/www/html/wp-includes/class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#11 /var/www/html/wp-includes/plugin.php(565): WP_Hook->do_action(Array)
+#12 /var/www/html/wp-cron.php(191): do_action_ref_array('action_schedule...', Array)
+#13 {main}</pre>
+ for query DELETE FROM wp_actionscheduler_actions WHERE hook = 'wp_mail_smtp_send_enqueued_email' AND status = 'complete' LIMIT 10 made by do_action_ref_array('action_scheduler_run_queue'), WP_Hook->do_action, WP_Hook->apply_filters, ActionScheduler_QueueRunner->run, do_action('action_scheduler_after_process_queue'), WP_Hook->do_action, WP_Hook->apply_filters, WPMailSMTP\Tasks\Queue\SendEnqueuedEmailTask->cleanup, WPMailSMTP\Tasks\Task->remove_completed, WP_SQLite_DB->query, WP_SQLite_DB->print_error

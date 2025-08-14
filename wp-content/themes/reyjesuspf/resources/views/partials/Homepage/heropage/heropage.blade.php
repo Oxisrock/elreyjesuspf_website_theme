@@ -26,9 +26,11 @@
             </p>
 
             <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <?php if (!is_user_logged_in()) : ?>
                 <a href="/sign-up" class="my-button w-full sm:w-auto bg-white text-blue-600 font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
                     <?php the_field('boton_hero_page_1', 'option'); ?>
                 </a>
+                <?php endif; ?>
                 <a href="/siembra" class="w-full sm:w-auto bg-blue-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
                     <?php the_field('boton_hero_page_2', 'option'); ?>
                 </a>
