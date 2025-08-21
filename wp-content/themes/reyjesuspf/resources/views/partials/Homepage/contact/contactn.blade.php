@@ -49,10 +49,13 @@
                     <?php the_field('titulo_direccion_', 'option'); ?>
                 </h3>
                 <p class="text-gray-600 text-sm mb-1">
-                   <?php the_field('descripcion_direccion', 'option'); ?>
+                    <?php the_field('descripcion_direccion', 'option'); ?>
                 </p>
-                <p class="text-sm text-blue-600">
-                    <?php the_field('direccion', 'option'); ?>
+                <p>
+                    <a href="https://www.google.com/maps/place/Iglesia+El+Rey+Jes%C3%BAs+Punto+Fijo/@11.7000189,-70.1980424,19.22z/data=!4m6!3m5!1s0x8e85ed1f3ecbffbb:0xa3774a013d00cebe!8m2!3d11.700185!4d-70.1980674!16s%2Fg%2F11b73nmhds?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D"
+                        class="text-sm text-blue-600 hover:text-blue-800 hover:underline">
+                        <?php the_field('direccion', 'option'); ?>
+                    </a>
                 </p>
             </div>
 

@@ -6,15 +6,16 @@
         background-size: cover;
         background-position: center;
         /* Overlay for text readability */
-        background-color: rgba(46, 81, 219, 0.4);
+        background-color: rgba(0, 0, 0, 0.7);
         /* Darker overlay for better text contrast */
-        backdrop-filter: blur(2px);
+        opacity: 0.4;
+        backdrop-filter: blur(200px);
         /* Optional: A slight blur effect */
     }
 </style>
 <div class="font-sans antialiased">
 
-    <div class="relative h-screen bg-blue-800 flex items-center justify-center text-white">
+    <div class="relative h-screen bg-neutral-950 flex items-center justify-center text-white">
         <div class="absolute inset-0 hero-background-overlay"></div>
 
         <div class="relative z-10 text-center px-4 max-w-3xl mx-auto">
