@@ -12,7 +12,6 @@ function filtrar_eventos_por_categoria() {
         // --> CAMBIO CLAVE 2: Usamos la variable en lugar de un número fijo.
         // Será 6 para "Mostrar menos" y -1 para "Ver más".
         'posts_per_page' => $posts_per_page,
-        'orderby'        => 'date',
         'order'          => 'DESC',
         'post_status'    => 'publish',
     ];
@@ -58,7 +57,6 @@ function filtrar_eventos_por_categoria() {
                             echo '<span class="text-xs font-semibold px-2.5 py-0.5 bg-purple-100 text-purple-800 rounded-full">' . esc_html($term->name) . '</span>';
                         }
                         ?>
-                        <span class="text-sm text-gray-500"><?php echo get_the_date('j F Y'); ?></span>
                     </div>
                     <h3 class="mt-2 text-xl font-bold text-gray-800">
                         <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>

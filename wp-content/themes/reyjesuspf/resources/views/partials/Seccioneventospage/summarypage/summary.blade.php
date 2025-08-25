@@ -76,22 +76,22 @@
                             <input type="hidden" name="event_id" value="<?php echo get_the_ID(); ?>">
 
                             <!-- Nuevo div para email y teléfono, con flex-col -->
-                            <div class="flex flex-col md:flex-row w-full space-x-2">
-                                <div class="w-[240px]">
+                            <div class="flex flex-col items-center md:flex-row md:justify-center w-full md:space-x-2">
+                                <div class="w-[340px] md:w-[240px] mb-2 md:mb-0">
                                     <input type="text" name="nombre" placeholder="Nombre Completo"
                                         class="w-full p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
                                 </div>
-                                <div class="w-[240px]">
+                                <div class="w-[340px] md:w-[240px]">
                                     <input type="cedula" name="cedula" placeholder="Cedula"
                                         class="w-full p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
                                 </div>
                             </div>
-                            <div class="flex flex-col md:flex-row w-full space-x-2">
-                                <div class="w-[240px]">
+                            <div class="flex flex-col items-center md:flex-row md:justify-center w-full md:space-x-2">
+                                <div class="w-[340px] md:w-[240px] mb-2 md:mb-0">
                                     <input type="tel" name="phone_number" placeholder="Teléfono"
                                         class="w-full p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
                                 </div>
-                                <div class="w-[240px]">
+                                <div class="w-[340px] md:w-[240px]">
                                     <input type="email" name="email" placeholder="Ingresa tu correo electrónico"
                                         required
                                         class="w-full p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">

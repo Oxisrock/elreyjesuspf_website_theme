@@ -16,7 +16,6 @@
                 'post_type'      => 'events',
                 'posts_per_page' => 6, // Clave: Trae exactamente 6 posts
                 'post_status'    => 'publish',
-                'orderby'        => 'date',
                 'order'          => 'DESC', // Los más recientes primero
             );
 
@@ -46,7 +45,6 @@
                                     echo '<span class="text-xs font-semibold px-2.5 py-0.5 bg-purple-100 text-purple-800 rounded-full">' . esc_html($term->name) . '</span>';
                                 }
                                 ?>
-                                <span class="text-sm text-gray-500"><?php echo get_the_date('j F Y'); ?></span>
                             </div>
                             <h3 class="mt-2 text-xl font-bold text-gray-800">
                                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>

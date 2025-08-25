@@ -6,12 +6,12 @@
                 
                 <div class="block md:hidden">
                     <img src="<?php the_field('imagen_nuestra_historia', 'option'); ?>" alt="Equipo de ReyCristo (Móvil)" 
-                         class="rounded-xl mb-8 w-full h-full object-top object-cover">
+                         class="rounded-xl mb-8 w-full h-full object-center object-cover">
                 </div>
 
                 <div class="hidden md:block">
                     <img src="<?php the_field('imagen_nuestra_historia', 'option'); ?>" alt="Equipo de ReyCristo (Escritorio)" 
-                         class="rounded-xl mb-8 w-full h-[300px] max-h-[400px] object-top object-cover">
+                         class="rounded-xl mb-8 w-full h-[300px] max-h-[400px] object-center object-cover">
                 </div>
 
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">

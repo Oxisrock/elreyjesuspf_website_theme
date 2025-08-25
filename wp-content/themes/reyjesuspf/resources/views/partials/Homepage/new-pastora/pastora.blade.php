@@ -30,7 +30,7 @@
 
             <div class="hidden md:flex items-center justify-center">
                 <div class="px-20 rounded-2xl transform hover:scale-105 transition-transform duration-300">
-                    <img src="@asset('images/pastora-page/Nuestra Pastora(gisela B).jpg')"
+                    <img src="<?php the_field('imagen_pastora', 'option'); ?>"
                          alt="Pastora Gisela Bracho predicando en un escenario"
                          class="rounded-xl w-full h-[450px] object-cover">
                 </div>

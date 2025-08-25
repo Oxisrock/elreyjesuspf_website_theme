@@ -42,7 +42,6 @@
                 'post_type'      => 'events',      // Tu Custom Post Type
                 'posts_per_page' => 6,             // Muestra 6 eventos inicialmente. Cambia a -1 para mostrar todos.
                 'post_status'    => 'publish',     // Solo eventos publicados
-                'orderby'        => 'date',        // Ordenar por fecha
                 'order'          => 'DESC',        // Los más nuevos primero
             );
 
@@ -77,7 +76,6 @@
                             echo '<span class="text-xs font-semibold px-2.5 py-0.5 bg-purple-100 text-purple-800 rounded-full">' . esc_html($term->name) . '</span>';
                         }
                         ?>
-                        <span class="text-sm text-gray-500"><?php echo get_the_date('j F Y'); ?></span>
                     </div>
 
                     <h3 class="mt-2 text-xl font-bold text-gray-800">
