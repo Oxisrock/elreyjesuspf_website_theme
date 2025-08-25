@@ -15,14 +15,20 @@ jQuery(document).ready(function($) {
 
         const eventId = $('input[name="event_id"]').val();
         const nombre = $('input[name="nombre"]').val();
+        const cedula = $('input[name="cedula"]').val();
         const email = $('input[name="email"]').val();
+        const iglesia = $('select[name="iglesia"]').val();
+        const red = $('select[name="red"]').val();
         const phoneNumber = $('input[name="phone_number"]').val();
         // Datos a enviar a la función de PHP a través de AJAX
        var data = {
             action: 'register_to_event', // Esta es la acción de AJAX definida en tu PHP
             event_id: eventId,
             nombre: nombre,
+            cedula: cedula,
             email: email,
+            iglesia: iglesia,
+            red: red,
             phone_number: phoneNumber, // Añade el número de teléfono aquí
             nonce: event_reg_ajax_obj.nonce // Nonce de seguridad
         };

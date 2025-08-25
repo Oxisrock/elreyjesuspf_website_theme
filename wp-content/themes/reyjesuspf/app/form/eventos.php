@@ -15,9 +15,12 @@ function event_registrations_create_db_table()
         $sql = "CREATE TABLE $table_name (
         id mediumint(9) NOT NULL AUTO_INCREMENT,
         nombre varchar(100) NOT NULL,
+        cedula varchar(20) DEFAULT '' NULL,
         event_id bigint(20) UNSIGNED NOT NULL,
         email varchar(100) NOT NULL,
         phone_number varchar(20) DEFAULT '' NULL,
+        iglesia varchar(100) DEFAULT '' NOT NULL,    
+        red varchar(50) DEFAULT '' NOT NULL,         
         registration_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
         PRIMARY KEY  (id),
         KEY event_id (event_id)
@@ -55,7 +58,7 @@ function render_event_registrations_page()
     global $wpdb;
     $table_name = $wpdb->prefix . 'event_registrations';
 
-    $query = "SELECT r.id, r.nombre, r.event_id, r.email, r.phone_number, r.registration_date, p.post_title AS event_name
+    $query = "SELECT r.id, r.nombre, r.cedula, r.email, r.phone_number, r.iglesia, r.red, r.event_id, r.registration_date, p.post_title AS event_name
               FROM {$table_name} r
               JOIN {$wpdb->posts} p ON r.event_id = p.ID
               ORDER BY r.registration_date DESC";
@@ -71,9 +74,12 @@ function render_event_registrations_page()
                 <tr>
                     <th>Evento</th>
                     <th>Nombre</th>
-                    <th>Correo Registrado</th>
+                    <th>cedula</th>
+                    <th>Correo</th>
                     <th>Teléfono</th>
-                    <th style="width:20%;">Fecha de Registro</th>
+                    <th>Iglesia</th>
+                    <th>Red</th>
+                    <th style="width:15%;">Fecha de Registro</th>
                 </tr>
             </thead>
             <tbody>
@@ -84,15 +90,17 @@ function render_event_registrations_page()
                 <?php else : ?>
                     <?php foreach ($all_registrations as $registration) : ?>
                         <tr>
-                           
                             <td>
                                 <a href="<?php echo get_edit_post_link($registration->event_id); ?>">
                                     <?php echo esc_html($registration->event_name); ?>
                                 </a>
                             </td>
                             <td><?php echo esc_html($registration->nombre); ?></td>
+                            <td><?php echo esc_html($registration->cedula); ?></td>
                             <td><?php echo esc_html($registration->email); ?></td>
                             <td><?php echo esc_html($registration->phone_number); ?></td>
+                            <td><?php echo esc_html($registration->iglesia); ?></td>
+                            <td><?php echo esc_html($registration->red); ?></td>
                             <td><?php echo esc_html($registration->registration_date); ?></td>
                         </tr>
                     <?php endforeach; ?>
@@ -133,17 +141,31 @@ function handle_event_registration()
 {
     global $wpdb;
     check_ajax_referer('event_registration_nonce', 'nonce');
-
-    if (!isset($_POST['nombre']) || !($_POST['nombre'])) {
-        wp_send_json_error(['message' => 'Por favor, introduzca su Nombre.']);
+    if (empty($_POST['nombre'])) {
+        wp_send_json_error(['message' => 'Por favor, introduce tu Nombre Completo.']);
+        return;
+    }
+    // NUEVA VALIDACIÓN: Cédula
+    if (empty($_POST['cedula'])) {
+        wp_send_json_error(['message' => 'Por favor, introduce tu Cédula.']);
+        return;
+    }
+    if (empty($_POST['phone_number'])) {
+        wp_send_json_error(['message' => 'El número de teléfono es obligatorio.']);
         return;
     }
     if (!isset($_POST['email']) || !is_email($_POST['email'])) {
         wp_send_json_error(['message' => 'Por favor, introduce un correo electrónico válido.']);
         return;
     }
-    if (empty($_POST['phone_number'])) {
-        wp_send_json_error(['message' => 'El número de teléfono es obligatorio.']);
+    // NUEVA VALIDACIÓN: Iglesia
+    if (empty($_POST['iglesia'])) {
+        wp_send_json_error(['message' => 'Por favor, selecciona una iglesia.']);
+        return;
+    }
+    // NUEVA VALIDACIÓN: Red condicional
+    if ($_POST['iglesia'] === 'ERJPF' && empty($_POST['red'])) {
+        wp_send_json_error(['message' => 'Por favor, selecciona tu red.']);
         return;
     }
     if (empty($_POST['event_id']) || !absint($_POST['event_id'])) {
@@ -152,10 +174,14 @@ function handle_event_registration()
     }
 
     $table_name = $wpdb->prefix . 'event_registrations';
-    $nombre =  sanitize_text_field($_POST['nombre']);
-    $email = sanitize_email($_POST['email']);
+    $nombre       = sanitize_text_field($_POST['nombre']);
+    $cedula       = sanitize_text_field($_POST['cedula']); 
+    $email        = sanitize_email($_POST['email']);
     $phone_number = sanitize_text_field($_POST['phone_number']);
-    $event_id = absint($_POST['event_id']);
+    $iglesia      = sanitize_text_field($_POST['iglesia']); 
+    // El campo 'red' puede no existir si la iglesia no es ERJPF, así que lo comprobamos.
+    $red          = isset($_POST['red']) ? sanitize_text_field($_POST['red']) : ''; 
+    $event_id     = absint($_POST['event_id']);
 
     $existing = $wpdb->get_var($wpdb->prepare(
         "SELECT id FROM $table_name WHERE email = %s AND event_id = %d",
@@ -168,13 +194,27 @@ function handle_event_registration()
         return;
     }
 
+    // --- INICIO DE INSERCIÓN EN LA BASE DE DATOS ---
     $result = $wpdb->insert($table_name, [
         'event_id'          => $event_id,
         'nombre'            => $nombre,
+        'cedula'            => $cedula,         
         'email'             => $email,
         'phone_number'      => $phone_number,
+        'iglesia'           => $iglesia,         
+        'red'               => $red,             
         'registration_date' => current_time('mysql'),
-    ], ['%d', '%s', '%s', '%s', '%s']);
+    ], [
+        '%d', // event_id
+        '%s', // nombre
+        '%s', // cedula
+        '%s', // email
+        '%s', // phone_number
+        '%s', // iglesia
+        '%s', // red
+        '%s'  // registration_date
+    ]);
+    // --- FIN DE INSERCIÓN ---
 
     if ($result) {
         wp_send_json_success(['message' => '¡Gracias! Te has registrado correctamente.']);

@@ -82,14 +82,54 @@
                                         class="w-full p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
                                 </div>
                                 <div class="w-[240px]">
-                                    <input type="tel" name="phone_number" placeholder="Teléfono"
+                                    <input type="cedula" name="cedula" placeholder="Cedula"
                                         class="w-full p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
                                 </div>
                             </div>
-                            <div class="space-x-2">
-                                <input type="email" name="email" placeholder="Ingresa tu correo electrónico"
-                                    required
-                                    class="w-[475px] p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <div class="flex flex-col md:flex-row w-full space-x-2">
+                                <div class="w-[240px]">
+                                    <input type="tel" name="phone_number" placeholder="Teléfono"
+                                        class="w-full p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div class="w-[240px]">
+                                    <input type="email" name="email" placeholder="Ingresa tu correo electrónico"
+                                        required
+                                        class="w-full p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                            </div>
+                            <div class="flex justify-center items-end space-x-2">
+
+                                <div class="w-full max-w-xs">
+                                    <div class="relative">
+                                        <select id="iglesia" name="iglesia"
+                                            class="w-full appearance-none rounded-full border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder:text-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">
+                                            <option value="" disabled selected>Selecciona una iglesia</option>
+                                            <option value="particular">Particular</option>
+                                            <option value="ERJPF">El Rey Jesús Punto Fijo (ERJPF)</option>
+                                            <option value="Iglesia Cobertura">Iglesia Cobertura</option>
+                                            <option value="Iglesia Local">Iglesia Local</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div id="campo-red" class="w-full max-w-xs hidden">
+                                    <div class="relative">
+                                        <select id="red" name="red"
+                                            class="block w-full appearance-none rounded-full border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder:text-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">
+                                            <option value="" disabled selected>Selecciona tu red</option>
+                                            <option value="1">Red 1</option>
+                                            <option value="2">Red 2</option>
+                                            <option value="3">Red 3</option>
+                                            <option value="4">Red 4</option>
+                                            <option value="5">Red 5</option>
+                                            <option value="6">Red 6</option>
+                                            <option value="7">Red 7</option>
+                                            <option value="8">Red 8</option>
+                                            <option value="9">Red 9</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                             </div>
                             <!-- Reemplaza tu botón de envío con este -->
                             <div class="flex justify-center items-center pt-2">
@@ -128,3 +168,30 @@
     </div>
 
 </div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 1. Seleccionamos los elementos necesarios
+        const selectIglesia = document.getElementById('iglesia');
+        const campoRed = document.getElementById('campo-red');
+
+        // 2. Creamos la función que controla la visibilidad
+        function toggleRedSelector() {
+            // Comprobamos el VALOR del select, no si está "checked"
+            if (selectIglesia.value === 'ERJPF') {
+                // Si es ERJPF, le quitamos la clase 'hidden' para mostrarlo
+                campoRed.classList.remove('hidden');
+            } else {
+                // Para cualquier otro valor, le añadimos la clase 'hidden' para ocultarlo
+                campoRed.classList.add('hidden');
+            }
+        }
+
+        // 3. Añadimos el "escuchador" al primer select
+        selectIglesia.addEventListener('change', toggleRedSelector);
+
+        // 4. Ejecutamos la función una vez al cargar la página para asegurar el estado inicial
+        toggleRedSelector();
+    });
+</script>
