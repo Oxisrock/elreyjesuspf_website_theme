@@ -175,12 +175,12 @@ function handle_event_registration()
 
     $table_name = $wpdb->prefix . 'event_registrations';
     $nombre       = sanitize_text_field($_POST['nombre']);
-    $cedula       = sanitize_text_field($_POST['cedula']); 
+    $cedula       = sanitize_text_field($_POST['cedula']);
     $email        = sanitize_email($_POST['email']);
     $phone_number = sanitize_text_field($_POST['phone_number']);
-    $iglesia      = sanitize_text_field($_POST['iglesia']); 
+    $iglesia      = sanitize_text_field($_POST['iglesia']);
     // El campo 'red' puede no existir si la iglesia no es ERJPF, así que lo comprobamos.
-    $red          = isset($_POST['red']) ? sanitize_text_field($_POST['red']) : ''; 
+    $red          = isset($_POST['red']) ? sanitize_text_field($_POST['red']) : '';
     $event_id     = absint($_POST['event_id']);
 
     $existing = $wpdb->get_var($wpdb->prepare(
@@ -198,11 +198,11 @@ function handle_event_registration()
     $result = $wpdb->insert($table_name, [
         'event_id'          => $event_id,
         'nombre'            => $nombre,
-        'cedula'            => $cedula,         
+        'cedula'            => $cedula,
         'email'             => $email,
         'phone_number'      => $phone_number,
-        'iglesia'           => $iglesia,         
-        'red'               => $red,             
+        'iglesia'           => $iglesia,
+        'red'               => $red,
         'registration_date' => current_time('mysql'),
     ], [
         '%d', // event_id
@@ -217,10 +217,111 @@ function handle_event_registration()
     // --- FIN DE INSERCIÓN ---
 
     if ($result) {
-        wp_send_json_success(['message' => '¡Gracias! Te has registrado correctamente.']);
+        // --- INICIO: CÓDIGO PARA ENVIAR CORREO DE CONFIRMACIÓN ---
+
+        // 1. Obtenemos el título del evento usando su ID.
+        $event_title = get_the_title($event_id);
+        $event_date = get_field('fecha_del_evento', $event_id);
+        $event_lugar = get_field('lugar_de_evento_titulo', $event_id);
+        $event_descripcion = get_field('descripcion_del_evento_', $event_id);
+        $event_url = get_the_permalink($event_id);
+        // 2. Definimos el asunto del correo.
+        $subject = '¡Confirmación de registro para ' . $event_title . '!';
+        $headers = ['Content-Type: text/html; charset=UTF-8'];
+
+        // 3. Preparamos las variables para la plantilla.
+        $logo_url     = get_field('logo_en_negro', 'option'); // Asegúrate de que esta URL es correcta.
+        $url_inicio   = esc_url(home_url('/'));
+        $titulo_sitio = esc_attr(get_bloginfo('name'));
+        $enlace_html  = '<a href="' . $url_inicio . '" title="' . $titulo_sitio . '" style="color: #ffffff; text-decoration: none;">' . $titulo_sitio . '</a>';
+
+        // 4. Creamos el cuerpo del correo usando la plantilla HTML.
+        $body = <<<HTML
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$subject</title>
+    </head>
+<body style="margin: 0; padding: 0; background-color: #f4f4f4; font-family: Georgia, 'Times New Roman', Times, serif;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="center" style="padding: 20px 0;">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    <tr>
+                        <td align="center" style="padding: 40px 0;">
+                            <img src="$logo_url" alt="Logo del Sitio" width="120" style="display: block; border: 0;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0 30px 30px 30px; text-align: center;">
+                            <h1 style="color: #333333; margin: 0; font-weight: normal; font-size: 28px;">Hola, $nombre</h1>
+                            <p style="color: #555555; font-size: 18px; line-height: 1.6; margin: 20px 0;">
+                                ¡Gracias por registrarte en nuestro evento: <strong>$event_title</strong>! <br>Nos alegra mucho que nos acompañes.
+                            </p>
+                            
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 30px 0;">
+                                <tr>
+                                    <td align="left" style="background-color: #f9f9f9; padding: 20px; border-left: 4px solid #bda071; text-align: left;">
+                                        <p style="margin: 0 0 10px 0; color: #333333; font-size: 16px;"><strong>Lugar:</strong> $event_lugar</p>
+                                        <p style="margin: 0 0 10px 0; color: #333333; font-size: 16px;"><strong>Fecha:</strong> $event_date</p>
+                                        <p style="margin: 0; color: #555555; font-size: 16px; line-height: 1.5;">$event_descripcion</p>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table border="0" cellspacing="0" cellpadding="0" style="margin: 30px auto;">
+                                <tr>
+                                    <td align="center" class="button-td" style="border-radius: 25px; background: #1520A6;">
+                                        <a href="$event_url" target="_blank" class="button-a" style="font-size: 16px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; text-decoration: none; border-radius: 25px; padding: 12px 25px; border: 1px solid #1520A6; display: inline-block; font-weight: bold;">Ver más detalles</a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p style="color: #555555; font-size: 18px; line-height: 1.6; margin: 20px 0;">
+                                Recuerda que Dios está contigo:
+                            </p>
+                            
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 30px 0;">
+                                <tr>
+                                    <td align="center" style="padding: 20px;">
+                                        <p style="color: #555555; font-size: 17px; line-height: 1.7; font-style: italic; margin: 0;">
+                                            "¡Levántate y resplandece que tu luz ha llegado!<br>¡La gloria del Señor brilla sobre ti!"<br>
+                                            <span style="display: block; margin-top: 10px; font-style: normal; color: #333333;">- Isaías 60:1-2</span>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#1520A6" style="padding: 25px 30px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
+                            <p style="color: #ffffff; font-family: Arial, Helvetica, sans-serif; font-size: 14px; text-align: center; margin: 0;">
+                                En Su amor y servicio<br>
+                                <strong style="display: block; margin-top: 8px;"><br>$enlace_html</strong>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+HTML;
+
+        // 5. Enviamos el correo.
+        wp_mail($email, $subject, $body, $headers);
+
+        // --- FIN: CÓDIGO PARA ENVIAR CORREO ---
+
+        // Finalmente, enviamos la respuesta de éxito al usuario.
+        wp_send_json_success(['message' => '¡Gracias! Te has registrado correctamente. Pronto recibirás un correo de confirmación.']);
     } else {
         wp_send_json_error(['message' => 'Hubo un error al procesar tu registro.']);
     }
 }
+// Los hooks no cambian
 add_action('wp_ajax_register_to_event', __NAMESPACE__ . '\\handle_event_registration');
 add_action('wp_ajax_nopriv_register_to_event', __NAMESPACE__ . '\\handle_event_registration');

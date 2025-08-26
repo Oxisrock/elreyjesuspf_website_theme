@@ -5,7 +5,7 @@ wp_get_current_user(); ?>
         <div class="flex justify-between items-center py-4">
             <div class="flex items-center space-x-2">
                 <img src="<?php the_field('logo', 'option'); ?>" alt="Logo" class="max-h-8 max-w-full"> <span
-                    class="text-gray-800 font-bold text-xl">El Rey Jesús</span>
+                    class="text-gray-800 font-bold text-medium md:text-xl ">El Rey Jesús Punto Fijo</span>
             </div>
 
             <div class="hidden md:flex items-center space-x-8">
