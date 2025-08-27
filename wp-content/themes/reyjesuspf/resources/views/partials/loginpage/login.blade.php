@@ -117,12 +117,12 @@ if (isset($_POST['login_submit'])) {
                         class="w-full bg-blue-600 text-white font-bold py-2 rounded-full hover:bg-blue-700 transition-colors duration-300 ease-in-out">
                         INICIAR SESION
                     </button>
-                    <div class="text-center mt-8 sm:mt-6">
-                        <a href="/sign-up"
-                            class="p-[133px] w-full mt-4 bg-white text-blue-600 border border-blue-600 font-bold py-2 rounded-full hover:bg-gray-100 transition-colors duration-300 ease-in-out">
+                    <a href="/sign-up">
+                        <div
+                            class="w-full mt-4 bg-white text-blue-600 border border-blue-600 font-bold py-2 rounded-full hover:bg-gray-100 transition-colors duration-300 ease-in-out text-center">
                             REGISTRARME
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </form>
             </div>
         </div>
