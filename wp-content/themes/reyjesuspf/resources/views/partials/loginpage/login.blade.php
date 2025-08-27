@@ -118,7 +118,8 @@ if (isset($_POST['login_submit'])) {
                         INICIAR SESION
                     </button>
                     <div class="text-center mt-8 sm:mt-6">
-                        <a href="/sign-up" class="p-[132px] w-full mt-4 bg-white text-blue-600 border border-blue-600 font-bold py-2 rounded-full hover:bg-gray-100 transition-colors duration-300 ease-in-out">
+                        <a href="/sign-up"
+                            class="p-[133px] w-full mt-4 bg-white text-blue-600 border border-blue-600 font-bold py-2 rounded-full hover:bg-gray-100 transition-colors duration-300 ease-in-out">
                             REGISTRARME
                         </a>
                     </div>
