@@ -119,7 +119,7 @@ if ( isset( $_POST['login_submit'] ) ) {
                         INICIAR SESION
                     </button>
                     
-                    <button type="button" onclick="window.location.href='<?php echo esc_url( home_url('/registro/') ); ?>'"
+                    <button type="button" onclick="window.location.href='<?php echo esc_url( home_url('/sign-up/') ); ?>'"
                             class="w-full mt-4 bg-white text-blue-600 border border-blue-600 font-bold py-2 rounded-full hover:bg-gray-100 transition-colors duration-300 ease-in-out">
                         REGISTRARME
                     </button>
