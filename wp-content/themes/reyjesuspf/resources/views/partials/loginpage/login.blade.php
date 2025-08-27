@@ -11,50 +11,47 @@ $email_input_class = 'border-gray-300 focus:ring-blue-500';
 $password_input_class = 'border-gray-300 focus:ring-blue-500';
 
 // Verificamos si el formulario fue enviado.
-if ( isset( $_POST['login_submit'] ) ) {
-
+if (isset($_POST['login_submit'])) {
     // 1. Obtenemos y saneamos los datos del formulario.
-    $email = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
-    $password = isset( $_POST['password'] ) ? $_POST['password'] : '';
+    $email = isset($_POST['email']) ? sanitize_email(wp_unslash($_POST['email'])) : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
 
     // 2. Validación del lado del servidor para campos vacíos.
-    if ( empty( $email ) ) {
+    if (empty($email)) {
         $email_error = 'Por favor, introduce tu correo electrónico.';
     }
-    if ( empty( $password ) ) {
+    if (empty($password)) {
         $password_error = 'Por favor, introduce tu contraseña.';
     }
 
     // 3. Si no hay errores de validación, intentamos iniciar sesión.
-    if ( empty( $email_error ) && empty( $password_error ) ) {
-        $creds = array(
-            'user_login'    => $email,
+    if (empty($email_error) && empty($password_error)) {
+        $creds = [
+            'user_login' => $email,
             'user_password' => $password,
-            'remember'      => true
-        );
+            'remember' => true,
+        ];
 
-        $user = wp_signon( $creds, false );
+        $user = wp_signon($creds, false);
 
-        if ( is_wp_error( $user ) ) {
+        if (is_wp_error($user)) {
             // Verificamos el código de error para mostrar el mensaje en el campo correcto.
             $error_code = $user->get_error_code();
-            if ( in_array( $error_code, [ 'invalid_username', 'invalid_email' ] ) ) {
+            if (in_array($error_code, ['invalid_username', 'invalid_email'])) {
                 $email_error = 'No existe ningún usuario con este correo electrónico.';
-            }
-            elseif ( 'incorrect_password' === $error_code ) {
+            } elseif ('incorrect_password' === $error_code) {
                 $password_error = 'La contraseña que has introducido no es correcta.';
-            }
-            else {
+            } else {
                 // Error genérico para otros casos, se muestra debajo del campo de contraseña.
                 $password_error = 'Error desconocido. Por favor, inténtalo de nuevo.';
             }
         } else {
             // Si el inicio de sesión es exitoso, redirigimos.
-            wp_safe_redirect( home_url( '/' ) );
-            exit;
+            wp_safe_redirect(home_url('/'));
+            exit();
         }
     }
-    
+
     // 4. Asignamos clases de error a los campos si existen errores.
     if (!empty($email_error)) {
         $email_input_class = 'border-red-500 focus:ring-red-500';
@@ -78,8 +75,8 @@ if ( isset( $_POST['login_submit'] ) ) {
 
         <!-- Columna de la imagen -->
         <div class="hidden md:flex w-full md:w-3/5 md:h-auto relative bg-cover bg-center"
-             style="background-image: url('<?php the_field('imagen_de_inicio_de_sesion', 'option'); ?>');">
-            
+            style="background-image: url('<?php the_field('imagen_de_inicio_de_sesion', 'option'); ?>');">
+
             <div class="absolute inset-0 w-full h-full overflow-hidden">
                 <div class="absolute h-3/5 w-[150%] bg-cyan-600/20 transform -skew-y-12 top-[-10%] left-[-25%]"></div>
                 <div class="absolute h-3/5 w-[150%] bg-cyan-600/20 transform -skew-y-12 bottom-[-10%] left-[-25%]"></div>
@@ -99,30 +96,32 @@ if ( isset( $_POST['login_submit'] ) ) {
 
                     <div class="mb-4">
                         <input type="email" id="email" name="email" placeholder="Correo electrónico" required
-                               class="w-full px-4 py-3 border rounded-full focus:outline-none focus:ring-2 transition duration-200 <?php echo $email_input_class; ?>">
+                            class="w-full px-4 py-3 border rounded-full focus:outline-none focus:ring-2 transition duration-200 <?php echo $email_input_class; ?>">
                         <?php if ( ! empty( $email_error ) ) : ?>
-                            <p class="text-red-600 text-xs mt-2 ml-4"><?php echo $email_error; ?></p>
+                        <p class="text-red-600 text-xs mt-2 ml-4"><?php echo $email_error; ?></p>
                         <?php endif; ?>
                     </div>
 
                     <div class="mb-6">
                         <input type="password" id="password" name="password" placeholder="Contraseña" required
-                               class="w-full px-4 py-3 border rounded-full focus:outline-none focus:ring-2 transition duration-200 <?php echo $password_input_class; ?>">
+                            class="w-full px-4 py-3 border rounded-full focus:outline-none focus:ring-2 transition duration-200 <?php echo $password_input_class; ?>">
                         <?php if ( ! empty( $password_error ) ) : ?>
-                            <p class="text-red-600 text-xs mt-2 ml-4"><?php echo $password_error; ?></p>
+                        <p class="text-red-600 text-xs mt-2 ml-4"><?php echo $password_error; ?></p>
                         <?php endif; ?>
-                        <a href="<?php echo esc_url( wp_lostpassword_url() ); ?>" class="block text-right text-xs text-blue-600 hover:underline mt-2">¿Olvidaste tu contraseña?</a>
+                        <a href="<?php echo esc_url(wp_lostpassword_url()); ?>"
+                            class="block text-right text-xs text-blue-600 hover:underline mt-2">¿Olvidaste tu
+                            contraseña?</a>
                     </div>
 
                     <button type="submit" name="login_submit"
-                            class="w-full bg-blue-600 text-white font-bold py-2 rounded-full hover:bg-blue-700 transition-colors duration-300 ease-in-out">
+                        class="w-full bg-blue-600 text-white font-bold py-2 rounded-full hover:bg-blue-700 transition-colors duration-300 ease-in-out">
                         INICIAR SESION
                     </button>
-                    
-                    <button type="button" onclick="window.location.href='<?php echo esc_url( home_url('/sign-up/') ); ?>'"
-                            class="w-full mt-4 bg-white text-blue-600 border border-blue-600 font-bold py-2 rounded-full hover:bg-gray-100 transition-colors duration-300 ease-in-out">
-                        REGISTRARME
-                    </button>
+                    <div class="text-center mt-8 sm:mt-6">
+                        <a href="/sign-up" class="p-[132px] w-full mt-4 bg-white text-blue-600 border border-blue-600 font-bold py-2 rounded-full hover:bg-gray-100 transition-colors duration-300 ease-in-out">
+                            REGISTRARME
+                        </a>
+                    </div>
                 </form>
             </div>
         </div>
