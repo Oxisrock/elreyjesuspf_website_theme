@@ -63,13 +63,6 @@ if (isset($_POST['login_submit'])) {
 // -- FIN DE LA LÓGICA DE LOGIN --
 ?>
 
-<style>
-    /* Estilos adicionales para un aspecto más pulido si es necesario */
-    body {
-        font-family: 'Poppins', sans-serif;
-    }
-</style>
-
 <div class="bg-gray-100">
     <div class="flex flex-col md:flex-row min-h-screen">
 

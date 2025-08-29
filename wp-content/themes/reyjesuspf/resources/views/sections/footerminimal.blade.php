@@ -5,7 +5,7 @@
             <div class="flex flex-col sm:flex-row justify-between items-center text-sm">
 
                 <p class="text-blue-600 mb-2 sm:mb-0">
-                    © 2024 El Rey Jesus. All rights reserved.
+                    © 2025 El Rey Jesus. All rights reserved.
                 </p>
 
                 <nav class="flex flex-wrap justify-center space-x-4 sm:space-x-6">
