@@ -23,12 +23,14 @@
                         <a href="/siembra" class="bg-blue-600 text-white font-semibold px-8 py-2 rounded-full hover:bg-blue-700 transition-colors duration-300">
                             <?php the_field('boton_hero_page_2', 'option'); ?>
                         </a>
+                        <?php if (!is_user_logged_in()) : ?>
                         <a href="/sign-up" class="text-blue-600 font-semibold flex items-center group">
                             Registrarme
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                             </svg>
                         </a>
+                        <?php endif; ?>
                     </div>
                 </div>
 

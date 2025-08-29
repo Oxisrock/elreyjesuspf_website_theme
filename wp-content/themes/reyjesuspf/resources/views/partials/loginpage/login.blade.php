@@ -108,7 +108,7 @@ if (isset($_POST['login_submit'])) {
                         <?php if ( ! empty( $password_error ) ) : ?>
                         <p class="text-red-600 text-xs mt-2 ml-4"><?php echo $password_error; ?></p>
                         <?php endif; ?>
-                        <a href="<?php echo esc_url(wp_lostpassword_url()); ?>"
+                        <a href="/solicitar-clave"
                             class="block text-right text-xs text-blue-600 hover:underline mt-2">¿Olvidaste tu
                             contraseña?</a>
                     </div>

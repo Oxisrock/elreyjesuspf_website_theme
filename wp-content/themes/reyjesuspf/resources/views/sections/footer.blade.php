@@ -64,38 +64,36 @@ endif;
                 </div>
                 <div class="mt-10 sm:mt-0">
                     <h4 class="text-sm font-semibold leading-6 text-white">Unirme</h4>
-                    <?php
-                    // Para leer desde una página de opciones, se añade 'option' como segundo parámetro.
-                    if ( have_rows( 'campo_de_unirme', 'option' ) ) :
-                    ?>
                     <ul role="list" class="mt-6 space-y-4">
-                        <?php
-                     // El bucle también necesita el parámetro 'option'.
-                    while ( have_rows( 'campo_de_unirme', 'option' ) ) : the_row();
-
-                     if ( get_row_layout() == 'unirme' ) :
-            
-                    // 'get_sub_field' también necesita el parámetro 'option'.
-                    $link = get_sub_field( 'link_de_unirme' );
-                    $title = get_sub_field( 'titulo_de_unirme' );
-
-                     if ( $link && $title ) :
-                    ?>
                         <li>
-                            <a href="<?php echo $link['url']; ?>" target="<?php echo $link['target'] ? $link['target'] : '_self'; ?>"
-                                class="text-sm leading-6 text-slate-300 hover:text-white">
-                                <?php echo $title; ?>
+                            <a href="/siembra" class="text-sm leading-6 text-slate-300 hover:text-white">
+                            <span
+                                    class="text-sm leading-6 text-slate-300 group-hover:text-white transition-colors">Sembrar</span>
                             </a>
                         </li>
-                        <?php
-                    endif;
-                    endif; 
-                    endwhile;
-                    ?>
+                        <li>
+                            <a href="/contacto" class="text-sm leading-6 text-slate-300 hover:text-white">
+                            <span
+                                    class="text-sm leading-6 text-slate-300 group-hover:text-white transition-colors">Contacto</span>
+                            </a>
+                        </li>
+                        <?php if (!is_user_logged_in()) : ?>
+                        <li>
+                            <a href="/login" class="text-sm leading-6 text-slate-300 hover:text-white">
+                            <span
+                                    class="text-sm leading-6 text-slate-300 group-hover:text-white transition-colors">Iniciar sesión</span>
+                            </a>
+                        </li>
+                        <?php endif; ?>
+                        <?php if (!is_user_logged_in()) : ?>
+                        <li>
+                            <a href="/sign-up" class="text-sm leading-6 text-slate-300 hover:text-white">
+                                <span
+                                    class="text-sm leading-6 text-slate-300 group-hover:text-white transition-colors">Registrarme</span>
+                            </a>
+                        </li>
+                        <?php endif; ?>
                     </ul>
-                    <?php
-                    endif;
-                    ?>
                 </div>
                 <div>
                     <h4 class="text-sm font-semibold leading-6 text-white">Síguenos</h4>

@@ -153,10 +153,6 @@ wp_get_current_user(); ?>
                         </div>
                     </div>
                 </div>
-            <a href="<?php echo esc_url(wp_logout_url(home_url())); ?>"
-                class="my-button w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded-md text-center">
-                Cerrar Sesion
-            </a>
             <?php endif; ?>
         </div>
     </div>

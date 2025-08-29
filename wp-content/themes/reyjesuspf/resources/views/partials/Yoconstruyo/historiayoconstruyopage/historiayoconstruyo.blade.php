@@ -11,9 +11,9 @@
                     <div class="absolute w-4 h2 bg-blue-500 rounded-full"></div>
                 </div>
                 <div class="text-left md:order-last">
-                    <h3 class="text-3xl font-bold text-gray-800"><?php the_field('historia_del_templo_titulo_1' ); ?></h3>
+                    <h3 class="text-3xl font-bold text-gray-800"></h3>
                     <p class="mt-4 text-gray-600 leading-relaxed ">
-                        <?php the_field('historia_del_templo_descripcion_1' ); ?>
+                        
                     </p>
                 </div>
                 <div>
@@ -27,9 +27,9 @@
                     <div class="absolute w-4 h-2 bg-blue-500 rounded-full"></div>
                 </div>
                 <div class="text-left md:text-right md:order-first">
-                    <h3 class="text-3xl font-bold text-gray-800"><?php the_field('historia_del_templo_titulo_2' ); ?></h3>
+                    <h3 class="text-3xl font-bold text-gray-800"></h3>
                     <p class="mt-4 text-gray-600 leading-relaxed">
-                        <?php the_field('historia_del_templo_descripcion_2' ); ?>
+                        s
                     </p>
                 </div>
                 <div class="md:order-last">
@@ -43,9 +43,9 @@
                     <div class="absolute w-4 h-2 bg-blue-500 rounded-full"></div>
                 </div>
                 <div class="text-left md:order-last">
-                    <h3 class="text-3xl font-bold text-gray-800"><?php the_field('historia_del_templo_titulo_3' ); ?></h3>
+                    <h3 class="text-3xl font-bold text-gray-800"></h3>
                     <p class="mt-4 text-gray-600 leading-relaxed">
-                        <?php the_field('historia_del_templo_descripcion_3' ); ?>
+                        
                     </p>
                 </div>
                 <div>
@@ -59,9 +59,9 @@
                     <div class="absolute w-4 h-2 bg-blue-500 rounded-full"></div>
                 </div>
                 <div class="text-left md:text-right md:order-first">
-                    <h3 class="text-3xl font-bold text-gray-800"><?php the_field('historia_del_templo_titulo_4' ); ?></h3>
+                    <h3 class="text-3xl font-bold text-gray-800"></h3>
                     <p class="mt-4 text-gray-600 leading-relaxed">
-                        <?php the_field('historia_del_templo_descripcion_4' ); ?>
+                        
                     </p>
                 </div>
                 <div class="md:order-last">

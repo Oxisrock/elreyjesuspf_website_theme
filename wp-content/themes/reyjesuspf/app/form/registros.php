@@ -195,3 +195,92 @@ HTML;
 // Conectar la función al hook de AJAX para usuarios no logueados (para el registro)
 add_action('wp_ajax_ajax_custom_register', __NAMESPACE__ . '\\handle_custom_registration');
 add_action('wp_ajax_nopriv_ajax_custom_register', __NAMESPACE__ . '\\handle_custom_registration');
+
+function custom_password_reset_email_message( $message, $key, $user_login, $user_data ) {
+    
+    $site_name = get_bloginfo('name');
+    $reset_link = home_url( '/nueva-contrasena/?key=' . $key . '&login=' . rawurlencode( $user_login ) );
+    $logo_url = get_field('logo', 'option');
+    
+    // --> 1. AQUÍ AÑADES LA NUEVA LÍNEA
+    $display_name = ! empty( $user_data->first_name ) ? $user_data->first_name : $user_login;
+
+    // Aquí pegas tu plantilla adaptada
+    $html_template = <<<HTML
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Restablecer tu Contraseña</title>
+    </head>
+    <body style="margin: 0; padding: 0; background-color: #ffffff; font-family: 'Georgia', serif;">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td align="center">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+                        <tr>
+                            <td align="center" style="padding: 40px 0;">
+                                <img src="{$logo_url}" alt="Logo de la Iglesia" width="120" style="display: block;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0 30px 30px 30px; text-align: center;">
+                                <h1 style="color: #333; margin: 0 0 20px 0; font-weight: normal;">Restablecer tu Contraseña</h1>
+                                <p style="color: #555; font-size: 18px; line-height: 1.6; margin: 20px 0;">
+                                    Hola, <strong>{$display_name}</strong>.
+                                </p>
+                                <p style="color: #555; font-size: 18px; line-height: 1.6; margin: 20px 0;">
+                                    Recibimos una solicitud para restablecer tu contraseña. Si no has sido tú, puedes ignorar este mensaje.
+                                </p>
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 30px 0;">
+                                    <tr>
+                                        <td align="center">
+                                            <a href="{$reset_link}" target="_blank" style="display: inline-block; padding: 15px 30px; background-color: #1520A6; color: #ffffff; font-family: Arial, sans-serif; font-size: 16px; text-decoration: none; border-radius: 5px;">
+                                                Crear Nueva Contraseña
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <p style="color: #777; font-size: 14px; line-height: 1.6; margin: 20px 0;">
+                                    Si el botón no funciona, copia y pega este enlace en tu navegador:<br>
+                                    <a href="{$reset_link}" target="_blank" style="color: #1520A6; word-break: break-all;">{$reset_link}</a>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#1520A6" style="padding: 25px 30px;">
+                                <p style="color: #ffffff; font-family: Arial, sans-serif; font-size: 14px; text-align: center; margin: 0;">
+                                    &copy; 2025 {$site_name}. Todos los derechos reservados.
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+    </html>
+    HTML;
+
+    return $html_template;
+}
+/**
+ * Personaliza el Asunto del correo.
+ */
+function custom_password_reset_email_subject( $subject ) {
+    $site_name = get_bloginfo('name');
+    return "[{$site_name}] Restablecimiento de tu contraseña";
+}
+
+/**
+ * Establece el tipo de contenido del correo a HTML.
+ */
+function set_html_content_type() {
+    return 'text/html';
+}
+
+// No olvides mantener los otros filtros que te di
+add_filter( 'retrieve_password_message', __NAMESPACE__ . '\\custom_password_reset_email_message', 10, 4 );
+add_filter( 'retrieve_password_title', __NAMESPACE__ . '\\custom_password_reset_email_subject', 10 );
+add_filter( 'wp_mail_content_type', __NAMESPACE__ . '\\set_html_content_type' );
