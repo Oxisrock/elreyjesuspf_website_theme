@@ -71,8 +71,8 @@ function handle_custom_registration() {
     if (!is_email($email)) {
         $response['data']['errors']['email'] = 'El correo electrónico no es válido.';
     } elseif (email_exists($email)) {
-        $login_url = wp_login_url();
-        $reset_url = wp_lostpassword_url();
+        $login_url = home_url('/login');
+        $reset_url = home_url('/solicitar-clave');
         $error_message = '¿Quieres <a href="' . $login_url . '"><strong>iniciar sesión</strong></a> o <a href="' . $reset_url . '"><strong>recuperar tu contraseña</strong></a>?';
         
         $response['data'] = [
