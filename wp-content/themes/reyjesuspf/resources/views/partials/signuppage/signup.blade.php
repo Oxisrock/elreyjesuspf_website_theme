@@ -119,7 +119,10 @@
         {{-- Columna de la Imagen --}}
         <div class="hidden md:flex w-full md:w-3/5 md:h-auto relative bg-cover bg-center"
             style="background-image: url('<?php the_field('imagen_de_registrarme', 'option'); ?>');">
-            {{-- ... el resto de tu columna de imagen ... --}}
+            <div class="absolute inset-0 w-full h-full overflow-hidden">
+                <div class="absolute h-3/5 w-[150%] bg-cyan-600/20 transform -skew-y-12 top-[-10%] left-[-25%]"></div>
+                <div class="absolute h-3/5 w-[150%] bg-cyan-600/20 transform -skew-y-12 bottom-[-10%] left-[-25%]"></div>
+            </div>
         </div>
     </div>
 </div>
@@ -164,7 +167,7 @@
                         if (data.data && data.data.error_type === 'duplicate_email') {
                             // Es el error de email duplicado: mostramos la pantalla completa
                             errorStateMessage.innerHTML = data.data
-                            .message; // Usamos innerHTML por los enlaces <a>
+                                .message; // Usamos innerHTML por los enlaces <a>
                             errorState.classList.remove('hidden');
                         } else {
                             // Es un error de validación normal: mostramos errores en las casillas
@@ -177,7 +180,7 @@
                                 }
                             }
                             formContainer.classList.remove(
-                            'hidden'); // Mostramos el formulario de nuevo
+                                'hidden'); // Mostramos el formulario de nuevo
                         }
                         // ---- FIN DE LA NUEVA LÓGICA DE ERRORES ----
                     }

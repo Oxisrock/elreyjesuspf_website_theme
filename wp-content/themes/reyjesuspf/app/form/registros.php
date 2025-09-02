@@ -145,7 +145,7 @@ function handle_custom_registration() {
                                     <td style="padding: 0 30px 30px 30px; text-align: center;">
                                         <h1 style="color: #333; margin: 0; font-weight: normal;">Hola, $full_name</h1>
                                         <p style="color: #555; font-size: 18px; line-height: 1.6; margin: 20px 0;">
-                                            ¡Gracias por unirte a nuestra comunidad! Nos alegra mucho tenerte con nosotros.
+                                            ¡Gracias por unirte a nuestra familia! Nos alegra mucho tenerte con nosotros.
                                         </p>
                                         <p style="color: #555; font-size: 18px; line-height: 1.6; margin: 20px 0;">
                                             Recuerda que Dios está contigo:
