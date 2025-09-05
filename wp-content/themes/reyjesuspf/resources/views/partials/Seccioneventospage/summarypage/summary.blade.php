@@ -13,10 +13,7 @@
                     echo '<a href="' . get_post_type_archive_link($post_type->name) . '"><span class="text-sm font-semibold text-black-600">' . esc_html($post_type->labels->name) . '</span></a>';
                     echo '<span class="separator"> › </span>';
                 }
-            
-                // 2. Enlace a la Categoría del Evento (Término de la Taxonomía, ej: "ELIAP")
-                // Reemplaza 'tu_taxonomia_slug' con el slug de tu taxonomía (ej: 'tipo_de_evento')
-                $terms = get_the_terms($post->ID, 'tipo_evento');
+        
             
                 if (!empty($terms) && !is_wp_error($terms)) {
                     // Usamos el primer término asignado al evento

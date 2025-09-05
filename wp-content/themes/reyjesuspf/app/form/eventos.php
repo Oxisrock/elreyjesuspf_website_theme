@@ -172,6 +172,7 @@ function handle_event_registration()
     // '127.0.0.1' (para IPv4) y '::1' (para IPv6) son las IPs de localhost.
     $is_local_environment = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']);
 
+    
     // La validación del SCORE solo se aplica si NO estamos en el entorno local.
     if (!$is_local_environment && $response_data->score < 0.5) {
         // Si un usuario real (no local) tiene un score bajo, lo bloqueamos.
