@@ -1,12 +1,13 @@
 <?php
-function crear_tabla_contactos_personalizada() {
+function crear_tabla_contactos_personalizada()
+{
     global $wpdb;
     // El prefijo de la tabla de WordPress (ej. 'wp_') seguido del nombre de nuestra tabla.
     $nombre_tabla = $wpdb->prefix . 'contactos_entradas';
     $charset_collate = $wpdb->get_charset_collate();
 
     // Si la tabla no existe, la creamos.
-    if($wpdb->get_var("SHOW TABLES LIKE '$nombre_tabla'") != $nombre_tabla) {
+    if ($wpdb->get_var("SHOW TABLES LIKE '$nombre_tabla'") != $nombre_tabla) {
         $sql = "CREATE TABLE $nombre_tabla (
             id mediumint(9) NOT NULL AUTO_INCREMENT,
             fecha datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
@@ -25,28 +26,68 @@ function crear_tabla_contactos_personalizada() {
 // Ejecutamos la función. Recuerda comentarla o borrarla después del primer uso.
 crear_tabla_contactos_personalizada();
 
-// Enganchamos nuestra función al 'action' que definimos en el formulario
-// 'admin_post_nopriv_' es para usuarios no logueados
-add_action('admin_post_nopriv_procesar_formulario_contacto', __NAMESPACE__ . '\\mi_procesador_de_formularios');
-// 'admin_post_' es para usuarios logueados
-add_action('admin_post_procesar_formulario_contacto', __NAMESPACE__ . '\\mi_procesador_de_formularios');
+// Enganchamos la única función correcta para procesar el formulario.
+add_action('admin_post_nopriv_procesar_formulario_contacto', __NAMESPACE__ . '\\handle_contact_form_submission');
+add_action('admin_post_procesar_formulario_contacto', __NAMESPACE__ . '\\handle_contact_form_submission');
 
-function mi_procesador_de_formularios() {
+function handle_contact_form_submission()
+{
     global $wpdb;
     $nombre_tabla = $wpdb->prefix . 'contactos_entradas';
+    $contact_page_url = home_url('/contacto'); // <-- Ajusta el slug si es necesario.
 
-    // 1. Verificar el Nonce de seguridad
-    if ( !isset($_POST['mi_nonce']) || !wp_verify_nonce($_POST['mi_nonce'], 'mi_form_contacto_nonce') ) {
-        die('¡Falló la verificación de seguridad!');
+    // 1. Verificamos el nonce de seguridad.
+    if (!isset($_POST['mi_nonce']) || !wp_verify_nonce($_POST['mi_nonce'], 'mi_form_contacto_nonce')) {
+        wp_die('Error de seguridad. Inténtalo de nuevo.');
     }
 
-    // 2. Limpiar y sanitizar los datos recibidos del formulario
-    $nombre  = sanitize_text_field($_POST['nombre']);
-    $email   = sanitize_email($_POST['email']);
-    $asunto  = sanitize_text_field($_POST['asunto']);
+    // 2. VERIFICACIÓN DE GOOGLE RECAPTCHA V3
+    $recaptcha_secret_key = '6LePAbwrAAAAAGT4G4s6FngmaTEK3O0UdPqGfOfT';
+    $recaptcha_token = isset($_POST['recaptcha_response']) ? $_POST['recaptcha_response'] : '';
+
+    if (empty($recaptcha_token)) {
+        wp_safe_redirect(add_query_arg('enviado', 'recaptcha_fail', $contact_page_url));
+        exit;
+    }
+
+    // ... (El resto del código de la llamada a la API de reCAPTCHA va aquí, no lo borres)
+    $url = 'https://www.google.com/recaptcha/api/siteverify';
+    $data = ['secret' => $recaptcha_secret_key, 'response' => $recaptcha_token];
+    $options = ['http' => ['header' => "Content-type: application/x-www-form-urlencoded\r\n", 'method' => 'POST', 'content' => http_build_query($data)]];
+    $context = stream_context_create($options);
+    $response_json = file_get_contents($url, false, $context);
+    $response_data = json_decode($response_json);
+
+    // ⚠️ INICIO DE LA MODIFICACIÓN PARA DESARROLLO LOCAL ⚠️
+
+    // Primero, verificamos si la comunicación con Google fue exitosa en general.
+    if (!$response_data || !$response_data->success) {
+        // Si hay un error de comunicación, detenemos y redirigimos.
+        wp_safe_redirect(add_query_arg('enviado', 'recaptcha_fail', $contact_page_url));
+        exit;
+    }
+
+    // Ahora, definimos si estamos en un entorno local.
+    $is_local_environment = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']);
+
+    // La validación del SCORE solo se aplica si NO estamos en el entorno local.
+    if (!$is_local_environment && $response_data->score < 0.5) {
+        // Si un usuario real (no local) tiene un score bajo, lo redirigimos con error.
+        wp_safe_redirect(add_query_arg('enviado', 'recaptcha_fail', $contact_page_url));
+        exit;
+    }
+
+    // Si el código llega aquí, el reCAPTCHA es válido (ya sea por buen score o por estar en local).
+
+    // ⚠️ FIN DE LA MODIFICACIÓN ⚠️
+
+    // 3. Saneamos los datos del formulario.
+    $nombre = sanitize_text_field($_POST['nombre']);
+    $email = sanitize_email($_POST['email']);
+    $asunto = sanitize_text_field($_POST['asunto']); // Usamos $asunto para consistencia
     $mensaje = sanitize_textarea_field($_POST['mensaje']);
 
-    // 3. Insertar los datos en nuestra tabla personalizada
+    // 4. INSERTAR LOS DATOS EN LA BASE DE DATOS
     $wpdb->insert(
         $nombre_tabla,
         array(
@@ -58,13 +99,11 @@ function mi_procesador_de_formularios() {
         )
     );
 
-    // 4. Enviar correos
+    // =======================================================================
+    // 5. ENVIAR CORREOS (AQUÍ INTEGRAMOS TU CÓDIGO AVANZADO)
+    // =======================================================================
 
-    // --- INICIO DE CAMBIOS Y CORRECCIONES ---
-
-    // 4.1. Preparamos TODAS las variables que necesitamos para los correos
-    
-    // Para el correo del Administrador
+    // --- CORREO PARA EL ADMINISTRADOR ---
     $admin_email = get_option('admin_email');
     $admin_asunto = "Nuevo mensaje de contacto de: $nombre";
     $admin_cuerpo = "Has recibido un nuevo mensaje a través del formulario de contacto:\n\n";
@@ -72,26 +111,21 @@ function mi_procesador_de_formularios() {
     $admin_cuerpo .= "Correo: $email\n";
     $admin_cuerpo .= "Asunto: $asunto\n";
     $admin_cuerpo .= "Mensaje:\n$mensaje\n";
-    
-    // Para el correo del Usuario (aquí integramos tu código)
-    // Obtenemos la URL del logo usando get_field() porque estamos en PHP
-    // Nota: Debes tener el plugin Advanced Custom Fields activo.
-    $logo_url = get_field('logo_en_negro', 'option');
+    $admin_headers = 'From: ' . $nombre . ' <' . $email . '>';
 
-    // Aquí está el código que querías integrar, preparado para el correo
+    // Se envía el correo al administrador
+    wp_mail($admin_email, $admin_asunto, $admin_cuerpo, $admin_headers);
+
+    // --- CORREO DE CONFIRMACIÓN PARA EL USUARIO (HTML) ---
+    $logo_url = get_field('logo_en_negro', 'option'); // Asegúrate de tener ACF activo
     $url_inicio = esc_url(home_url('/'));
     $titulo_sitio = esc_attr(get_bloginfo('name'));
-    
-    // Construimos el enlace con estilo para que se vea bien en el correo
     $enlace_html = '<a href="' . $url_inicio . '" title="' . $titulo_sitio . '" style="color: #ffffff; text-decoration: none;">' . $titulo_sitio . '</a>';
 
-    // 4.2. Construimos el cuerpo del correo del usuario de forma limpia
-    
-    // Corregimos el Content-Type a UTF-8
-    $headers = array('Content-Type: text/html; charset=UTF-8');
+    $usuario_headers = array('Content-Type: text/html; charset=UTF-8');
     $usuario_asunto = "¡Hemos recibido tu mensaje!";
 
-    // Usamos la sintaxis HEREDOC (<<<HTML) para escribir el HTML sin problemas con las comillas
+    // Usamos la sintaxis HEREDOC para el cuerpo del correo del usuario
     $usuario_cuerpo = <<<HTML
     <!DOCTYPE html>
     <html lang="es">
@@ -119,12 +153,7 @@ function mi_procesador_de_formularios() {
                                     <tr>
                                         <td align="center" style="padding: 20px; border-left: 3px solid #bda071;">
                                             <p style="color: #555; font-size: 17px; line-height: 1.7; font-style: italic; margin: 0;">
-                                                ¡Levántate y resplandece que tu luz ha llegado!
-                                                ¡La gloria del Señor brilla sobre ti!
-                                                Mira, las tinieblas cubren la tierra
-                                                y una densa oscuridad se cierne sobre los pueblos.
-                                                Pero la aurora del Señor brillará sobre ti;
-                                                ¡sobre ti se manifestará su gloria!<br>
+                                                ¡Levántate y resplandece que tu luz ha llegado! ¡La gloria del Señor brilla sobre ti!...<br>
                                                 <span style="display: block; margin-top: 10px; font-style: normal;">- Isaías 60:1-2</span>
                                             </p>
                                         </td>
@@ -148,22 +177,21 @@ function mi_procesador_de_formularios() {
     </html>
 HTML;
 
-    // --- FIN DE CAMBIOS Y CORRECCIONES ---
+    // Se envía el correo al usuario
+    wp_mail($email, $usuario_asunto, $usuario_cuerpo, $usuario_headers);
 
-    // 4.3. Enviamos los correos
-    wp_mail($email, $usuario_asunto, $usuario_cuerpo, $headers);
-
-    // 5. Redirigir al usuario
-    $url_contacto = home_url('/contacto'); // <-- ¡Asegúrate de que esta es la URL de tu página de contacto!
-    $url_con_mensaje = add_query_arg('enviado', 'true', $url_contacto);
-    wp_redirect($url_con_mensaje);
+    // =======================================================================
+    // 6. REDIRIGIR AL USUARIO A LA PÁGINA DE ÉXITO
+    // =======================================================================
+    wp_safe_redirect(add_query_arg('enviado', 'true', $contact_page_url));
     exit;
 }
 
 // Añadir una nueva página al menú de administración
 add_action('admin_menu', __NAMESPACE__ . '\\mi_menu_de_entradas_de_contacto');
 
-function mi_menu_de_entradas_de_contacto() {
+function mi_menu_de_entradas_de_contacto()
+{
     add_menu_page(
         'Entradas de Contacto',      // Título de la página
         'Contacto',         // Título del menú
@@ -196,11 +224,12 @@ function mi_menu_de_entradas_de_contacto() {
 
 
 // La función que muestra el contenido de la página (la tabla)
-function mi_contenido_pagina_entradas() {
+function mi_contenido_pagina_entradas()
+{
     global $wpdb;
     $nombre_tabla = $wpdb->prefix . 'contactos_entradas';
     $entradas = $wpdb->get_results("SELECT * FROM $nombre_tabla ORDER BY fecha DESC");
-    ?>
+?>
     <div class="wrap">
         <h1>Peticiones</h1>
         <table id="miTabla" class="wp-list-table widefat fixed striped" style="width:100%">
@@ -232,9 +261,10 @@ function mi_contenido_pagina_entradas() {
             </tbody>
         </table>
     </div>
-    <?php
+<?php
 }
 
-function mi_contenido_pagina_peticiones() {
+function mi_contenido_pagina_peticiones()
+{
     echo '<div class="wrap"><h2>Peticiones</h2><p>Contenido para el submenú de Peticiones aquí.</p></div>';
 }

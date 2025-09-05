@@ -1,10 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // --- SELECTORES ---
     const filtrosContainer = document.getElementById('filtros-multimedia');
     const grid = document.getElementById('events-grid');
-    const toggleBtnContainer = document.querySelector('#toggle-videos-btn')?.parentElement;
-    // const gridSpinner = document.getElementById('grid-spinner'); // YA NO ES NECESARIO
+    // MEJORA: Seleccionamos el contenedor del botón "Ver más" por su propio ID para más robustez.
+    // Asegúrate de que tu HTML tenga <div id="ver-mas-container">...</div>
+    const toggleBtnContainer = document.getElementById('ver-mas-container');
 
-    // --- LÓGICA DEL MODAL (Sin cambios) ---
+    // CORRECCIÓN: Variable para controlar el listener del botón "Ver Más"
+    let verMasController = new AbortController();
+
+    // --- LÓGICA DEL MODAL (Sin cambios, ya estaba bien) ---
     const modal = document.getElementById('video-modal');
     const iframe = document.getElementById('video-iframe');
     const closeModalBtn = document.getElementById('close-modal-btn');
@@ -26,28 +31,30 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    iframe.addEventListener('load', () => {
-        preloader.style.display = 'none';
-        iframe.style.visibility = 'visible';
-    });
+    if (iframe) {
+        iframe.addEventListener('load', () => {
+            preloader.style.display = 'none';
+            iframe.style.visibility = 'visible';
+        });
+    }
     
-    grid.addEventListener('click', (e) => {
-        const videoItem = e.target.closest('.group');
-        if (videoItem) {
-            const videoSrc = videoItem.dataset.videoSrc;
-            if (videoSrc && modal && iframe) {
-                modal.classList.remove('hidden');
-                preloader.style.display = 'flex';
-                const embedUrl = videoSrc.includes('embed') ? videoSrc : videoSrc.replace("watch?v=", "embed/");
-                iframe.src = embedUrl;
+    if (grid) {
+        grid.addEventListener('click', (e) => {
+            const videoItem = e.target.closest('.group');
+            if (videoItem) {
+                const videoSrc = videoItem.dataset.videoSrc;
+                if (videoSrc && modal && iframe) {
+                    modal.classList.remove('hidden');
+                    preloader.style.display = 'flex';
+                    const embedUrl = videoSrc.includes('embed') ? videoSrc : videoSrc.replace("watch?v=", "embed/");
+                    iframe.src = embedUrl;
+                }
             }
-        }
-    });
-
-
-    // --- LÓGICA DE FILTRADO AJAX (CON SPINNER GENERADO POR JS) ---
-    if (filtrosContainer) {
-        // NUEVO: Definimos tu spinner como una constante de texto
+        });
+    }
+    
+    // --- LÓGICA DE FILTRADO AJAX (Lógica del Spinner mejorada) ---
+    if (filtrosContainer && grid) {
         const spinnerHTML = `
             <div class="flex justify-center items-center h-64 col-span-full">
                 <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-600"></div>
@@ -57,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function () {
         filtrosContainer.addEventListener('click', function (e) {
             e.preventDefault();
             const filtroActivo = e.target.closest('.filtro-categoria');
-
             if (!filtroActivo) return;
 
             // Actualizar estilo del filtro activo
@@ -70,8 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const categorySlug = filtroActivo.dataset.slug;
 
-            // --- LÓGICA DE CARGA MODIFICADA ---
-            grid.innerHTML = spinnerHTML; // Inyectamos el HTML del spinner directamente en el grid
+            grid.innerHTML = spinnerHTML;
             if (toggleBtnContainer) toggleBtnContainer.style.display = 'none';
 
             const data = new URLSearchParams();
@@ -85,29 +90,25 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .then(response => response.json())
             .then(result => {
-                // El spinner se sobrescribe automáticamente con la nueva respuesta
                 if (result.success) {
                     grid.innerHTML = result.data.html;
-                    initializeToggleVideos();
+                    initializeToggleVideos(); // Re-inicializamos el botón con el nuevo contenido
                 } else {
                     grid.innerHTML = `<p class="text-center col-span-full">${result.data || 'Ocurrió un error.'}</p>`;
                 }
             })
             .catch(error => {
-                // O se sobrescribe con un mensaje de error
                 grid.innerHTML = `<p class="text-center col-span-full">Error de conexión.</p>`;
                 console.error('Error:', error);
             });
-            // El bloque .finally() ya no es necesario con este método
         });
     }
 
-
-    // --- LÓGICA DEL BOTÓN "VER MÁS" (Sin cambios) ---
+    // --- LÓGICA DEL BOTÓN "VER MÁS" (CORREGIDA) ---
     function initializeToggleVideos() {
         const toggleBtn = document.getElementById('toggle-videos-btn');
 
-        if (!toggleBtn) {
+        if (!toggleBtn || !grid || !toggleBtnContainer) {
             if (toggleBtnContainer) toggleBtnContainer.style.display = 'none';
             return;
         }
@@ -116,19 +117,19 @@ document.addEventListener('DOMContentLoaded', function () {
         let areVideosVisible = false;
 
         if (hiddenItems.length === 0) {
-            toggleBtn.parentElement.style.display = 'none';
+            toggleBtnContainer.style.display = 'none';
         } else {
-            toggleBtn.parentElement.style.display = 'block';
+            toggleBtnContainer.style.display = 'block';
+            toggleBtn.textContent = 'Ver más';
+            toggleBtn.classList.remove('bg-gray-600', 'hover:bg-gray-700');
+            toggleBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
         }
 
-        toggleBtn.textContent = 'Ver más';
-        toggleBtn.classList.remove('bg-gray-600', 'hover:bg-gray-700');
-        toggleBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+        // CORRECCIÓN: Usamos AbortController para evitar múltiples listeners
+        verMasController.abort(); // Cancelamos el listener anterior
+        verMasController = new AbortController(); // Creamos un nuevo controlador
 
-        const newBtn = toggleBtn.cloneNode(true);
-        toggleBtn.parentNode.replaceChild(newBtn, toggleBtn);
-
-        newBtn.addEventListener('click', function () {
+        toggleBtn.addEventListener('click', function () {
             hiddenItems.forEach(item => {
                 item.classList.toggle('hidden');
             });
@@ -143,8 +144,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.classList.remove('bg-gray-600', 'hover:bg-gray-700');
                 this.classList.add('bg-blue-600', 'hover:bg-blue-700');
             }
-        });
+        }, { signal: verMasController.signal }); // Adjuntamos la "señal" al nuevo listener
     }
     
+    // Llamada inicial al cargar la página
     initializeToggleVideos();
 });

@@ -11,25 +11,26 @@
                 <h1 class="text-2xl font-bold text-center text-blue-600 mb-2"><?php the_field('titulo_siembra_page', 'option'); ?></h1>
                 <p class="text-base text-gray-500 mb-8 text-center"><?php the_field('descripcion_siembra_page', 'option'); ?></p>
 
-                <?php
-                    // Revisa si el parámetro 'enviado' está en la URL
-                    if ( isset($_GET['enviado']) && $_GET['enviado'] == 'true' ) : 
-                ?>
-                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative text-center mb-6"
-                    role="alert">
-                    <strong class="font-bold">¡Siembra realizada!</strong>
-                    <span class="block sm:inline">Dios te bendiga y gracias por tu generosidad.</span>
-                </div>
-                <?php 
-                    endif; 
-                ?>
+                <?php // --- ZONA DE MENSAJES DE ESTADO --- ?>
+                <?php if (isset($_GET['enviado'])) : ?>
+                    <?php if ($_GET['enviado'] == 'true') : ?>
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative text-center mb-6" role="alert">
+                            <strong class="font-bold">¡Siembra registrada!</strong>
+                            <span class="block sm:inline">Dios te bendiga y gracias por tu generosidad.</span>
+                        </div>
+                    <?php else : // Si 'enviado' no es 'true', es un error. ?>
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative text-center mb-6" role="alert">
+                            <strong class="font-bold">¡Error!</strong>
+                            <span class="block sm:inline">La verificación falló. Por favor, intenta de nuevo.</span>
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>
 
                 <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" class="space-y-4">
 
                     <input type="hidden" name="action" value="procesar_formulario_siembra">
-
                     <?php wp_nonce_field('mi_form_siembra_nonce', 'mi_nonce'); ?>
-
+                    <input type="hidden" id="recaptcha_response" name="recaptcha_response">
                     <div>
                         <label for="tipo_siembra" class="block text-sm font-medium text-gray-700">Tipo de
                             siembra</label>
@@ -124,7 +125,17 @@
 
     </div>
 </div>
+<script src="https://www.google.com/recaptcha/api.js?render=6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc"></script>
 <script>
+    // Script de reCAPTCHA
+    grecaptcha.ready(function() {
+        // Usamos una acción específica para este formulario
+        grecaptcha.execute('6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc', { action: 'submit_siembra' }).then(function(token) {
+            document.getElementById('recaptcha_response').value = token;
+        });
+    });
+
+    // Script para mostrar/ocultar métodos de pago
     document.addEventListener('DOMContentLoaded', function() {
         const selectBanco = document.getElementById('selectBanco');
         const contenedores = {
@@ -133,16 +144,13 @@
             'Banco Panama': document.getElementById('contenedor-Banco Panama'),
             'Binance': document.getElementById('contenedor-Binance'),
         };
-
         selectBanco.addEventListener('change', function() {
             const valorSeleccionado = this.value;
-
-            // Oculta todos los contenedores
             for (const key in contenedores) {
-                contenedores[key].classList.add('hidden');
+                if (contenedores[key]) {
+                    contenedores[key].classList.add('hidden');
+                }
             }
-
-            // Muestra el contenedor seleccionado, si existe
             if (contenedores[valorSeleccionado]) {
                 contenedores[valorSeleccionado].classList.remove('hidden');
             }

@@ -11,23 +11,25 @@
                 <h1 class="text-2xl font-bold text-center text-blue-600 mb-2"><?php the_field('titulo_contactos_page', 'option'); ?></h1>
                 <p class="text-base text-gray-500 mb-8 text-center"><?php the_field('descripcion_contactos_page', 'option'); ?></p>
 
-                <?php
-                    // Revisa si el parámetro 'enviado' está en la URL
-                    if ( isset($_GET['enviado']) && $_GET['enviado'] == 'true' ) : 
-                ?>
-                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative text-center mb-6"
-                        role="alert">
-                        <strong class="font-bold">¡Mensaje Enviado!</strong>
-                        <span class="block sm:inline">Dios te bendiga y Gracias por contactarnos.</span>
-                    </div>
-                <?php 
-                    endif; 
-                ?>
+                <?php // --- ZONA DE MENSAJES DE ESTADO --- ?>
+                <?php if (isset($_GET['enviado'])) : ?>
+                    <?php if ($_GET['enviado'] == 'true') : ?>
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative text-center mb-6" role="alert">
+                            <strong class="font-bold">¡Mensaje Enviado!</strong>
+                            <span class="block sm:inline">Dios te bendiga y Gracias por contactarnos.</span>
+                        </div>
+                    <?php else : // Si 'enviado' no es 'true', es un error. ?>
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative text-center mb-6" role="alert">
+                            <strong class="font-bold">¡Error!</strong>
+                            <span class="block sm:inline">No se pudo enviar tu mensaje. Por favor, inténtalo de nuevo.</span>
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>
                 <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" class="space-y-4">
 
                     <input type="hidden" name="action" value="procesar_formulario_contacto">
-
                     <?php wp_nonce_field('mi_form_contacto_nonce', 'mi_nonce'); ?>
+                    <input type="hidden" id="recaptcha_response" name="recaptcha_response">
 
                     <div>
                         <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre Completo</label>
@@ -80,4 +82,17 @@
         </div>
 
     </div>
+    <!-- Scripts de reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc"></script>
+    <script>
+        grecaptcha.ready(function() {
+            // Es importante usar una acción diferente para cada formulario para que Google pueda darte scores más precisos.
+            grecaptcha.execute('6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc', {
+                action: 'contact'
+            }).then(function(token) {
+                var recaptchaResponse = document.getElementById('recaptcha_response');
+                recaptchaResponse.value = token;
+            });
+        });
+    </script>
 </div>

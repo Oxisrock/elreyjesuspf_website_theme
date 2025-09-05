@@ -37,32 +37,79 @@ function procesar_formulario_siembra()
     if ('POST' !== $_SERVER['REQUEST_METHOD']) {
         return;
     }
+    // ======================================================
+    // VERIFICACIÓN DE GOOGLE RECAPTCHA V3
+    // ======================================================
+    $recaptcha_secret_key = '6LePAbwrAAAAAGT4G4s6FngmaTEK3O0UdPqGfOfT'; // Tu Clave Secreta
+    $recaptcha_token = isset($_POST['recaptcha_response']) ? $_POST['recaptcha_response'] : '';
+    $siembra_page_url = wp_get_referer(); // Obtenemos la URL del formulario.
 
+    // Si reCAPTCHA falla (token vacío o score bajo), redirigimos con un error.
+    if (empty($recaptcha_token)) {
+        wp_safe_redirect(add_query_arg('enviado', 'recaptcha_fail', $siembra_page_url));
+        exit;
+    }
+
+    $url = 'https://www.google.com/recaptcha/api/siteverify';
+    $data = ['secret' => $recaptcha_secret_key, 'response' => $recaptcha_token];
+    $options = ['http' => ['header' => "Content-type: application/x-www-form-urlencoded\r\n", 'method' => 'POST', 'content' => http_build_query($data)]];
+    $context = stream_context_create($options);
+    $response_json = file_get_contents($url, false, $context);
+    $response_data = json_decode($response_json);
+
+    // ⚠️ INICIO DE LA MODIFICACIÓN PARA DESARROLLO LOCAL ⚠️
+
+    // Primero, verificamos si la comunicación con Google fue exitosa en general.
+    if (!$response_data || !$response_data->success) {
+        // Si la comunicación falla, redirigimos con un error.
+        wp_safe_redirect(add_query_arg('enviado', 'recaptcha_fail', $siembra_page_url));
+        exit;
+    }
+
+    // Ahora, definimos si estamos en un entorno local.
+    $is_local_environment = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']);
+
+    // La validación del SCORE solo se aplica si NO estamos en el entorno local.
+    if (!$is_local_environment && $response_data->score < 0.5) {
+        // Si un usuario real (no local) tiene un score bajo, lo redirigimos con error.
+        wp_safe_redirect(add_query_arg('enviado', 'recaptcha_fail', $siembra_page_url));
+        exit;
+    }
+
+    // Si el código llega aquí, el reCAPTCHA es válido.
+
+    // ⚠️ FIN DE LA MODIFICACIÓN ⚠️
+
+    // SI LLEGAMOS AQUÍ, EL RECAPTCHA ES VÁLIDO. CONTINUAMOS CON EL RESTO DE TU CÓDIGO.
     global $wpdb;
     $tabla_siembras = $wpdb->prefix . 'siembras';
 
     // Obtener y sanitizar los datos del formulario
+    $tipo_siembra = sanitize_text_field($_POST['tipo_siembra']); // Añadido para guardar este campo
     $metodo_de_pago = sanitize_text_field($_POST['metodo_de_pago']);
     $monto = floatval($_POST['monto']);
     $nombre = sanitize_text_field($_POST['nombre']);
+    $telefono = sanitize_text_field($_POST['telefono']); // Añadido para guardar este campo
     $email = sanitize_email($_POST['email']);
     $dia_pago = current_time('mysql');
 
-    // Insertar los datos en la tabla
+    // Insertar los datos en la tabla (AÑADÍ LOS CAMPOS NUEVOS)
     $wpdb->insert(
         $tabla_siembras,
         array(
-            'dia_pago' => $dia_pago,
+            'dia_pago'       => $dia_pago,
+            'tipo_siembra'   => $tipo_siembra,
             'metodo_de_pago' => $metodo_de_pago,
-            'monto' => $monto,
+            'monto'          => $monto,
             'nombre_completo' => $nombre,
-            'correo' => $email,
+            'telefono'       => $telefono,
+            'correo'         => $email,
         ),
-        array('%s', '%s', '%f', '%s', '%s')
+        array('%s', '%s', '%s', '%f', '%s', '%s', '%s',)
     );
 
     // Redirigir al usuario con un mensaje de éxito
-    $redirect_url = add_query_arg('enviado', 'true', wp_get_referer());
+    $redirect_url = add_query_arg('enviado', 'true', $siembra_page_url);
     wp_redirect($redirect_url);
     exit;
 }
@@ -132,7 +179,7 @@ function mi_datatable_enqueue_scripts($hook)
     /*if ($hook != 'settings_page_mi-datatable') {
         return;
     }*/
-    
+
     // Estilos
     wp_enqueue_style('datatables-css', 'https://cdn.datatables.net/v/dt/dt-2.0.8/b-3.0.2/b-html5-3.0.2/datatables.min.css');
 

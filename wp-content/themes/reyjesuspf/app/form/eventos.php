@@ -141,8 +141,45 @@ function handle_event_registration()
 {
     global $wpdb;
     check_ajax_referer('event_registration_nonce', 'nonce');
-    if (empty($_POST['nombre'])) {
-        wp_send_json_error(['message' => 'Por favor, introduce tu Nombre Completo.']);
+    $recaptcha_secret_key = '6LePAbwrAAAAAGT4G4s6FngmaTEK3O0UdPqGfOfT'; // ¡IMPORTANTE: Reemplaza esto!
+    $recaptcha_token = sanitize_text_field($_POST['recaptcha_response']);
+
+    $verification_response = wp_remote_post('https://www.google.com/recaptcha/api/siteverify', [
+        'body' => [
+            'secret'   => $recaptcha_secret_key,
+            'response' => $recaptcha_token,
+            'remoteip' => $_SERVER['REMOTE_ADDR']
+        ]
+    ]);
+
+    if (is_wp_error($verification_response)) {
+        wp_send_json_error(['message' => 'No se pudo conectar con el servicio de verificación.']);
+        return;
+    }
+
+    $response_data = json_decode(wp_remote_retrieve_body($verification_response));
+
+    // ⚠️ INICIO DE LA MODIFICACIÓN PARA DESARROLLO LOCAL ⚠️
+
+    // Primero, verificamos si la comunicación con Google fue exitosa en general.
+    if (!$response_data || !$response_data->success) {
+        // Esto es un error grave (ej. clave secreta incorrecta) y debe detener todo siempre.
+        wp_send_json_error(['message' => 'Error de comunicación con el servicio reCAPTCHA.']);
+        return;
+    }
+
+    // Ahora, definimos si estamos en un entorno local.
+    // '127.0.0.1' (para IPv4) y '::1' (para IPv6) son las IPs de localhost.
+    $is_local_environment = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']);
+
+    // La validación del SCORE solo se aplica si NO estamos en el entorno local.
+    if (!$is_local_environment && $response_data->score < 0.5) {
+        // Si un usuario real (no local) tiene un score bajo, lo bloqueamos.
+        wp_send_json_error(['message' => 'Falló la verificación de humanidad. Intenta de nuevo.']);
+        return;
+    }
+    if (empty($_POST['recaptcha_response'])) {
+        wp_send_json_error(['message' => 'El token de verificación no se recibió.']);
         return;
     }
     // NUEVA VALIDACIÓN: Cédula

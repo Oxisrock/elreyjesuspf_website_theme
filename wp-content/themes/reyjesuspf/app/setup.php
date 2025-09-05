@@ -136,3 +136,4 @@ require_once get_template_directory() . '/app/form/registros.php';
 require_once get_template_directory() . '/app/ajax.php';
 require_once get_template_directory() . '/app/form/siembra.php';
 require_once get_template_directory() . '/app/form/Boletines.php';
+require_once get_template_directory() . '/app/form/iniciarsesion.php';

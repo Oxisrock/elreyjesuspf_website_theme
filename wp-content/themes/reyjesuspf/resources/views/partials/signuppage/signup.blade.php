@@ -53,6 +53,7 @@
                     </div>
 
                     <form id="registrationForm" method="POST" class="space-y-2"> {{-- Reduje el space-y para que los errores se vean más cerca --}}
+                        <input type="hidden" name="recaptcha_response" id="recaptcha_response">
                         <input type="hidden" name="action" value="ajax_custom_register">
                         @php wp_nonce_field('custom_register_nonce', 'security_nonce'); @endphp
 
@@ -121,36 +122,50 @@
             style="background-image: url('<?php the_field('imagen_de_registrarme', 'option'); ?>');">
             <div class="absolute inset-0 w-full h-full overflow-hidden">
                 <div class="absolute h-3/5 w-[150%] bg-cyan-600/20 transform -skew-y-12 top-[-10%] left-[-25%]"></div>
-                <div class="absolute h-3/5 w-[150%] bg-cyan-600/20 transform -skew-y-12 bottom-[-10%] left-[-25%]"></div>
+                <div class="absolute h-3/5 w-[150%] bg-cyan-600/20 transform -skew-y-12 bottom-[-10%] left-[-25%]">
+                </div>
             </div>
         </div>
     </div>
 </div>
+</div>
+<script src="https://www.google.com/recaptcha/api.js?render=6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('registrationForm');
-        const formContainer = document.getElementById('formContainer');
-        const spinner = document.getElementById('loadingSpinner');
-        const successMessage = document.getElementById('successMessage');
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('registrationForm');
+    const formContainer = document.getElementById('formContainer');
+    const spinner = document.getElementById('loadingSpinner');
+    const successMessage = document.getElementById('successMessage');
+    const ajaxErrorsDiv = document.getElementById('ajaxErrors'); // Contenedor para errores generales como reCAPTCHA
+    const errorState = document.getElementById('registrationErrorState');
+    const errorStateMessage = document.getElementById('errorStateMessage');
+    const tryAgainBtn = document.getElementById('tryAgainBtn');
+    const errorDivs = form.querySelectorAll('[id$="-error"]');
 
-        // Nuevos elementos para la pantalla de error
-        const errorState = document.getElementById('registrationErrorState');
-        const errorStateMessage = document.getElementById('errorStateMessage');
-        const tryAgainBtn = document.getElementById('tryAgainBtn');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Limpiar errores previos
+        errorDivs.forEach(div => div.textContent = '');
+        ajaxErrorsDiv.classList.add('hidden');
+        ajaxErrorsDiv.textContent = ''; // Limpiar mensaje
+        
+        formContainer.classList.add('hidden');
+        errorState.classList.add('hidden');
+        spinner.classList.remove('hidden');
 
-        const errorDivs = form.querySelectorAll('[id$="-error"]');
+        // ¡CAMBIO CLAVE! Usamos grecaptcha.execute para obtener un token
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc', { action: 'register' }).then(function(token) {
+                
+                // Una vez que tenemos el token, lo añadimos al formulario
+                const formData = new FormData(form);
+                formData.append('recaptcha_response', token); // Añadimos el token a los datos que se envían
+                
+                const ajaxUrl = '{{ admin_url('admin-ajax.php') }}';
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            errorDivs.forEach(div => div.textContent = '');
-            formContainer.classList.add('hidden');
-            errorState.classList.add('hidden'); // Ocultar pantalla de error si estaba visible
-            spinner.classList.remove('hidden');
-
-            const formData = new FormData(form);
-            const ajaxUrl = '{{ admin_url('admin-ajax.php') }}';
-
-            fetch(ajaxUrl, {
+                // Ahora sí, hacemos la petición fetch con el token incluido
+                fetch(ajaxUrl, {
                     method: 'POST',
                     body: formData,
                 })
@@ -161,17 +176,20 @@
                     if (data.success) {
                         successMessage.classList.remove('hidden');
                     } else {
-                        // ---- INICIO DE LA NUEVA LÓGICA DE ERRORES ----
-
-                        // Verificamos si es nuestro error especial de email duplicado
-                        if (data.data && data.data.error_type === 'duplicate_email') {
-                            // Es el error de email duplicado: mostramos la pantalla completa
-                            errorStateMessage.innerHTML = data.data
-                                .message; // Usamos innerHTML por los enlaces <a>
+                        // Manejo de errores mejorado
+                        if (data.data.error_type === 'duplicate_email') {
+                            errorStateMessage.innerHTML = data.data.message;
                             errorState.classList.remove('hidden');
                         } else {
-                            // Es un error de validación normal: mostramos errores en las casillas
+                            // Errores de validación de campos O de reCAPTCHA
                             if (data.data.errors) {
+                                // Si el error es de reCAPTCHA, mostrarlo en el div general
+                                if (data.data.errors.recaptcha) {
+                                    ajaxErrorsDiv.textContent = data.data.errors.recaptcha;
+                                    ajaxErrorsDiv.classList.remove('hidden');
+                                }
+                                
+                                // Mostrar errores de campos específicos
                                 for (const fieldName in data.data.errors) {
                                     const errorDiv = document.getElementById(fieldName + '-error');
                                     if (errorDiv) {
@@ -179,26 +197,27 @@
                                     }
                                 }
                             }
-                            formContainer.classList.remove(
-                                'hidden'); // Mostramos el formulario de nuevo
+                            formContainer.classList.remove('hidden'); // Mostrar el formulario de nuevo
                         }
-                        // ---- FIN DE LA NUEVA LÓGICA DE ERRORES ----
                     }
                 })
                 .catch(error => {
                     spinner.classList.add('hidden');
-                    const generalErrorDiv = document.getElementById('full_name-error');
-                    if (generalErrorDiv) generalErrorDiv.textContent =
-                        'Error de conexión. Intenta de nuevo.';
+                    ajaxErrorsDiv.textContent = 'Error de conexión. Por favor, intenta de nuevo.';
+                    ajaxErrorsDiv.classList.remove('hidden');
                     formContainer.classList.remove('hidden');
                     console.error('Error:', error);
                 });
-        });
-
-        // Evento para el botón "VOLVER A INTENTAR"
-        tryAgainBtn.addEventListener('click', function() {
-            errorState.classList.add('hidden'); // Ocultar la pantalla de error
-            formContainer.classList.remove('hidden'); // Mostrar el formulario
+            });
         });
     });
+
+    // Tu evento para el botón "VOLVER A INTENTAR" no necesita cambios
+    if(tryAgainBtn) {
+        tryAgainBtn.addEventListener('click', function() {
+            errorState.classList.add('hidden');
+            formContainer.classList.remove('hidden');
+        });
+    }
+});
 </script>

@@ -70,6 +70,7 @@
 
                     <!-- 1. Envolvemos todo en una etiqueta <form> -->
                     <form id="event-registration-form" class="space-y-2">
+                        <input type="hidden" name="recaptcha_response" id="recaptcha_response_event">
                         <div class="w-full items-center space-y-2 md:space-y-2">
 
                             <!-- 2. Añadimos un campo oculto para el ID del evento -->
@@ -168,30 +169,42 @@
     </div>
 
 </div>
-
+<script src="https://www.google.com/recaptcha/api.js?render=6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc"></script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // 1. Seleccionamos los elementos necesarios
-        const selectIglesia = document.getElementById('iglesia');
-        const campoRed = document.getElementById('campo-red');
+document.addEventListener('DOMContentLoaded', function() {
+
+    // --- LÓGICA PARA LOS SELECTORES DE IGLESIA Y RED ---
+    const selectIglesia = document.getElementById('iglesia');
+    const campoRed = document.getElementById('campo-red');
 
         // 2. Creamos la función que controla la visibilidad
+
         function toggleRedSelector() {
+
             // Comprobamos el VALOR del select, no si está "checked"
+
             if (selectIglesia.value === 'ERJPF') {
+
                 // Si es ERJPF, le quitamos la clase 'hidden' para mostrarlo
+
                 campoRed.classList.remove('hidden');
+
             } else {
+
                 // Para cualquier otro valor, le añadimos la clase 'hidden' para ocultarlo
+
                 campoRed.classList.add('hidden');
             }
         }
 
         // 3. Añadimos el "escuchador" al primer select
+
         selectIglesia.addEventListener('change', toggleRedSelector);
 
         // 4. Ejecutamos la función una vez al cargar la página para asegurar el estado inicial
+
         toggleRedSelector();
+
     });
 </script>
