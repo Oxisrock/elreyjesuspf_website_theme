@@ -51,10 +51,6 @@
 
                 <?php
                     while ($multimedia_query->have_posts()) : $multimedia_query->the_post();
-                        $counter++;
-
-                        // Determina si el item debe estar oculto inicialmente
-                        $hidden_class = ($counter > 3) ? 'hidden' : '';
 
                         // Obtiene la URL del video desde el campo ACF (cambia 'video_url' por el nombre de tu campo)
                        // --- LÓGICA ACTUALIZADA PARA CAMPO IFRAME DE ACF ---
@@ -78,7 +74,7 @@
                             $thumbnail_url = get_template_directory_uri() . '/assets/images/default-thumbnail.jpg'; // Ajusta esta ruta
                         }
                     ?>
-                <div class="event-item <?php echo $hidden_class; ?>">
+                <div class="event-item">
                     <div class="relative group cursor-pointer" data-video-src="<?php echo $video_url; ?>">
                         <div class="aspect-video w-full bg-gray-200 rounded-lg overflow-hidden">
                             <img src="<?php echo $thumbnail_url; ?>" alt="<?php the_title_attribute(); ?>" class="w-full h-full object-cover">
@@ -100,7 +96,7 @@
                 <?php endwhile; ?>
             </div>
 
-            <div class="text-center mt-12">
+            <div id="ver-mas-container" class="text-center mt-12">
                 <button id="toggle-videos-btn"
                     class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition-colors">
                     Ver más

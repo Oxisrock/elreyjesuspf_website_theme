@@ -1,15 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
     // --- SELECTORES ---
     const filtrosContainer = document.getElementById('filtros-multimedia');
-    const grid = document.getElementById('events-grid');
-    // MEJORA: Seleccionamos el contenedor del botón "Ver más" por su propio ID para más robustez.
-    // Asegúrate de que tu HTML tenga <div id="ver-mas-container">...</div>
-    const toggleBtnContainer = document.getElementById('ver-mas-container');
+    const grid = document.getElementById('events-grid'); 
+    // Gracias al Paso 1, este selector ahora es 100% fiable.
+    const toggleBtnContainer = document.getElementById('ver-mas-container'); 
 
-    // CORRECCIÓN: Variable para controlar el listener del botón "Ver Más"
+    // Controlador para evitar múltiples listeners en el botón "Ver más"
     let verMasController = new AbortController();
 
-    // --- LÓGICA DEL MODAL (Sin cambios, ya estaba bien) ---
+    // --- LÓGICA DEL MODAL (Sin cambios) ---
     const modal = document.getElementById('video-modal');
     const iframe = document.getElementById('video-iframe');
     const closeModalBtn = document.getElementById('close-modal-btn');
@@ -40,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     if (grid) {
         grid.addEventListener('click', (e) => {
-            const videoItem = e.target.closest('.group');
+            const videoItem = e.target.closest('.group[data-video-src]');
             if (videoItem) {
                 const videoSrc = videoItem.dataset.videoSrc;
                 if (videoSrc && modal && iframe) {
@@ -53,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     
-    // --- LÓGICA DE FILTRADO AJAX (Lógica del Spinner mejorada) ---
+    // --- LÓGICA DE FILTRADO AJAX (Sin cambios) ---
     if (filtrosContainer && grid) {
         const spinnerHTML = `
             <div class="flex justify-center items-center h-64 col-span-full">
@@ -66,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const filtroActivo = e.target.closest('.filtro-categoria');
             if (!filtroActivo) return;
 
-            // Actualizar estilo del filtro activo
             filtrosContainer.querySelectorAll('.filtro-categoria').forEach(link => {
                 link.classList.remove('border-blue-600', 'text-blue-600', 'font-semibold');
                 link.classList.add('border-transparent', 'text-gray-500');
@@ -92,7 +90,8 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(result => {
                 if (result.success) {
                     grid.innerHTML = result.data.html;
-                    initializeToggleVideos(); // Re-inicializamos el botón con el nuevo contenido
+                    // Volvemos a inicializar la lógica del botón con el nuevo contenido
+                    initializeToggleVideos(); 
                 } else {
                     grid.innerHTML = `<p class="text-center col-span-full">${result.data || 'Ocurrió un error.'}</p>`;
                 }
@@ -108,45 +107,58 @@ document.addEventListener('DOMContentLoaded', function () {
     function initializeToggleVideos() {
         const toggleBtn = document.getElementById('toggle-videos-btn');
 
+        // Usamos los selectores globales, más robusto
         if (!toggleBtn || !grid || !toggleBtnContainer) {
             if (toggleBtnContainer) toggleBtnContainer.style.display = 'none';
             return;
         }
 
-        const hiddenItems = grid.querySelectorAll('.event-item.hidden');
-        let areVideosVisible = false;
+        const allItems = Array.from(grid.querySelectorAll('.event-item'));
+        
+        // --- CAMBIO CLAVE ---
+        // Aquí definimos que el límite de videos visibles por defecto es 3.
+        const VISIBLE_ITEMS_DEFAULT = 3;
+        
+        let isExpanded = false; // Estado inicial: no expandido (se muestran 3)
 
-        if (hiddenItems.length === 0) {
-            toggleBtnContainer.style.display = 'none';
-        } else {
-            toggleBtnContainer.style.display = 'block';
-            toggleBtn.textContent = 'Ver más';
-            toggleBtn.classList.remove('bg-gray-600', 'hover:bg-gray-700');
-            toggleBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+        function updateVisibility() {
+            allItems.forEach((item, index) => {
+                // Si NO está expandido Y el item está más allá del límite (índice 3, 4, 5...), lo ocultamos.
+                // Si SÍ está expandido, esta condición siempre es falsa, por lo que se muestran todos.
+                item.classList.toggle('hidden', !isExpanded && index >= VISIBLE_ITEMS_DEFAULT);
+            });
+            
+            toggleBtn.textContent = isExpanded ? 'Mostrar menos' : 'Ver más';
+            toggleBtn.classList.toggle('bg-gray-600', isExpanded);
+            toggleBtn.classList.toggle('hover:bg-gray-700', isExpanded);
+            toggleBtn.classList.toggle('bg-blue-600', !isExpanded);
+            toggleBtn.classList.toggle('hover:bg-blue-700', !isExpanded);
         }
 
-        // CORRECCIÓN: Usamos AbortController para evitar múltiples listeners
-        verMasController.abort(); // Cancelamos el listener anterior
-        verMasController = new AbortController(); // Creamos un nuevo controlador
+        // --- LÓGICA PARA OCULTAR EL BOTÓN ---
+        // Si la cantidad total de videos es 3 o menos, ocultamos el botón y terminamos.
+        // Esto funciona tanto en la carga inicial como después de filtrar.
+        if (allItems.length <= VISIBLE_ITEMS_DEFAULT) {
+            toggleBtnContainer.style.display = 'none';
+            return;
+        } 
+        
+        // Si llegamos aquí, significa que hay más de 3 videos, así que mostramos el botón.
+        toggleBtnContainer.style.display = 'block';
+        
+        // Evita que se añadan múltiples listeners al botón después de filtrar.
+        verMasController.abort();
+        verMasController = new AbortController();
 
-        toggleBtn.addEventListener('click', function () {
-            hiddenItems.forEach(item => {
-                item.classList.toggle('hidden');
-            });
+        toggleBtn.addEventListener('click', () => {
+            isExpanded = !isExpanded; // Invierte el estado
+            updateVisibility();
+        }, { signal: verMasController.signal });
 
-            areVideosVisible = !areVideosVisible;
-            if (areVideosVisible) {
-                this.textContent = 'Mostrar menos';
-                this.classList.remove('bg-blue-600', 'hover:bg-blue-700');
-                this.classList.add('bg-gray-600', 'hover:bg-gray-700');
-            } else {
-                this.textContent = 'Ver más';
-                this.classList.remove('bg-gray-600', 'hover:bg-gray-700');
-                this.classList.add('bg-blue-600', 'hover:bg-blue-700');
-            }
-        }, { signal: verMasController.signal }); // Adjuntamos la "señal" al nuevo listener
+        // Llamada inicial para establecer el estado correcto al cargar (ocultar del 4 en adelante).
+        updateVisibility();
     }
-    
-    // Llamada inicial al cargar la página
+
+    // Llamada inicial al cargar la página por primera vez.
     initializeToggleVideos();
 });
