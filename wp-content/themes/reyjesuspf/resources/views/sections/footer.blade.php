@@ -4,25 +4,19 @@
     <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
         <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-16">
             <div class="space-y-6 pr-8">
-                <h3 class="text-2xl font-bold tracking-tight text-white">
+                <div class="flex items-center gap-3">
+
+                    <img src="<?php the_field('logoblanco', 'option'); ?>" alt="Logo" class="w-16">
+                    <p class="px-4 text-base font-medium leading-6 text-slate-200">
+                        El Rey Jesús Punto Fijo
+                    </p>
+
+                </div>
+                <p class="text-base leading-6 text-slate-300">
                     <?php the_field('titulo_del_footer', 'option'); ?>
-                </h3>
+                </p>
                 <p class="text-base leading-6 text-slate-300">
                     <?php the_field('descripcion_del_footer', 'option'); ?>
-                </p>
-                <form class="flex w-full max-w-md gap-x-4">
-                    <label for="email-address" class="sr-only">Correo electrónico</label>
-                    <input id="email-address" name="email" type="email" autocomplete="email" required
-                        class="min-w-0 flex-auto rounded-md border-0 bg-white/10 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
-                        placeholder="Ingresa tu correo">
-                    <button type="submit"
-                        class="flex-none rounded-full bg-blue-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500">
-                        Suscribirme
-                    </button>
-                </form>
-                <p class="text-xs text-slate-400">
-                    Al suscribirte automáticamente estas aceptando los <a href="#"
-                        class="underline hover:text-white">términos y condiciones</a>.
                 </p>
             </div>
 
@@ -67,21 +61,22 @@ endif;
                     <ul role="list" class="mt-6 space-y-4">
                         <li>
                             <a href="/siembra" class="text-sm leading-6 text-slate-300 hover:text-white">
-                            <span
+                                <span
                                     class="text-sm leading-6 text-slate-300 group-hover:text-white transition-colors">Sembrar</span>
                             </a>
                         </li>
                         <li>
                             <a href="/contacto" class="text-sm leading-6 text-slate-300 hover:text-white">
-                            <span
+                                <span
                                     class="text-sm leading-6 text-slate-300 group-hover:text-white transition-colors">Contacto</span>
                             </a>
                         </li>
                         <?php if (!is_user_logged_in()) : ?>
                         <li>
                             <a href="/login" class="text-sm leading-6 text-slate-300 hover:text-white">
-                            <span
-                                    class="text-sm leading-6 text-slate-300 group-hover:text-white transition-colors">Iniciar sesión</span>
+                                <span
+                                    class="text-sm leading-6 text-slate-300 group-hover:text-white transition-colors">Iniciar
+                                    sesión</span>
                             </a>
                         </li>
                         <?php endif; ?>
