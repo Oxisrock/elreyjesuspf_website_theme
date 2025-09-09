@@ -54,6 +54,7 @@ class TailwindMobileNavWalker extends Walker_Nav_Menu
      */
     public function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
     {
+        // ... (código inicial de la función es igual) ...
         if (is_array($args)) {
             $args = (object) $args;
         }
@@ -65,25 +66,8 @@ class TailwindMobileNavWalker extends Walker_Nav_Menu
             $n = "\n";
         }
         $indent = ($depth) ? str_repeat($t, $depth) : '';
-
         $li_classes = ['menu-item', 'list-none'];
-        $value = '';
-
-        // Attempt to extract original classes and preserve them
-        $css_classes = empty($item->classes) ? [] : (array) $item->classes;
-        // Filter out 'current-menu-item' and 'current-menu-parent' if you want to style them differently or not at all via Walker
-        // $css_classes = array_filter($css_classes, function($class) {
-        //     return !in_array($class, ['current-menu-item', 'current-menu-parent', 'current_page_item']);
-        // });
-
-        // Add 'active' class for current menu item for potential custom styling not via Tailwind active selectors
-        if (in_array('current-menu-item', $item->classes) || in_array('current_page_item', $item->classes)) {
-            // $li_classes[] = 'active-mobile-item'; // Example: if you want a specific class
-        }
-
-
-        $output .= $indent . '<li' . $value . ($li_classes ? ' class="' . esc_attr(implode(' ', $li_classes)) . '"' : '') . '>';
-
+        $output .= $indent . '<li class="' . esc_attr(implode(' ', $li_classes)) . '">';
         $atts = [];
         $atts['title']  = ! empty($item->attr_title) ? $item->attr_title : '';
         $atts['target'] = ! empty($item->target)     ? $item->target     : '';
@@ -94,41 +78,46 @@ class TailwindMobileNavWalker extends Walker_Nav_Menu
         }
         $atts['href'] = ! empty($item->url) ? $item->url : '';
         $atts['aria-current'] = $item->current ? 'page' : '';
-
-        // Tailwind classes for the <a> tag in a mobile menu
-        // Adjust these classes to match your desired mobile menu item appearance
-        $link_classes = [
-            'block',
-            'px-3', // Horizontal padding
-            'py-2', // Vertical padding
-            'rounded-md', // Rounded corners
-            'text-base', // Base text size
-            'font-medium', // Medium font weight
-        ];
-
-        if ($depth > 0) { // Sub-menu item
-            $link_classes[] = 'pl-6'; // Indent sub-menu items more
-            $link_classes[] = 'text-gray-600'; // Slightly different color for sub-items
+        $link_classes = ['block', 'px-3', 'py-2', 'rounded-md', 'text-base', 'font-medium'];
+        if ($depth > 0) {
+            $link_classes[] = 'pl-6';
+            $link_classes[] = 'text-gray-600';
             $link_classes[] = 'hover:bg-gray-100';
             $link_classes[] = 'hover:text-indigo-500';
-        } else { // Top-level item
-            $link_classes[] = 'text-gray-700'; // Default text color
-            $link_classes[] = 'hover:bg-gray-50'; // Background on hover
-            $link_classes[] = 'hover:text-indigo-600'; // Text color on hover (matching your desktop log in)
+        } else {
+            $link_classes[] = 'text-gray-700';
+            $link_classes[] = 'hover:bg-gray-50';
+            $link_classes[] = 'hover:text-indigo-600';
         }
 
-        // Add active class styling directly if desired
-         if (in_array('current-menu-item', $item->classes) || in_array('current_page_item', $item->classes)) {
-            $link_classes[] = 'bg-indigo-50'; // Example active background
-            $link_classes[] = 'text-indigo-700'; // Example active text
-         }
+        // =================================== INICIO DE LA SOLUCIÓN FINAL ===================================
 
+        // Por defecto, usamos la comprobación de WordPress.
+        $is_active = in_array('current-menu-item', (array)$item->classes) || in_array('current_page_item', (array)$item->classes);
+
+        // LÓGICA DEFINITIVA para la página de inicio
+        if (is_front_page()) {
+            // Un elemento es el enlace "real" a la home si su URL es "/" o la URL completa,
+            // Y ADEMÁS, no contiene un ancla "#".
+            $is_true_home_link = ($item->url === '/' || $item->url === home_url('/'));
+            $is_anchor_link = strpos($item->url, '#') !== false;
+
+            // El elemento solo será activo si es el enlace a la home y no un ancla.
+            $is_active = ($is_true_home_link && !$is_anchor_link);
+        }
+
+        // Aplicamos las clases activas si la condición se cumple.
+        if ($is_active) {
+            $link_classes[] = 'bg-indigo-50';
+            $link_classes[] = 'text-indigo-700';
+        }
+
+        // =================================== FIN DE LA SOLUCIÓN FINAL ===================================
 
         $atts['class'] = implode(' ', array_unique($link_classes));
-
-
         $atts = apply_filters('nav_menu_link_attributes', $atts, $item, $args, $depth);
 
+        // ... (El resto de la función sigue igual) ...
         $attributes = '';
         foreach ($atts as $attr => $value) {
             if (is_scalar($value) && '' !== $value && false !== $value) {
@@ -136,16 +125,13 @@ class TailwindMobileNavWalker extends Walker_Nav_Menu
                 $attributes .= ' ' . $attr . '="' . $value . '"';
             }
         }
-
         $title = apply_filters('the_title', $item->title, $item->ID);
         $title = apply_filters('nav_menu_item_title', $title, $item, $args, $depth);
-
         $item_output  = $args->before;
         $item_output .= '<a' . $attributes . '>';
         $item_output .= $args->link_before . $title . $args->link_after;
         $item_output .= '</a>';
         $item_output .= $args->after;
-
         $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
     }
 

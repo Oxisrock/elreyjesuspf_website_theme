@@ -75,16 +75,10 @@ class TailwindNavWalker extends Walker_Nav_Menu
         }
         $indent = ($depth) ? str_repeat($t, $depth) : '';
 
-        $li_classes = ['menu-item', 'list-none']; // Clase base para el LI
+        $li_classes = ['menu-item', 'list-none'];
         if ($item->has_children) {
-            $li_classes[] = 'relative group'; // Para posicionar el submenú y para :hover group
+            $li_classes[] = 'relative group';
         }
-
-        // Clases para el LI actual (activo)
-        if (in_array('current-menu-item', (array) $item->classes) || in_array('current_page_item', (array) $item->classes)) {
-            // $li_classes[] = 'active-desktop-item'; // O aplicar directamente a la 'a'
-        }
-
 
         $output .= $indent . '<li class="' . esc_attr(implode(' ', $li_classes)) . '">';
 
@@ -96,40 +90,48 @@ class TailwindNavWalker extends Walker_Nav_Menu
         } else {
             $atts['rel'] = $item->xfn;
         }
-        $atts['href'] = ! empty($item->url) ? $item->url : '#'; // Usar # como fallback
+        $atts['href'] = ! empty($item->url) ? $item->url : '#';
         $atts['aria-current'] = $item->current ? 'page' : '';
 
-
-        // Clases base para todos los enlaces del menú
         $link_classes = [
-            'nav-link',       // Tu clase personalizada
-            'font-semibold',  // Peso de la fuente
-            'pb-1',           // Padding inferior
+            'nav-link',
+            'font-semibold',
+            'pb-1',
         ];
 
-        $active_classes = (array) $item->classes;
+        // =================================== INICIO DE LA CORRECCIÓN ===================================
 
-        // Condición para el elemento activo (página actual)
-        if (in_array('current-menu-item', $active_classes) || in_array('current_page_item', $active_classes)) {
-            $link_classes[] = 'text-blue-600 border-b-2 border-blue-600'; // Color del texto para el enlace activo
-            $link_classes[] = 'active';        // Tu clase 'active' para el borde inferior
-        } else {
-            // Clases para los demás enlaces
-            $link_classes[] = 'text-gray-700';        // Color del texto normal
-            $link_classes[] = 'hover:text-blue-600'; // Cambio de color al pasar el mouse
+        // Por defecto, usamos la comprobación de WordPress.
+        $is_active = in_array('current-menu-item', (array)$item->classes) || in_array('current_page_item', (array)$item->classes);
+
+        // LÓGICA DEFINITIVA para la página de inicio
+        if (is_front_page()) {
+            // Un elemento es el enlace "real" a la home si su URL es "/" o la URL completa,
+            // Y ADEMÁS, no contiene un ancla "#".
+            $is_true_home_link = ($item->url === '/' || $item->url === home_url('/'));
+            $is_anchor_link = strpos($item->url, '#') !== false;
+
+            // El elemento solo será activo si es el enlace a la home y no un ancla.
+            $is_active = ($is_true_home_link && !$is_anchor_link);
         }
-        // ===================================
+
+        // Aplicamos las clases según el estado final de $is_active.
+        if ($is_active) {
+            $link_classes[] = 'text-blue-600 border-b-2 border-blue-600';
+            $link_classes[] = 'active';
+        } else {
+            $link_classes[] = 'text-gray-700';
+            $link_classes[] = 'hover:text-blue-600';
+        }
 
 
+        // =================================== FIN DE LA CORRECCIÓN ===================================
 
         $atts['class'] = implode(' ', array_unique($link_classes));
 
-        // Para submenús desplegables con click/hover (si el <li> tiene 'group')
         if ($depth === 0 && $item->has_children) {
-            // $atts['@click.prevent'] = 'open = !open'; // Ejemplo para Alpine.js si el dropdown se controla así
-            // $atts['aria-haspopup'] = 'true';
+            // ...
         }
-
 
         $atts = apply_filters('nav_menu_link_attributes', $atts, $item, $args, $depth);
 
@@ -147,9 +149,8 @@ class TailwindNavWalker extends Walker_Nav_Menu
         $item_output  = $args->before;
         $item_output .= '<a' . $attributes . '>';
         $item_output .= $args->link_before . $title . $args->link_after;
-        // Flecha para items con submenú
         if ($depth === 0 && $item->has_children) {
-             $item_output .= ' <svg class="inline-block h-4 w-4 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.29a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>';
+            $item_output .= ' <svg class="inline-block h-4 w-4 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.29a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>';
         }
         $item_output .= '</a>';
         $item_output .= $args->after;
@@ -175,7 +176,7 @@ class TailwindNavWalker extends Walker_Nav_Menu
         $output .= "</li>{$n}";
     }
 
-     /**
+    /**
      * Ends the list of after the elements are added.
      *
      * @see Walker::end_lvl()
