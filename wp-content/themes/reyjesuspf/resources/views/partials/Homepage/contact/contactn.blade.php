@@ -1,5 +1,5 @@
-<div class="bg-white p-16 md py-10">
-    <div class="container mx-auto px-6 py-12 sm:px-8 md:py-16">
+<div class="bg-white p-4 md py-10 md:p-16">
+    <div class="container mx-auto py-12 sm:px-8 md:py-16">
         <div class="text-center mb-12 md:mb-16">
             <h2 class="text-3xl font-medium text-blue-600 sm:text-4xl mb-3">
                 <?php the_field('titulo_contactos', 'option'); ?>

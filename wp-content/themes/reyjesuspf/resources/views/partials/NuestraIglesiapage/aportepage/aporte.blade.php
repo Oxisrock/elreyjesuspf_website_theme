@@ -1,5 +1,5 @@
 <div class="bg-blue-50">
-    <section class="py-12 md:py-24">
+    <section class=" p-4 py-12 md:py-24">
         <div class="container mx-auto max-w-6xl px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
 
