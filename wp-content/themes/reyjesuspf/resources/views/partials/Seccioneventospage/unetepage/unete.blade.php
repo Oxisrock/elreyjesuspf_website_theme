@@ -1,5 +1,5 @@
 <div>
-    <section class="w-full bg-blue-50 py-16 sm:py-24">
+    <section class="w-full bg-blue-50 p-4 py-16 sm:py-24">
         <div class="container mx-auto px-4">
             <div class="flex flex-col items-center justify-center gap-4 md:flex-row md:gap-10">
                 <div class="text-center md:w-[40%] md:text-left">

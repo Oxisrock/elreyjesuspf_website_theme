@@ -1,7 +1,7 @@
-{{-- Corregí 'bg-white-500' a 'bg-gray-50' para un fondo suave, o puedes cambiarlo a 'bg-white' --}}
+
 <div class="bg-gray-50">
 
-    <div class="container mx-auto max-w-7xl p-12">
+    <div class="container mx-auto max-w-7xl p-4">
 
         <div class="text-center mb-10">
             <h2 class="text-4xl font-bold text-blue-600">Más Eventos</h2>
