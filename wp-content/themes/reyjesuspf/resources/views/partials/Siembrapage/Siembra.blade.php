@@ -11,19 +11,22 @@
                 <h1 class="text-2xl font-bold text-center text-blue-600 mb-2"><?php the_field('titulo_siembra_page', 'option'); ?></h1>
                 <p class="text-base text-gray-500 mb-8 text-center"><?php the_field('descripcion_siembra_page', 'option'); ?></p>
 
-                <?php // --- ZONA DE MENSAJES DE ESTADO --- ?>
+                <?php // --- ZONA DE MENSAJES DE ESTADO ---
+                ?>
                 <?php if (isset($_GET['enviado'])) : ?>
-                    <?php if ($_GET['enviado'] == 'true') : ?>
-                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative text-center mb-6" role="alert">
-                            <strong class="font-bold">¡Siembra registrada!</strong>
-                            <span class="block sm:inline">Dios te bendiga y gracias por tu generosidad.</span>
-                        </div>
-                    <?php else : // Si 'enviado' no es 'true', es un error. ?>
-                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative text-center mb-6" role="alert">
-                            <strong class="font-bold">¡Error!</strong>
-                            <span class="block sm:inline">La verificación falló. Por favor, intenta de nuevo.</span>
-                        </div>
-                    <?php endif; ?>
+                <?php if ($_GET['enviado'] == 'true') : ?>
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative text-center mb-6"
+                    role="alert">
+                    <strong class="font-bold">¡Siembra registrada!</strong>
+                    <span class="block sm:inline">Dios te bendiga y gracias por tu generosidad.</span>
+                </div>
+                <?php else : // Si 'enviado' no es 'true', es un error. ?>
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative text-center mb-6"
+                    role="alert">
+                    <strong class="font-bold">¡Error!</strong>
+                    <span class="block sm:inline">La verificación falló. Por favor, intenta de nuevo.</span>
+                </div>
+                <?php endif; ?>
                 <?php endif; ?>
 
                 <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" class="space-y-4">
@@ -49,37 +52,34 @@
                             class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
                             <option value="" disabled selected>Selecciona un tipo...</option>
                             <option value="Zelle">Zelle</option>
-                            <option value="BNC">Transferencia o Pago Movil</option>
-                            <option value="Banco Panama">Banco Panama</option>
-                            <option value="Binance">Binance</option>
+                            <option value="BNC">Transferencia Bancaria o Pago Movil</option>
                         </select>
                     </div>
 
                     <div id="contenedor-Zelle" class="hidden mt-4 p-4 border border-gray-300 rounded-lg bg-gray-50">
                         <h3 class="text-lg font-bold">Datos de Pago Zelle</h3>
-                        <p>Correo: correo_zelle@ejemplo.com</p>
-                        <p>Nombre: Nombre de Titular</p>
+                        <p>Correo: nhradriver@yahoo.com</p>
+                        <p>Nombre: Luis Bracho</p>
                     </div>
 
                     <div id="contenedor-BNC" class="hidden mt-4 p-4 border border-gray-300 rounded-lg bg-gray-50">
-                        <h3 class="text-lg font-bold">Datos de Pago BNC</h3>
-                        <p>C.I: 12.345.678</p>
-                        <p>Cuenta: 0101-1234-5678-9012</p>
-                        <p>Nombre: Nombre de Titular BNC</p>
+                        <h3 class="text-lg font-bold">Datos Bancarios</h3>
+                        <p>Asociación civil Iglesia El Rey Jesús Punto Fijo</p>
+                        <div class="my-3">
+                            <p>Pago movil</p>
+                            <p>Banco Nacional de Crédito</p>
+                            <p>RIF: J-40389600-3</p>
+                            <p>Tel: 0412-427-6773</p>
+                        </div>
+                        <hr class="my-3">
+                        <div class="my-3">
+                            <p>Transferencia</p>
+                            <p>RIF: J-40389600-3</p>
+                            <p>Cuenta: 0191-0263-77-2100071126</p>
+                            <p>Tipo de Cuenta: Corriente</p>
+                        </div>
                     </div>
-
-                    <div id="contenedor-Banco Panama"
-                        class="hidden mt-4 p-4 border border-gray-300 rounded-lg bg-gray-50">
-                        <h3 class="text-lg font-bold">Datos de Pago Banco Panamá</h3>
-                        <p>Cuenta: 9876-5432-1098</p>
-                        <p>Nombre: Nombre de Titular Panamá</p>
-                    </div>
-
-                    <div id="contenedor-Binance" class="hidden mt-4 p-4 border border-gray-300 rounded-lg bg-gray-50">
-                        <h3 class="text-lg font-bold">Datos de Pago Binance</h3>
-                        <p>ID de usuario: 123456789</p>
-                        <p>Alias: @usuario_binance</p>
-                    </div>
+                    
 
                     <div>
                         <label for="monto" class="block text-sm font-medium text-gray-700">Monto a sembrar</label>
@@ -130,7 +130,9 @@
     // Script de reCAPTCHA
     grecaptcha.ready(function() {
         // Usamos una acción específica para este formulario
-        grecaptcha.execute('6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc', { action: 'submit_siembra' }).then(function(token) {
+        grecaptcha.execute('6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc', {
+            action: 'submit_siembra'
+        }).then(function(token) {
             document.getElementById('recaptcha_response').value = token;
         });
     });
