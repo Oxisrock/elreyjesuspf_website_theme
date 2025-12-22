@@ -82,17 +82,5 @@
         </div>
 
     </div>
-    <!-- Scripts de reCAPTCHA -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc"></script>
-    <script>
-        grecaptcha.ready(function() {
-            // Es importante usar una acción diferente para cada formulario para que Google pueda darte scores más precisos.
-            grecaptcha.execute('6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc', {
-                action: 'contact'
-            }).then(function(token) {
-                var recaptchaResponse = document.getElementById('recaptcha_response');
-                recaptchaResponse.value = token;
-            });
-        });
-    </script>
+
 </div>

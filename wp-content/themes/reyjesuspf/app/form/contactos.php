@@ -41,41 +41,6 @@ function handle_contact_form_submission()
         wp_die('Error de seguridad. Inténtalo de nuevo.');
     }
 
-    // 2. VERIFICACIÓN DE GOOGLE RECAPTCHA V3
-    $recaptcha_secret_key = '6LePAbwrAAAAAGT4G4s6FngmaTEK3O0UdPqGfOfT';
-    $recaptcha_token = isset($_POST['recaptcha_response']) ? $_POST['recaptcha_response'] : '';
-
-    if (empty($recaptcha_token)) {
-        wp_safe_redirect(add_query_arg('enviado', 'recaptcha_fail', $contact_page_url));
-        exit;
-    }
-
-    // ... (El resto del código de la llamada a la API de reCAPTCHA va aquí, no lo borres)
-    $url = 'https://www.google.com/recaptcha/api/siteverify';
-    $data = ['secret' => $recaptcha_secret_key, 'response' => $recaptcha_token];
-    $options = ['http' => ['header' => "Content-type: application/x-www-form-urlencoded\r\n", 'method' => 'POST', 'content' => http_build_query($data)]];
-    $context = stream_context_create($options);
-    $response_json = file_get_contents($url, false, $context);
-    $response_data = json_decode($response_json);
-
-    // ⚠️ INICIO DE LA MODIFICACIÓN PARA DESARROLLO LOCAL ⚠️
-
-    // Primero, verificamos si la comunicación con Google fue exitosa en general.
-    if (!$response_data || !$response_data->success) {
-        // Si hay un error de comunicación, detenemos y redirigimos.
-        wp_safe_redirect(add_query_arg('enviado', 'recaptcha_fail', $contact_page_url));
-        exit;
-    }
-
-    // Ahora, definimos si estamos en un entorno local.
-    $is_local_environment = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']);
-
-    // La validación del SCORE solo se aplica si NO estamos en el entorno local.
-    if (!$is_local_environment && $response_data->score < 0.5) {
-        // Si un usuario real (no local) tiene un score bajo, lo redirigimos con error.
-        wp_safe_redirect(add_query_arg('enviado', 'recaptcha_fail', $contact_page_url));
-        exit;
-    }
 
     // Si el código llega aquí, el reCAPTCHA es válido (ya sea por buen score o por estar en local).
 

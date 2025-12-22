@@ -4,7 +4,6 @@
  */
 
 // -- LÓGICA PARA MOSTRAR ERRORES --
-// Leemos el código de error que nos llega por la URL y preparamos los mensajes.
 $email_error = '';
 $password_error = '';
 $email_input_class = 'border-gray-300 focus:ring-blue-500';
@@ -19,13 +18,11 @@ if (isset($_GET['login_error'])) {
         $password_error = 'La contraseña que has introducido no es correcta.';
     } elseif ($error_code === 'empty_fields') {
         $password_error = 'Por favor, completa ambos campos.';
-    } elseif (in_array($error_code, ['recaptcha_token', 'recaptcha_fail'])) {
-        $password_error = 'Error de verificación. Por favor, intenta de nuevo.';
     } else {
+        // Eliminamos la referencia a errores de recaptcha aquí para simplificar
         $password_error = 'Ha ocurrido un error. Por favor, inténtalo de nuevo.';
     }
     
-    // Asignamos clases de error a los campos si es necesario.
     if (!empty($email_error)) {
         $email_input_class = 'border-red-500 focus:ring-red-500';
     }
@@ -55,7 +52,6 @@ if (isset($_GET['login_error'])) {
                 
                 <form method="POST" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
                     <input type="hidden" name="action" value="custom_login">
-                    <input type="hidden" id="recaptcha_response" name="recaptcha_response">
 
                     <div class="mb-4">
                         <input type="email" id="email" name="email" placeholder="Correo electrónico" required class="w-full px-4 py-3 border rounded-full focus:outline-none focus:ring-2 transition duration-200 <?php echo $email_input_class; ?>">
@@ -81,14 +77,4 @@ if (isset($_GET['login_error'])) {
             </div>
         </div>
     </div>
-    
-    <script src="https://www.google.com/recaptcha/api.js?render=6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc"></script>
-    <script>
-        grecaptcha.ready(function() {
-            grecaptcha.execute('6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc', { action: 'login' }).then(function(token) {
-                var recaptchaResponse = document.getElementById('recaptcha_response');
-                recaptchaResponse.value = token;
-            });
-        });
-    </script>
 </div>

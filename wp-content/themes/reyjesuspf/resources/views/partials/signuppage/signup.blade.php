@@ -1,8 +1,3 @@
-@php
-    // Hacemos la variable de errores globalmente accesible en la plantilla
-    global $registration_errors;
-@endphp
-
 <div class="bg-gray-100">
     <div class="flex flex-col md:flex-row min-h-screen">
         {{-- Columna del Formulario --}}
@@ -30,17 +25,15 @@
                     <p class="mt-2 text-gray-600">Gracias por unirte.</p>
                 </div>
 
+                {{-- Mensaje de Error de cuenta duplicada --}}
                 <div id="registrationErrorState" class="hidden text-center py-16">
-                    {{-- Icono de X --}}
                     <svg class="mx-auto h-16 w-16 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                     <h2 class="mt-4 text-2xl font-bold text-gray-800">Parece que ya tienes una cuenta</h2>
-                    {{-- El mensaje con los enlaces se insertará aquí --}}
                     <p id="errorStateMessage" class="mt-2 text-gray-600"></p>
-
                 </div>
 
                 {{-- Contenedor del Formulario --}}
@@ -48,12 +41,11 @@
                     <h1 class="text-2xl font-bold text-center text-blue-600 mb-2"><?php the_field('titulo_de_registrarme', 'option'); ?></h1>
                     <p class="text-sm text-gray-500 mb-8 text-center"><?php the_field('descripcion_de_registrarme', 'option'); ?></p>
 
-                    {{-- Contenedor para errores de AJAX --}}
                     <div id="ajaxErrors" class="hidden mb-4 p-4 bg-red-100 text-red-700 border border-red-400 rounded">
                     </div>
 
-                    <form id="registrationForm" method="POST" class="space-y-2"> {{-- Reduje el space-y para que los errores se vean más cerca --}}
-                        <input type="hidden" name="recaptcha_response" id="recaptcha_response">
+                    <form id="registrationForm" method="POST" class="space-y-2">
+                        {{-- Eliminado el input de recaptcha_response --}}
                         <input type="hidden" name="action" value="ajax_custom_register">
                         @php wp_nonce_field('custom_register_nonce', 'security_nonce'); @endphp
 
@@ -128,96 +120,3 @@
         </div>
     </div>
 </div>
-</div>
-<script src="https://www.google.com/recaptcha/api.js?render=6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('registrationForm');
-    const formContainer = document.getElementById('formContainer');
-    const spinner = document.getElementById('loadingSpinner');
-    const successMessage = document.getElementById('successMessage');
-    const ajaxErrorsDiv = document.getElementById('ajaxErrors'); // Contenedor para errores generales como reCAPTCHA
-    const errorState = document.getElementById('registrationErrorState');
-    const errorStateMessage = document.getElementById('errorStateMessage');
-    const tryAgainBtn = document.getElementById('tryAgainBtn');
-    const errorDivs = form.querySelectorAll('[id$="-error"]');
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Limpiar errores previos
-        errorDivs.forEach(div => div.textContent = '');
-        ajaxErrorsDiv.classList.add('hidden');
-        ajaxErrorsDiv.textContent = ''; // Limpiar mensaje
-        
-        formContainer.classList.add('hidden');
-        errorState.classList.add('hidden');
-        spinner.classList.remove('hidden');
-
-        // ¡CAMBIO CLAVE! Usamos grecaptcha.execute para obtener un token
-        grecaptcha.ready(function() {
-            grecaptcha.execute('6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc', { action: 'register' }).then(function(token) {
-                
-                // Una vez que tenemos el token, lo añadimos al formulario
-                const formData = new FormData(form);
-                formData.append('recaptcha_response', token); // Añadimos el token a los datos que se envían
-                
-                const ajaxUrl = '{{ admin_url('admin-ajax.php') }}';
-
-                // Ahora sí, hacemos la petición fetch con el token incluido
-                fetch(ajaxUrl, {
-                    method: 'POST',
-                    body: formData,
-                })
-                .then(response => response.json())
-                .then(data => {
-                    spinner.classList.add('hidden');
-
-                    if (data.success) {
-                        successMessage.classList.remove('hidden');
-                    } else {
-                        // Manejo de errores mejorado
-                        if (data.data.error_type === 'duplicate_email') {
-                            errorStateMessage.innerHTML = data.data.message;
-                            errorState.classList.remove('hidden');
-                        } else {
-                            // Errores de validación de campos O de reCAPTCHA
-                            if (data.data.errors) {
-                                // Si el error es de reCAPTCHA, mostrarlo en el div general
-                                if (data.data.errors.recaptcha) {
-                                    ajaxErrorsDiv.textContent = data.data.errors.recaptcha;
-                                    ajaxErrorsDiv.classList.remove('hidden');
-                                }
-                                
-                                // Mostrar errores de campos específicos
-                                for (const fieldName in data.data.errors) {
-                                    const errorDiv = document.getElementById(fieldName + '-error');
-                                    if (errorDiv) {
-                                        errorDiv.innerHTML = data.data.errors[fieldName];
-                                    }
-                                }
-                            }
-                            formContainer.classList.remove('hidden'); // Mostrar el formulario de nuevo
-                        }
-                    }
-                })
-                .catch(error => {
-                    spinner.classList.add('hidden');
-                    ajaxErrorsDiv.textContent = 'Error de conexión. Por favor, intenta de nuevo.';
-                    ajaxErrorsDiv.classList.remove('hidden');
-                    formContainer.classList.remove('hidden');
-                    console.error('Error:', error);
-                });
-            });
-        });
-    });
-
-    // Tu evento para el botón "VOLVER A INTENTAR" no necesita cambios
-    if(tryAgainBtn) {
-        tryAgainBtn.addEventListener('click', function() {
-            errorState.classList.add('hidden');
-            formContainer.classList.remove('hidden');
-        });
-    }
-});
-</script>

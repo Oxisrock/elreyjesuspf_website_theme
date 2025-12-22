@@ -11,32 +11,27 @@
                 <h1 class="text-2xl font-bold text-center text-blue-600 mb-2"><?php the_field('titulo_siembra_page', 'option'); ?></h1>
                 <p class="text-base text-gray-500 mb-8 text-center"><?php the_field('descripcion_siembra_page', 'option'); ?></p>
 
-                <?php // --- ZONA DE MENSAJES DE ESTADO ---
-                ?>
                 <?php if (isset($_GET['enviado'])) : ?>
-                <?php if ($_GET['enviado'] == 'true') : ?>
-                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative text-center mb-6"
-                    role="alert">
-                    <strong class="font-bold">¡Siembra registrada!</strong>
-                    <span class="block sm:inline">Dios te bendiga y gracias por tu generosidad.</span>
-                </div>
-                <?php else : // Si 'enviado' no es 'true', es un error. ?>
-                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative text-center mb-6"
-                    role="alert">
-                    <strong class="font-bold">¡Error!</strong>
-                    <span class="block sm:inline">La verificación falló. Por favor, intenta de nuevo.</span>
-                </div>
-                <?php endif; ?>
+                    <?php if ($_GET['enviado'] == 'true') : ?>
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative text-center mb-6" role="alert">
+                            <strong class="font-bold">¡Siembra registrada!</strong>
+                            <span class="block sm:inline">Dios te bendiga y gracias por tu generosidad.</span>
+                        </div>
+                    <?php else : ?>
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative text-center mb-6" role="alert">
+                            <strong class="font-bold">¡Error!</strong>
+                            <span class="block sm:inline">La verificación falló. Por favor, intenta de nuevo.</span>
+                        </div>
+                    <?php endif; ?>
                 <?php endif; ?>
 
                 <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" class="space-y-4">
 
                     <input type="hidden" name="action" value="procesar_formulario_siembra">
                     <?php wp_nonce_field('mi_form_siembra_nonce', 'mi_nonce'); ?>
-                    <input type="hidden" id="recaptcha_response" name="recaptcha_response">
+
                     <div>
-                        <label for="tipo_siembra" class="block text-sm font-medium text-gray-700">Tipo de
-                            siembra</label>
+                        <label for="tipo_siembra" class="block text-sm font-medium text-gray-700">Tipo de siembra</label>
                         <select id="tipo_siembra" name="tipo_siembra" required
                             class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
                             <option value="" disabled selected>Selecciona un tipo...</option>
@@ -46,6 +41,7 @@
                             <option value="ofrenda">Ofrenda</option>
                         </select>
                     </div>
+
                     <div>
                         <label for="selectBanco" class="block text-sm font-medium text-gray-700">Metodo de Pago</label>
                         <select id="selectBanco" name="metodo_de_pago" required
@@ -79,7 +75,6 @@
                             <p>Tipo de Cuenta: Corriente</p>
                         </div>
                     </div>
-                    
 
                     <div>
                         <label for="monto" class="block text-sm font-medium text-gray-700">Monto a sembrar</label>
@@ -93,11 +88,13 @@
                         <input type="text" id="nombre" name="nombre"
                             class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
+
                     <div>
                         <label for="telefono" class="block text-sm font-medium text-gray-700">Numero de Telefono</label>
-                        <input type="telefono" id="telefono" name="telefono"
+                        <input type="tel" id="telefono" name="telefono"
                             class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
+
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
                         <input type="email" id="email" name="email"
@@ -118,34 +115,22 @@
             style="background-image: url('<?php the_field('imagen_de_contactos', 'option'); ?>');">
             <div class="absolute inset-0 w-full h-full overflow-hidden">
                 <div class="absolute h-3/5 w-[150%] bg-cyan-600/20 transform -skew-y-12 top-[-10%] left-[-25%]"></div>
-                <div class="absolute h-3/5 w-[150%] bg-cyan-600/20 transform -skew-y-12 bottom-[-10%] left-[-25%]">
-                </div>
+                <div class="absolute h-3/5 w-[150%] bg-cyan-600/20 transform -skew-y-12 bottom-[-10%] left-[-25%]"></div>
             </div>
         </div>
 
     </div>
 </div>
-<script src="https://www.google.com/recaptcha/api.js?render=6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc"></script>
-<script>
-    // Script de reCAPTCHA
-    grecaptcha.ready(function() {
-        // Usamos una acción específica para este formulario
-        grecaptcha.execute('6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc', {
-            action: 'submit_siembra'
-        }).then(function(token) {
-            document.getElementById('recaptcha_response').value = token;
-        });
-    });
 
+<script>
     // Script para mostrar/ocultar métodos de pago
     document.addEventListener('DOMContentLoaded', function() {
         const selectBanco = document.getElementById('selectBanco');
         const contenedores = {
             'Zelle': document.getElementById('contenedor-Zelle'),
             'BNC': document.getElementById('contenedor-BNC'),
-            'Banco Panama': document.getElementById('contenedor-Banco Panama'),
-            'Binance': document.getElementById('contenedor-Binance'),
         };
+
         selectBanco.addEventListener('change', function() {
             const valorSeleccionado = this.value;
             for (const key in contenedores) {

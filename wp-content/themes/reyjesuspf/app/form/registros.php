@@ -53,57 +53,7 @@ function handle_custom_registration()
         $response['data'] = ['message' => 'Security error. Please reload the page and try again.'];
         wp_send_json_error($response['data'], 403);
     }
-    // ======================================================
-    // 2. NUEVO: VERIFICACIÓN DE GOOGLE RECAPTCHA V3
-    // ======================================================
-    $recaptcha_secret_key = '6LePAbwrAAAAAGT4G4s6FngmaTEK3O0UdPqGfOfT'; // ¡IMPORTANTE: Reemplaza esto!
-    $recaptcha_token = isset($_POST['recaptcha_response']) ? $_POST['recaptcha_response'] : '';
-
-    if (empty($recaptcha_token)) {
-        $response['data']['errors']['recaptcha'] = 'El token de verificación no se recibió. Intenta de nuevo.';
-        wp_send_json_error($response['data'], 400);
-    }
-
-    // Hacemos la petición a la API de Google para verificar el token
-    $verification_url = 'https://www.google.com/recaptcha/api/siteverify';
-    $verification_args = [
-        'body' => [
-            'secret'   => $recaptcha_secret_key,
-            'response' => $recaptcha_token,
-            'remoteip' => $_SERVER['REMOTE_ADDR']
-        ]
-    ];
-
-    $verification_response = wp_remote_post($verification_url, $verification_args);
-
-    if (is_wp_error($verification_response)) {
-        // Error de conexión con la API de Google
-        $response['data']['errors']['recaptcha'] = 'No se pudo conectar con el servicio de verificación.';
-        wp_send_json_error($response['data'], 500);
-    }
-
-    $response_body = wp_remote_retrieve_body($verification_response);
-    $response_data = json_decode($response_body);
-
-    // ⚠️ INICIO DE LA MODIFICACIÓN PARA DESARROLLO LOCAL ⚠️
-
-    // Primero, verificamos si la comunicación con Google fue exitosa en general.
-    if (!$response_data || !$response_data->success) {
-        // Si hay un error de comunicación (ej. clave secreta incorrecta), siempre detenemos.
-        $response['data']['errors']['recaptcha'] = 'Error de comunicación con el servicio reCAPTCHA.';
-        wp_send_json_error($response['data'], 500);
-    }
-
-    // Ahora, definimos si estamos en un entorno local.
-    $is_local_environment = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']);
-
-    // La validación del SCORE solo se aplica si NO estamos en el entorno local.
-    if (!$is_local_environment && $response_data->score < 0.5) {
-        // Si un usuario real (no local) tiene un score bajo, lo bloqueamos.
-        $response['data']['errors']['recaptcha'] = 'La verificación de humanidad falló. Por favor, intenta de nuevo.';
-        wp_send_json_error($response['data'], 403);
-    }
-
+    
     // Si el código llega aquí, el reCAPTCHA es válido (ya sea por buen score o por estar en local).
 
     // ⚠️ FIN DE LA MODIFICACIÓN ⚠️

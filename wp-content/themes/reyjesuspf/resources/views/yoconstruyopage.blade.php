@@ -8,6 +8,7 @@
 
     @include('partials.Yoconstruyo.yoconstruyopage.yoconstruyo')
     @include('partials.Yoconstruyo.historiayoconstruyopage.historiayoconstruyo')
+    @include('partials.Yoconstruyo/pastorvictor/oportunidadhistorica')
     @include('partials.Yoconstruyo.fotostemplopage.fotostemplo')
     @include('partials.NuestraIglesiapage.aportepage.aporte')
     @include('partials.Homepage.contact.contactn')
