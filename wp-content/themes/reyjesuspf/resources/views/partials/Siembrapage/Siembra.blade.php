@@ -149,46 +149,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const submitBtn = form.querySelector('button[type="submit"]');
 
     form.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        // Validación básica del lado del cliente
-        const requiredFields = form.querySelectorAll('input[required], select[required], textarea[required]');
-        let isValid = true;
-
-        requiredFields.forEach(field => {
-            if (!field.value.trim()) {
-                field.classList.add('border-red-500');
-                isValid = false;
-            } else {
-                field.classList.remove('border-red-500');
-            }
-        });
-
-        // Validar email
-        const emailField = document.getElementById('email');
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (emailField.value && !emailRegex.test(emailField.value)) {
-            emailField.classList.add('border-red-500');
-            isValid = false;
-        }
-
-        // Validar monto
-        const montoField = document.getElementById('monto');
-        if (montoField.value && parseFloat(montoField.value) <= 0) {
-            montoField.classList.add('border-red-500');
-            isValid = false;
-        }
-
-        if (!isValid) {
-            alert('Por favor, completa todos los campos obligatorios correctamente.');
-            return;
-        }
+        // TEMP: Desactivar validación del lado del cliente para debug
+        // e.preventDefault();
 
         // Mostrar loading
         const originalBtnText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<span class="flex items-center justify-center"><svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Procesando...</span>';
         submitBtn.disabled = true;
 
+        // TEMP: Desactivar reCAPTCHA para debug
+        /*
         // Ejecutar reCAPTCHA
         grecaptcha.ready(function() {
             grecaptcha.execute('6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc', {action: 'donation'}).then(function(token) {
@@ -204,6 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Error en la verificación de seguridad. Por favor, intenta de nuevo.');
             });
         });
+        */
     });
 });
 </script>
