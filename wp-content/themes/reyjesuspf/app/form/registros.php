@@ -255,7 +255,8 @@ HTML;
 
         // **FIN DE TU PLANTILLA DE CORREO HTML**
 
-
+        // Enviar el correo de bienvenida
+        wp_mail($email, $subject, $body, $headers);
 
         // 10. Enviar respuesta final de éxito
         // ===================================

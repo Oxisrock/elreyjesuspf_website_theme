@@ -3,13 +3,16 @@
  * Template Name: Página de Login Personalizada
  */
 
-// -- LÓGICA PARA MOSTRAR ERRORES --
+// -- LÓGICA PARA MOSTRAR ERRORES Y ÉXITO --
 $email_error = '';
 $password_error = '';
+$success_message = '';
 $email_input_class = 'border-gray-300 focus:ring-blue-500';
 $password_input_class = 'border-gray-300 focus:ring-blue-500';
 
-if (isset($_GET['login_error'])) {
+if (isset($_GET['login_success']) && $_GET['login_success'] === 'true') {
+    $success_message = '¡Inicio de sesión exitoso! Bienvenido de vuelta.';
+} elseif (isset($_GET['login_error'])) {
     $error_code = sanitize_key($_GET['login_error']);
     
     if (in_array($error_code, ['invalid_username', 'invalid_email'])) {
@@ -50,6 +53,13 @@ if (isset($_GET['login_error'])) {
                 <h1 class="text-2xl text-center font-bold text-blue-600 mb-2"><?php the_field('titulo_de_inicio_de_sesion', 'option'); ?></h1>
                 <p class="text-sm text-gray-500 text-center mb-8"><?php the_field('descripcion_de_inicio_de_sesion', 'option'); ?></p>
                 
+                <?php if (!empty($success_message)): ?>
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative text-center mb-6" role="alert">
+                    <strong class="font-bold">¡Éxito!</strong>
+                    <span class="block sm:inline"><?php echo $success_message; ?></span>
+                </div>
+                <?php endif; ?>
+
                 <form method="POST" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
                     <input type="hidden" name="action" value="custom_login">
                     <input type="hidden" id="recaptcha_response" name="recaptcha_response">
