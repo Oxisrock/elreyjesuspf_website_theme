@@ -9,7 +9,8 @@
                 </div>
 
                 <h1 class="text-2xl font-bold text-center text-blue-600 mb-2"><?php the_field('titulo_siembra_page', 'option'); ?></h1>
-                <p class="text-base text-gray-500 mb-8 text-center"><?php the_field('descripcion_siembra_page', 'option'); ?></p>
+                <p class="text-base text-gray-500 mb-4 text-center"><?php the_field('descripcion_siembra_page', 'option'); ?></p>
+                <p class="text-sm text-gray-400 mb-6 text-center">Los campos marcados con <span class="text-red-500">*</span> son obligatorios</p>
 
                 <?php if (isset($_GET['enviado'])) : ?>
                 <?php if ($_GET['enviado'] == 'true') : ?>
@@ -88,28 +89,29 @@
                     </div>
 
                     <div>
-                        <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre</label>
-                        <input type="text" id="nombre" name="nombre"
+                        <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre <span class="text-red-500">*</span></label>
+                        <input type="text" id="nombre" name="nombre" required
                             class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
 
                     <div>
-                        <label for="telefono" class="block text-sm font-medium text-gray-700">Numero de Telefono</label>
-                        <input type="tel" id="telefono" name="telefono"
+                        <label for="telefono" class="block text-sm font-medium text-gray-700">Numero de Telefono <span class="text-red-500">*</span></label>
+                        <input type="tel" id="telefono" name="telefono" required
                             class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
 
                     <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
-                        <input type="email" id="email" name="email"
+                        <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico <span class="text-red-500">*</span></label>
+                        <input type="email" id="email" name="email" required
                             class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
 
                     <div>
                         <label for="referencia" class="block text-sm font-medium text-gray-700">Numero de
-                            Referencia</label>
-                        <input type="text" id="referencia" name="referencia"
-                            class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            Referencia <span class="text-red-500">*</span></label>
+                        <input type="text" id="referencia" name="referencia" required
+                            class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Ingresa el número de referencia del pago">
                     </div>
 
                     <div>
@@ -120,7 +122,7 @@
                     <div class="pt-2">
                         <button type="submit"
                             class="w-full bg-blue-600 text-white font-bold py-2.5 rounded-full hover:bg-blue-700 transition-colors">
-                            Proceder al Pago
+                            Registrar Siembra
                         </button>
                     </div>
                 </form>
@@ -149,6 +151,39 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
 
+        // Validación básica del lado del cliente
+        const requiredFields = form.querySelectorAll('input[required], select[required], textarea[required]');
+        let isValid = true;
+
+        requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+                field.classList.add('border-red-500');
+                isValid = false;
+            } else {
+                field.classList.remove('border-red-500');
+            }
+        });
+
+        // Validar email
+        const emailField = document.getElementById('email');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailField.value && !emailRegex.test(emailField.value)) {
+            emailField.classList.add('border-red-500');
+            isValid = false;
+        }
+
+        // Validar monto
+        const montoField = document.getElementById('monto');
+        if (montoField.value && parseFloat(montoField.value) <= 0) {
+            montoField.classList.add('border-red-500');
+            isValid = false;
+        }
+
+        if (!isValid) {
+            alert('Por favor, completa todos los campos obligatorios correctamente.');
+            return;
+        }
+
         // Mostrar loading
         const originalBtnText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<span class="flex items-center justify-center"><svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Procesando...</span>';
@@ -162,6 +197,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Enviar el formulario
                 form.submit();
+            }).catch(function(error) {
+                console.error('reCAPTCHA error:', error);
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                alert('Error en la verificación de seguridad. Por favor, intenta de nuevo.');
             });
         });
     });

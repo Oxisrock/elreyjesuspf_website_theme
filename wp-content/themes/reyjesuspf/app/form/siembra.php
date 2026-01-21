@@ -13,11 +13,11 @@ function crear_tabla_siembras()
             tipo_siembra varchar(50) DEFAULT '',
             metodo_de_pago varchar(50) NOT NULL,
             monto decimal(10, 2) NOT NULL,
-            referencia_pago varchar(100) DEFAULT '',
+            referencia varchar(100) DEFAULT '',
             nombre_completo varchar(255) DEFAULT '',
             telefono varchar(50) DEFAULT '',
             correo varchar(255) DEFAULT '',
-            peticion_oracion text DEFAULT '',
+            mensaje text DEFAULT '',
             PRIMARY KEY  (id)
         )   $charset_collate;";
 
@@ -85,11 +85,20 @@ function procesar_formulario_siembra()
     $tipo_siembra   = isset($_POST['tipo_siembra']) ? sanitize_text_field($_POST['tipo_siembra']) : '';
     $metodo_de_pago = isset($_POST['metodo_de_pago']) ? sanitize_text_field($_POST['metodo_de_pago']) : '';
     $monto          = isset($_POST['monto']) ? floatval($_POST['monto']) : 0;
-    $referencia_pago = isset($_POST['referencia']) ? sanitize_text_field($_POST['referencia']) : '';
+    $referencia     = isset($_POST['referencia']) ? sanitize_text_field($_POST['referencia']) : '';
     $nombre         = isset($_POST['nombre']) ? sanitize_text_field($_POST['nombre']) : '';
     $telefono       = isset($_POST['telefono']) ? sanitize_text_field($_POST['telefono']) : '';
     $email          = isset($_POST['email']) ? sanitize_email($_POST['email']) : '';
-    $peticion_oracion = isset($_POST['mensaje']) ? sanitize_textarea_field($_POST['mensaje']) : '';
+    $mensaje        = isset($_POST['mensaje']) ? sanitize_textarea_field($_POST['mensaje']) : '';
+
+    // Validaciones básicas
+    if (empty($tipo_siembra) || empty($metodo_de_pago) || $monto <= 0 || empty($mensaje)) {
+        wp_die('Por favor, completa todos los campos obligatorios.');
+    }
+
+    if (!is_email($email)) {
+        wp_die('Por favor, ingresa un correo electrónico válido.');
+    }
 
     $dia_pago       = current_time('mysql');
 
@@ -101,13 +110,13 @@ function procesar_formulario_siembra()
             'tipo_siembra'    => $tipo_siembra,
             'metodo_de_pago'  => $metodo_de_pago,
             'monto'           => $monto,
-            'referencia_pago' => $referencia_pago,  
+            'referencia'      => $referencia,
             'nombre_completo' => $nombre,
             'telefono'        => $telefono,
             'correo'          => $email,
-            'peticion_oracion'=> $peticion_oracion,
+            'mensaje'         => $mensaje,
         ),
-        array('%s', '%s', '%s', '%f', '%s', '%s', '%s', '%s')
+        array('%s', '%s', '%s', '%f', '%s', '%s', '%s', '%s', '%s')
     );
 
     // Redirigir al usuario con un mensaje de éxito
@@ -167,11 +176,11 @@ function mostrar_siembras_page()
                         echo '<td>' . esc_html($siembra->tipo_siembra) . '</td>';
                         echo '<td>' . esc_html($siembra->metodo_de_pago) . '</td>';
                         echo '<td>' . esc_html($siembra->monto) . '</td>';
-                        echo '<td>' . esc_html($siembra->referencia_pago) . '</td>';
+                        echo '<td>' . esc_html($siembra->referencia) . '</td>';
                         echo '<td>' . esc_html($siembra->nombre_completo) . '</td>';
                         echo '<td>' . esc_html($siembra->telefono) . '</td>';
                         echo '<td>' . esc_html($siembra->correo) . '</td>';
-                        echo '<td>' . esc_html($siembra->peticion_oracion) . '</td>';
+                        echo '<td>' . esc_html($siembra->mensaje) . '</td>';
                         echo '</tr>';
                     }
                 } else {
