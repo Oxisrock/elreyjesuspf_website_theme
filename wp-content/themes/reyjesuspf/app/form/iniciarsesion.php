@@ -20,6 +20,8 @@ function handle_custom_login_form()
     // ======================================================
     // 1. VERIFICACIÓN DE GOOGLE RECAPTCHA V3
     // ======================================================
+    // TEMPORALMENTE DESACTIVADO PARA DEBUGGING
+    /*
     $recaptcha_secret_key = '6LePAbwrAAAAAGT4G4s6FngmaTEK3O0UdPqGfOfT'; // Tu clave secreta está segura aquí.
     $recaptcha_token = isset($_POST['recaptcha_response']) ? $_POST['recaptcha_response'] : '';
     $login_page_url = home_url('/login'); // URL de tu página de login, ajústala si es diferente.
@@ -64,6 +66,7 @@ function handle_custom_login_form()
     // Si el código llega aquí, el reCAPTCHA es válido.
 
     // ⚠️ FIN DE LA MODIFICACIÓN ⚠️
+    */
 
     // ======================================================
     // 2. LÓGICA DE LOGIN DE WORDPRESS
@@ -90,8 +93,19 @@ function handle_custom_login_form()
         wp_safe_redirect(add_query_arg('login_error', $error_code, $login_page_url));
         exit;
     } else {
-        // Si el inicio de sesión es exitoso, redirigimos al homepage donde se mostrará el usuario logueado.
-        wp_safe_redirect(home_url('/'));
-        exit;
+        // Asegurarse de que el usuario esté logueado
+        wp_set_current_user($user->ID);
+        wp_set_auth_cookie($user->ID, true, false);
+        
+        // Verificar si está logueado
+        if (is_user_logged_in()) {
+            // Si el inicio de sesión es exitoso, redirigimos al homepage donde se mostrará el usuario logueado.
+            wp_safe_redirect(home_url('/'));
+            exit;
+        } else {
+            // Si no está logueado, error
+            wp_safe_redirect(add_query_arg('login_error', 'login_failed', $login_page_url));
+            exit;
+        }
     }
 }
