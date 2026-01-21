@@ -1,6 +1,6 @@
 <div class="bg-white font-sans">
 
-    <div class="relative flex items-center justify-center p-6 sm:p-8 md:p-24">
+    <div class="relative flex items-center justify-center mt-8 sm:mt-8 md:mt-24 p-6 sm:p-8 md:p-24">
         
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center max-w-6xl">
             

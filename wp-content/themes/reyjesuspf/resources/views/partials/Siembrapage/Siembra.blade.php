@@ -12,17 +12,19 @@
                 <p class="text-base text-gray-500 mb-8 text-center"><?php the_field('descripcion_siembra_page', 'option'); ?></p>
 
                 <?php if (isset($_GET['enviado'])) : ?>
-                    <?php if ($_GET['enviado'] == 'true') : ?>
-                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative text-center mb-6" role="alert">
-                            <strong class="font-bold">¡Siembra registrada!</strong>
-                            <span class="block sm:inline">Dios te bendiga y gracias por tu generosidad.</span>
-                        </div>
-                    <?php else : ?>
-                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative text-center mb-6" role="alert">
-                            <strong class="font-bold">¡Error!</strong>
-                            <span class="block sm:inline">La verificación falló. Por favor, intenta de nuevo.</span>
-                        </div>
-                    <?php endif; ?>
+                <?php if ($_GET['enviado'] == 'true') : ?>
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative text-center mb-6"
+                    role="alert">
+                    <strong class="font-bold">¡Siembra registrada!</strong>
+                    <span class="block sm:inline">Dios te bendiga y gracias por tu generosidad.</span>
+                </div>
+                <?php else : ?>
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative text-center mb-6"
+                    role="alert">
+                    <strong class="font-bold">¡Error!</strong>
+                    <span class="block sm:inline">La verificación falló. Por favor, intenta de nuevo.</span>
+                </div>
+                <?php endif; ?>
                 <?php endif; ?>
 
                 <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" class="space-y-4">
@@ -31,7 +33,8 @@
                     <?php wp_nonce_field('mi_form_siembra_nonce', 'mi_nonce'); ?>
 
                     <div>
-                        <label for="tipo_siembra" class="block text-sm font-medium text-gray-700">Tipo de siembra</label>
+                        <label for="tipo_siembra" class="block text-sm font-medium text-gray-700">Tipo de
+                            siembra</label>
                         <select id="tipo_siembra" name="tipo_siembra" required
                             class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
                             <option value="" disabled selected>Selecciona un tipo...</option>
@@ -101,6 +104,18 @@
                             class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
 
+                    <div>
+                        <label for="referencia" class="block text-sm font-medium text-gray-700">Numero de
+                            Referencia</label>
+                        <input type="text" id="referencia" name="referencia"
+                            class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label for="mensaje" class="block text-sm font-medium text-gray-700">Petición De Oración</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" required
+                            class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
                     <div class="pt-2">
                         <button type="submit"
                             class="w-full bg-blue-600 text-white font-bold py-2.5 rounded-full hover:bg-blue-700 transition-colors">
@@ -112,10 +127,11 @@
         </div>
 
         <div class="hidden md:flex w-3/5 relative bg-cover bg-center"
-            style="background-image: url('<?php the_field('imagen_de_contactos', 'option'); ?>');">
+            style="background-image: url('<?php the_field('siembra_imagen', 'option'); ?>');">
             <div class="absolute inset-0 w-full h-full overflow-hidden">
                 <div class="absolute h-3/5 w-[150%] bg-cyan-600/20 transform -skew-y-12 top-[-10%] left-[-25%]"></div>
-                <div class="absolute h-3/5 w-[150%] bg-cyan-600/20 transform -skew-y-12 bottom-[-10%] left-[-25%]"></div>
+                <div class="absolute h-3/5 w-[150%] bg-cyan-600/20 transform -skew-y-12 bottom-[-10%] left-[-25%]">
+                </div>
             </div>
         </div>
 
