@@ -28,7 +28,12 @@
                 <?php endif; ?>
                 <?php endif; ?>
 
-                <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" class="space-y-4">
+                <!-- Debug info -->
+                <div class="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded-lg relative text-center mb-6">
+                    <strong>Debug:</strong> Formulario listo para envío. Revisa la consola del navegador (F12) para ver los datos enviados.
+                </div>
+
+                <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" class="space-y-4" id="siembra-form" onsubmit="return handleFormSubmit(event)">
 
                     <input type="hidden" name="action" value="procesar_formulario_siembra">
                     <input type="hidden" id="recaptcha_response" name="recaptcha_response">
@@ -144,38 +149,101 @@
 <script src="https://www.google.com/recaptcha/api.js?render=6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc"></script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form');
-    const submitBtn = form.querySelector('button[type="submit"]');
+function validateForm() {
+    console.log('🔍 Validando formulario...');
 
-    form.addEventListener('submit', function(e) {
-        // TEMP: Desactivar validación del lado del cliente para debug
-        // e.preventDefault();
+    const requiredFields = document.querySelectorAll('#siembra-form input[required], #siembra-form select[required], #siembra-form textarea[required]');
+    let isValid = true;
+    let debugInfo = '📋 Campos requeridos:\n';
 
-        // Mostrar loading
-        const originalBtnText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<span class="flex items-center justify-center"><svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Procesando...</span>';
-        submitBtn.disabled = true;
+    requiredFields.forEach(field => {
+        const value = field.value.trim();
+        debugInfo += `  ${field.name}: "${value}"\n`;
 
-        // TEMP: Desactivar reCAPTCHA para debug
-        /*
-        // Ejecutar reCAPTCHA
-        grecaptcha.ready(function() {
-            grecaptcha.execute('6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc', {action: 'donation'}).then(function(token) {
-                // Asignar el token al campo hidden
-                document.getElementById('recaptcha_response').value = token;
-
-                // Enviar el formulario
-                form.submit();
-            }).catch(function(error) {
-                console.error('reCAPTCHA error:', error);
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
-                alert('Error en la verificación de seguridad. Por favor, intenta de nuevo.');
-            });
-        });
-        */
+        if (!value) {
+            field.style.borderColor = 'red';
+            isValid = false;
+        } else {
+            field.style.borderColor = '';
+        }
     });
+
+    console.log(debugInfo);
+
+    if (!isValid) {
+        alert('❌ Por favor, completa todos los campos marcados como obligatorios.');
+        return false;
+    }
+
+    return true;
+}
+
+function handleFormSubmit(event) {
+    event.preventDefault();
+
+    if (!validateForm()) {
+        return false;
+    }
+
+    const form = document.getElementById('siembra-form');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const formData = new FormData(form);
+
+    console.log('🚀 Enviando formulario con AJAX...');
+    console.log('📤 Datos enviados:', Object.fromEntries(formData));
+
+    // Mostrar loading
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<span class="flex items-center justify-center"><svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Procesando...</span>';
+    submitBtn.disabled = true;
+
+    // Enviar con AJAX para capturar respuesta
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    })
+    .then(response => {
+        console.log('📡 Respuesta del servidor:', response);
+        console.log('📊 Status:', response.status);
+        console.log('📝 Headers:', Object.fromEntries(response.headers));
+
+        if (response.redirected) {
+            console.log('🔄 Redirección detectada a:', response.url);
+            window.location.href = response.url;
+            return;
+        }
+
+        return response.text();
+    })
+    .then(text => {
+        if (text) {
+            console.log('📄 Contenido de la respuesta:', text);
+
+            // Si es HTML de error, mostrarlo
+            if (text.includes('wp-die-message') || text.includes('Error')) {
+                console.error('❌ Error del servidor:', text);
+                alert('Error del servidor. Revisa la consola para más detalles.');
+            }
+        }
+    })
+    .catch(error => {
+        console.error('❌ Error de red:', error);
+        alert('Error de conexión. Revisa la consola para más detalles.');
+    })
+    .finally(() => {
+        // Restaurar botón
+        submitBtn.innerHTML = originalBtnText;
+        submitBtn.disabled = false;
+    });
+
+    return false;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('✅ Formulario de siembra cargado y listo');
 });
 </script>
 
