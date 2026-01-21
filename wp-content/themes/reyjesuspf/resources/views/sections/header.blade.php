@@ -1,5 +1,11 @@
 <?php global $current_user;
 wp_get_current_user(); ?>
+{{-- Debug: Verificar usuario en header --}}
+@if(is_user_logged_in())
+    {{-- <div class="bg-green-100 p-2 text-sm">Header Debug: Usuario logueado - {{ $current_user->display_name }}</div> --}}
+@else
+    {{-- <div class="bg-red-100 p-2 text-sm">Header Debug: Usuario NO logueado</div> --}}
+@endif
 <nav class="bg-white shadow-sm sticky top-0 z-30">
     <div class="container mx-auto px-6 md:px-8 lg:px-12">
         <div class="flex justify-between items-center py-4">
