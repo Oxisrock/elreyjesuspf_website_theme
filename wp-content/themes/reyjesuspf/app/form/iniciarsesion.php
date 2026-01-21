@@ -84,8 +84,8 @@ function handle_custom_login_form()
         wp_safe_redirect(add_query_arg('login_error', $error_code, $login_page_url));
         exit;
     } else {
-        // Si el inicio de sesión es exitoso, redirigimos a la página de inicio con mensaje de éxito.
-        wp_safe_redirect(add_query_arg('login_success', 'true', home_url('/')));
+        // Si el inicio de sesión es exitoso, redirigimos al homepage donde se mostrará el usuario logueado.
+        wp_safe_redirect(home_url('/'));
         exit;
     }
 }
