@@ -53,7 +53,46 @@ function handle_custom_registration()
         $response['data'] = ['message' => 'Security error. Please reload the page and try again.'];
         wp_send_json_error($response['data'], 403);
     }
-    
+
+    // 2. VERIFICACIÓN DE GOOGLE RECAPTCHA V3
+    $recaptcha_secret_key = '6LePAbwrAAAAAGT4G4s6FngmaTEK3O0UdPqGfOfT';
+    $recaptcha_token = isset($_POST['recaptcha_response']) ? sanitize_text_field($_POST['recaptcha_response']) : '';
+
+    if (empty($recaptcha_token)) {
+        $response['data']['errors']['recaptcha'] = 'Error de verificación de seguridad. Por favor, recarga la página e intenta de nuevo.';
+        wp_send_json_error($response['data'], 400);
+    }
+
+    $verification_response = wp_remote_post('https://www.google.com/recaptcha/api/siteverify', [
+        'body' => [
+            'secret'   => $recaptcha_secret_key,
+            'response' => $recaptcha_token,
+            'remoteip' => $_SERVER['REMOTE_ADDR']
+        ]
+    ]);
+
+    if (is_wp_error($verification_response)) {
+        $response['data']['errors']['recaptcha'] = 'No se pudo conectar con el servicio de verificación.';
+        wp_send_json_error($response['data'], 500);
+    }
+
+    $response_data = json_decode(wp_remote_retrieve_body($verification_response));
+
+    // Verificar si la comunicación con Google fue exitosa
+    if (!$response_data || !$response_data->success) {
+        $response['data']['errors']['recaptcha'] = 'Error de comunicación con el servicio reCAPTCHA.';
+        wp_send_json_error($response['data'], 400);
+    }
+
+    // Verificar si estamos en entorno local
+    $is_local_environment = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']);
+
+    // La validación del SCORE solo se aplica si NO estamos en entorno local
+    if (!$is_local_environment && $response_data->score < 0.5) {
+        $response['data']['errors']['recaptcha'] = 'Falló la verificación de humanidad. Intenta de nuevo.';
+        wp_send_json_error($response['data'], 400);
+    }
+
     // Si el código llega aquí, el reCAPTCHA es válido (ya sea por buen score o por estar en local).
 
     // ⚠️ FIN DE LA MODIFICACIÓN ⚠️

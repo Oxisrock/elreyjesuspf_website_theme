@@ -36,7 +36,42 @@ function mi_procesador_de_formularios_boletines() {
         wp_die('¡Falló la verificación de seguridad!');
     }
 
-    // 2. Limpiamos y sanitizamos los datos recibidos del formulario
+    // 2. VERIFICACIÓN DE GOOGLE RECAPTCHA V3
+    $recaptcha_secret_key = '6LePAbwrAAAAAGT4G4s6FngmaTEK3O0UdPqGfOfT';
+    $recaptcha_token = isset($_POST['recaptcha_response']) ? sanitize_text_field($_POST['recaptcha_response']) : '';
+
+    if (empty($recaptcha_token)) {
+        wp_die('Error de verificación de seguridad. Por favor, recarga la página e intenta de nuevo.');
+    }
+
+    $verification_response = wp_remote_post('https://www.google.com/recaptcha/api/siteverify', [
+        'body' => [
+            'secret'   => $recaptcha_secret_key,
+            'response' => $recaptcha_token,
+            'remoteip' => $_SERVER['REMOTE_ADDR']
+        ]
+    ]);
+
+    if (is_wp_error($verification_response)) {
+        wp_die('No se pudo conectar con el servicio de verificación.');
+    }
+
+    $response_data = json_decode(wp_remote_retrieve_body($verification_response));
+
+    // Verificar si la comunicación con Google fue exitosa
+    if (!$response_data || !$response_data->success) {
+        wp_die('Error de comunicación con el servicio reCAPTCHA.');
+    }
+
+    // Verificar si estamos en entorno local
+    $is_local_environment = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']);
+
+    // La validación del SCORE solo se aplica si NO estamos en entorno local
+    if (!$is_local_environment && $response_data->score < 0.5) {
+        wp_die('Falló la verificación de humanidad. Intenta de nuevo.');
+    }
+
+    // 3. Limpiamos y sanitizamos los datos recibidos del formulario
     $nombre  = sanitize_text_field($_POST['nombre']);
     $email   = sanitize_email($_POST['email']);
 
