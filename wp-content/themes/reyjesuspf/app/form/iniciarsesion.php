@@ -11,6 +11,12 @@ function handle_custom_login_form()
         exit;
     }
 
+    // Verificar nonce
+    if (!wp_verify_nonce($_POST['login_nonce'], 'custom_login_nonce')) {
+        wp_safe_redirect(add_query_arg('login_error', 'nonce_fail', home_url('/login')));
+        exit;
+    }
+
     // ======================================================
     // 1. VERIFICACIÓN DE GOOGLE RECAPTCHA V3
     // ======================================================

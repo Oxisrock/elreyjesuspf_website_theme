@@ -5,6 +5,17 @@
 @extends('layouts.app')
 
 @section('content')
+    {{-- Debug: Verificar si el usuario está logueado --}}
+    @if(is_user_logged_in())
+        <div class="bg-yellow-100 p-4 mb-4">
+            <strong>Debug:</strong> Usuario logueado: {{ wp_get_current_user()->user_login }} ({{ wp_get_current_user()->display_name }})
+        </div>
+    @else
+        <div class="bg-red-100 p-4 mb-4">
+            <strong>Debug:</strong> Usuario NO logueado
+        </div>
+    @endif
+
     @if(is_user_logged_in())
         {{-- Vista para usuarios logueados --}}
         <div class="bg-gray-100 min-h-screen py-12">
