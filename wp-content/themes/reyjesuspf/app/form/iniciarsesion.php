@@ -93,19 +93,8 @@ function handle_custom_login_form()
         wp_safe_redirect(add_query_arg('login_error', $error_code, $login_page_url));
         exit;
     } else {
-        // Asegurarse de que el usuario esté logueado
-        wp_set_current_user($user->ID);
-        wp_set_auth_cookie($user->ID, true, false);
-        
-        // Verificar si está logueado
-        if (is_user_logged_in()) {
-            // Si el inicio de sesión es exitoso, redirigimos al homepage donde se mostrará el usuario logueado.
-            wp_safe_redirect(home_url('/'));
-            exit;
-        } else {
-            // Si no está logueado, error
-            wp_safe_redirect(add_query_arg('login_error', 'login_failed', $login_page_url));
-            exit;
-        }
+        // Si el inicio de sesión es exitoso, redirigimos al homepage donde se mostrará el usuario logueado.
+        wp_safe_redirect(home_url('/'));
+        exit;
     }
 }
