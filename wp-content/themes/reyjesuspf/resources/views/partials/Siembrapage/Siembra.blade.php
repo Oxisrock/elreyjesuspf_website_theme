@@ -191,33 +191,46 @@ function handleFormSubmit(event) {
     // Ejecutar reCAPTCHA antes de enviar
     event.preventDefault(); // Prevenir envío inmediato
 
-    grecaptcha.ready(function() {
-        grecaptcha.execute('6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc', {action: 'siembra'}).then(function(token) {
-            // Asignar el token al campo oculto
-            document.getElementById('recaptcha_response').value = token;
+    console.log('🔐 Ejecutando reCAPTCHA...');
 
-            const form = document.getElementById('siembra-form');
-            const formData = new FormData(form);
+    try {
+        grecaptcha.ready(function() {
+            console.log('✅ reCAPTCHA listo');
+            grecaptcha.execute('6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc', {action: 'siembra'}).then(function(token) {
+                console.log('🎫 Token reCAPTCHA obtenido:', token ? 'SÍ' : 'NO');
 
-            console.log('📤 Datos que se enviarán al servidor:');
-            for (let [key, value] of formData.entries()) {
-                console.log(`  ${key}: ${value}`);
-            }
+                // Asignar el token al campo oculto
+                document.getElementById('recaptcha_response').value = token;
 
-            console.log('🎯 URL de destino:', form.action);
-            console.log('⏳ Enviando formulario... (espera la redirección automática del navegador)');
+                const form = document.getElementById('siembra-form');
+                const formData = new FormData(form);
 
-            // Crear un indicador visual de que se está procesando
-            const debugDiv = document.createElement('div');
-            debugDiv.id = 'debug-indicator';
-            debugDiv.style.cssText = 'position: fixed; top: 10px; right: 10px; background: yellow; padding: 10px; border: 2px solid black; z-index: 9999; max-width: 300px; font-size: 12px;';
-            debugDiv.innerHTML = '⏳ Formulario enviado...<br>📊 Datos en consola<br>🔄 Esperando respuesta del servidor...<br><br><button onclick="this.parentElement.remove()">Cerrar</button>';
-            document.body.appendChild(debugDiv);
+                console.log('📤 Datos que se enviarán al servidor:');
+                for (let [key, value] of formData.entries()) {
+                    console.log(`  ${key}: ${value}`);
+                }
 
-            // Enviar el formulario normalmente
-            form.submit();
+                console.log('🎯 URL de destino:', form.action);
+                console.log('⏳ Enviando formulario...');
+
+                // Crear un indicador visual de que se está procesando
+                const debugDiv = document.createElement('div');
+                debugDiv.id = 'debug-indicator';
+                debugDiv.style.cssText = 'position: fixed; top: 10px; right: 10px; background: yellow; padding: 10px; border: 2px solid black; z-index: 9999; max-width: 300px; font-size: 12px;';
+                debugDiv.innerHTML = '⏳ Formulario enviado...<br>📊 Datos en consola<br>🔄 Esperando respuesta del servidor...<br><br><button onclick="this.parentElement.remove()">Cerrar</button>';
+                document.body.appendChild(debugDiv);
+
+                // Enviar el formulario normalmente
+                form.submit();
+            }).catch(function(error) {
+                console.error('❌ Error en reCAPTCHA:', error);
+                alert('Error con la verificación de seguridad. Por favor, recarga la página e intenta de nuevo.');
+            });
         });
-    });
+    } catch (error) {
+        console.error('❌ Error al inicializar reCAPTCHA:', error);
+        alert('Error al cargar la verificación de seguridad. Por favor, recarga la página.');
+    }
 
     return false;
 }

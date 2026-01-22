@@ -30,16 +30,23 @@ crear_tabla_siembras();
 // Función para procesar el formulario y guardar los datos
 function procesar_formulario_siembra()
 {
+    error_log('=== INICIO PROCESAMIENTO DE SIEMBRA ===');
+
     // Verificar el nonce de seguridad
     if (! isset($_POST['mi_nonce']) || ! wp_verify_nonce($_POST['mi_nonce'], 'mi_form_siembra_nonce')) {
+        error_log('ERROR: Nonce de seguridad inválido o faltante');
         wp_die('Error de seguridad, por favor inténtalo de nuevo.');
     }
+    error_log('✅ Nonce verificado correctamente');
 
     // VERIFICACIÓN DE GOOGLE RECAPTCHA V3
     $recaptcha_secret_key = '6LePAbwrAAAAAGT4G4s6FngmaTEK3O0UdPqGfOfT';
     $recaptcha_token = isset($_POST['recaptcha_response']) ? sanitize_text_field($_POST['recaptcha_response']) : '';
 
+    error_log('🔐 Verificando reCAPTCHA - Token presente: ' . (!empty($recaptcha_token) ? 'SÍ' : 'NO'));
+
     if (empty($recaptcha_token)) {
+        error_log('ERROR: Token de reCAPTCHA faltante');
         wp_die('Error de verificación de seguridad. Por favor, recarga la página e intenta de nuevo.');
     }
 
@@ -84,11 +91,14 @@ function procesar_formulario_siembra()
 
     // Verificar que el formulario fue enviado por POST
     if ('POST' !== $_SERVER['REQUEST_METHOD']) {
+        error_log('ERROR: Método de solicitud no es POST');
         return;
     }
+    error_log('✅ Método POST confirmado');
 
     // URL de retorno
     $siembra_page_url = wp_get_referer() ? wp_get_referer() : home_url();
+    error_log('📍 URL de retorno: ' . $siembra_page_url);
 
     global $wpdb;
     $tabla_siembras = $wpdb->prefix . 'siembras';
@@ -103,6 +113,16 @@ function procesar_formulario_siembra()
     $email          = isset($_POST['email']) ? sanitize_email($_POST['email']) : '';
     $mensaje        = isset($_POST['mensaje']) ? sanitize_textarea_field($_POST['mensaje']) : '';
 
+    error_log('📝 Datos del formulario recibidos:');
+    error_log("  Tipo siembra: $tipo_siembra");
+    error_log("  Método pago: $metodo_de_pago");
+    error_log("  Monto: $monto");
+    error_log("  Referencia: $referencia");
+    error_log("  Nombre: $nombre");
+    error_log("  Email: $email");
+    error_log("  Teléfono: $telefono");
+    error_log("  Mensaje: " . substr($mensaje, 0, 100) . (strlen($mensaje) > 100 ? '...' : ''));
+
     // Validaciones básicas
     if (empty($tipo_siembra) || empty($metodo_de_pago) || $monto <= 0 || empty($nombre) || empty($email) || empty($mensaje)) {
         wp_die('Por favor, completa todos los campos obligatorios.');
@@ -113,6 +133,8 @@ function procesar_formulario_siembra()
     }
 
     $dia_pago       = current_time('mysql');
+
+    error_log('💾 Preparando inserción en base de datos...');
 
     // Insertar los datos en la tabla
     $wpdb->insert(
@@ -133,11 +155,12 @@ function procesar_formulario_siembra()
 
     // Verificar si la inserción fue exitosa
     if ($wpdb->last_error) {
-        error_log('Error al insertar en la base de datos: ' . $wpdb->last_error);
+        error_log('❌ Error al insertar en la base de datos: ' . $wpdb->last_error);
         wp_die('Error al guardar los datos. Por favor, intenta de nuevo.');
     }
 
     $siembra_id = $wpdb->insert_id;
+    error_log("✅ Siembra insertada correctamente con ID: $siembra_id");
 
     // Enviar email de confirmación al usuario
     $asunto_usuario = 'Confirmación de tu Siembra - El Rey Jesús Punto Fijo';
@@ -255,8 +278,11 @@ function procesar_formulario_siembra()
     // Log de envío de emails
     error_log("Siembra ID {$siembra_id}: Email usuario enviado: " . ($email_usuario_enviado ? 'SÍ' : 'NO') . ", Email admin enviado: " . ($email_admin_enviado ? 'SÍ' : 'NO'));
 
+    error_log('🎉 PROCESAMIENTO DE SIEMBRA COMPLETADO EXITOSAMENTE');
+
     // Redirigir al usuario con un mensaje de éxito
     $redirect_url = add_query_arg('enviado', 'true', $siembra_page_url);
+    error_log('🔄 Redirigiendo a: ' . $redirect_url);
     wp_redirect($redirect_url);
     exit;
 }
