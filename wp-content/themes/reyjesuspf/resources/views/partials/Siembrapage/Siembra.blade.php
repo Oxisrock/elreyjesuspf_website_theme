@@ -23,21 +23,14 @@
                 <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative text-center mb-6"
                     role="alert">
                     <strong class="font-bold">¡Error!</strong>
-                    <span class="block sm:inline">La verificación falló. Por favor, intenta de nuevo.</span>
+                    <span class="block sm:inline">Hubo un problema al registrar tu siembra. Por favor, intenta de nuevo.</span>
                 </div>
                 <?php endif; ?>
                 <?php endif; ?>
 
-                <!-- Debug info -->
-                <div class="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded-lg relative text-center mb-6">
-                    <strong>Debug:</strong> Formulario listo para envío. Revisa la consola del navegador (F12) para ver los datos enviados.
-                </div>
-
-                <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" class="space-y-4" id="siembra-form" onsubmit="return handleFormSubmit(event)">
+                <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" class="space-y-4" id="siembra-form">
 
                     <input type="hidden" name="action" value="procesar_formulario_siembra">
-                    <input type="hidden" id="recaptcha_response" name="recaptcha_response">
-                    <input type="hidden" name="debug_mode" value="1">
                     <?php wp_nonce_field('mi_form_siembra_nonce', 'mi_nonce'); ?>
 
                     <div>
@@ -89,7 +82,7 @@
 
                     <div>
                         <label for="monto" class="block text-sm font-medium text-gray-700">Monto a sembrar</label>
-                        <input type="number" id="monto" name="monto" required
+                        <input type="number" id="monto" name="monto" required step="0.01"
                             class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Ej: 50.00">
                     </div>
@@ -146,100 +139,6 @@
 
     </div>
 </div>
-
-<script src="https://www.google.com/recaptcha/api.js?render=6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc"></script>
-
-<script>
-function validateForm() {
-    console.log('🔍 Validando formulario...');
-
-    const requiredFields = document.querySelectorAll('#siembra-form input[required], #siembra-form select[required], #siembra-form textarea[required]');
-    let isValid = true;
-    let debugInfo = '📋 Campos requeridos:\n';
-
-    requiredFields.forEach(field => {
-        const value = field.value.trim();
-        debugInfo += `  ${field.name}: "${value}"\n`;
-
-        if (!value) {
-            field.style.borderColor = 'red';
-            isValid = false;
-        } else {
-            field.style.borderColor = '';
-        }
-    });
-
-    console.log(debugInfo);
-
-    if (!isValid) {
-        alert('❌ Por favor, completa todos los campos marcados como obligatorios.');
-        return false;
-    }
-
-    return true;
-}
-
-function handleFormSubmit(event) {
-    console.log('🚀 Procesando envío del formulario...');
-
-    if (!validateForm()) {
-        console.log('❌ Validación fallida');
-        event.preventDefault();
-        return false;
-    }
-
-    // Ejecutar reCAPTCHA antes de enviar
-    event.preventDefault(); // Prevenir envío inmediato
-
-    console.log('🔐 Ejecutando reCAPTCHA...');
-
-    try {
-        grecaptcha.ready(function() {
-            console.log('✅ reCAPTCHA listo');
-            grecaptcha.execute('6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc', {action: 'siembra'}).then(function(token) {
-                console.log('🎫 Token reCAPTCHA obtenido:', token ? 'SÍ' : 'NO');
-
-                // Asignar el token al campo oculto
-                document.getElementById('recaptcha_response').value = token;
-
-                const form = document.getElementById('siembra-form');
-                const formData = new FormData(form);
-
-                console.log('📤 Datos que se enviarán al servidor:');
-                for (let [key, value] of formData.entries()) {
-                    console.log(`  ${key}: ${value}`);
-                }
-
-                console.log('🎯 URL de destino:', form.action);
-                console.log('⏳ Enviando formulario...');
-
-                // Crear un indicador visual de que se está procesando
-                const debugDiv = document.createElement('div');
-                debugDiv.id = 'debug-indicator';
-                debugDiv.style.cssText = 'position: fixed; top: 10px; right: 10px; background: yellow; padding: 10px; border: 2px solid black; z-index: 9999; max-width: 300px; font-size: 12px;';
-                debugDiv.innerHTML = '⏳ Formulario enviado...<br>📊 Datos en consola<br>🔄 Esperando respuesta del servidor...<br><br><button onclick="this.parentElement.remove()">Cerrar</button>';
-                document.body.appendChild(debugDiv);
-
-                // Enviar el formulario normalmente
-                form.submit();
-            }).catch(function(error) {
-                console.error('❌ Error en reCAPTCHA:', error);
-                alert('Error con la verificación de seguridad. Por favor, recarga la página e intenta de nuevo.');
-            });
-        });
-    } catch (error) {
-        console.error('❌ Error al inicializar reCAPTCHA:', error);
-        alert('Error al cargar la verificación de seguridad. Por favor, recarga la página.');
-    }
-
-    return false;
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('✅ Formulario de siembra cargado y listo');
-    console.log('🔧 Modo debug activado - abre la consola (F12) para ver información detallada');
-});
-</script>
 
 <script>
     // Script para mostrar/ocultar métodos de pago

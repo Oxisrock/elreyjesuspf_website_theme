@@ -1,12 +1,16 @@
 <?php
-// Incluir sistema de logging avanzado
-require_once __DIR__ . '/siembra_debug.php';
+// Sistema de logging simplificado
+if (!function_exists('siembra_log')) {
+    function siembra_log($message, $level = 'INFO') {
+        if (defined('WP_DEBUG') && WP_DEBUG) {
+            error_log("[SIEMBRA $level] $message");
+        }
+    }
+}
 
 // Función para crear la tabla de siembras al activar el tema
 function crear_tabla_siembras()
 {
-    siembra_log("=== CREANDO TABLA DE SIEMBRAS ===", 'SYSTEM');
-
     global $wpdb;
     $tabla_siembras = $wpdb->prefix . 'siembras';
 
@@ -24,20 +28,90 @@ function crear_tabla_siembras()
             correo varchar(255) DEFAULT '',
             mensaje text DEFAULT '',
             PRIMARY KEY  (id)
-        )   $charset_collate;";
-
-        siembra_log("Ejecutando SQL: " . substr($sql, 0, 100) . "...", 'DEBUG');
+        ) $charset_collate;";
 
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
         dbDelta($sql);
-
-        $table_created = $wpdb->get_var("SHOW TABLES LIKE '$tabla_siembras'") == $tabla_siembras;
-        siembra_log("Tabla creada: " . ($table_created ? "SÍ" : "NO"), $table_created ? 'SUCCESS' : 'ERROR');
-    } else {
-        siembra_log("Tabla ya existe", 'INFO');
     }
 }
+
+// Crear tabla solo si no existe
 crear_tabla_siembras();
+
+// Función para procesar el formulario y guardar los datos
+function procesar_formulario_siembra()
+{
+    try {
+        // Verificar el nonce de seguridad
+        if (!isset($_POST['mi_nonce']) || !wp_verify_nonce($_POST['mi_nonce'], 'mi_form_siembra_nonce')) {
+            wp_die('Error de seguridad, por favor inténtalo de nuevo.');
+        }
+
+        // Verificar que el formulario fue enviado por POST
+        if ('POST' !== $_SERVER['REQUEST_METHOD']) {
+            return;
+        }
+
+        // URL de retorno
+        $siembra_page_url = wp_get_referer() ? wp_get_referer() : home_url();
+
+        global $wpdb;
+        $tabla_siembras = $wpdb->prefix . 'siembras';
+
+        // Obtener y sanitizar los datos del formulario
+        $tipo_siembra = isset($_POST['tipo_siembra']) ? sanitize_text_field($_POST['tipo_siembra']) : '';
+        $metodo_de_pago = isset($_POST['metodo_de_pago']) ? sanitize_text_field($_POST['metodo_de_pago']) : '';
+        $monto = isset($_POST['monto']) ? floatval($_POST['monto']) : 0;
+        $referencia = isset($_POST['referencia']) ? sanitize_text_field($_POST['referencia']) : '';
+        $nombre = isset($_POST['nombre']) ? sanitize_text_field($_POST['nombre']) : '';
+        $telefono = isset($_POST['telefono']) ? sanitize_text_field($_POST['telefono']) : '';
+        $email = isset($_POST['email']) ? sanitize_email($_POST['email']) : '';
+        $mensaje = isset($_POST['mensaje']) ? sanitize_textarea_field($_POST['mensaje']) : '';
+
+        // Validar campos requeridos
+        if (empty($tipo_siembra) || empty($metodo_de_pago) || empty($monto) || empty($referencia) || empty($nombre) || empty($telefono) || empty($email) || empty($mensaje)) {
+            wp_redirect(add_query_arg('enviado', 'false', $siembra_page_url));
+            exit;
+        }
+
+        // Insertar datos en la base de datos
+        $resultado = $wpdb->insert(
+            $tabla_siembras,
+            [
+                'tipo_siembra' => $tipo_siembra,
+                'metodo_de_pago' => $metodo_de_pago,
+                'monto' => $monto,
+                'referencia' => $referencia,
+                'nombre_completo' => $nombre,
+                'telefono' => $telefono,
+                'correo' => $email,
+                'mensaje' => $mensaje,
+            ],
+            [
+                '%s', '%s', '%f', '%s', '%s', '%s', '%s', '%s'
+            ]
+        );
+
+        if ($resultado !== false) {
+            // Éxito
+            wp_redirect(add_query_arg('enviado', 'true', $siembra_page_url));
+            exit;
+        } else {
+            // Error en la base de datos
+            wp_redirect(add_query_arg('enviado', 'false', $siembra_page_url));
+            exit;
+        }
+
+    } catch (Exception $e) {
+        error_log('Error en procesar_formulario_siembra: ' . $e->getMessage());
+        wp_redirect(add_query_arg('enviado', 'false', wp_get_referer()));
+        exit;
+    }
+}
+
+// Registrar los hooks
+add_action('admin_post_nopriv_procesar_formulario_siembra', 'procesar_formulario_siembra');
+add_action('admin_post_procesar_formulario_siembra', 'procesar_formulario_siembra');
 
 // Función para procesar el formulario y guardar los datos
 function procesar_formulario_siembra()
