@@ -36,8 +36,6 @@ function procesar_formulario_siembra()
     }
 
     // VERIFICACIÓN DE GOOGLE RECAPTCHA V3
-    // TEMP: Desactivado para debug
-    /*
     $recaptcha_secret_key = '6LePAbwrAAAAAGT4G4s6FngmaTEK3O0UdPqGfOfT';
     $recaptcha_token = isset($_POST['recaptcha_response']) ? sanitize_text_field($_POST['recaptcha_response']) : '';
 
@@ -54,24 +52,35 @@ function procesar_formulario_siembra()
     ]);
 
     if (is_wp_error($verification_response)) {
-        wp_die('No se pudo conectar con el servicio de verificación.');
+        error_log('Error de conexión con reCAPTCHA: ' . $verification_response->get_error_message());
+        // En desarrollo, permitir continuar si hay error de conexión
+        if (WP_DEBUG) {
+            error_log('Modo debug: Continuando sin verificación reCAPTCHA debido a error de conexión');
+        } else {
+            wp_die('No se pudo conectar con el servicio de verificación.');
+        }
+    } else {
+        $response_data = json_decode(wp_remote_retrieve_body($verification_response));
+
+        // Verificar si la comunicación con Google fue exitosa
+        if (!$response_data || !$response_data->success) {
+            error_log('reCAPTCHA falló: ' . print_r($response_data, true));
+            // En desarrollo, permitir continuar
+            if (WP_DEBUG) {
+                error_log('Modo debug: Continuando sin verificación reCAPTCHA');
+            } else {
+                wp_die('Error de comunicación con el servicio reCAPTCHA.');
+            }
+        } else {
+            // Verificar si estamos en entorno local
+            $is_local_environment = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']);
+
+            // La validación del SCORE solo se aplica si NO estamos en entorno local
+            if (!$is_local_environment && isset($response_data->score) && $response_data->score < 0.5) {
+                wp_die('Falló la verificación de humanidad. Intenta de nuevo.');
+            }
+        }
     }
-
-    $response_data = json_decode(wp_remote_retrieve_body($verification_response));
-
-    // Verificar si la comunicación con Google fue exitosa
-    if (!$response_data || !$response_data->success) {
-        wp_die('Error de comunicación con el servicio reCAPTCHA.');
-    }
-
-    // Verificar si estamos en entorno local
-    $is_local_environment = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']);
-
-    // La validación del SCORE solo se aplica si NO estamos en entorno local
-    if (!$is_local_environment && $response_data->score < 0.5) {
-        wp_die('Falló la verificación de humanidad. Intenta de nuevo.');
-    }
-    */
 
     // Verificar que el formulario fue enviado por POST
     if ('POST' !== $_SERVER['REQUEST_METHOD']) {
@@ -94,17 +103,14 @@ function procesar_formulario_siembra()
     $email          = isset($_POST['email']) ? sanitize_email($_POST['email']) : '';
     $mensaje        = isset($_POST['mensaje']) ? sanitize_textarea_field($_POST['mensaje']) : '';
 
-    // TEMP: Desactivar validaciones para debug
-    /*
     // Validaciones básicas
-    if (empty($tipo_siembra) || empty($metodo_de_pago) || $monto <= 0 || empty($mensaje)) {
+    if (empty($tipo_siembra) || empty($metodo_de_pago) || $monto <= 0 || empty($nombre) || empty($email) || empty($mensaje)) {
         wp_die('Por favor, completa todos los campos obligatorios.');
     }
 
     if (!is_email($email)) {
         wp_die('Por favor, ingresa un correo electrónico válido.');
     }
-    */
 
     $dia_pago       = current_time('mysql');
 
@@ -124,6 +130,130 @@ function procesar_formulario_siembra()
         ),
         array('%s', '%s', '%s', '%f', '%s', '%s', '%s', '%s', '%s')
     );
+
+    // Verificar si la inserción fue exitosa
+    if ($wpdb->last_error) {
+        error_log('Error al insertar en la base de datos: ' . $wpdb->last_error);
+        wp_die('Error al guardar los datos. Por favor, intenta de nuevo.');
+    }
+
+    $siembra_id = $wpdb->insert_id;
+
+    // Enviar email de confirmación al usuario
+    $asunto_usuario = 'Confirmación de tu Siembra - El Rey Jesús Punto Fijo';
+    $mensaje_usuario = "
+    <html>
+    <head>
+        <title>Confirmación de Siembra</title>
+        <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+            .header { background-color: #f8f9fa; padding: 20px; text-align: center; }
+            .content { padding: 20px; }
+            .footer { background-color: #f8f9fa; padding: 10px; text-align: center; font-size: 12px; }
+            .highlight { background-color: #fff3cd; padding: 10px; border-left: 4px solid #ffc107; }
+        </style>
+    </head>
+    <body>
+        <div class='header'>
+            <h1>El Rey Jesús Punto Fijo</h1>
+            <h2>Confirmación de tu Siembra</h2>
+        </div>
+        <div class='content'>
+            <p>Hola <strong>{$nombre}</strong>,</p>
+            <p>¡Gracias por tu siembra! Hemos recibido tu donación y la estamos procesando.</p>
+            
+            <div class='highlight'>
+                <h3>Detalles de tu Siembra:</h3>
+                <p><strong>ID de Transacción:</strong> {$siembra_id}</p>
+                <p><strong>Fecha:</strong> " . date('d/m/Y H:i', strtotime($dia_pago)) . "</p>
+                <p><strong>Tipo de Siembra:</strong> {$tipo_siembra}</p>
+                <p><strong>Método de Pago:</strong> {$metodo_de_pago}</p>
+                <p><strong>Monto:</strong> $" . number_format($monto, 2) . "</p>
+                " . (!empty($referencia) ? "<p><strong>Referencia:</strong> {$referencia}</p>" : "") . "
+            </div>
+            
+            <p><strong>Tu mensaje de oración:</strong></p>
+            <blockquote style='background-color: #f8f9fa; padding: 15px; border-left: 4px solid #007bff;'>
+                " . nl2br(esc_html($mensaje)) . "
+            </blockquote>
+            
+            <p>Estamos orando por ti y agradecemos tu generosidad. Tu contribución nos ayuda a continuar con la obra de Dios en nuestra comunidad.</p>
+            
+            <p>Si tienes alguna pregunta, puedes contactarnos respondiendo a este email.</p>
+            
+            <p>Dios te bendiga abundantemente,</p>
+            <p><strong>Iglesia El Rey Jesús Punto Fijo</strong></p>
+        </div>
+        <div class='footer'>
+            <p>Este es un mensaje automático, por favor no respondas directamente a este email.</p>
+        </div>
+    </body>
+    </html>
+    ";
+
+    $headers_usuario = array(
+        'Content-Type: text/html; charset=UTF-8',
+        'From: Iglesia El Rey Jesús Punto Fijo <no-reply@elreyjesuspuntofijo.com>'
+    );
+
+    // Enviar email al usuario
+    $email_usuario_enviado = wp_mail($email, $asunto_usuario, $mensaje_usuario, $headers_usuario);
+
+    // Enviar email de notificación a la iglesia
+    $admin_email = get_option('admin_email');
+    $asunto_admin = 'Nueva Siembra Recibida - ID: ' . $siembra_id;
+    $mensaje_admin = "
+    <html>
+    <head>
+        <title>Nueva Siembra Recibida</title>
+        <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+            .header { background-color: #007bff; color: white; padding: 20px; text-align: center; }
+            .content { padding: 20px; }
+            .info-box { background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 10px 0; }
+        </style>
+    </head>
+    <body>
+        <div class='header'>
+            <h1>Nueva Siembra Recibida</h1>
+        </div>
+        <div class='content'>
+            <div class='info-box'>
+                <h3>Detalles de la Siembra:</h3>
+                <p><strong>ID:</strong> {$siembra_id}</p>
+                <p><strong>Fecha:</strong> " . date('d/m/Y H:i', strtotime($dia_pago)) . "</p>
+                <p><strong>Nombre:</strong> {$nombre}</p>
+                <p><strong>Email:</strong> {$email}</p>
+                <p><strong>Teléfono:</strong> {$telefono}</p>
+                <p><strong>Tipo de Siembra:</strong> {$tipo_siembra}</p>
+                <p><strong>Método de Pago:</strong> {$metodo_de_pago}</p>
+                <p><strong>Monto:</strong> $" . number_format($monto, 2) . "</p>
+                " . (!empty($referencia) ? "<p><strong>Referencia:</strong> {$referencia}</p>" : "") . "
+            </div>
+            
+            <div class='info-box'>
+                <h3>Mensaje de Oración:</h3>
+                <blockquote>
+                    " . nl2br(esc_html($mensaje)) . "
+                </blockquote>
+            </div>
+            
+            <p><a href='" . admin_url('admin.php?page=siembras') . "'>Ver todas las siembras en el panel de administración</a></p>
+        </div>
+    </body>
+    </html>
+    ";
+
+    $headers_admin = array(
+        'Content-Type: text/html; charset=UTF-8',
+        'From: Sistema de Siembras <no-reply@elreyjesuspuntofijo.com>'
+    );
+
+    // Enviar email al administrador
+    $email_admin_enviado = wp_mail($admin_email, $asunto_admin, $mensaje_admin, $headers_admin);
+
+    // Log de envío de emails
+    error_log("Siembra ID {$siembra_id}: Email usuario enviado: " . ($email_usuario_enviado ? 'SÍ' : 'NO') . ", Email admin enviado: " . ($email_admin_enviado ? 'SÍ' : 'NO'));
 
     // Redirigir al usuario con un mensaje de éxito
     $redirect_url = add_query_arg('enviado', 'true', $siembra_page_url);
