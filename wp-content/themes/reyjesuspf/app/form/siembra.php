@@ -166,6 +166,11 @@ function mostrar_siembras_page()
 
 function mi_datatable_enqueue_scripts($hook)
 {
+    // Solo cargar en la página de siembras
+    if ($hook !== 'toplevel_page_siembras') {
+        return;
+    }
+
     // Estilos y Scripts de DataTables
     wp_enqueue_style('datatables-css', 'https://cdn.datatables.net/v/dt/dt-2.0.8/b-3.0.2/b-html5-3.0.2/datatables.min.css');
     wp_enqueue_script('jszip', 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js', array(), null, true);
@@ -175,14 +180,20 @@ function mi_datatable_enqueue_scripts($hook)
 
     wp_add_inline_script('datatables-js', '
     jQuery(document).ready(function($) {
-        var table = $("#miTabla").DataTable({
+        $("#miTabla").DataTable({
             dom: "Bfrtip",
             buttons: [
                 {
                     extend: "excelHtml5",
-                    text: "Exportar a Excel"
+                    text: "Exportar a Excel",
+                    title: "Registro_de_Siembras_" + new Date().toISOString().split("T")[0]
                 }
-            ]
+            ],
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+            },
+            order: [[1, "desc"]], // Ordenar por fecha descendente
+            pageLength: 25
         });
     });
 ');
