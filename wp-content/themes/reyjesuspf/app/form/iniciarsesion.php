@@ -21,10 +21,12 @@ function handle_custom_login_form()
     // 1. VERIFICACIÓN DE GOOGLE RECAPTCHA V3
     // ======================================================
     // TEMPORALMENTE DESACTIVADO PARA DEBUGGING
+    
+    $login_page_url = home_url('/login'); // URL de tu página de login
+    
     /*
     $recaptcha_secret_key = '6LfflFgsAAAAAJJanViKSxJVzrWo33zThlxu5KdO'; // Tu clave secreta está segura aquí.
     $recaptcha_token = isset($_POST['recaptcha_response']) ? $_POST['recaptcha_response'] : '';
-    $login_page_url = home_url('/login'); // URL de tu página de login, ajústala si es diferente.
 
     if (empty($recaptcha_token)) {
         wp_safe_redirect(add_query_arg('login_error', 'recaptcha_token', $login_page_url));
