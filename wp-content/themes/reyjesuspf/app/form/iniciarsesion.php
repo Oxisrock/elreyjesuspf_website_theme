@@ -22,7 +22,7 @@ function handle_custom_login_form()
     // ======================================================
     // TEMPORALMENTE DESACTIVADO PARA DEBUGGING
     /*
-    $recaptcha_secret_key = '6LePAbwrAAAAAGT4G4s6FngmaTEK3O0UdPqGfOfT'; // Tu clave secreta está segura aquí.
+    $recaptcha_secret_key = '6LfflFgsAAAAAJJanViKSxJVzrWo33zThlxu5KdO'; // Tu clave secreta está segura aquí.
     $recaptcha_token = isset($_POST['recaptcha_response']) ? $_POST['recaptcha_response'] : '';
     $login_page_url = home_url('/login'); // URL de tu página de login, ajústala si es diferente.
 

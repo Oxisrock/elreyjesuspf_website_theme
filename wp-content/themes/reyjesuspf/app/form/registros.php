@@ -55,7 +55,7 @@ function handle_custom_registration()
     }
 
     // 2. VERIFICACIÓN DE GOOGLE RECAPTCHA V3
-    $recaptcha_secret_key = '6LePAbwrAAAAAGT4G4s6FngmaTEK3O0UdPqGfOfT';
+    $recaptcha_secret_key = '6LfflFgsAAAAAJJanViKSxJVzrWo33zThlxu5KdO';
     $recaptcha_token = isset($_POST['recaptcha_response']) ? sanitize_text_field($_POST['recaptcha_response']) : '';
 
     if (empty($recaptcha_token)) {

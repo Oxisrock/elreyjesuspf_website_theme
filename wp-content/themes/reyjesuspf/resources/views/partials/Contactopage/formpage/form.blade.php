@@ -85,7 +85,7 @@
 
 </div>
 
-<script src="https://www.google.com/recaptcha/api.js?render=6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LfflFgsAAAAAOYKX6iPoJkKCVJNWiN5fq7vQdsj"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Ejecutar reCAPTCHA
         grecaptcha.ready(function() {
-            grecaptcha.execute('6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc', {action: 'contact'}).then(function(token) {
+            grecaptcha.execute('6LfflFgsAAAAAOYKX6iPoJkKCVJNWiN5fq7vQdsj', {action: 'contact'}).then(function(token) {
                 // Asignar el token al campo hidden
                 document.getElementById('recaptcha_response').value = token;
 

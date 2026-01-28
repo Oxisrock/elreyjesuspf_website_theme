@@ -173,7 +173,7 @@ if (!function_exists('siembra_log_system_status')) {
         siembra_log("WP_DEBUG: " . (defined('WP_DEBUG') && WP_DEBUG ? "ACTIVADO" : "DESACTIVADO"), 'SYSTEM');
 
         // Verificar reCAPTCHA
-        $recaptcha_secret = defined('RECAPTCHA_SECRET_KEY') ? RECAPTCHA_SECRET_KEY : '6LePAbwrAAAAAGT4G4s6FngmaTEK3O0UdPqGfOfT';
+        $recaptcha_secret = defined('RECAPTCHA_SECRET_KEY') ? RECAPTCHA_SECRET_KEY : '6LfflFgsAAAAAJJanViKSxJVzrWo33zThlxu5KdO';
         siembra_log("reCAPTCHA configurado: " . (!empty($recaptcha_secret) ? "SÍ" : "NO"), 'SYSTEM');
 
         siembra_log("=== FIN VERIFICACIÓN DEL SISTEMA ===", 'SYSTEM');

@@ -141,7 +141,7 @@ function handle_event_registration()
 {
     global $wpdb;
     check_ajax_referer('event_registration_nonce', 'nonce');
-    $recaptcha_secret_key = '6LePAbwrAAAAAGT4G4s6FngmaTEK3O0UdPqGfOfT'; // ¡IMPORTANTE: Reemplaza esto!
+    $recaptcha_secret_key = '6LfflFgsAAAAAJJanViKSxJVzrWo33zThlxu5KdO'; // ¡IMPORTANTE: Reemplaza esto!
     $recaptcha_token = sanitize_text_field($_POST['recaptcha_response']);
 
     $verification_response = wp_remote_post('https://www.google.com/recaptcha/api/siteverify', [

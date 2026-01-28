@@ -15,7 +15,7 @@ jQuery(document).ready(function ($) {
         // 1. Ejecutamos reCAPTCHA para obtener el token
         grecaptcha.ready(function () {
             // REEMPLAZA 'TU_CLAVE_PUBLICA_DE_SITIO' con tu clave real
-            grecaptcha.execute('6LePAbwrAAAAAKyfRATtLV8-bekhYdta6VpzCroc', { action: 'register_to_event' }).then(function (token) {
+            grecaptcha.execute('6LfflFgsAAAAAOYKX6iPoJkKCVJNWiN5fq7vQdsj', { action: 'register_to_event' }).then(function (token) {
 
                 const eventId = $('input[name="event_id"]').val();
                 const nombre = $('input[name="nombre"]').val();
