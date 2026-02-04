@@ -1,16 +1,16 @@
 <div class="min-h-screen bg-slate-50 flex flex-col md:flex-row font-sans text-slate-800">
 
-    <div class="w-full md:w-1/2 lg:w-5/12 bg-white flex flex-col justify-center p-6 sm:p-10 relative z-20 shadow-2xl">
+    <div class="w-full md:w-1/2 lg:w-5/12 bg-white flex flex-col justify-center p-6 sm:p-8 md:p-12 relative z-20 shadow-2xl">
         
         <div class="w-full max-w-md mx-auto">
             
-            <div class="flex items-center gap-4 mb-8">
-                <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center shrink-0">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center shrink-0">
                     <img src="<?php the_field('logo', 'option'); ?>" alt="Logo" class="h-8 w-auto">
                 </div>
                 <div>
-                    <h1 class="text-2xl font-bold text-slate-900 leading-tight"><?php the_field('titulo_siembra_page', 'option'); ?></h1>
-                    <p class="text-xs text-slate-500 font-medium">Siembra y diezma con propósito</p>
+                    <h1 class="text-xl font-bold text-slate-900 leading-tight"><?php the_field('titulo_siembra_page', 'option'); ?></h1>
+                    <p class="text-xs text-slate-500 font-medium">Iglesia El Rey Jesús</p>
                 </div>
             </div>
 
@@ -24,68 +24,59 @@
                 </div>
             <?php endif; ?>
 
-            <div class="flex justify-between items-center mb-8 relative px-2">
-                <div class="absolute top-1/2 left-0 w-full h-1 bg-slate-100 -z-10 rounded-full"></div>
-                <div class="step-indicator flex flex-col items-center gap-1 cursor-pointer transition-all" onclick="goToStep(1)">
-                    <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm ring-4 ring-white shadow-md transition-all">1</div>
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-blue-600">Monto</span>
-                </div>
-                <div class="step-indicator flex flex-col items-center gap-1 opacity-40 transition-all">
-                    <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center font-bold text-sm ring-4 ring-white transition-all">2</div>
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Datos</span>
-                </div>
-                <div class="step-indicator flex flex-col items-center gap-1 opacity-40 transition-all">
-                    <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center font-bold text-sm ring-4 ring-white transition-all">3</div>
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Pago</span>
-                </div>
+            <div class="flex justify-center gap-2 mb-8">
+                <div class="h-1.5 w-8 rounded-full bg-blue-600 transition-all step-dot" data-index="1"></div>
+                <div class="h-1.5 w-8 rounded-full bg-slate-200 transition-all step-dot" data-index="2"></div>
+                <div class="h-1.5 w-8 rounded-full bg-slate-200 transition-all step-dot" data-index="3"></div>
             </div>
 
-            <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" id="siembra-form" class="relative min-h-[420px]">
+            <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" id="siembra-form" class="relative min-h-[450px]">
                 <input type="hidden" name="action" value="procesar_formulario_siembra">
                 <?php wp_nonce_field('mi_form_siembra_nonce', 'mi_nonce'); ?>
 
                 <div class="step-content absolute inset-0 transition-all duration-300" data-step="1">
                     
-                    <div class="bg-slate-100 p-1.5 rounded-2xl flex relative mb-6">
-                        <div id="currency-bg" class="absolute left-1.5 top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-white rounded-xl shadow-sm transition-all duration-300 ease-out"></div>
+                    <div class="bg-slate-100 p-1 rounded-xl flex relative mb-6 w-full max-w-[200px] mx-auto">
+                        <div id="currency-bg" class="absolute left-1 top-1 bottom-1 w-[calc(50%-4px)] bg-white rounded-lg shadow-sm transition-all duration-300 ease-out"></div>
                         
-                        <label class="flex-1 text-center py-2.5 z-10 cursor-pointer select-none relative" onclick="setCurrency('USD')">
-                            <input type="radio" name="divisa" value="USD" class="sr-only" checked onchange="updateCurrencyUI()">
-                            <span class="text-sm font-bold transition-colors duration-300" id="label-usd">🇺🇸 Dólar ($)</span>
+                        <label class="flex-1 text-center py-2 z-10 cursor-pointer select-none" onclick="setCurrency('USD')">
+                            <input type="radio" name="divisa" value="USD" class="sr-only" checked>
+                            <span class="text-xs font-bold transition-colors duration-300" id="label-usd">USD ($)</span>
                         </label>
                         
-                        <label class="flex-1 text-center py-2.5 z-10 cursor-pointer select-none relative" onclick="setCurrency('BS')">
-                            <input type="radio" name="divisa" value="BS" class="sr-only" onchange="updateCurrencyUI()">
-                            <span class="text-sm font-bold text-slate-500 transition-colors duration-300" id="label-bs">🇻🇪 Bolívar (Bs)</span>
+                        <label class="flex-1 text-center py-2 z-10 cursor-pointer select-none" onclick="setCurrency('BS')">
+                            <input type="radio" name="divisa" value="BS" class="sr-only">
+                            <span class="text-xs font-bold text-slate-500 transition-colors duration-300" id="label-bs">VES (Bs)</span>
                         </label>
                     </div>
 
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 text-center">Selecciona el propósito</p>
                     <div class="grid grid-cols-2 gap-3 mb-6">
                         <label class="cursor-pointer group">
                             <input type="radio" name="tipo_siembra" value="diezmo" class="peer sr-only" required>
-                            <div class="h-full p-4 rounded-2xl border-2 border-slate-100 bg-white hover:border-blue-200 peer-checked:border-blue-600 peer-checked:bg-blue-50 transition-all text-center">
-                                <span class="text-2xl mb-1 block">🌱</span>
+                            <div class="p-3 rounded-2xl border-2 border-slate-100 bg-white hover:border-blue-200 peer-checked:border-blue-600 peer-checked:bg-blue-50 transition-all text-center h-full flex flex-col items-center justify-center">
+                                <span class="text-xl mb-1">🌱</span>
                                 <span class="text-sm font-bold text-slate-600 peer-checked:text-blue-800">Diezmo</span>
                             </div>
                         </label>
                         <label class="cursor-pointer group">
                             <input type="radio" name="tipo_siembra" value="ofrenda" class="peer sr-only" required>
-                            <div class="h-full p-4 rounded-2xl border-2 border-slate-100 bg-white hover:border-blue-200 peer-checked:border-blue-600 peer-checked:bg-blue-50 transition-all text-center">
-                                <span class="text-2xl mb-1 block">🎁</span>
+                            <div class="p-3 rounded-2xl border-2 border-slate-100 bg-white hover:border-blue-200 peer-checked:border-blue-600 peer-checked:bg-blue-50 transition-all text-center h-full flex flex-col items-center justify-center">
+                                <span class="text-xl mb-1">🎁</span>
                                 <span class="text-sm font-bold text-slate-600 peer-checked:text-blue-800">Ofrenda</span>
                             </div>
                         </label>
                         <label class="cursor-pointer group">
                             <input type="radio" name="tipo_siembra" value="pacto" class="peer sr-only" required>
-                            <div class="h-full p-4 rounded-2xl border-2 border-slate-100 bg-white hover:border-blue-200 peer-checked:border-blue-600 peer-checked:bg-blue-50 transition-all text-center">
-                                <span class="text-2xl mb-1 block">🤝</span>
+                            <div class="p-3 rounded-2xl border-2 border-slate-100 bg-white hover:border-blue-200 peer-checked:border-blue-600 peer-checked:bg-blue-50 transition-all text-center h-full flex flex-col items-center justify-center">
+                                <span class="text-xl mb-1">🤝</span>
                                 <span class="text-sm font-bold text-slate-600 peer-checked:text-blue-800">Pacto</span>
                             </div>
                         </label>
-                         <label class="cursor-pointer group">
+                        <label class="cursor-pointer group">
                             <input type="radio" name="tipo_siembra" value="primicia" class="peer sr-only" required>
-                            <div class="h-full p-4 rounded-2xl border-2 border-slate-100 bg-white hover:border-blue-200 peer-checked:border-blue-600 peer-checked:bg-blue-50 transition-all text-center">
-                                <span class="text-2xl mb-1 block">🍞</span>
+                            <div class="p-3 rounded-2xl border-2 border-slate-100 bg-white hover:border-blue-200 peer-checked:border-blue-600 peer-checked:bg-blue-50 transition-all text-center h-full flex flex-col items-center justify-center">
+                                <span class="text-xl mb-1">🍞</span>
                                 <span class="text-sm font-bold text-slate-600 peer-checked:text-blue-800">Primicia</span>
                             </div>
                         </label>
@@ -94,18 +85,19 @@
                     <div class="relative">
                         <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 ml-1">Monto a Sembrar</label>
                         <div class="relative group">
-                            <span class="currency-symbol absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 text-xl font-bold group-focus-within:text-blue-600 transition-colors">$</span>
+                            <span class="currency-symbol absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 text-xl font-bold transition-colors">$</span>
                             <input type="text" inputmode="decimal" id="monto" name="monto" required 
-                                class="w-full pl-10 pr-4 py-4 text-2xl font-bold bg-slate-50 border-2 border-slate-100 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none transition-all placeholder-slate-300 text-slate-800"
+                                class="w-full pl-10 pr-4 py-4 text-2xl font-bold bg-slate-50 border-2 border-slate-100 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none transition-all placeholder-slate-300 text-slate-800 shadow-sm"
                                 placeholder="0.00">
                         </div>
                     </div>
                 </div>
 
                 <div class="step-content absolute inset-0 transition-all duration-300 opacity-0 translate-x-full pointer-events-none" data-step="2">
+                    <h2 class="text-lg font-bold text-slate-800 mb-4">Tus Datos</h2>
                     <div class="space-y-4">
                         <div>
-                            <label class="text-xs font-bold text-slate-500 uppercase ml-1">Tu Nombre</label>
+                            <label class="text-xs font-bold text-slate-500 uppercase ml-1">Nombre Completo</label>
                             <input type="text" name="nombre" required 
                                 class="w-full px-5 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none transition-all font-semibold"
                                 placeholder="Nombre y Apellido">
@@ -117,7 +109,7 @@
                                 placeholder="0412 000 0000">
                         </div>
                         <div>
-                            <label class="text-xs font-bold text-slate-500 uppercase ml-1">Correo</label>
+                            <label class="text-xs font-bold text-slate-500 uppercase ml-1">Correo Electrónico</label>
                             <input type="email" name="email" inputmode="email" required 
                                 class="w-full px-5 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none transition-all font-semibold"
                                 placeholder="ejemplo@correo.com">
@@ -125,83 +117,108 @@
                     </div>
                 </div>
 
-                <div class="step-content absolute inset-0 transition-all duration-300 opacity-0 translate-x-full pointer-events-none" data-step="3">
+                <div class="step-content absolute inset-0 transition-all duration-300 opacity-0 translate-x-full pointer-events-none overflow-y-auto pb-20" data-step="3">
                     
-                    <p class="text-center text-sm text-slate-500 mb-4">
-                        Vas a sembrar <strong id="summary-monto" class="text-slate-900 text-lg"></strong>
-                        en <strong id="summary-currency"></strong>
-                    </p>
-
-                    <div class="space-y-3 mb-6">
-                        
-                        <div id="option-zelle" class="payment-option">
-                            <label class="cursor-pointer relative block">
-                                <input type="radio" name="metodo_de_pago" value="Zelle" class="peer sr-only" id="radio-zelle">
-                                <div class="p-4 rounded-2xl border-2 border-slate-100 bg-white hover:bg-purple-50 peer-checked:bg-purple-600 peer-checked:border-purple-600 peer-checked:text-white transition-all group">
-                                    <div class="flex items-center justify-between">
-                                        <div class="flex items-center gap-3">
-                                            <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-[10px] group-peer-checked:bg-white/20 group-peer-checked:text-white">Z</div>
-                                            <span class="font-bold">Zelle</span>
-                                        </div>
-                                        <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-md group-peer-checked:bg-white/20 group-peer-checked:text-white">USD Only</span>
-                                    </div>
-                                    
-                                    <div class="hidden peer-checked:block mt-3 pt-3 border-t border-white/20 text-sm">
-                                        <p class="opacity-80 text-xs uppercase mb-1">Enviar a:</p>
-                                        <p class="font-mono font-bold text-lg select-all">nhradriver@yahoo.com</p>
-                                        <p class="text-sm">Luis Bracho</p>
-                                    </div>
-                                </div>
-                            </label>
+                    <div class="bg-slate-50 border border-slate-100 rounded-2xl p-4 mb-5 text-center relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-purple-500"></div>
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Resumen de Siembra</p>
+                        <div class="flex items-baseline justify-center gap-1">
+                            <span id="resumen-simbolo" class="text-lg font-medium text-slate-500">$</span>
+                            <span id="resumen-monto" class="text-3xl font-extrabold text-slate-800">0.00</span>
                         </div>
+                        <span id="resumen-tipo" class="inline-block mt-2 px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-bold text-blue-600 uppercase shadow-sm">Diezmo</span>
+                    </div>
 
-                        <div id="option-bnc" class="payment-option">
-                            <label class="cursor-pointer relative block">
-                                <input type="radio" name="metodo_de_pago" value="BNC" class="peer sr-only" id="radio-bnc">
-                                <div class="p-4 rounded-2xl border-2 border-slate-100 bg-white hover:bg-green-50 peer-checked:bg-green-600 peer-checked:border-green-600 peer-checked:text-white transition-all group">
-                                    <div class="flex items-center justify-between">
-                                        <div class="flex items-center gap-3">
-                                            <div class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-[10px] group-peer-checked:bg-white/20 group-peer-checked:text-white">Bs</div>
-                                            <span class="font-bold">Pago Móvil / BNC</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="hidden peer-checked:block mt-3 pt-3 border-t border-white/20 text-sm font-mono">
-                                        <div class="flex justify-between py-1"><span>RIF:</span> <span class="font-bold select-all">J-40389600-3</span></div>
-                                        <div class="flex justify-between py-1"><span>Tel:</span> <span class="font-bold select-all">0412-427-6773</span></div>
-                                        <div class="flex justify-between py-1"><span>BNC:</span> <span class="font-bold select-all">0191-0263-77...</span></div>
-                                    </div>
+                    <div id="card-zelle" class="hidden animate-fade-in">
+                        <input type="radio" name="metodo_de_pago" value="Zelle" class="hidden" id="radio-zelle">
+                        <div class="bg-gradient-to-br from-[#6d28d9] to-[#4c1d95] rounded-2xl p-5 text-white shadow-lg shadow-purple-200 mb-6 relative overflow-hidden">
+                            <div class="absolute -right-4 -top-4 w-24 h-24 bg-white opacity-10 rounded-full blur-xl"></div>
+                            
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <p class="text-xs font-bold text-purple-200 uppercase tracking-wider">Transferir vía Zelle</p>
+                                    <p class="text-sm opacity-80 mt-1">Iglesia El Rey Jesús</p>
                                 </div>
-                            </label>
+                                <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                                    <span class="text-purple-700 font-bold text-xs">Z</span>
+                                </div>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="bg-white/10 rounded-xl p-3 backdrop-blur-sm border border-white/10 flex justify-between items-center group cursor-pointer hover:bg-white/20 transition-all" onclick="copyToClipboard('nhradriver@yahoo.com')">
+                                    <div>
+                                        <p class="text-[10px] text-purple-200 uppercase">Correo Zelle</p>
+                                        <p class="font-mono font-bold text-lg">nhradriver@yahoo.com</p>
+                                    </div>
+                                    <button type="button" class="p-2 text-purple-200 hover:text-white">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                    </button>
+                                </div>
+                                
+                                <div class="flex justify-between items-center px-2">
+                                    <span class="text-sm text-purple-200">Titular:</span>
+                                    <span class="font-bold">Luis Bracho</span>
+                                </div>
+                            </div>
                         </div>
-
                     </div>
 
-                    <div class="mt-4">
-                        <label class="text-xs font-bold text-slate-500 uppercase ml-1">Referencia / Comprobante</label>
-                        <input type="text" name="referencia" required 
-                            class="w-full px-5 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none transition-all font-mono uppercase"
-                            placeholder="Últimos 4 o 6 dígitos">
+                    <div id="card-bnc" class="hidden animate-fade-in">
+                        <input type="radio" name="metodo_de_pago" value="BNC" class="hidden" id="radio-bnc">
+                        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-lg shadow-slate-100 mb-6 relative">
+                            <div class="flex justify-between items-center mb-4 border-b border-slate-100 pb-3">
+                                <div>
+                                    <p class="text-xs font-bold text-green-600 uppercase tracking-wider bg-green-50 px-2 py-1 rounded inline-block">Pago Móvil</p>
+                                </div>
+                                <span class="font-bold text-slate-400 text-sm">BNC (0191)</span>
+                            </div>
+
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center p-2 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" onclick="copyToClipboard('J403896003')">
+                                    <div>
+                                        <p class="text-[10px] text-slate-400 uppercase font-bold">RIF</p>
+                                        <p class="font-mono font-bold text-slate-700">J-40389600-3</p>
+                                    </div>
+                                    <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                </div>
+
+                                <div class="flex justify-between items-center p-2 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors" onclick="copyToClipboard('04124276773')">
+                                    <div>
+                                        <p class="text-[10px] text-slate-400 uppercase font-bold">Teléfono</p>
+                                        <p class="font-mono font-bold text-slate-700">0412-427-6773</p>
+                                    </div>
+                                    <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="mt-4">
-                         <label class="text-xs font-bold text-slate-500 uppercase ml-1">Petición (Opcional)</label>
-                        <textarea name="mensaje" rows="2" class="w-full px-5 py-3 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:bg-white focus:border-blue-600 transition-all text-sm" placeholder="Escribe tu petición de oración..."></textarea>
+                    <div class="space-y-4">
+                        <div class="relative">
+                            <label class="text-xs font-bold text-slate-500 uppercase ml-1">Nro. de Referencia</label>
+                            <input type="text" name="referencia" required 
+                                class="w-full px-5 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none transition-all font-mono uppercase placeholder-slate-300"
+                                placeholder="Ej: 123456">
+                        </div>
+                        <div class="relative">
+                            <label class="text-xs font-bold text-slate-500 uppercase ml-1">Petición de Oración (Opcional)</label>
+                            <textarea name="mensaje" rows="2" class="w-full px-5 py-3 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none transition-all text-sm" placeholder="Escribe aquí..."></textarea>
+                        </div>
                     </div>
-
                 </div>
             </form>
 
-            <div class="fixed bottom-0 left-0 w-full p-4 bg-white border-t border-slate-100 md:static md:bg-transparent md:border-none md:p-0 mt-6 z-50">
+            <div class="fixed bottom-0 left-0 w-full p-4 bg-white/90 backdrop-blur-md border-t border-slate-200 md:static md:bg-transparent md:border-none md:p-0 md:mt-6 z-50">
                 <div class="flex gap-3 max-w-md mx-auto">
-                    <button type="button" id="prev-btn" class="hidden px-6 py-4 rounded-xl font-bold text-slate-500 bg-slate-100 hover:bg-slate-200 active:scale-95 transition-all">
+                    <button type="button" id="prev-btn" class="hidden px-5 py-3.5 rounded-xl font-bold text-slate-500 bg-slate-100 hover:bg-slate-200 active:scale-95 transition-all">
                         ←
                     </button>
-                    <button type="button" id="next-btn" class="flex-1 px-6 py-4 bg-blue-600 text-white font-bold rounded-xl shadow-lg shadow-blue-200 hover:bg-blue-700 active:scale-95 transition-all flex items-center justify-center gap-2">
-                        Siguiente
+                    <button type="button" id="next-btn" class="flex-1 px-6 py-3.5 bg-blue-600 text-white font-bold rounded-xl shadow-lg shadow-blue-200 hover:bg-blue-700 active:scale-95 transition-all flex items-center justify-center gap-2">
+                        Continuar
                     </button>
-                    <button type="submit" form="siembra-form" id="submit-btn" class="hidden flex-1 px-6 py-4 bg-green-600 text-white font-bold rounded-xl shadow-lg shadow-green-200 hover:bg-green-700 active:scale-95 transition-all flex items-center justify-center gap-2">
-                        Confirmar y Sembrar
+                    <button type="submit" form="siembra-form" id="submit-btn" class="hidden flex-1 px-6 py-3.5 bg-green-600 text-white font-bold rounded-xl shadow-lg shadow-green-200 hover:bg-green-700 active:scale-95 transition-all flex items-center justify-center gap-2">
+                        <span>Confirmar Siembra</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                     </button>
                 </div>
             </div>
@@ -214,39 +231,38 @@
              style="background-image: url('<?php the_field('siembra_imagen', 'option'); ?>');">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent"></div>
-        
-        <div class="absolute bottom-20 left-12 max-w-xl text-white">
-            <div class="h-1 w-20 bg-yellow-400 mb-6 rounded-full"></div>
-            <h2 class="text-4xl lg:text-5xl font-extrabold mb-4 leading-tight">Cada semilla cuenta<br>para el Reino.</h2>
-            <p class="text-lg text-blue-100 font-light">Gracias por ser parte de la visión de la iglesia El Rey Jesús.</p>
+        <div class="absolute bottom-16 left-12 max-w-xl text-white p-6">
+            <h2 class="text-4xl lg:text-5xl font-extrabold mb-4 leading-tight">Cada semilla<br>transforma vidas.</h2>
+            <p class="text-lg text-blue-100 font-light border-l-4 border-yellow-400 pl-4">"Dad, y se os dará; medida buena, apretada, remecida y rebosando..."</p>
         </div>
     </div>
-
 </div>
 
-<div class="h-24 md:hidden"></div>
+<div id="toast-copy" class="fixed top-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white px-4 py-2 rounded-full text-xs font-bold shadow-xl transform -translate-y-20 transition-all duration-300 z-[60] flex items-center gap-2">
+    <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+    <span>¡Copiado al portapapeles!</span>
+</div>
+
+<div class="h-20 md:hidden"></div>
 
 <style>
-    /* Clases personalizadas utilitarias */
-    .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+    /* Estilos base y animaciones */
+    .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    
-    /* Eliminar flechas de input number */
     input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-    input[type=number] { -moz-appearance: textfield; }
 </style>
 
 <script>
-    // Variables Globales
+    // Variables de Estado
     let currentStep = 1;
-    let currency = 'USD'; // Valor por defecto
+    let currency = 'USD'; 
 
     document.addEventListener('DOMContentLoaded', () => {
         updateCurrencyUI();
         updateButtons();
     });
 
-    // Lógica de Moneda (Switch Visual)
+    // Lógica Moneda
     function setCurrency(curr) {
         currency = curr;
         const radio = document.querySelector(`input[name="divisa"][value="${curr}"]`);
@@ -265,31 +281,40 @@
         if(currency === 'USD') {
             bg.style.transform = 'translateX(0%)';
             symbol.textContent = '$';
-            labelUsd.classList.add('text-blue-600');
-            labelUsd.classList.remove('text-slate-500');
-            labelBs.classList.remove('text-blue-600');
-            labelBs.classList.add('text-slate-500');
+            labelUsd.classList.replace('text-slate-500', 'text-blue-600');
+            labelBs.classList.replace('text-blue-600', 'text-slate-500');
         } else {
-            bg.style.transform = 'translateX(100%)'; // Mueve el fondo blanco a la derecha
-            // Ajuste fino para el margen en el cálculo de width
-            bg.style.left = '-6px'; 
+            bg.style.transform = 'translateX(100%)';
+            bg.style.left = '-4px'; // Ajuste fino
             symbol.textContent = 'Bs';
-            labelBs.classList.add('text-blue-600');
-            labelBs.classList.remove('text-slate-500');
-            labelUsd.classList.remove('text-blue-600');
-            labelUsd.classList.add('text-slate-500');
+            labelBs.classList.replace('text-slate-500', 'text-blue-600');
+            labelUsd.classList.replace('text-blue-600', 'text-slate-500');
         }
     }
 
-    // Navegación de Pasos
+    // Funcionalidad de Copiado (UX Key)
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            const toast = document.getElementById('toast-copy');
+            toast.classList.remove('-translate-y-20');
+            toast.classList.add('translate-y-0');
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0');
+                toast.classList.add('-translate-y-20');
+            }, 2000);
+        }).catch(err => {
+            console.error('Error al copiar: ', err);
+        });
+    }
+
+    // Navegación
     const nextBtn = document.getElementById('next-btn');
     const prevBtn = document.getElementById('prev-btn');
     const submitBtn = document.getElementById('submit-btn');
 
     nextBtn.addEventListener('click', () => {
-        if(validateStep(currentStep)) {
-            changeStep(currentStep + 1);
-        }
+        if(validateStep(currentStep)) changeStep(currentStep + 1);
     });
 
     prevBtn.addEventListener('click', () => {
@@ -297,28 +322,21 @@
     });
 
     function changeStep(step) {
-        // Actualizar indicadores visuales (círculos de arriba)
-        const indicators = document.querySelectorAll('.step-indicator');
-        indicators.forEach((ind, idx) => {
-            if(idx + 1 === step) {
-                ind.classList.remove('opacity-40');
-                ind.querySelector('div').classList.add('bg-blue-600', 'text-white');
-                ind.querySelector('div').classList.remove('bg-slate-200', 'text-slate-500');
-            } else if (idx + 1 < step) {
-                ind.classList.remove('opacity-40');
-                ind.querySelector('div').classList.add('bg-green-500', 'text-white'); // Paso completado
-                ind.querySelector('div').innerHTML = '✓';
-            } else {
-                ind.classList.add('opacity-40');
-                ind.querySelector('div').classList.remove('bg-blue-600', 'text-white', 'bg-green-500');
-                ind.querySelector('div').classList.add('bg-slate-200', 'text-slate-500');
-                ind.querySelector('div').innerHTML = idx + 1;
+        // Actualizar barra de progreso
+        document.querySelectorAll('.step-dot').forEach((dot, idx) => {
+            if (idx + 1 === step) dot.classList.replace('bg-slate-200', 'bg-blue-600');
+            else if (idx + 1 < step) dot.classList.replace('bg-slate-200', 'bg-green-500');
+            else dot.classList.replace('bg-blue-600', 'bg-slate-200');
+            
+            // Fix para volver atrás colores
+            if(idx + 1 > step) {
+                 dot.classList.remove('bg-green-500', 'bg-blue-600');
+                 dot.classList.add('bg-slate-200');
             }
         });
 
         // Transición de Contenido
-        const contents = document.querySelectorAll('.step-content');
-        contents.forEach(el => {
+        document.querySelectorAll('.step-content').forEach(el => {
             const elStep = parseInt(el.dataset.step);
             if(elStep === step) {
                 el.classList.remove('opacity-0', 'translate-x-full', '-translate-x-full', 'pointer-events-none');
@@ -333,33 +351,36 @@
 
         currentStep = step;
         updateButtons();
-        
-        // Si entramos al paso 3 (Pago), ejecutar la lógica de filtrado
-        if(step === 3) preparePaymentStep();
+        if(step === 3) loadPaymentDetails();
     }
 
-    function preparePaymentStep() {
+    function loadPaymentDetails() {
+        // 1. Cargar Datos del Resumen
         const monto = document.getElementById('monto').value;
-        document.getElementById('summary-monto').textContent = monto;
-        document.getElementById('summary-currency').textContent = currency === 'USD' ? 'Dólares ($)' : 'Bolívares (Bs)';
+        const tipoInput = document.querySelector('input[name="tipo_siembra"]:checked');
+        const tipo = tipoInput ? tipoInput.value : 'Siembra';
+        
+        document.getElementById('resumen-monto').textContent = monto;
+        document.getElementById('resumen-simbolo').textContent = currency === 'USD' ? '$' : 'Bs';
+        document.getElementById('resumen-tipo').textContent = tipo;
 
-        const zelleOption = document.getElementById('option-zelle');
-        const bncOption = document.getElementById('option-bnc');
-        const zelleRadio = document.getElementById('radio-zelle');
-        const bncRadio = document.getElementById('radio-bnc');
+        // 2. Mostrar Tarjeta Correcta
+        const cardZelle = document.getElementById('card-zelle');
+        const cardBnc = document.getElementById('card-bnc');
+        const radioZelle = document.getElementById('radio-zelle');
+        const radioBnc = document.getElementById('radio-bnc');
 
-        // Resetear selecciones previas para evitar conflictos
-        zelleRadio.checked = false;
-        bncRadio.checked = false;
+        cardZelle.classList.add('hidden');
+        cardBnc.classList.add('hidden');
+        radioZelle.checked = false;
+        radioBnc.checked = false;
 
-        if (currency === 'BS') {
-            // Si es Bolívares: Ocultar Zelle, Forzar BNC
-            zelleOption.classList.add('hidden');
-            bncRadio.checked = true; // Auto-seleccionar BNC
+        if (currency === 'USD') {
+            cardZelle.classList.remove('hidden');
+            radioZelle.checked = true; // Auto-select Zelle for backend
         } else {
-            // Si es Dólares: Mostrar ambos
-            zelleOption.classList.remove('hidden');
-            zelleRadio.checked = true; // Auto-seleccionar Zelle por defecto (más probable)
+            cardBnc.classList.remove('hidden');
+            radioBnc.checked = true; // Auto-select BNC for backend
         }
     }
 
@@ -383,7 +404,6 @@
         const currentContent = document.querySelector(`.step-content[data-step="${step}"]`);
         const inputs = currentContent.querySelectorAll('input[required]');
         let valid = true;
-        
         inputs.forEach(input => {
             if(!input.value) {
                 valid = false;
@@ -391,7 +411,6 @@
                 setTimeout(() => input.classList.remove('ring-2', 'ring-red-400', 'bg-red-50'), 1000);
             }
         });
-        
         return valid;
     }
 </script>
