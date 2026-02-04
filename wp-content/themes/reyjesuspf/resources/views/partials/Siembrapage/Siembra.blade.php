@@ -103,7 +103,7 @@
                             </div>
                         </label>
                         <label class="cursor-pointer group">
-                            <input type="radio" name="tipo_siembra" value="misiones" class="peer sr-only" required>
+                            <input type="radio" name="tipo_siembra" value="Otros" class="peer sr-only" required>
                             <div class="p-3 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-2 peer-checked:ring-blue-600 transition-all text-center h-full flex flex-col items-center justify-center gap-1 shadow-sm">
                                 <span class="text-2xl filter drop-shadow-sm mb-0.5">🌍</span>
                                 <span class="text-[10px] font-bold text-slate-600 peer-checked:text-blue-700 leading-tight">Misiones</span>
@@ -297,15 +297,16 @@
 
         if(currency === 'USD') {
             bg.style.transform = 'translateX(0%)';
+            bg.style.left = ''; /* Reset inline style to use class default */
             symbol.textContent = '$';
-            labelUsd.classList.replace('text-slate-500', 'text-blue-600');
-            labelBs.classList.replace('text-blue-600', 'text-slate-500');
+            labelUsd.classList.replace('text-slate-500', 'text-white');
+            labelBs.classList.replace('text-white', 'text-slate-500');
         } else {
             bg.style.transform = 'translateX(100%)';
-            bg.style.left = '-4px';
+            bg.style.left = '-4px'; /* Adjust for gap/padding if needed */
             symbol.textContent = 'Bs';
-            labelBs.classList.replace('text-slate-500', 'text-blue-600');
-            labelUsd.classList.replace('text-blue-600', 'text-slate-500');
+            labelBs.classList.replace('text-slate-500', 'text-white');
+            labelUsd.classList.replace('text-white', 'text-slate-500');
         }
     }
 
