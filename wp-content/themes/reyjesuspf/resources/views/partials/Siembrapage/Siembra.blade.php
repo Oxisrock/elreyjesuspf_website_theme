@@ -49,7 +49,7 @@
 
                 <div id="step-1" class="step-content block animate-fade-in">
                     
-                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 text-center">Selecciona la Moneda</p>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 text-center">Seleccionar Moneda</p>
                     <div class="bg-slate-100 p-1 rounded-xl flex relative mb-6 w-full max-w-[220px] mx-auto">
                         <div id="currency-bg" class="absolute left-1 top-1 bottom-1 w-[calc(50%-4px)] bg-blue-600 rounded-lg shadow-sm transition-all duration-300 ease-out"></div>
                         
