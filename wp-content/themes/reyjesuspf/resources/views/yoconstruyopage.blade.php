@@ -6,11 +6,14 @@
 
 @section('content')
 
+
+
     @include('partials.Yoconstruyo.yoconstruyopage.yoconstruyo')
+    @include('partials.Yoconstruyo.progreso.construction-progress')
+    @include('partials.Yoconstruyo.donaciones.donation-section')
     @include('partials.Yoconstruyo.historiayoconstruyopage.historiayoconstruyo')
     @include('partials.Yoconstruyo/pastorvictor/oportunidadhistorica')
     @include('partials.Yoconstruyo.fotostemplopage.fotostemplo')
-    @include('partials.NuestraIglesiapage.aportepage.aporte')
     @include('partials.Homepage.contact.contactn')
 {{--   
     @while(have_posts()) @php(the_post())
@@ -18,4 +21,6 @@
         @include('partials.content-page')
     @endwhile
 --}}
+
+
 @endsection
