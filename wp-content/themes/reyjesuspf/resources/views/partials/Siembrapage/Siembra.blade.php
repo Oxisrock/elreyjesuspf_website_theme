@@ -1,14 +1,30 @@
 <div class="min-h-screen bg-slate-50 flex flex-col md:flex-row font-sans text-slate-800">
 
-    <div class="w-full md:w-1/2 lg:w-5/12 bg-white flex flex-col justify-start md:justify-center p-5 sm:p-12 relative z-20 shadow-none md:shadow-2xl min-h-screen md:min-h-auto md:h-auto">
+    <div class="w-full md:w-1/2 lg:w-5/12 bg-white flex flex-col justify-start md:justify-center relative z-20 shadow-none md:shadow-2xl">
         
-        <div class="w-full max-w-md mx-auto pt-4 md:pt-0"> <div class="flex items-center gap-3 mb-6">
-                <div class="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center shrink-0">
+        <div class="w-full max-w-md mx-auto p-5 sm:p-8 md:p-12 pb-32"> 
+            
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center shrink-0">
                     <img src="<?php the_field('logo', 'option'); ?>" alt="Logo" class="h-6 w-auto">
                 </div>
                 <div>
                     <h1 class="text-lg font-bold text-slate-900 leading-tight"><?php the_field('titulo_siembra_page', 'option'); ?></h1>
-                    <p class="text-[10px] text-slate-500 font-medium uppercase tracking-wide">Iglesia El Rey Jesús</p>
+                    <p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Iglesia El Rey Jesús</p>
+                </div>
+            </div>
+
+            <div class="md:hidden mb-8 relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 p-6 text-white shadow-lg shadow-blue-100">
+                <div class="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 rounded-full bg-white opacity-10 blur-xl"></div>
+                <div class="absolute bottom-0 left-0 -ml-4 -mb-4 w-16 h-16 rounded-full bg-white opacity-10 blur-xl"></div>
+                
+                <div class="relative z-10">
+                    <div class="flex items-center gap-2 mb-2 opacity-80">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        <span class="text-xs font-bold uppercase tracking-widest">Tu siembra importa</span>
+                    </div>
+                    <h3 class="text-xl font-bold leading-snug mb-2">"Dios ama al dador alegre."</h3>
+                    <p class="text-xs text-blue-100 italic">2 Corintios 9:7</p>
                 </div>
             </div>
 
@@ -21,27 +37,27 @@
                 </div>
             <?php endif; ?>
 
-            <div class="flex justify-center gap-2 mb-8">
+            <div class="flex justify-center gap-2 mb-6">
                 <div class="h-1.5 w-8 rounded-full bg-blue-600 transition-all step-dot" data-index="1"></div>
                 <div class="h-1.5 w-8 rounded-full bg-slate-200 transition-all step-dot" data-index="2"></div>
                 <div class="h-1.5 w-8 rounded-full bg-slate-200 transition-all step-dot" data-index="3"></div>
             </div>
 
-            <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" id="siembra-form" class="relative pb-32 md:pb-0 min-h-[400px]">
+            <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" id="siembra-form" class="relative">
                 <input type="hidden" name="action" value="procesar_formulario_siembra">
                 <?php wp_nonce_field('mi_form_siembra_nonce', 'mi_nonce'); ?>
 
-                <div class="step-content absolute inset-0 transition-all duration-300 w-full" data-step="1">
+                <div id="step-1" class="step-content block animate-fade-in">
                     
-                    <div class="bg-slate-100 p-1 rounded-xl flex relative mb-8 w-full max-w-[240px] mx-auto">
+                    <div class="bg-slate-100 p-1 rounded-xl flex relative mb-6 w-full max-w-[220px] mx-auto">
                         <div id="currency-bg" class="absolute left-1 top-1 bottom-1 w-[calc(50%-4px)] bg-white rounded-lg shadow-sm transition-all duration-300 ease-out"></div>
                         
-                        <label class="flex-1 text-center py-2.5 z-10 cursor-pointer select-none" onclick="setCurrency('USD')">
+                        <label class="flex-1 text-center py-2 z-10 cursor-pointer select-none" onclick="setCurrency('USD')">
                             <input type="radio" name="divisa" value="USD" class="sr-only" checked>
                             <span class="text-xs font-bold transition-colors duration-300" id="label-usd">USD ($)</span>
                         </label>
                         
-                        <label class="flex-1 text-center py-2.5 z-10 cursor-pointer select-none" onclick="setCurrency('BS')">
+                        <label class="flex-1 text-center py-2 z-10 cursor-pointer select-none" onclick="setCurrency('BS')">
                             <input type="radio" name="divisa" value="BS" class="sr-only">
                             <span class="text-xs font-bold text-slate-500 transition-colors duration-300" id="label-bs">VES (Bs)</span>
                         </label>
@@ -49,73 +65,73 @@
 
                     <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 text-center">Selecciona el propósito</p>
                     
-                    <div class="grid grid-cols-2 gap-3 mb-8">
+                    <div class="grid grid-cols-2 gap-3 mb-6">
                         <label class="cursor-pointer group">
                             <input type="radio" name="tipo_siembra" value="diezmo" class="peer sr-only" required>
-                            <div class="py-4 px-2 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-1 peer-checked:ring-blue-600 transition-all text-center h-full flex flex-col items-center justify-center gap-2">
-                                <span class="text-2xl filter drop-shadow-sm">🌱</span>
+                            <div class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-1 peer-checked:ring-blue-600 transition-all text-center h-full flex flex-col items-center justify-center gap-1 shadow-sm">
+                                <span class="text-2xl filter drop-shadow-sm mb-1">🌱</span>
                                 <span class="text-xs font-bold text-slate-600 peer-checked:text-blue-700">Diezmo</span>
                             </div>
                         </label>
                         <label class="cursor-pointer group">
                             <input type="radio" name="tipo_siembra" value="ofrenda" class="peer sr-only" required>
-                            <div class="py-4 px-2 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-1 peer-checked:ring-blue-600 transition-all text-center h-full flex flex-col items-center justify-center gap-2">
-                                <span class="text-2xl filter drop-shadow-sm">🎁</span>
+                            <div class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-1 peer-checked:ring-blue-600 transition-all text-center h-full flex flex-col items-center justify-center gap-1 shadow-sm">
+                                <span class="text-2xl filter drop-shadow-sm mb-1">🎁</span>
                                 <span class="text-xs font-bold text-slate-600 peer-checked:text-blue-700">Ofrenda</span>
                             </div>
                         </label>
                         <label class="cursor-pointer group">
                             <input type="radio" name="tipo_siembra" value="pacto" class="peer sr-only" required>
-                            <div class="py-4 px-2 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-1 peer-checked:ring-blue-600 transition-all text-center h-full flex flex-col items-center justify-center gap-2">
-                                <span class="text-2xl filter drop-shadow-sm">🤝</span>
+                            <div class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-1 peer-checked:ring-blue-600 transition-all text-center h-full flex flex-col items-center justify-center gap-1 shadow-sm">
+                                <span class="text-2xl filter drop-shadow-sm mb-1">🤝</span>
                                 <span class="text-xs font-bold text-slate-600 peer-checked:text-blue-700">Pacto</span>
                             </div>
                         </label>
                         <label class="cursor-pointer group">
                             <input type="radio" name="tipo_siembra" value="primicia" class="peer sr-only" required>
-                            <div class="py-4 px-2 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-1 peer-checked:ring-blue-600 transition-all text-center h-full flex flex-col items-center justify-center gap-2">
-                                <span class="text-2xl filter drop-shadow-sm">🍞</span>
+                            <div class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-1 peer-checked:ring-blue-600 transition-all text-center h-full flex flex-col items-center justify-center gap-1 shadow-sm">
+                                <span class="text-2xl filter drop-shadow-sm mb-1">🍞</span>
                                 <span class="text-xs font-bold text-slate-600 peer-checked:text-blue-700">Primicia</span>
                             </div>
                         </label>
                     </div>
 
                     <div class="relative">
-                        <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 ml-1">Monto a Sembrar</label>
+                        <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 ml-1">Monto a Sembrar</label>
                         <div class="relative group">
                             <span class="currency-symbol absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 text-xl font-bold transition-colors">$</span>
                             <input type="text" inputmode="decimal" id="monto" name="monto" required 
-                                class="w-full pl-10 pr-4 py-4 text-3xl font-bold bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all placeholder-slate-300 text-slate-800"
+                                class="w-full pl-10 pr-4 py-4 text-3xl font-bold bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-50 transition-all placeholder-slate-300 text-slate-800"
                                 placeholder="0.00">
                         </div>
                     </div>
                 </div>
 
-                <div class="step-content absolute inset-0 transition-all duration-300 opacity-0 translate-x-full pointer-events-none" data-step="2">
+                <div id="step-2" class="step-content hidden animate-fade-in">
                     <h2 class="text-lg font-bold text-slate-800 mb-6">Tus Datos</h2>
                     <div class="space-y-5">
                         <div class="group">
                             <label class="text-[10px] font-bold text-slate-500 uppercase ml-1 mb-1 block group-focus-within:text-blue-600 transition-colors">Nombre Completo</label>
                             <input type="text" name="nombre" required 
-                                class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all font-semibold text-lg"
-                                placeholder="Tu nombre">
+                                class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-50 transition-all font-semibold text-lg"
+                                placeholder="Nombre y Apellido">
                         </div>
                         <div class="group">
                             <label class="text-[10px] font-bold text-slate-500 uppercase ml-1 mb-1 block group-focus-within:text-blue-600 transition-colors">Teléfono</label>
                             <input type="tel" name="telefono" inputmode="tel" required 
-                                class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all font-semibold text-lg"
-                                placeholder="0412...">
+                                class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-50 transition-all font-semibold text-lg"
+                                placeholder="0412 000 0000">
                         </div>
                         <div class="group">
                             <label class="text-[10px] font-bold text-slate-500 uppercase ml-1 mb-1 block group-focus-within:text-blue-600 transition-colors">Correo Electrónico</label>
                             <input type="email" name="email" inputmode="email" required 
-                                class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all font-semibold text-lg"
-                                placeholder="correo@ejemplo.com">
+                                class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-50 transition-all font-semibold text-lg"
+                                placeholder="ejemplo@correo.com">
                         </div>
                     </div>
                 </div>
 
-                <div class="step-content absolute inset-0 transition-all duration-300 opacity-0 translate-x-full pointer-events-none w-full" data-step="3">
+                <div id="step-3" class="step-content hidden animate-fade-in">
                     
                     <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 mb-6 text-center">
                         <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Total a Sembrar</p>
@@ -126,9 +142,9 @@
                         <span id="resumen-tipo" class="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold uppercase tracking-wide">Diezmo</span>
                     </div>
 
-                    <div id="card-zelle" class="hidden animate-fade-in">
+                    <div id="card-zelle" class="hidden">
                         <input type="radio" name="metodo_de_pago" value="Zelle" class="hidden" id="radio-zelle">
-                        <div class="bg-[#5c2d91] rounded-2xl p-6 text-white shadow-xl shadow-purple-200 mb-6 relative overflow-hidden">
+                        <div class="bg-gradient-to-br from-[#5c2d91] to-[#4c1d95] rounded-2xl p-6 text-white shadow-xl shadow-purple-200 mb-6 relative overflow-hidden group hover:scale-[1.02] transition-transform duration-300">
                             <div class="absolute -right-6 -top-6 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl"></div>
                             
                             <div class="flex justify-between items-center mb-6">
@@ -140,8 +156,8 @@
                                 <div onclick="copyToClipboard('nhradriver@yahoo.com')" class="active:scale-95 transition-transform cursor-pointer">
                                     <p class="text-[10px] uppercase opacity-60 mb-1">Correo Electrónico</p>
                                     <div class="flex items-center gap-2">
-                                        <p class="font-mono text-xl font-bold truncate">nhradriver@yahoo.com</p>
-                                        <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                        <p class="font-mono text-xl font-bold break-all">nhradriver@yahoo.com</p>
+                                        <svg class="w-5 h-5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                                     </div>
                                 </div>
                                 <div class="border-t border-white/10 pt-4">
@@ -152,9 +168,9 @@
                         </div>
                     </div>
 
-                    <div id="card-bnc" class="hidden animate-fade-in">
+                    <div id="card-bnc" class="hidden">
                         <input type="radio" name="metodo_de_pago" value="BNC" class="hidden" id="radio-bnc">
-                        <div class="bg-white border-2 border-slate-100 rounded-2xl p-5 shadow-lg shadow-slate-100 mb-6">
+                        <div class="bg-white border-2 border-slate-100 rounded-2xl p-5 shadow-lg shadow-slate-100 mb-6 group hover:border-green-200 transition-colors">
                             <div class="flex justify-between items-center mb-4 border-b border-slate-50 pb-3">
                                 <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded uppercase">Pago Móvil</span>
                                 <span class="font-bold text-slate-400 text-xs">BNC (0191)</span>
@@ -166,7 +182,7 @@
                                         <p class="text-[10px] text-slate-400 uppercase font-bold">RIF</p>
                                         <p class="font-mono text-lg font-bold text-slate-700">J-40389600-3</p>
                                     </div>
-                                    <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                                    <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                                 </div>
 
                                 <div onclick="copyToClipboard('04124276773')" class="active:scale-95 transition-transform cursor-pointer flex justify-between items-center p-2 hover:bg-slate-50 rounded-lg">
@@ -174,7 +190,7 @@
                                         <p class="text-[10px] text-slate-400 uppercase font-bold">Teléfono</p>
                                         <p class="font-mono text-lg font-bold text-slate-700">0412-427-6773</p>
                                     </div>
-                                    <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                                    <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                                 </div>
                             </div>
                         </div>
@@ -184,18 +200,18 @@
                         <div class="group">
                             <label class="text-[10px] font-bold text-slate-500 uppercase ml-1 mb-1 block">Nro. de Referencia</label>
                             <input type="text" name="referencia" required 
-                                class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none transition-all font-mono uppercase text-lg"
+                                class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-50 transition-all font-mono uppercase text-lg"
                                 placeholder="Ej: 123456">
                         </div>
                         <div class="group">
                             <label class="text-[10px] font-bold text-slate-500 uppercase ml-1 mb-1 block">Petición (Opcional)</label>
-                            <textarea name="mensaje" rows="2" class="w-full px-5 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none transition-all" placeholder="Escribe aquí..."></textarea>
+                            <textarea name="mensaje" rows="2" class="w-full px-5 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-50 transition-all" placeholder="Escribe aquí..."></textarea>
                         </div>
                     </div>
                 </div>
             </form>
 
-            <div class="fixed bottom-0 left-0 w-full p-4 bg-white border-t border-slate-100 shadow-[0_-5px_20px_rgba(0,0,0,0.05)] md:static md:bg-transparent md:border-none md:shadow-none md:p-0 md:mt-6 z-50">
+            <div class="fixed bottom-0 left-0 w-full p-4 bg-white/90 backdrop-blur-lg border-t border-slate-100 shadow-[0_-10px_40px_rgba(0,0,0,0.05)] md:static md:bg-transparent md:border-none md:p-0 md:mt-8 z-50 md:shadow-none">
                 <div class="flex gap-3 max-w-md mx-auto">
                     <button type="button" id="prev-btn" class="hidden w-14 flex items-center justify-center rounded-2xl font-bold text-slate-500 bg-slate-100 hover:bg-slate-200 active:scale-95 transition-all">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
@@ -216,31 +232,24 @@
     </div>
 
     <div class="hidden md:block md:w-1/2 lg:w-7/12 relative bg-slate-900 overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center opacity-60" 
+        <div class="absolute inset-0 bg-cover bg-center opacity-60 scale-105 hover:scale-100 transition-transform duration-[3s]" 
              style="background-image: url('<?php the_field('siembra_imagen', 'option'); ?>');">
         </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/90 to-transparent"></div>
-        <div class="absolute bottom-12 left-12 max-w-xl text-white">
-            <h2 class="text-5xl font-extrabold mb-4">Generosidad que<br>Transforma.</h2>
+        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent"></div>
+        <div class="absolute bottom-16 left-12 max-w-xl text-white p-6">
+            <h2 class="text-4xl lg:text-5xl font-extrabold mb-4 leading-tight">Cada semilla<br>transforma vidas.</h2>
+            <p class="text-lg text-blue-100 font-light border-l-4 border-yellow-400 pl-4">"Dad, y se os dará; medida buena, apretada, remecida y rebosando..."</p>
         </div>
     </div>
-
 </div>
 
-<div id="toast-copy" class="fixed top-6 left-1/2 -translate-x-1/2 bg-slate-800/90 backdrop-blur text-white px-6 py-3 rounded-full text-sm font-bold shadow-2xl transform -translate-y-24 transition-all duration-300 z-[60] flex items-center gap-3">
+<div id="toast-copy" class="fixed top-6 left-1/2 -translate-x-1/2 bg-slate-800/95 backdrop-blur text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-2xl transform -translate-y-24 transition-all duration-300 z-[60] flex items-center gap-3">
     <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
     <span>¡Copiado!</span>
 </div>
 
-<style>
-    /* Estilos específicos */
-    .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-</style>
-
 <script>
-    // MISMO SCRIPT DE ANTES (Lógica intacta)
+    // Variables y Funciones JS (Exactamente igual que la versión robusta anterior)
     let currentStep = 1;
     let currency = 'USD'; 
 
@@ -303,6 +312,7 @@
     });
 
     function changeStep(step) {
+        // Steps Dot Logic
         document.querySelectorAll('.step-dot').forEach((dot, idx) => {
             if (idx + 1 === step) dot.classList.replace('bg-slate-200', 'bg-blue-600');
             else if (idx + 1 < step) dot.classList.replace('bg-slate-200', 'bg-green-500');
@@ -312,24 +322,17 @@
             }
         });
 
-        document.querySelectorAll('.step-content').forEach(el => {
-            const elStep = parseInt(el.dataset.step);
-            if(elStep === step) {
-                el.classList.remove('opacity-0', 'translate-x-full', '-translate-x-full', 'pointer-events-none');
-            } else if (elStep < step) {
-                el.classList.add('opacity-0', '-translate-x-full', 'pointer-events-none');
-                el.classList.remove('translate-x-full');
-            } else {
-                el.classList.add('opacity-0', 'translate-x-full', 'pointer-events-none');
-                el.classList.remove('-translate-x-full');
-            }
-        });
+        // Hide/Show Steps
+        document.getElementById('step-1').classList.add('hidden');
+        document.getElementById('step-2').classList.add('hidden');
+        document.getElementById('step-3').classList.add('hidden');
+        document.getElementById(`step-${step}`).classList.remove('hidden');
 
         currentStep = step;
         updateButtons();
-        if(step === 3) loadPaymentDetails();
         
-        // Scroll top suave
+        if(step === 3) loadPaymentDetails();
+
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -378,14 +381,19 @@
     }
 
     function validateStep(step) {
-        const currentContent = document.querySelector(`.step-content[data-step="${step}"]`);
+        const currentContent = document.getElementById(`step-${step}`);
         const inputs = currentContent.querySelectorAll('input[required]');
         let valid = true;
         inputs.forEach(input => {
             if(!input.value) {
                 valid = false;
-                // Animación visual de error en el padre
+                // Add error class to parent for better visibility
                 if(input.parentElement.classList.contains('group')) {
+                    input.classList.add('border-red-400', 'bg-red-50');
+                    setTimeout(() => input.classList.remove('border-red-400', 'bg-red-50'), 1000);
+                } else if(input.parentElement.parentElement.classList.contains('group')) { // Radio buttons
+                     // Logic for radios if needed
+                } else {
                     input.classList.add('border-red-400', 'bg-red-50');
                     setTimeout(() => input.classList.remove('border-red-400', 'bg-red-50'), 1000);
                 }
