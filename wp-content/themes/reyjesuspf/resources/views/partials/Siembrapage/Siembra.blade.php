@@ -29,22 +29,22 @@
                 <?php endif; ?>
 
                 <!-- Stepper -->
-                <div class="mb-8">
-                    <div class="flex items-center justify-between relative px-2">
-                        <div class="absolute top-1/2 left-0 w-full h-0.5 bg-gray-200 -translate-y-1/2 z-0"></div>
-                        <div id="progress-bar" class="absolute top-1/2 left-0 w-0 h-0.5 bg-blue-600 -translate-y-1/2 z-0 transition-all duration-300"></div>
+                <div class="mb-10">
+                    <div class="flex items-center justify-between relative px-4">
+                        <div class="absolute top-1/2 left-0 w-full h-[1px] bg-gray-100 -translate-y-1/2 z-0"></div>
+                        <div id="progress-bar" class="absolute top-1/2 left-0 w-0 h-[1px] bg-blue-600 -translate-y-1/2 z-0 transition-all duration-500"></div>
                         
                         <div class="step-dot z-10 flex flex-col items-center">
-                            <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold border-4 border-white shadow-sm transition-colors duration-300">1</div>
-                            <span class="text-[10px] uppercase tracking-wider font-bold mt-1 text-blue-600">Siembra</span>
+                            <div class="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold border-2 border-white ring-1 ring-gray-100 transition-all duration-300">1</div>
+                            <span class="text-[9px] uppercase tracking-tighter font-bold mt-1.5 text-blue-600">Siembra</span>
                         </div>
                         <div class="step-dot z-10 flex flex-col items-center">
-                            <div class="w-8 h-8 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center text-sm font-bold border-4 border-white shadow-sm transition-colors duration-300">2</div>
-                            <span class="text-[10px] uppercase tracking-wider font-bold mt-1 text-gray-400">Datos</span>
+                            <div class="w-7 h-7 rounded-full bg-white text-gray-400 flex items-center justify-center text-xs font-bold border-2 border-white ring-1 ring-gray-100 transition-all duration-300">2</div>
+                            <span class="text-[9px] uppercase tracking-tighter font-bold mt-1.5 text-gray-400">Datos</span>
                         </div>
                         <div class="step-dot z-10 flex flex-col items-center">
-                            <div class="w-8 h-8 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center text-sm font-bold border-4 border-white shadow-sm transition-colors duration-300">3</div>
-                            <span class="text-[10px] uppercase tracking-wider font-bold mt-1 text-gray-400">Pago</span>
+                            <div class="w-7 h-7 rounded-full bg-white text-gray-400 flex items-center justify-center text-xs font-bold border-2 border-white ring-1 ring-gray-100 transition-all duration-300">3</div>
+                            <span class="text-[9px] uppercase tracking-tighter font-bold mt-1.5 text-gray-400">Pago</span>
                         </div>
                     </div>
                 </div>
@@ -69,12 +69,19 @@
                         </div>
 
                         <div>
-                            <label for="monto" class="block text-sm font-semibold text-gray-700 mb-1">Monto a sembrar ($)</label>
-                            <div class="relative">
-                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold">$</span>
-                                <input type="number" id="monto" name="monto" required step="0.01"
-                                    class="w-full pl-8 pr-4 py-3 border border-gray-200 rounded-2xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                                    placeholder="0.00">
+                            <label for="monto" class="block text-sm font-semibold text-gray-700 mb-1 text-center">Monto a sembrar</label>
+                            <div class="flex items-center gap-2">
+                                <div class="relative flex-1">
+                                    <span id="currency-symbol" class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold">$</span>
+                                    <input type="number" id="monto" name="monto" required step="0.01"
+                                        class="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-2xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                                        placeholder="0.00">
+                                </div>
+                                <select id="currency-selector" name="divisa"
+                                    class="w-24 px-2 py-3 border border-gray-200 rounded-2xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm font-bold text-gray-600">
+                                    <option value="USD" selected>$ (USD)</option>
+                                    <option value="BS">Bs (VES)</option>
+                                </select>
                             </div>
                         </div>
 
@@ -160,7 +167,7 @@
                         <button type="button" id="next-btn" class="flex-1 px-4 py-3 bg-blue-600 text-white font-bold rounded-2xl hover:bg-blue-700 shadow-lg shadow-blue-200 transition-all active:scale-95">
                             Siguiente
                         </button>
-                        <button type="submit" id="submit-btn" class="hidden flex-1 px-4 py-3 bg-green-600 text-white font-bold rounded-2xl hover:bg-green-700 shadow-lg shadow-green-200 transition-all active:scale-95">
+                        <button type="submit" id="submit-btn" class="hidden flex-1 px-4 py-3 bg-blue-600 text-white font-bold rounded-2xl hover:bg-blue-700 shadow-lg shadow-blue-100 transition-all active:scale-95 border-none outline-none">
                             Registrar Siembra
                         </button>
                     </div>
@@ -323,6 +330,21 @@
             if (contenedores[valorSeleccionado]) {
                 contenedores[valorSeleccionado].classList.remove('hidden');
                 contenedores[valorSeleccionado].classList.add('animate-fade-in');
+            }
+        // Currency selector logic
+        const currencySelector = document.getElementById('currency-selector');
+        const currencySymbol = document.getElementById('currency-symbol');
+
+        currencySelector.addEventListener('change', function() {
+            currencySymbol.innerText = this.value === 'USD' ? '$' : 'Bs';
+            // Adjust padding for the input field
+            const montoInput = document.getElementById('monto');
+            if(this.value === 'BS') {
+                montoInput.style.paddingLeft = '3.5rem';
+                currencySymbol.style.left = '1rem';
+            } else {
+                montoInput.style.paddingLeft = '2.5rem';
+                currencySymbol.style.left = '1rem';
             }
         });
 
