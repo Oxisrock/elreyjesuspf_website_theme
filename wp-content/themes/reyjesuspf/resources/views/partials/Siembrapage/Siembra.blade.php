@@ -106,7 +106,7 @@
                             <input type="radio" name="tipo_siembra" value="Otros" class="peer sr-only" required>
                             <div class="p-3 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-2 peer-checked:ring-blue-600 transition-all text-center h-full flex flex-col items-center justify-center gap-1 shadow-sm">
                                 <span class="text-2xl filter drop-shadow-sm mb-0.5">🌍</span>
-                                <span class="text-[10px] font-bold text-slate-600 peer-checked:text-blue-700 leading-tight">Misiones</span>
+                                <span class="text-[10px] font-bold text-slate-600 peer-checked:text-blue-700 leading-tight">Otros</span>
                             </div>
                         </label>
                     </div>
