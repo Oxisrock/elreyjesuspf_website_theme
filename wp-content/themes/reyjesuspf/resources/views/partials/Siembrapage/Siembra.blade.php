@@ -49,12 +49,13 @@
 
                 <div id="step-1" class="step-content block animate-fade-in">
                     
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 text-center">Selecciona la Moneda</p>
                     <div class="bg-slate-100 p-1 rounded-xl flex relative mb-6 w-full max-w-[220px] mx-auto">
-                        <div id="currency-bg" class="absolute left-1 top-1 bottom-1 w-[calc(50%-4px)] bg-white rounded-lg shadow-sm transition-all duration-300 ease-out"></div>
+                        <div id="currency-bg" class="absolute left-1 top-1 bottom-1 w-[calc(50%-4px)] bg-blue-600 rounded-lg shadow-sm transition-all duration-300 ease-out"></div>
                         
                         <label class="flex-1 text-center py-2 z-10 cursor-pointer select-none" onclick="setCurrency('USD')">
                             <input type="radio" name="divisa" value="USD" class="sr-only" checked>
-                            <span class="text-xs font-bold transition-colors duration-300" id="label-usd">USD ($)</span>
+                            <span class="text-xs font-bold transition-colors duration-300 text-white" id="label-usd">USD ($)</span>
                         </label>
                         
                         <label class="flex-1 text-center py-2 z-10 cursor-pointer select-none" onclick="setCurrency('BS')">
