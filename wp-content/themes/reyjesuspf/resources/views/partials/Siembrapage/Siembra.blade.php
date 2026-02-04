@@ -4,27 +4,27 @@
         
         <div class="w-full max-w-md mx-auto p-5 sm:p-8 md:p-12 pb-32"> 
             
-            <div class="flex items-center gap-3 mb-6">
-                <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center shrink-0">
-                    <img src="<?php the_field('logo', 'option'); ?>" alt="Logo" class="h-6 w-auto">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-blue-200">
+                    <img src="<?php the_field('logo', 'option'); ?>" alt="Logo" class="h-7 w-auto brightness-0 invert">
                 </div>
                 <div>
-                    <h1 class="text-lg font-bold text-slate-900 leading-tight"><?php the_field('titulo_siembra_page', 'option'); ?></h1>
-                    <p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Iglesia El Rey Jesús</p>
+                    <h1 class="text-xl font-extrabold text-slate-900 leading-tight"><?php the_field('titulo_siembra_page', 'option'); ?></h1>
+                    <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Iglesia El Rey Jesús</p>
                 </div>
             </div>
 
-            <div class="md:hidden mb-8 relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 p-6 text-white shadow-lg shadow-blue-100">
-                <div class="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 rounded-full bg-white opacity-10 blur-xl"></div>
-                <div class="absolute bottom-0 left-0 -ml-4 -mb-4 w-16 h-16 rounded-full bg-white opacity-10 blur-xl"></div>
+            <div class="md:hidden mb-8 relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 p-8 text-white shadow-2xl shadow-blue-200">
+                <div class="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 rounded-full bg-white opacity-5 blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 -ml-8 -mb-8 w-24 h-24 rounded-full bg-white opacity-5 blur-3xl"></div>
                 
                 <div class="relative z-10">
-                    <div class="flex items-center gap-2 mb-2 opacity-80">
+                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full mb-4">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-                        <span class="text-xs font-bold uppercase tracking-widest">Tu siembra importa</span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest">Tu siembra importa</span>
                     </div>
-                    <h3 class="text-xl font-bold leading-snug mb-2">"Dios ama al dador alegre."</h3>
-                    <p class="text-xs text-blue-100 italic">2 Corintios 9:7</p>
+                    <h3 class="text-2xl font-extrabold leading-tight mb-3">"Dios ama al dador alegre."</h3>
+                    <p class="text-sm text-blue-100 font-medium italic">— 2 Corintios 9:7</p>
                 </div>
             </div>
 
@@ -65,33 +65,47 @@
 
                     <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 text-center">Selecciona el propósito</p>
                     
-                    <div class="grid grid-cols-2 gap-3 mb-6">
+                    <div class="grid grid-cols-3 gap-2.5 mb-6">
                         <label class="cursor-pointer group">
                             <input type="radio" name="tipo_siembra" value="diezmo" class="peer sr-only" required>
-                            <div class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-1 peer-checked:ring-blue-600 transition-all text-center h-full flex flex-col items-center justify-center gap-1 shadow-sm">
-                                <span class="text-2xl filter drop-shadow-sm mb-1">🌱</span>
-                                <span class="text-xs font-bold text-slate-600 peer-checked:text-blue-700">Diezmo</span>
+                            <div class="p-3 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-2 peer-checked:ring-blue-600 transition-all text-center h-full flex flex-col items-center justify-center gap-1 shadow-sm">
+                                <span class="text-2xl filter drop-shadow-sm mb-0.5">🌱</span>
+                                <span class="text-[10px] font-bold text-slate-600 peer-checked:text-blue-700 leading-tight">Diezmo</span>
                             </div>
                         </label>
                         <label class="cursor-pointer group">
                             <input type="radio" name="tipo_siembra" value="ofrenda" class="peer sr-only" required>
-                            <div class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-1 peer-checked:ring-blue-600 transition-all text-center h-full flex flex-col items-center justify-center gap-1 shadow-sm">
-                                <span class="text-2xl filter drop-shadow-sm mb-1">🎁</span>
-                                <span class="text-xs font-bold text-slate-600 peer-checked:text-blue-700">Ofrenda</span>
+                            <div class="p-3 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-2 peer-checked:ring-blue-600 transition-all text-center h-full flex flex-col items-center justify-center gap-1 shadow-sm">
+                                <span class="text-2xl filter drop-shadow-sm mb-0.5">🎁</span>
+                                <span class="text-[10px] font-bold text-slate-600 peer-checked:text-blue-700 leading-tight">Ofrenda</span>
                             </div>
                         </label>
                         <label class="cursor-pointer group">
                             <input type="radio" name="tipo_siembra" value="pacto" class="peer sr-only" required>
-                            <div class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-1 peer-checked:ring-blue-600 transition-all text-center h-full flex flex-col items-center justify-center gap-1 shadow-sm">
-                                <span class="text-2xl filter drop-shadow-sm mb-1">🤝</span>
-                                <span class="text-xs font-bold text-slate-600 peer-checked:text-blue-700">Pacto</span>
+                            <div class="p-3 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-2 peer-checked:ring-blue-600 transition-all text-center h-full flex flex-col items-center justify-center gap-1 shadow-sm">
+                                <span class="text-2xl filter drop-shadow-sm mb-0.5">🤝</span>
+                                <span class="text-[10px] font-bold text-slate-600 peer-checked:text-blue-700 leading-tight">Pacto</span>
                             </div>
                         </label>
                         <label class="cursor-pointer group">
                             <input type="radio" name="tipo_siembra" value="primicia" class="peer sr-only" required>
-                            <div class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-1 peer-checked:ring-blue-600 transition-all text-center h-full flex flex-col items-center justify-center gap-1 shadow-sm">
-                                <span class="text-2xl filter drop-shadow-sm mb-1">🍞</span>
-                                <span class="text-xs font-bold text-slate-600 peer-checked:text-blue-700">Primicia</span>
+                            <div class="p-3 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-2 peer-checked:ring-blue-600 transition-all text-center h-full flex flex-col items-center justify-center gap-1 shadow-sm">
+                                <span class="text-2xl filter drop-shadow-sm mb-0.5">🍞</span>
+                                <span class="text-[10px] font-bold text-slate-600 peer-checked:text-blue-700 leading-tight">Primicia</span>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer group">
+                            <input type="radio" name="tipo_siembra" value="yo_construyo" class="peer sr-only" required>
+                            <div class="p-3 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-2 peer-checked:ring-blue-600 transition-all text-center h-full flex flex-col items-center justify-center gap-1 shadow-sm">
+                                <span class="text-2xl filter drop-shadow-sm mb-0.5">🏗️</span>
+                                <span class="text-[10px] font-bold text-slate-600 peer-checked:text-blue-700 leading-tight">Yo Construyo</span>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer group">
+                            <input type="radio" name="tipo_siembra" value="misiones" class="peer sr-only" required>
+                            <div class="p-3 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:ring-2 peer-checked:ring-blue-600 transition-all text-center h-full flex flex-col items-center justify-center gap-1 shadow-sm">
+                                <span class="text-2xl filter drop-shadow-sm mb-0.5">🌍</span>
+                                <span class="text-[10px] font-bold text-slate-600 peer-checked:text-blue-700 leading-tight">Misiones</span>
                             </div>
                         </label>
                     </div>
@@ -232,13 +246,20 @@
     </div>
 
     <div class="hidden md:block md:w-1/2 lg:w-7/12 relative bg-slate-900 overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center opacity-60 scale-105 hover:scale-100 transition-transform duration-[3s]" 
+        <div class="absolute inset-0 bg-cover bg-center opacity-50 scale-105 hover:scale-100 transition-transform duration-[5s]" 
              style="background-image: url('<?php the_field('siembra_imagen', 'option'); ?>');">
         </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent"></div>
-        <div class="absolute bottom-16 left-12 max-w-xl text-white p-6">
-            <h2 class="text-4xl lg:text-5xl font-extrabold mb-4 leading-tight">Cada semilla<br>transforma vidas.</h2>
-            <p class="text-lg text-blue-100 font-light border-l-4 border-yellow-400 pl-4">"Dad, y se os dará; medida buena, apretada, remecida y rebosando..."</p>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
+        <div class="absolute bottom-20 left-16 right-16 max-w-2xl text-white">
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full mb-6 border border-white/20">
+                <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                <span class="text-sm font-bold uppercase tracking-wider">Siembra con propósito</span>
+            </div>
+            <h2 class="text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">Cada semilla<br>transforma vidas.</h2>
+            <div class="bg-white/10 backdrop-blur-md border-l-4 border-amber-400 pl-6 pr-6 py-4 rounded-r-2xl">
+                <p class="text-xl text-blue-100 font-medium italic leading-relaxed">"Dad, y se os dará; medida buena, apretada, remecida y rebosando..."</p>
+                <p class="text-sm text-amber-300 font-bold mt-2">— Lucas 6:38</p>
+            </div>
         </div>
     </div>
 </div>
