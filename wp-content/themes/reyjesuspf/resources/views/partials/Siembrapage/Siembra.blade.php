@@ -404,24 +404,78 @@
     }
 
     function validateStep(step) {
-        const currentContent = document.getElementById(`step-${step}`);
-        const inputs = currentContent.querySelectorAll('input[required]');
         let valid = true;
-        inputs.forEach(input => {
-            if(!input.value) {
+        const currentContent = document.getElementById(`step-${step}`);
+        
+        // Limpiar errores previos
+        currentContent.querySelectorAll('.error-msg').forEach(e => e.remove());
+        currentContent.querySelectorAll('.border-red-500').forEach(e => e.classList.remove('border-red-500', 'bg-red-50'));
+
+        if (step === 1) {
+            // Validar Monto
+            const monto = document.getElementById('monto');
+            if (!monto.value || parseFloat(monto.value) <= 0) {
+                showError(monto, 'Ingresa un monto válido');
                 valid = false;
-                // Add error class to parent for better visibility
-                if(input.parentElement.classList.contains('group')) {
-                    input.classList.add('border-red-400', 'bg-red-50');
-                    setTimeout(() => input.classList.remove('border-red-400', 'bg-red-50'), 1000);
-                } else if(input.parentElement.parentElement.classList.contains('group')) { // Radio buttons
-                     // Logic for radios if needed
-                } else {
-                    input.classList.add('border-red-400', 'bg-red-50');
-                    setTimeout(() => input.classList.remove('border-red-400', 'bg-red-50'), 1000);
-                }
             }
-        });
+
+            // Validar Tipo Siembra
+            const tipoSiembra = document.querySelector('input[name="tipo_siembra"]:checked');
+            if (!tipoSiembra) {
+                const gridContainer = currentContent.querySelector('.grid');
+                showError(gridContainer, 'Selecciona un propósito', true);
+                valid = false;
+            }
+        } 
+        else if (step === 2) {
+             const inputs = currentContent.querySelectorAll('input[required]');
+             inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    showError(input, 'Este campo es obligatorio');
+                    valid = false;
+                } else {
+                    if (input.type === 'email' && !validateEmail(input.value)) {
+                         showError(input, 'Ingresa un correo válido');
+                         valid = false;
+                    }
+                }
+             });
+        }
+        else if (step === 3) {
+            const referencia = currentContent.querySelector('input[name="referencia"]');
+            if (referencia && !referencia.value.trim()) {
+                showError(referencia, 'Ingresa el número de referencia');
+                valid = false;
+            }
+        }
+
         return valid;
     }
+
+    function showError(element, message, isGrid = false) {
+        if (!isGrid) {
+            element.classList.add('border-red-500', 'bg-red-50');
+        }
+        
+        const msg = document.createElement('p');
+        msg.className = 'text-red-500 text-xs font-bold mt-1 ml-1 error-msg animate-fade-in';
+        msg.innerText = message;
+        
+        if (isGrid) {
+            element.parentNode.insertBefore(msg, element.nextSibling);
+        } else {
+            element.parentNode.appendChild(msg);
+        }
+    }
+
+    function validateEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    // Validar al enviar el formulario (Paso 3)
+    document.getElementById('siembra-form').addEventListener('submit', (e) => {
+        if (!validateStep(3)) {
+            e.preventDefault();
+        }
+    });
 </script>
