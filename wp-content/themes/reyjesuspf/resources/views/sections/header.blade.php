@@ -57,14 +57,20 @@ wp_get_current_user(); ?>
                         style="display: none;">
                         <div class="py-1" role="none">
                             <a href="<?php echo wp_logout_url(home_url()); ?>"
-                                class="text-gray-700 block px-4 py-2 text-sm  hover:text-blue-600"
-                                role="menuitem" tabindex="-1" id="menu-item-0">
+                                class="text-gray-700 block px-4 py-2 text-sm  hover:text-blue-600" role="menuitem"
+                                tabindex="-1" id="menu-item-0">
                                 Cerrar sesion
                             </a>
                         </div>
+
+
                     </div>
                 </div>
                 <?php endif; ?>
+                <a href="/siembra"
+                    class="my-button bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-md transition duration-300">
+                    <?php the_field('boton_hero_page_2', 'option'); ?>
+                </a>
             </div>
 
             <div class="md:hidden flex items-center space-x-4">
@@ -124,12 +130,12 @@ wp_get_current_user(); ?>
             </a>
             <?php else: ?>
             <!-- Dropdown menu for logged-in users (code from the previous artifact) -->
-                <div x-data="{ open: false }" class="relative inline-block text-left">
-                    <button @click="open = !open" type="button"
-                        class="inline-flex w-full justify-content-left gap-x-2 rounded-md bg-white px-3 py-2 text-sm font-semibold transition-colors duration-150 hover:text-blue-600">
-                        Hola, <?php echo esc_html($current_user->display_name); ?>
-                    </button>
-                </div>
+            <div x-data="{ open: false }" class="relative inline-block text-left">
+                <button @click="open = !open" type="button"
+                    class="inline-flex w-full justify-content-left gap-x-2 rounded-md bg-white px-3 py-2 text-sm font-semibold transition-colors duration-150 hover:text-blue-600">
+                    Hola, <?php echo esc_html($current_user->display_name); ?>
+                </button>
+            </div>
             <a href="<?php echo esc_url(wp_logout_url(home_url())); ?>"
                 class="my-button w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded-md text-center">
                 Cerrar Sesion
