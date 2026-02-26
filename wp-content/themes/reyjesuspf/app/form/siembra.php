@@ -247,6 +247,10 @@ function mostrar_siembras_page()
     $total_usd = $wpdb->get_var("SELECT SUM(monto) FROM $tabla_siembras WHERE divisa = 'USD'");
     $total_bs = $wpdb->get_var("SELECT SUM(monto) FROM $tabla_siembras WHERE divisa = 'BS'");
     $total_siembras = count($siembras);
+
+    // Obtener valores únicos para los filtros
+    $propositos = $wpdb->get_col("SELECT DISTINCT tipo_siembra FROM $tabla_siembras WHERE tipo_siembra != '' ORDER BY tipo_siembra ASC");
+    $metodos = $wpdb->get_col("SELECT DISTINCT metodo_de_pago FROM $tabla_siembras WHERE metodo_de_pago != '' ORDER BY metodo_de_pago ASC");
 ?>
     <div class="wrap siembras-premium-wrap">
         <div class="header-flex">
@@ -300,7 +304,28 @@ function mostrar_siembras_page()
                     <label>Hasta:</label>
                     <input type="date" id="max-date" class="premium-input">
                 </div>
-                <button type="button" id="clear-filters" class="button button-link">Limpiar Fechas</button>
+                
+                <div class="filter-item">
+                    <label>Propósito:</label>
+                    <select id="filter-proposito" class="premium-input">
+                        <option value="">Todos</option>
+                        <?php foreach($propositos as $p): ?>
+                            <option value="<?php echo esc_attr($p); ?>"><?php echo esc_html($p); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <div class="filter-item">
+                    <label>Método:</label>
+                    <select id="filter-metodo" class="premium-input">
+                        <option value="">Todos</option>
+                        <?php foreach($metodos as $m): ?>
+                            <option value="<?php echo esc_attr($m); ?>"><?php echo esc_html($m); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <button type="button" id="clear-filters" class="button button-link">Limpiar Todo</button>
             </div>
         </div>
 
@@ -314,7 +339,7 @@ function mostrar_siembras_page()
                         <th>Método</th>
                         <th>Monto</th>
                         <th>Referencia</th>
-                        <th>Contribuyente</th>
+                        <th>Sembrador</th>
                         <th>Contacto</th>
                         <th>Acciones</th>
                     </tr>
@@ -484,25 +509,31 @@ function mi_datatable_enqueue_scripts($hook)
     jQuery(document).ready(function($) {
         if (typeof $.fn.DataTable !== "function") return;
 
-        // Lógica de Filtrado por Fecha Personalizada
+        // Lógica de Filtrado Combinado (Fecha, Propósito, Método)
         $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
+            // 1. Filtro de Fechas
             const min = $("#min-date").val();
             const max = $("#max-date").val();
-            
-            // Obtener el valor de timestamp de la columna de fecha (columna 1)
-            // settings.aoData[dataIndex].anCells[1] es la celda de la fecha
             const timestamp = parseInt($(settings.aoData[dataIndex].anCells[1]).attr("data-order"));
             
-            if (!timestamp) return true;
-            
-            const rowDate = new Date(timestamp * 1000);
-            rowDate.setHours(0,0,0,0);
+            if (timestamp) {
+                const rowDate = new Date(timestamp * 1000);
+                rowDate.setHours(0,0,0,0);
+                const minDate = min ? new Date(min + "T00:00:00") : null;
+                const maxDate = max ? new Date(max + "T23:59:59") : null;
+                if (minDate && rowDate < minDate) return false;
+                if (maxDate && rowDate > maxDate) return false;
+            }
 
-            let minDate = min ? new Date(min + "T00:00:00") : null;
-            let maxDate = max ? new Date(max + "T23:59:59") : null;
+            // 2. Filtro de Propósito (Columna 2)
+            const selProposito = $("#filter-proposito").val();
+            const rowProposito = data[2]; 
+            if (selProposito && rowProposito !== selProposito) return false;
 
-            if (minDate && rowDate < minDate) return false;
-            if (maxDate && rowDate > maxDate) return false;
+            // 3. Filtro de Método (Columna 3)
+            const selMetodo = $("#filter-metodo").val();
+            const rowMetodo = $(settings.aoData[dataIndex].anCells[3]).text().trim(); // Usar text() por iconos
+            if (selMetodo && rowMetodo !== selMetodo) return false;
             
             return true;
         });
@@ -526,13 +557,13 @@ function mi_datatable_enqueue_scripts($hook)
             responsive: true
         });
 
-        // Eventos para los filtros de fecha
-        $("#min-date, #max-date").on("change", function() {
+        // Eventos para disparar el redibujado de la tabla
+        $("#min-date, #max-date, #filter-proposito, #filter-metodo").on("change", function() {
             table.draw();
         });
 
         $("#clear-filters").on("click", function() {
-            $("#min-date, #max-date").val("");
+            $("#min-date, #max-date, #filter-proposito, #filter-metodo").val("");
             table.draw();
         });
     });
