@@ -58,6 +58,17 @@ function render_event_registrations_page()
     global $wpdb;
     $table_name = $wpdb->prefix . 'event_registrations';
 
+    // Calcular estadísticas
+    $total_registros = $wpdb->get_var("SELECT COUNT(*) FROM $table_name");
+    $registros_24h = $wpdb->get_var("SELECT COUNT(*) FROM $table_name WHERE registration_date >= DATE_SUB(NOW(), INTERVAL 1 DAY)");
+
+    // Obtener lista de eventos únicos para el filtro
+    $eventos_query = "SELECT DISTINCT r.event_id, p.post_title AS event_name 
+                      FROM {$table_name} r 
+                      JOIN {$wpdb->posts} p ON r.event_id = p.ID 
+                      ORDER BY event_name ASC";
+    $eventos_list = $wpdb->get_results($eventos_query);
+
     $query = "SELECT r.id, r.nombre, r.cedula, r.email, r.phone_number, r.iglesia, r.red, r.event_id, r.registration_date, p.post_title AS event_name
               FROM {$table_name} r
               JOIN {$wpdb->posts} p ON r.event_id = p.ID
@@ -65,49 +76,176 @@ function render_event_registrations_page()
 
     $all_registrations = $wpdb->get_results($query);
 ?>
-    <div class="wrap">
-        <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
-        <p>Aquí se listan todos los correos electrónicos registrados para cada evento.</p>
+    <div class="wrap siembras-premium-wrap">
+        <div class="header-flex">
+            <div>
+                <h1 class="wp-heading-inline">Registros de Eventos</h1>
+                <p class="subtitle">Gestión y monitoreo de asistentes registrados</p>
+            </div>
+        </div>
+        
+        <hr class="wp-header-end">
 
-        <table id="miTabla" class="wp-list-table widefat fixed striped">
-            <thead>
-                <tr>
-                    <th>Evento</th>
-                    <th>Nombre</th>
-                    <th>cedula</th>
-                    <th>Correo</th>
-                    <th>Teléfono</th>
-                    <th>Iglesia</th>
-                    <th>Red</th>
-                    <th style="width:15%;">Fecha de Registro</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (empty($all_registrations)) : ?>
+        <!-- Tarjetas de Resumen Premium -->
+        <div class="siembras-summary-grid">
+            <div class="summary-card-premium total">
+                <div class="card-icon-wrap">
+                    <span class="dashicons dashicons-groups"></span>
+                </div>
+                <div class="card-info">
+                    <span class="card-label">Total Registrados</span>
+                    <span class="card-value"><?php echo $total_registros ?: 0; ?></span>
+                </div>
+            </div>
+            <div class="summary-card-premium usd">
+                <div class="card-icon-wrap">
+                    <span class="dashicons dashicons-clock"></span>
+                </div>
+                <div class="card-info">
+                    <span class="card-label">Últimas 24 Horas</span>
+                    <span class="card-value"><?php echo $registros_24h ?: 0; ?></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra de Herramientas y Filtros Premium -->
+        <div class="premium-toolbar">
+            <div class="date-filter-group">
+                <div class="filter-item">
+                    <label>Evento:</label>
+                    <select id="filter-evento" class="premium-input">
+                        <option value="">Todos los Eventos</option>
+                        <?php foreach($eventos_list as $ev): ?>
+                            <option value="<?php echo esc_attr($ev->event_name); ?>"><?php echo esc_html($ev->event_name); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <div class="filter-item">
+                    <label>Desde:</label>
+                    <input type="date" id="min-date" class="premium-input">
+                </div>
+                <div class="filter-item">
+                    <label>Hasta:</label>
+                    <input type="date" id="max-date" class="premium-input">
+                </div>
+                
+                <button type="button" id="clear-filters" class="button button-link">Limpiar Todo</button>
+            </div>
+        </div>
+
+        <div class="premium-table-container">
+            <table id="miTabla" class="widefat striped">
+                <thead>
                     <tr>
-                        <td colspan="5">No hay registros todavía.</td>
+                        <th>ID</th>
+                        <th>Evento</th>
+                        <th>Participante</th>
+                        <th>Identificación</th>
+                        <th>Contacto</th>
+                        <th>Organización</th>
+                        <th>Fecha Registro</th>
                     </tr>
-                <?php else : ?>
-                    <?php foreach ($all_registrations as $registration) : ?>
-                        <tr>
-                            <td>
-                                <a href="<?php echo get_edit_post_link($registration->event_id); ?>">
-                                    <?php echo esc_html($registration->event_name); ?>
-                                </a>
-                            </td>
-                            <td><?php echo esc_html($registration->nombre); ?></td>
-                            <td><?php echo esc_html($registration->cedula); ?></td>
-                            <td><?php echo esc_html($registration->email); ?></td>
-                            <td><?php echo esc_html($registration->phone_number); ?></td>
-                            <td><?php echo esc_html($registration->iglesia); ?></td>
-                            <td><?php echo esc_html($registration->red); ?></td>
-                            <td><?php echo esc_html($registration->registration_date); ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php if (!empty($all_registrations)) : ?>
+                        <?php foreach ($all_registrations as $registration) : ?>
+                            <tr>
+                                <td class="col-id">#<?php echo esc_html($registration->id); ?></td>
+                                <td>
+                                    <span class="event-badge">
+                                        <a href="<?php echo get_edit_post_link($registration->event_id); ?>">
+                                            <?php echo esc_html($registration->event_name); ?>
+                                        </a>
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="user-info">
+                                        <span class="user-name"><?php echo esc_html($registration->nombre); ?></span>
+                                        <span class="user-email"><?php echo esc_html($registration->email); ?></span>
+                                    </div>
+                                </td>
+                                <td><code class="premium-ref"><?php echo esc_html($registration->cedula ?: 'N/A'); ?></code></td>
+                                <td class="col-tel"><?php echo esc_html($registration->phone_number); ?></td>
+                                <td>
+                                    <div class="org-info">
+                                        <span class="premium-tag tag-iglesia"><?php echo esc_html($registration->iglesia); ?></span>
+                                        <?php if($registration->red): ?>
+                                            <span class="premium-tag tag-red"><?php echo esc_html($registration->red); ?></span>
+                                        <?php endif; ?>
+                                    </div>
+                                </td>
+                                <td class="col-date" data-order="<?php echo esc_attr(strtotime($registration->registration_date)); ?>">
+                                    <span class="date-main"><?php echo date('d M, Y', strtotime($registration->registration_date)); ?></span>
+                                    <span class="date-sub"><?php echo date('h:i A', strtotime($registration->registration_date)); ?></span>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
+
+    <!-- Reutilizamos los estilos premium de Siembras para consistencia -->
+    <style>
+        :root {
+            --primary: #2563eb;
+            --success: #10b981;
+            --bg-body: #f1f5f9;
+            --text-main: #1e293b;
+            --text-sub: #64748b;
+        }
+
+        .siembras-premium-wrap { margin: 20px 20px 20px 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; }
+        .header-flex { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px; }
+        .subtitle { color: var(--text-sub); margin: 5px 0 0; font-size: 14px; }
+
+        /* Summary Cards */
+        .siembras-summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .summary-card-premium { background: #fff; border-radius: 16px; padding: 24px; display: flex; align-items: center; gap: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); border: 1px solid rgba(226, 232, 240, 0.8); transition: transform 0.2s; }
+        .card-icon-wrap { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; background: var(--bg-body); color: var(--primary); }
+        .card-icon-wrap .dashicons { font-size: 28px; width: 28px; height: 28px; }
+        .summary-card-premium.usd .card-icon-wrap { background: #fef2f2; color: #991b1b; }
+        .summary-card-premium.total .card-icon-wrap { background: #eff6ff; color: #1e40af; }
+        .card-label { display: block; font-size: 11px; font-weight: 700; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+        .card-value { font-size: 26px; font-weight: 800; color: var(--text-main); letter-spacing: -0.02em; }
+
+        /* Toolbar & Filters */
+        .premium-toolbar { background: #fff; padding: 20px; border-radius: 16px 16px 0 0; border: 1px solid #e2e8f0; border-bottom: none; display: flex; justify-content: space-between; align-items: center; }
+        .date-filter-group { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .filter-item { display: flex; align-items: center; gap: 10px; }
+        .filter-item label { font-weight: 600; color: var(--text-sub); font-size: 13px; }
+        .premium-input { border: 1px solid #cbd5e1 !important; border-radius: 8px !important; padding: 6px 12px !important; color: var(--text-main) !important; font-size: 13px !important; }
+
+        /* Table Design */
+        .premium-table-container { background: #fff; border-radius: 0 0 16px 16px; border: 1px solid #e2e8f0; padding: 0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        #miTabla { border: none !important; width: 100% !important; border-collapse: collapse !important; }
+        #miTabla thead th { background: #f8fafc !important; color: #64748b !important; font-weight: 700 !important; text-transform: uppercase !important; font-size: 11px !important; letter-spacing: 0.05em !important; padding: 16px 20px !important; border-bottom: 2px solid #e2e8f0 !important; }
+        #miTabla tbody td { padding: 14px 20px !important; vertical-align: middle !important; border-bottom: 1px solid #f1f5f9 !important; color: var(--text-main); font-size: 14px; }
+        
+        .col-id { color: var(--text-sub); font-weight: 600; font-size: 12px; }
+        .event-badge a { font-weight: 700; color: var(--primary); text-decoration: none; }
+        .user-name { display: block; font-weight: 700; color: var(--text-main); }
+        .user-email { display: block; font-size: 12px; color: var(--text-sub); }
+        .premium-ref { background: #f8fafc; padding: 4px 8px; border-radius: 6px; color: var(--text-main); font-family: monospace; font-size: 12px; border: 1px solid #e2e8f0; }
+        .col-tel { font-family: monospace; font-weight: 600; color: var(--text-sub); font-size: 12px; }
+        .org-info { display: flex; flex-direction: column; gap: 4px; }
+        .premium-tag { padding: 4px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; text-transform: uppercase; display: inline-block; white-space: nowrap; width: fit-content; }
+        .tag-iglesia { background: #eff6ff; color: #1e40af; }
+        .tag-red { background: #fefce8; color: #854d0e; }
+        .date-main { display: block; font-weight: 600; color: var(--text-main); }
+        .date-sub { display: block; font-size: 11px; color: var(--text-sub); margin-top: 2px; }
+
+        /* DataTables Controls Reused Styles */
+        .dt-top-flex { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #f1f5f9; }
+        .dt-button { background: var(--primary) !important; color: #fff !important; border: none !important; border-radius: 10px !important; padding: 10px 20px !important; font-weight: 700 !important; font-size: 13px !important; transition: all 0.2s !important; box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.1) !important; cursor: pointer !important; }
+        .dt-button:hover { background: #1d4ed8 !important; transform: translateY(-1px) !important; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2) !important; }
+        .dataTables_filter input { border: 1px solid #e2e8f0 !important; border-radius: 10px !important; padding: 8px 15px !important; width: 280px !important; margin-left: 15px !important; background: #f8fafc !important; }
+        .dataTables_paginate { padding: 15px 20px !important; }
+        .paginate_button { border-radius: 10px !important; border: 1px solid #e2e8f0 !important; margin: 0 2px !important; font-weight: 700 !important; font-size: 13px !important; padding: 5px 12px !important; }
+        .paginate_button.current { background: var(--primary) !important; color: #fff !important; border-color: var(--primary) !important; }
+    </style>
 <?php
 }
 
@@ -360,6 +498,80 @@ HTML;
         wp_send_json_error(['message' => 'Hubo un error al procesar tu registro.']);
     }
 }
-// Los hooks no cambian
+/**
+ * --------------------------------------------------------------------------
+ * PARTE D: CARGA DE DATATABLES PARA LA TABLA DE ADMINISTRACIÓN
+ * --------------------------------------------------------------------------
+ */
+function event_registrations_admin_scripts($hook)
+{
+    if ($hook !== 'events_page_event-registrations') return;
+
+    // Bundle consolidado: DataTables 2.0.8, Buttons 3.0.2, HTML5 Export, JSZip 3.10.1
+    wp_enqueue_style('siembra-datatables-combined', 'https://cdn.datatables.net/v/dt/jszip-3.10.1/dt-2.0.8/b-3.0.2/b-html5-3.0.2/datatables.min.css');
+    wp_enqueue_script('siembra-datatables-combined', 'https://cdn.datatables.net/v/dt/jszip-3.10.1/dt-2.0.8/b-3.0.2/b-html5-3.0.2/datatables.min.js', array('jquery'), '2.0.8', true);
+
+    wp_add_inline_script('siembra-datatables-combined', '
+    jQuery(document).ready(function($) {
+        if (typeof $.fn.DataTable !== "function") return;
+
+        // Lógica de Filtrado Combinado (Fecha y Evento)
+        $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
+            // 1. Filtro de Fechas
+            const min = $("#min-date").val();
+            const max = $("#max-date").val();
+            const timestamp = parseInt($(settings.aoData[dataIndex].anCells[6]).attr("data-order"));
+            
+            if (timestamp) {
+                const rowDate = new Date(timestamp * 1000);
+                rowDate.setHours(0,0,0,0);
+                const minDate = min ? new Date(min + "T00:00:00") : null;
+                const maxDate = max ? new Date(max + "T23:59:59") : null;
+                if (minDate && rowDate < minDate) return false;
+                if (maxDate && rowDate > maxDate) return false;
+            }
+
+            // 2. Filtro de Evento (Columna 1)
+            const selEvento = $("#filter-evento").val();
+            const rowEvento = $(settings.aoData[dataIndex].anCells[1]).text().trim();
+            if (selEvento && rowEvento !== selEvento) return false;
+            
+            return true;
+        });
+
+        const table = $("#miTabla").DataTable({
+            dom: "<\"dt-top-flex\"Bf>lrtip",
+            buttons: [
+                {
+                    extend: "excelHtml5",
+                    text: "<span class=\"dashicons dashicons-download\"></span> Descargar Lista Excel",
+                    title: "Registros_Eventos_" + new Date().toISOString().split("T")[0],
+                    className: "dt-button"
+                }
+            ],
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+            },
+            order: [[6, "desc"]],
+            pageLength: 25,
+            autoWidth: false,
+            responsive: true
+        });
+
+        // Eventos para redibujar
+        $("#min-date, #max-date, #filter-evento").on("change", function() {
+            table.draw();
+        });
+
+        $("#clear-filters").on("click", function() {
+            $("#min-date, #max-date, #filter-evento").val("");
+            table.draw();
+        });
+    });
+');
+}
+add_action('admin_enqueue_scripts', __NAMESPACE__ . '\\event_registrations_admin_scripts');
+
+// Los hooks para el registro AJAX
 add_action('wp_ajax_register_to_event', __NAMESPACE__ . '\\handle_event_registration');
 add_action('wp_ajax_nopriv_register_to_event', __NAMESPACE__ . '\\handle_event_registration');
