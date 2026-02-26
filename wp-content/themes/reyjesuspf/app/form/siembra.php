@@ -356,46 +356,36 @@ function mi_datatable_enqueue_scripts($hook)
         return;
     }
 
-    // Estilos y Scripts de DataTables con handles únicos para evitar conflictos
-    wp_enqueue_style('siembra-datatables-css', 'https://cdn.datatables.net/v/dt/dt-2.0.8/b-3.0.2/b-html5-3.0.2/datatables.min.css');
-    
-    // JSZip debe cargar antes que los botones de Excel
-    wp_enqueue_script('siembra-jszip', 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js', array(), '3.10.1', true);
-    
-    // DataTables Base
-    wp_enqueue_script('siembra-datatables-js', 'https://cdn.datatables.net/2.0.8/js/jquery.dataTables.min.js', array('jquery'), '2.0.8', true);
-    
-    // Buttons Extension
-    wp_enqueue_script('siembra-datatables-buttons', 'https://cdn.datatables.net/buttons/3.0.2/js/dataTables.buttons.min.js', array('siembra-datatables-js'), '3.0.2', true);
-    
-    // HTML5 Export (depende de JSZip y Buttons)
-    wp_enqueue_script('siembra-datatables-buttons-html5', 'https://cdn.datatables.net/buttons/3.0.2/js/buttons.html5.min.js', array('siembra-datatables-buttons', 'siembra-jszip'), '3.0.2', true);
+    // Usar un bundle combinado de DataTables para evitar problemas de dependencias
+    // Incluye: DataTables 2.0.8, Buttons 3.0.2, HTML5 Export y JSZip 3.10.1
+    wp_enqueue_style('siembra-datatables-combined', 'https://cdn.datatables.net/v/dt/jszip-3.10.1/dt-2.0.8/b-3.0.2/b-html5-3.0.2/datatables.min.css');
+    wp_enqueue_script('siembra-datatables-combined', 'https://cdn.datatables.net/v/dt/jszip-3.10.1/dt-2.0.8/b-3.0.2/b-html5-3.0.2/datatables.min.js', array('jquery'), '2.0.8', true);
 
-    // Adjuntar el script de inicialización al ÚLTIMO script cargado
-    wp_add_inline_script('siembra-datatables-buttons-html5', '
+    // Inicializar el script
+    wp_add_inline_script('siembra-datatables-combined', '
     jQuery(document).ready(function($) {
-        if (typeof $.fn.DataTable !== "function") {
-            console.error("Error: DataTables no se cargó correctamente.");
-            return;
+        // Verificar si la tabla existe y DataTables está cargado
+        if ($("#miTabla").length && typeof $.fn.DataTable === "function") {
+            $("#miTabla").DataTable({
+                dom: "Bfrtip",
+                buttons: [
+                    {
+                        extend: "excelHtml5",
+                        text: "<span class=\"dashicons dashicons-download\"></span> Exportar a Excel",
+                        title: "Registro_de_Siembras_" + new Date().toISOString().split("T")[0],
+                        className: "button button-primary"
+                    }
+                ],
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+                },
+                order: [[1, "desc"]],
+                pageLength: 25,
+                responsive: true
+            });
+        } else {
+            console.error("No se pudo inicializar DataTables: el plugin no está presente o la tabla no existe.");
         }
-        
-        $("#miTabla").DataTable({
-            dom: "Bfrtip",
-            buttons: [
-                {
-                    extend: "excelHtml5",
-                    text: "<span class=\"dashicons dashicons-download\"></span> Exportar a Excel",
-                    title: "Registro_de_Siembras_" + new Date().toISOString().split("T")[0],
-                    className: "button button-primary"
-                }
-            ],
-            language: {
-                url: "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-            },
-            order: [[1, "desc"]],
-            pageLength: 25,
-            responsive: true
-        });
     });
 ');
 }
