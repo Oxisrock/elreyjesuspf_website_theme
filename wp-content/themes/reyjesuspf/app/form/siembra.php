@@ -356,15 +356,29 @@ function mi_datatable_enqueue_scripts($hook)
         return;
     }
 
-    // Estilos y Scripts de DataTables
-    wp_enqueue_style('datatables-css', 'https://cdn.datatables.net/v/dt/dt-2.0.8/b-3.0.2/b-html5-3.0.2/datatables.min.css');
-    wp_enqueue_script('jszip', 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js', array(), null, true);
-    wp_enqueue_script('datatables-js', 'https://cdn.datatables.net/2.0.8/js/jquery.dataTables.min.js', array('jquery'), null, true);
-    wp_enqueue_script('datatables-buttons', 'https://cdn.datatables.net/buttons/3.0.2/js/dataTables.buttons.min.js', array('datatables-js', 'jszip'), null, true);
-    wp_enqueue_script('datatables-buttons-html5', 'https://cdn.datatables.net/buttons/3.0.2/js/buttons.html5.min.js', array('datatables-buttons'), null, true);
+    // Estilos y Scripts de DataTables con handles únicos para evitar conflictos
+    wp_enqueue_style('siembra-datatables-css', 'https://cdn.datatables.net/v/dt/dt-2.0.8/b-3.0.2/b-html5-3.0.2/datatables.min.css');
+    
+    // JSZip debe cargar antes que los botones de Excel
+    wp_enqueue_script('siembra-jszip', 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js', array(), '3.10.1', true);
+    
+    // DataTables Base
+    wp_enqueue_script('siembra-datatables-js', 'https://cdn.datatables.net/2.0.8/js/jquery.dataTables.min.js', array('jquery'), '2.0.8', true);
+    
+    // Buttons Extension
+    wp_enqueue_script('siembra-datatables-buttons', 'https://cdn.datatables.net/buttons/3.0.2/js/dataTables.buttons.min.js', array('siembra-datatables-js'), '3.0.2', true);
+    
+    // HTML5 Export (depende de JSZip y Buttons)
+    wp_enqueue_script('siembra-datatables-buttons-html5', 'https://cdn.datatables.net/buttons/3.0.2/js/buttons.html5.min.js', array('siembra-datatables-buttons', 'siembra-jszip'), '3.0.2', true);
 
-    wp_add_inline_script('datatables-js', '
+    // Adjuntar el script de inicialización al ÚLTIMO script cargado
+    wp_add_inline_script('siembra-datatables-buttons-html5', '
     jQuery(document).ready(function($) {
+        if (typeof $.fn.DataTable !== "function") {
+            console.error("Error: DataTables no se cargó correctamente.");
+            return;
+        }
+        
         $("#miTabla").DataTable({
             dom: "Bfrtip",
             buttons: [
