@@ -248,49 +248,75 @@ function mostrar_siembras_page()
     $total_bs = $wpdb->get_var("SELECT SUM(monto) FROM $tabla_siembras WHERE divisa = 'BS'");
     $total_siembras = count($siembras);
 ?>
-    <div class="wrap siembras-wrap">
-        <h1 class="wp-heading-inline">Registro de Siembras</h1>
+    <div class="wrap siembras-premium-wrap">
+        <div class="header-flex">
+            <div>
+                <h1 class="wp-heading-inline">Gestión de Siembras</h1>
+                <p class="subtitle">Monitoreo y administración de contribuciones en tiempo real</p>
+            </div>
+        </div>
+        
         <hr class="wp-header-end">
 
-        <!-- Tarjetas de Resumen -->
-        <div class="siembras-summary">
-            <div class="summary-card">
-                <span class="card-icon">💰</span>
+        <!-- Tarjetas de Resumen Premium -->
+        <div class="siembras-summary-grid">
+            <div class="summary-card-premium usd">
+                <div class="card-icon-wrap">
+                    <span class="dashicons dashicons-money-alt"></span>
+                </div>
                 <div class="card-info">
-                    <span class="card-label">Total en Dólares</span>
-                    <span class="card-value">$ <?php echo number_format($total_usd ?: 0, 2); ?></span>
+                    <span class="card-label">Total Recaudado (USD)</span>
+                    <span class="card-value">$<?php echo number_format($total_usd ?: 0, 2); ?></span>
                 </div>
             </div>
-            <div class="summary-card">
-                <span class="card-icon">🇻🇪</span>
+            <div class="summary-card-premium ves">
+                <div class="card-icon-wrap">
+                    <span class="dashicons dashicons-chart-area"></span>
+                </div>
                 <div class="card-info">
-                    <span class="card-label">Total en Bolívares</span>
+                    <span class="card-label">Total Recaudado (VES)</span>
                     <span class="card-value">Bs <?php echo number_format($total_bs ?: 0, 2); ?></span>
                 </div>
             </div>
-            <div class="summary-card">
-                <span class="card-icon">📈</span>
+            <div class="summary-card-premium total">
+                <div class="card-icon-wrap">
+                    <span class="dashicons dashicons-groups"></span>
+                </div>
                 <div class="card-info">
-                    <span class="card-label">Total Registros</span>
+                    <span class="card-label">Siembras Registradas</span>
                     <span class="card-value"><?php echo $total_siembras; ?></span>
                 </div>
             </div>
         </div>
 
-        <div class="table-container">
+        <!-- Barra de Herramientas y Filtros Premium -->
+        <div class="premium-toolbar">
+            <div class="date-filter-group">
+                <div class="filter-item">
+                    <label>Desde:</label>
+                    <input type="date" id="min-date" class="premium-input">
+                </div>
+                <div class="filter-item">
+                    <label>Hasta:</label>
+                    <input type="date" id="max-date" class="premium-input">
+                </div>
+                <button type="button" id="clear-filters" class="button button-link">Limpiar Fechas</button>
+            </div>
+        </div>
+
+        <div class="premium-table-container">
             <table id="miTabla" class="widefat striped">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Fecha</th>
-                        <th>Tipo</th>
-                        <th>Pago</th>
+                        <th>Fecha y Hora</th>
+                        <th>Propósito</th>
+                        <th>Método</th>
                         <th>Monto</th>
-                        <th>Ref.</th>
-                        <th>Nombre</th>
-                        <th>Teléfono</th>
-                        <th>Correo</th>
-                        <th>Petición</th>
+                        <th>Referencia</th>
+                        <th>Contribuyente</th>
+                        <th>Contacto</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -298,18 +324,27 @@ function mostrar_siembras_page()
                     if (! empty($siembras)) {
                         foreach ($siembras as $siembra) {
                             $simbolo = (isset($siembra->divisa) && $siembra->divisa === 'BS') ? 'Bs' : '$';
-                            $tipo_class = str_replace(' ', '_', strtolower($siembra->tipo_siembra));
+                            // Sanitizar tipo para clase CSS (eliminar tildes)
+                            $tipo_low = strtr(mb_strtolower($siembra->tipo_siembra, 'UTF-8'), 'áéíóúñ', 'aeioun');
+                            $tipo_class = str_replace([' ', '_'], '-', $tipo_low);
                             echo '<tr>';
-                            echo '<td>' . esc_html($siembra->id) . '</td>';
-                            echo '<td>' . date('d/m/Y H:i', strtotime($siembra->dia_pago)) . '</td>';
-                            echo '<td><span class="tag-tipo tipo-' . $tipo_class . '">' . esc_html($siembra->tipo_siembra) . '</span></td>';
-                            echo '<td><span class="tag-metodo">' . esc_html($siembra->metodo_de_pago) . '</span></td>';
-                            echo '<td><strong>' . $simbolo . ' ' . number_format($siembra->monto, 2) . '</strong></td>';
-                            echo '<td><code class="ref-code">' . esc_html($siembra->referencia) . '</code></td>';
-                            echo '<td>' . esc_html($siembra->nombre_completo) . '</td>';
-                            echo '<td>' . esc_html($siembra->telefono) . '</td>';
-                            echo '<td>' . esc_html($siembra->correo) . '</td>';
-                            echo '<td class="col-mensaje">' . esc_html($siembra->mensaje) . '</td>';
+                            echo '<td class="col-id">#' . esc_html($siembra->id) . '</td>';
+                            echo '<td class="col-date" data-order="' . esc_attr(strtotime($siembra->dia_pago)) . '">
+                                    <span class="date-main">' . date('d M, Y', strtotime($siembra->dia_pago)) . '</span>
+                                    <span class="date-sub">' . date('h:i A', strtotime($siembra->dia_pago)) . '</span>
+                                  </td>';
+                            echo '<td><span class="premium-tag tag-' . $tipo_class . '">' . esc_html($siembra->tipo_siembra) . '</span></td>';
+                            echo '<td><span class="payment-method"><span class="dashicons dashicons-id-alt"></span> ' . esc_html($siembra->metodo_de_pago) . '</span></td>';
+                            echo '<td><span class="amount-badge">' . $simbolo . ' ' . number_format($siembra->monto, 2) . '</span></td>';
+                            echo '<td><code class="premium-ref">' . esc_html($siembra->referencia) . '</code></td>';
+                            echo '<td>
+                                    <div class="user-info">
+                                        <span class="user-name">' . esc_html($siembra->nombre_completo) . '</span>
+                                        <span class="user-email">' . esc_html($siembra->correo) . '</span>
+                                    </div>
+                                  </td>';
+                            echo '<td class="col-tel">' . esc_html($siembra->telefono) . '</td>';
+                            echo '<td><button type="button" class="button view-msg-btn" onclick="mostrarMensaje(`' . esc_js($siembra->mensaje) . '`)"><span class="dashicons dashicons-testimonial"></span></button></td>';
                             echo '</tr>';
                         }
                     }
@@ -319,73 +354,187 @@ function mostrar_siembras_page()
         </div>
     </div>
 
+    <!-- Modal para Mensajes -->
+    <div id="msgModal" class="premium-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h3>Petición / Mensaje</h3>
+            </div>
+            <div class="modal-body">
+                <p id="modalMsgText"></p>
+            </div>
+        </div>
+    </div>
+
     <style>
-        .siembras-wrap { margin-top: 20px; }
-        .siembras-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 0 30px; }
-        .summary-card { background: #fff; padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; }
-        .card-icon { font-size: 32px; background: #f8fafc; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
-        .card-info { display: flex; flex-direction: column; }
-        .card-label { font-size: 12px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-        .card-value { font-size: 24px; font-weight: 800; color: #1e293b; }
+        :root {
+            --primary: #2563eb;
+            --success: #10b981;
+            --bg-body: #f1f5f9;
+            --text-main: #1e293b;
+            --text-sub: #64748b;
+        }
+
+        .siembras-premium-wrap { margin: 20px 20px 20px 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; }
+        .header-flex { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px; }
+        .subtitle { color: var(--text-sub); margin: 5px 0 0; font-size: 14px; }
+
+        /* Summary Cards */
+        .siembras-summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .summary-card-premium { background: #fff; border-radius: 16px; padding: 24px; display: flex; align-items: center; gap: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); border: 1px solid rgba(226, 232, 240, 0.8); transition: transform 0.2s; }
+        .summary-card-premium:hover { transform: translateY(-2px); }
+        .card-icon-wrap { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; background: var(--bg-body); color: var(--primary); }
+        .card-icon-wrap .dashicons { font-size: 28px; width: 28px; height: 28px; }
+        .summary-card-premium.usd .card-icon-wrap { background: #dcfce7; color: #166534; }
+        .summary-card-premium.ves .card-icon-wrap { background: #fef2f2; color: #991b1b; }
+        .summary-card-premium.total .card-icon-wrap { background: #eff6ff; color: #1e40af; }
+        .card-label { display: block; font-size: 11px; font-weight: 700; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+        .card-value { font-size: 26px; font-weight: 800; color: var(--text-main); letter-spacing: -0.02em; }
+
+        /* Toolbar & Filters */
+        .premium-toolbar { background: #fff; padding: 20px; border-radius: 16px 16px 0 0; border: 1px solid #e2e8f0; border-bottom: none; display: flex; justify-content: space-between; align-items: center; }
+        .date-filter-group { display: flex; align-items: center; gap: 15px; }
+        .filter-item { display: flex; align-items: center; gap: 10px; }
+        .filter-item label { font-weight: 600; color: var(--text-sub); font-size: 13px; }
+        .premium-input { border: 1px solid #cbd5e1 !important; border-radius: 8px !important; padding: 6px 12px !important; color: var(--text-main) !important; font-size: 13px !important; }
+
+        /* Table Design */
+        .premium-table-container { background: #fff; border-radius: 0 0 16px 16px; border: 1px solid #e2e8f0; padding: 0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        #miTabla { border: none !important; width: 100% !important; border-collapse: collapse !important; }
+        #miTabla thead th { background: #f8fafc !important; color: #64748b !important; font-weight: 700 !important; text-transform: uppercase !important; font-size: 11px !important; letter-spacing: 0.05em !important; padding: 16px 20px !important; border-bottom: 2px solid #e2e8f0 !important; }
+        #miTabla tbody td { padding: 14px 20px !important; vertical-align: middle !important; border-bottom: 1px solid #f1f5f9 !important; color: var(--text-main); font-size: 14px; }
+        #miTabla tbody tr:hover { background-color: #fbfcfe !important; }
+
+        /* Column Styles */
+        .col-id { color: var(--text-sub); font-weight: 600; font-size: 12px; }
+        .date-main { display: block; font-weight: 600; color: var(--text-main); }
+        .date-sub { display: block; font-size: 11px; color: var(--text-sub); margin-top: 2px; }
+        .premium-tag { padding: 5px 12px; border-radius: 20px; font-size: 10px; font-weight: 700; text-transform: uppercase; background: #f1f5f9; color: #475569; display: inline-block; white-space: nowrap; }
+        .tag-diezmo { background: #dcfce7; color: #15803d; }
+        .tag-ofrenda { background: #dbeafe; color: #1d4ed8; }
+        .tag-pacto { background: #fef3c7; color: #b45309; }
+        .tag-primicia { background: #ffedd5; color: #c2410c; }
+        .tag-yo-construyo { background: #ede9fe; color: #6d28d9; }
         
-        .table-container { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 30px; }
-        #miTabla_wrapper .dt-buttons { margin-bottom: 20px; }
-        #miTabla_wrapper .dt-button { background: #2271b1 !important; color: #fff !important; border: none !important; padding: 8px 16px !important; border-radius: 6px !important; font-weight: 600 !important; cursor: pointer !important; transition: all 0.2s !important; }
-        #miTabla_wrapper .dt-button:hover { background: #135e96 !important; }
+        .payment-method { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-sub); font-weight: 600; text-transform: uppercase; }
+        .payment-method .dashicons { font-size: 16px; width: 16px; height: 16px; color: #cbd5e1; }
+        .amount-badge { font-weight: 800; color: var(--text-main); font-size: 16px; }
+        .premium-ref { background: #f8fafc; padding: 4px 8px; border-radius: 6px; color: var(--primary); font-family: "JetBrains Mono", monospace; font-size: 12px; border: 1px solid #e2e8f0; }
+        .user-name { display: block; font-weight: 700; color: var(--text-main); }
+        .user-email { display: block; font-size: 12px; color: var(--text-sub); }
+        .col-tel { font-family: monospace; font-weight: 600; color: var(--text-sub); font-size: 12px; }
+        .view-msg-btn { color: #cbd5e1 !important; transition: all 0.2s !important; border: 1px solid #e2e8f0 !important; background: transparent !important; border-radius: 8px !important; cursor: pointer; }
+        .view-msg-btn:hover { color: var(--primary) !important; border-color: var(--primary) !important; background: #eff6ff !important; }
+
+        /* Modal Styles */
+        .premium-modal { display: none; position: fixed; z-index: 99999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(4px); }
+        .modal-content { background: #fff; margin: 15vh auto; padding: 0; border-radius: 20px; width: 450px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); position: relative; overflow: hidden; animation: modalFadeIn 0.3s ease-out; }
+        @keyframes modalFadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .close-modal { position: absolute; right: 20px; top: 15px; font-size: 28px; cursor: pointer; color: var(--text-sub); z-index: 2; line-height: 1; }
+        .modal-header { padding: 25px 30px; background: #f8fafc; border-bottom: 2px solid #f1f5f9; }
+        .modal-header h3 { margin: 0; color: var(--text-main); font-weight: 800; font-size: 18px; }
+        .modal-body { padding: 30px; }
+        .modal-body p { line-height: 1.7; color: var(--text-main); white-space: pre-wrap; margin: 0; font-size: 15px; }
+
+        /* DataTables Controls */
+        .dt-top-flex { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #f1f5f9; }
+        .dt-button { background: var(--primary) !important; color: #fff !important; border: none !important; border-radius: 10px !important; padding: 10px 20px !important; font-weight: 700 !important; font-size: 13px !important; transition: all 0.2s !important; box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.1) !important; cursor: pointer !important; }
+        .dt-button:hover { background: #1d4ed8 !important; transform: translateY(-1px) !important; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2) !important; }
         
-        #miTabla { border: none !important; width: 100% !important; }
-        #miTabla thead th { background: #f8fafc; color: #475569; font-weight: 700; text-transform: uppercase; font-size: 11px; padding: 15px; border-bottom: 2px solid #e2e8f0 !important; }
-        #miTabla tbody td { padding: 12px 15px; vertical-align: middle; border-bottom: 1px solid #f1f5f9; color: #334155; }
-        
-        .tag-tipo { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase; background: #e2e8f0; color: #475569; }
-        .tipo-diezmo { background: #dcfce7; color: #166534; }
-        .tipo-ofrenda { background: #dbeafe; color: #1e40af; }
-        .tipo-pacto { background: #fef9c3; color: #854d0e; }
-        
-        .tag-metodo { color: #64748b; font-size: 11px; font-weight: 600; }
-        .ref-code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-family: monospace; color: #2563eb; }
-        .col-mensaje { font-size: 12px; color: #64748b; max-width: 250px; }
+        .dataTables_filter { margin-top: 0 !important; }
+        .dataTables_filter input { border: 1px solid #e2e8f0 !important; border-radius: 10px !important; padding: 8px 15px !important; width: 280px !important; margin-left: 15px !important; background: #f8fafc !important; }
+        .dataTables_length { padding: 15px 20px !important; font-size: 12px !important; color: var(--text-sub) !important; font-weight: 600 !important; }
+        .dataTables_length select { border: 1px solid #e2e8f0 !important; border-radius: 8px !important; padding: 2px 24px 2px 8px !important; }
+        .dataTables_info { padding: 20px !important; color: var(--text-sub) !important; font-weight: 600 !important; font-size: 12px !important; text-transform: uppercase; letter-spacing: 0.05em; }
+        .dataTables_paginate { padding: 15px 20px !important; }
+        .paginate_button { border-radius: 10px !important; border: 1px solid #e2e8f0 !important; margin: 0 2px !important; font-weight: 700 !important; font-size: 13px !important; padding: 5px 12px !important; }
+        .paginate_button.current { background: var(--primary) !important; color: #fff !important; border-color: var(--primary) !important; }
     </style>
+
+    <script>
+        function mostrarMensaje(text) {
+            const modal = document.getElementById('msgModal');
+            document.getElementById('modalMsgText').innerText = text || 'Sin petición específica.';
+            modal.style.display = 'block';
+        }
+
+        document.querySelector('.close-modal').onclick = function() {
+            document.getElementById('msgModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('msgModal')) {
+                document.getElementById('msgModal').style.display = 'none';
+            }
+        }
+    </script>
 <?php
 }
 
 function mi_datatable_enqueue_scripts($hook)
 {
-    // Solo cargar en la página de siembras
-    if ($hook !== 'toplevel_page_siembras') {
-        return;
-    }
+    if ($hook !== 'toplevel_page_siembras') return;
 
-    // Usar un bundle combinado de DataTables para evitar problemas de dependencias
-    // Incluye: DataTables 2.0.8, Buttons 3.0.2, HTML5 Export y JSZip 3.10.1
+    // Bundle consolidado: DataTables 2.0.8, Buttons 3.0.2, HTML5 Export, JSZip 3.10.1
     wp_enqueue_style('siembra-datatables-combined', 'https://cdn.datatables.net/v/dt/jszip-3.10.1/dt-2.0.8/b-3.0.2/b-html5-3.0.2/datatables.min.css');
     wp_enqueue_script('siembra-datatables-combined', 'https://cdn.datatables.net/v/dt/jszip-3.10.1/dt-2.0.8/b-3.0.2/b-html5-3.0.2/datatables.min.js', array('jquery'), '2.0.8', true);
 
-    // Inicializar el script
     wp_add_inline_script('siembra-datatables-combined', '
     jQuery(document).ready(function($) {
-        // Verificar si la tabla existe y DataTables está cargado
-        if ($("#miTabla").length && typeof $.fn.DataTable === "function") {
-            $("#miTabla").DataTable({
-                dom: "Bfrtip",
-                buttons: [
-                    {
-                        extend: "excelHtml5",
-                        text: "<span class=\"dashicons dashicons-download\"></span> Exportar a Excel",
-                        title: "Registro_de_Siembras_" + new Date().toISOString().split("T")[0],
-                        className: "button button-primary"
-                    }
-                ],
-                language: {
-                    url: "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
-                },
-                order: [[1, "desc"]],
-                pageLength: 25,
-                responsive: true
-            });
-        } else {
-            console.error("No se pudo inicializar DataTables: el plugin no está presente o la tabla no existe.");
-        }
+        if (typeof $.fn.DataTable !== "function") return;
+
+        // Lógica de Filtrado por Fecha Personalizada
+        $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
+            const min = $("#min-date").val();
+            const max = $("#max-date").val();
+            
+            // Obtener el valor de timestamp de la columna de fecha (columna 1)
+            // settings.aoData[dataIndex].anCells[1] es la celda de la fecha
+            const timestamp = parseInt($(settings.aoData[dataIndex].anCells[1]).attr("data-order"));
+            
+            if (!timestamp) return true;
+            
+            const rowDate = new Date(timestamp * 1000);
+            rowDate.setHours(0,0,0,0);
+
+            let minDate = min ? new Date(min + "T00:00:00") : null;
+            let maxDate = max ? new Date(max + "T23:59:59") : null;
+
+            if (minDate && rowDate < minDate) return false;
+            if (maxDate && rowDate > maxDate) return false;
+            
+            return true;
+        });
+
+        const table = $("#miTabla").DataTable({
+            dom: "<\"dt-top-flex\"Bf>lrtip",
+            buttons: [
+                {
+                    extend: "excelHtml5",
+                    text: "<span class=\"dashicons dashicons-download\"></span> Descargar Reporte Excel",
+                    title: "Reporte_Siembras_" + new Date().toISOString().split("T")[0],
+                    className: "dt-button"
+                }
+            ],
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+            },
+            order: [[1, "desc"]],
+            pageLength: 25,
+            autoWidth: false,
+            responsive: true
+        });
+
+        // Eventos para los filtros de fecha
+        $("#min-date, #max-date").on("change", function() {
+            table.draw();
+        });
+
+        $("#clear-filters").on("click", function() {
+            $("#min-date, #max-date").val("");
+            table.draw();
+        });
     });
 ');
 }
