@@ -46,6 +46,7 @@
             <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST" id="siembra-form" class="relative">
                 <input type="hidden" name="action" value="procesar_formulario_siembra">
                 <?php wp_nonce_field('mi_form_siembra_nonce', 'mi_nonce'); ?>
+                <input type="hidden" id="recaptcha_response" name="recaptcha_response">
 
                 <div id="step-1" class="step-content block animate-fade-in">
                     
@@ -270,6 +271,8 @@
     <span>¡Copiado!</span>
 </div>
 
+<script src="https://www.google.com/recaptcha/api.js?render=6LfflFgsAAAAAOYKX6iPoJkKCVJNWiN5fq7vQdsj"></script>
+
 <script>
     // Variables y Funciones JS (Exactamente igual que la versión robusta anterior)
     let currentStep = 1;
@@ -476,6 +479,32 @@
     document.getElementById('siembra-form').addEventListener('submit', (e) => {
         if (!validateStep(3)) {
             e.preventDefault();
+            return;
         }
+
+        e.preventDefault();
+        const form = e.target;
+        const submitBtn = document.getElementById('submit-btn');
+        const originalBtnText = submitBtn.innerHTML;
+
+        // Mostrar loading
+        submitBtn.innerHTML = '<span class="flex items-center justify-center"><svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Procesando...</span>';
+        submitBtn.disabled = true;
+
+        // Ejecutar reCAPTCHA
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LfflFgsAAAAAOYKX6iPoJkKCVJNWiN5fq7vQdsj', {action: 'siembra_form'}).then(function(token) {
+                // Asignar el token al campo hidden
+                document.getElementById('recaptcha_response').value = token;
+
+                // Enviar el formulario normalmente
+                form.submit();
+            }).catch(error => {
+                console.error('reCAPTCHA error:', error);
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                alert('Hubo un problema con la verificación de seguridad. Por favor, intenta de nuevo.');
+            });
+        });
     });
 </script>

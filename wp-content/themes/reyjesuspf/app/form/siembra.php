@@ -40,9 +40,40 @@ crear_tabla_siembras();
 // Función para procesar el formulario y guardar los datos
 function procesar_formulario_siembra()
 {
-    // Verificar el nonce de seguridad
-    if (!isset($_POST['mi_nonce']) || !wp_verify_nonce($_POST['mi_nonce'], 'mi_form_siembra_nonce')) {
-        wp_die('Error de seguridad, por favor inténtalo de nuevo.');
+    // 1. Verificación de reCAPTCHA o Nonce
+    $is_logged_in = is_user_logged_in();
+    $nonce_valid = (isset($_POST['mi_nonce']) && wp_verify_nonce($_POST['mi_nonce'], 'mi_form_siembra_nonce'));
+    
+    // Si no es un nonce válido, requerimos reCAPTCHA (especialmente para invitados donde el nonce suele fallar por caché)
+    if (!$nonce_valid) {
+        $recaptcha_secret_key = '6LfflFgsAAAAAJJanViKSxJVzrWo33zThlxu5KdO';
+        $recaptcha_token = isset($_POST['recaptcha_response']) ? sanitize_text_field($_POST['recaptcha_response']) : '';
+
+        if (empty($recaptcha_token)) {
+            wp_die('Error de seguridad. Por favor, intenta de nuevo desde la página.');
+        }
+
+        $verification_response = wp_remote_post('https://www.google.com/recaptcha/api/siteverify', [
+            'body' => [
+                'secret'   => $recaptcha_secret_key,
+                'response' => $recaptcha_token,
+                'remoteip' => $_SERVER['REMOTE_ADDR']
+            ]
+        ]);
+
+        if (is_wp_error($verification_response)) {
+            wp_die('No se pudo conectar con el servicio de verificación de seguridad.');
+        }
+
+        $response_data = json_decode(wp_remote_retrieve_body($verification_response));
+
+        if (!$response_data || !$response_data->success || $response_data->score < 0.5) {
+            // Permitir falla de score en local para desarrollo
+            $is_local = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']);
+            if (!$is_local) {
+                wp_die('Error de verificación de seguridad (reCAPTCHA failed).');
+            }
+        }
     }
 
     // Verificar que el formulario fue enviado por POST
