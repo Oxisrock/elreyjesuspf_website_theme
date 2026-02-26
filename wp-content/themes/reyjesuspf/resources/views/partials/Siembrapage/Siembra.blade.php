@@ -1,3 +1,17 @@
+<?php
+$current_user = wp_get_current_user();
+$user_logged_in = is_user_logged_in();
+$default_nombre = $user_logged_in ? $current_user->display_name : '';
+$default_email = $user_logged_in ? $current_user->user_email : '';
+$default_telefono = '';
+
+if ($user_logged_in) {
+    $default_telefono = get_user_meta($current_user->ID, 'phone', true);
+    if (empty($default_telefono)) {
+        $default_telefono = get_user_meta($current_user->ID, 'billing_phone', true);
+    }
+}
+?>
 <div class="min-h-screen bg-slate-50 flex flex-col md:flex-row font-sans text-slate-800">
 
     <div class="w-full md:w-1/2 lg:w-5/12 bg-white flex flex-col justify-start md:justify-center relative z-20 shadow-none md:shadow-2xl">
@@ -128,19 +142,19 @@
                     <div class="space-y-5">
                         <div class="group">
                             <label class="text-[10px] font-bold text-slate-500 uppercase ml-1 mb-1 block group-focus-within:text-blue-600 transition-colors">Nombre Completo</label>
-                            <input type="text" name="nombre" required 
+                            <input type="text" name="nombre" value="<?php echo esc_attr($default_nombre); ?>" required 
                                 class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-50 transition-all font-semibold text-lg"
                                 placeholder="Nombre y Apellido">
                         </div>
                         <div class="group">
                             <label class="text-[10px] font-bold text-slate-500 uppercase ml-1 mb-1 block group-focus-within:text-blue-600 transition-colors">Teléfono</label>
-                            <input type="tel" name="telefono" inputmode="tel" required 
+                            <input type="tel" name="telefono" value="<?php echo esc_attr($default_telefono); ?>" inputmode="tel" required 
                                 class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-50 transition-all font-semibold text-lg"
                                 placeholder="0412 000 0000">
                         </div>
                         <div class="group">
                             <label class="text-[10px] font-bold text-slate-500 uppercase ml-1 mb-1 block group-focus-within:text-blue-600 transition-colors">Correo Electrónico</label>
-                            <input type="email" name="email" inputmode="email" required 
+                            <input type="email" name="email" value="<?php echo esc_attr($default_email); ?>" inputmode="email" required 
                                 class="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:bg-white focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-50 transition-all font-semibold text-lg"
                                 placeholder="ejemplo@correo.com">
                         </div>
