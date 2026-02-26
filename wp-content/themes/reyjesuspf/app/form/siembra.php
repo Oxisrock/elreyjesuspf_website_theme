@@ -242,51 +242,110 @@ function mostrar_siembras_page()
     global $wpdb;
     $tabla_siembras = $wpdb->prefix . 'siembras';
     $siembras = $wpdb->get_results("SELECT * FROM $tabla_siembras ORDER BY dia_pago DESC");
+
+    // Calcular totales
+    $total_usd = $wpdb->get_var("SELECT SUM(monto) FROM $tabla_siembras WHERE divisa = 'USD'");
+    $total_bs = $wpdb->get_var("SELECT SUM(monto) FROM $tabla_siembras WHERE divisa = 'BS'");
+    $total_siembras = count($siembras);
 ?>
-    <div class="wrap">
-        <h2>Registro de Siembras</h2>
-        <table id="miTabla" class="widefat striped" style="width:100%">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Fecha</th>
-                    <th>Tipo</th>
-                    <th>Metodo de Pago</th>
-                    <th>Monto</th>
-                    <th>Divisa</th>
-                    <th>Referencia</th>
-                    <th>Nombre</th>
-                    <th>Teléfono</th>
-                    <th>Correo</th>
-                    <th>Petición de Oración</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                if (! empty($siembras)) {
-                    foreach ($siembras as $siembra) {
-                        $simbolo = (isset($siembra->divisa) && $siembra->divisa === 'BS') ? 'Bs' : '$';
-                        echo '<tr>';
-                        echo '<td>' . esc_html($siembra->id) . '</td>';
-                        echo '<td>' . esc_html($siembra->dia_pago) . '</td>';
-                        echo '<td style="text-transform: capitalize;">' . esc_html($siembra->tipo_siembra) . '</td>';
-                        echo '<td>' . esc_html($siembra->metodo_de_pago) . '</td>';
-                        echo '<td><strong>' . $simbolo . ' ' . number_format($siembra->monto, 2) . '</strong></td>';
-                        echo '<td>' . esc_html(isset($siembra->divisa) ? $siembra->divisa : 'USD') . '</td>';
-                        echo '<td><code style="background:#f0f0f0;padding:2px 5px;border-radius:4px;">' . esc_html($siembra->referencia) . '</code></td>';
-                        echo '<td>' . esc_html($siembra->nombre_completo) . '</td>';
-                        echo '<td>' . esc_html($siembra->telefono) . '</td>';
-                        echo '<td>' . esc_html($siembra->correo) . '</td>';
-                        echo '<td>' . esc_html($siembra->mensaje) . '</td>';
-                        echo '</tr>';
+    <div class="wrap siembras-wrap">
+        <h1 class="wp-heading-inline">Registro de Siembras</h1>
+        <hr class="wp-header-end">
+
+        <!-- Tarjetas de Resumen -->
+        <div class="siembras-summary">
+            <div class="summary-card">
+                <span class="card-icon">💰</span>
+                <div class="card-info">
+                    <span class="card-label">Total en Dólares</span>
+                    <span class="card-value">$ <?php echo number_format($total_usd ?: 0, 2); ?></span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <span class="card-icon">🇻🇪</span>
+                <div class="card-info">
+                    <span class="card-label">Total en Bolívares</span>
+                    <span class="card-value">Bs <?php echo number_format($total_bs ?: 0, 2); ?></span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <span class="card-icon">📈</span>
+                <div class="card-info">
+                    <span class="card-label">Total Registros</span>
+                    <span class="card-value"><?php echo $total_siembras; ?></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="miTabla" class="widefat striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Fecha</th>
+                        <th>Tipo</th>
+                        <th>Pago</th>
+                        <th>Monto</th>
+                        <th>Ref.</th>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Correo</th>
+                        <th>Petición</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    if (! empty($siembras)) {
+                        foreach ($siembras as $siembra) {
+                            $simbolo = (isset($siembra->divisa) && $siembra->divisa === 'BS') ? 'Bs' : '$';
+                            $tipo_class = str_replace(' ', '_', strtolower($siembra->tipo_siembra));
+                            echo '<tr>';
+                            echo '<td>' . esc_html($siembra->id) . '</td>';
+                            echo '<td>' . date('d/m/Y H:i', strtotime($siembra->dia_pago)) . '</td>';
+                            echo '<td><span class="tag-tipo tipo-' . $tipo_class . '">' . esc_html($siembra->tipo_siembra) . '</span></td>';
+                            echo '<td><span class="tag-metodo">' . esc_html($siembra->metodo_de_pago) . '</span></td>';
+                            echo '<td><strong>' . $simbolo . ' ' . number_format($siembra->monto, 2) . '</strong></td>';
+                            echo '<td><code class="ref-code">' . esc_html($siembra->referencia) . '</code></td>';
+                            echo '<td>' . esc_html($siembra->nombre_completo) . '</td>';
+                            echo '<td>' . esc_html($siembra->telefono) . '</td>';
+                            echo '<td>' . esc_html($siembra->correo) . '</td>';
+                            echo '<td class="col-mensaje">' . esc_html($siembra->mensaje) . '</td>';
+                            echo '</tr>';
+                        }
                     }
-                } else {
-                    echo '<tr><td colspan="11">No se han registrado siembras.</td></tr>';
-                }
-                ?>
-            </tbody>
-        </table>
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>
+
+    <style>
+        .siembras-wrap { margin-top: 20px; }
+        .siembras-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 0 30px; }
+        .summary-card { background: #fff; padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; }
+        .card-icon { font-size: 32px; background: #f8fafc; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+        .card-info { display: flex; flex-direction: column; }
+        .card-label { font-size: 12px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .card-value { font-size: 24px; font-weight: 800; color: #1e293b; }
+        
+        .table-container { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        #miTabla_wrapper .dt-buttons { margin-bottom: 20px; }
+        #miTabla_wrapper .dt-button { background: #2271b1 !important; color: #fff !important; border: none !important; padding: 8px 16px !important; border-radius: 6px !important; font-weight: 600 !important; cursor: pointer !important; transition: all 0.2s !important; }
+        #miTabla_wrapper .dt-button:hover { background: #135e96 !important; }
+        
+        #miTabla { border: none !important; width: 100% !important; }
+        #miTabla thead th { background: #f8fafc; color: #475569; font-weight: 700; text-transform: uppercase; font-size: 11px; padding: 15px; border-bottom: 2px solid #e2e8f0 !important; }
+        #miTabla tbody td { padding: 12px 15px; vertical-align: middle; border-bottom: 1px solid #f1f5f9; color: #334155; }
+        
+        .tag-tipo { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase; background: #e2e8f0; color: #475569; }
+        .tipo-diezmo { background: #dcfce7; color: #166534; }
+        .tipo-ofrenda { background: #dbeafe; color: #1e40af; }
+        .tipo-pacto { background: #fef9c3; color: #854d0e; }
+        
+        .tag-metodo { color: #64748b; font-size: 11px; font-weight: 600; }
+        .ref-code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-family: monospace; color: #2563eb; }
+        .col-mensaje { font-size: 12px; color: #64748b; max-width: 250px; }
+    </style>
 <?php
 }
 
@@ -311,15 +370,17 @@ function mi_datatable_enqueue_scripts($hook)
             buttons: [
                 {
                     extend: "excelHtml5",
-                    text: "Exportar a Excel",
-                    title: "Registro_de_Siembras_" + new Date().toISOString().split("T")[0]
+                    text: "<span class=\"dashicons dashicons-download\"></span> Exportar a Excel",
+                    title: "Registro_de_Siembras_" + new Date().toISOString().split("T")[0],
+                    className: "button button-primary"
                 }
             ],
             language: {
                 url: "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
             },
-            order: [[1, "desc"]], // Ordenar por fecha descendente
-            pageLength: 25
+            order: [[1, "desc"]],
+            pageLength: 25,
+            responsive: true
         });
     });
 ');
