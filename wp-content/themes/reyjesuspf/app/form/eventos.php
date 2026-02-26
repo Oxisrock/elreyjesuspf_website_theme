@@ -112,9 +112,19 @@ function render_event_registrations_page()
         <div class="premium-toolbar">
             <div class="date-filter-group">
                 <div class="filter-item">
-                    <label>Evento:</label>
+                    <label>Participante:</label>
+                    <input type="text" id="search-participante" class="premium-input" placeholder="Nombre, Cédula o Correo...">
+                </div>
+
+                <div class="filter-item">
+                    <label>Buscar Evento:</label>
+                    <input type="text" id="search-evento" class="premium-input" placeholder="Nombre del evento...">
+                </div>
+
+                <div class="filter-item">
+                    <label>Filtrar Evento:</label>
                     <select id="filter-evento" class="premium-input">
-                        <option value="">Todos los Eventos</option>
+                        <option value="">Seleccionar...</option>
                         <?php foreach($eventos_list as $ev): ?>
                             <option value="<?php echo esc_attr($ev->event_name); ?>"><?php echo esc_html($ev->event_name); ?></option>
                         <?php endforeach; ?>
@@ -515,7 +525,7 @@ function event_registrations_admin_scripts($hook)
     jQuery(document).ready(function($) {
         if (typeof $.fn.DataTable !== "function") return;
 
-        // Lógica de Filtrado Combinado (Fecha y Evento)
+        // Lógica de Filtrado Combinado (Fecha, Evento y Participante)
         $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
             // 1. Filtro de Fechas
             const min = $("#min-date").val();
@@ -533,8 +543,25 @@ function event_registrations_admin_scripts($hook)
 
             // 2. Filtro de Evento (Columna 1)
             const selEvento = $("#filter-evento").val();
+            const searchEvento = $("#search-evento").val().toLowerCase().trim();
             const rowEvento = $(settings.aoData[dataIndex].anCells[1]).text().trim();
+            
             if (selEvento && rowEvento !== selEvento) return false;
+            if (searchEvento && rowEvento.toLowerCase().indexOf(searchEvento) === -1) return false;
+
+            // 3. Buscador de Participante (Nombre, Cédula, Correo) (Columna 2)
+            const searchTerm = $("#search-participante").val().toLowerCase().trim();
+            if (searchTerm) {
+                const nombre = data[2].toLowerCase();
+                const cedula = data[3].toLowerCase();
+                const email = $(settings.aoData[dataIndex].anCells[2]).find(".user-email").text().toLowerCase();
+                
+                const matches = nombre.indexOf(searchTerm) !== -1 || 
+                                cedula.indexOf(searchTerm) !== -1 || 
+                                email.indexOf(searchTerm) !== -1;
+                
+                if (!matches) return false;
+            }
             
             return true;
         });
@@ -559,12 +586,12 @@ function event_registrations_admin_scripts($hook)
         });
 
         // Eventos para redibujar
-        $("#min-date, #max-date, #filter-evento").on("change", function() {
+        $("#min-date, #max-date, #filter-evento, #search-evento, #search-participante").on("keyup change", function() {
             table.draw();
         });
 
         $("#clear-filters").on("click", function() {
-            $("#min-date, #max-date, #filter-evento").val("");
+            $("#min-date, #max-date, #filter-evento, #search-evento, #search-participante").val("");
             table.draw();
         });
     });
