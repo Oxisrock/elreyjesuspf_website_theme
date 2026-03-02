@@ -1,3 +1,4 @@
+<?php if( have_rows('programa_de_eventos') ): ?>
 <div class="bg-blue-50">
     <section class="py-16 sm:py-20 lg:py-24">
         <div class="container mx-auto px-6 md:px-8">
@@ -14,7 +15,6 @@
             <div class="mt-16 max-w-3xl mx-auto">
                 <div class="flow-root">
                     <div class="-my-8 divide-y divide-gray-300">
-                        <?php if( have_rows('programa_de_eventos') ): ?>
                         <?php while( have_rows('programa_de_eventos') ): the_row(); ?>
                         <?php if( get_row_layout() == 'programa' ): ?>
                     
@@ -37,8 +37,6 @@
                         </div>
                         <?php endif; ?>
                         <?php endwhile; ?>
-                        <?php endif; ?>
-
 
                     </div>
                 </div>
@@ -47,3 +45,4 @@
         </div>
     </section>
 </div>
+<?php endif; ?>

@@ -1,3 +1,7 @@
+<?php
+// Comprueba si existe el campo repetidor 'speakers_del_evento'.
+if( have_rows('speakers_del_evento') ): 
+?>
 <div class="bg-white">
     <div class="container mx-auto px-6 sm:px-8 md:px-16 lg:px-20 py-10 md:py-12">
         <section class="py-12 sm:py-16 lg:py-18">
@@ -13,16 +17,11 @@
                 </p>
             </div>
 
-            <?php
-            // Comprueba si existe el campo repetidor 'ponentes'.
-            // ¡¡ASEGÚRATE DE QUE 'ponentes' ES EL NOMBRE CORRECTO DE TU REPETIDOR!!
-            if( have_rows('speakers_del_evento') ): // <--- LÍNEA CORREGIDA
-            ?>
             <div class="mt-12 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-12">
 
                 <?php
-                // Inicia el loop del Repetidor 'ponentes'.
-                while( have_rows('speakers_del_evento') ) : the_row(); // <--- LÍNEA CORREGIDA
+                // Inicia el loop del Repetidor.
+                while( have_rows('speakers_del_evento') ) : the_row();
                     if( get_row_layout() == 'speakers' ):
                     // Guardamos los datos en variables
                     $imagen = get_sub_field('imagen_del_speakers');
@@ -88,9 +87,9 @@
                 endwhile; // Fin del loop del Repetidor
                 ?>
             </div>
-            <?php 
-            endif; // Fin de la comprobación del Repetidor
-            ?>
         </section>
     </div>
 </div>
+<?php 
+endif; // Fin de la comprobación del Repetidor
+?>

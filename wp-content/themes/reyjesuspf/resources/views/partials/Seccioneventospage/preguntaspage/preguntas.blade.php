@@ -1,3 +1,17 @@
+<?php
+// Argumentos para la consulta de WordPress
+$args = array(
+    'post_type'      => 'faq',          // Llama a nuestro Custom Post Type 'faq'
+    'posts_per_page' => 6,              // Pide un máximo de 6 entradas
+    'orderby'        => 'date',         // Las ordena por fecha de publicación
+    'order'          => 'DESC'          // En orden descendente (las más nuevas primero)
+);
+
+// Creamos una nueva instancia de WP_Query
+$faq_query = new WP_Query($args);
+
+if ($faq_query->have_posts()) :
+?>
 <div class="bg-white font-sans">
     <div class="max-w-4xl mx-auto py-16 lg:py-24 px-6">
         <div class="text-left md:text-center mb-12">
@@ -12,20 +26,8 @@
 
         <div class="space-y-6">
             <?php
-            // Argumentos para la consulta de WordPress
-            $args = array(
-                'post_type'      => 'faq',          // Llama a nuestro Custom Post Type 'faq'
-                'posts_per_page' => 6,              // Pide un máximo de 6 entradas
-                'orderby'        => 'date',         // Las ordena por fecha de publicación
-                'order'          => 'DESC'          // En orden descendente (las más nuevas primero)
-            );
-
-            // Creamos una nueva instancia de WP_Query
-            $faq_query = new WP_Query($args);
-
             // El Loop de WordPress
-            if ($faq_query->have_posts()) :
-                while ($faq_query->have_posts()) : $faq_query->the_post();
+            while ($faq_query->have_posts()) : $faq_query->the_post();
             ?>
             <div class="faq-item">
                 <button class="accordion-header flex items-center justify-between w-full text-left py-3">
@@ -49,17 +51,14 @@
                 if ( $faq_query->current_post + 1 < $faq_query->post_count ) {
                     echo '<hr class="border-t border-gray-200 my-4">';
                 }
-                endwhile;
-                // Restaura los datos originales del post
-                wp_reset_postdata();
-            else :
-                // Mensaje por si no se encuentran FAQs
-                echo '<p>No hay preguntas frecuentes en este momento.</p>';
-            endif;
+            endwhile;
+            // Restaura los datos originales del post
+            wp_reset_postdata();
             ?>
         </div>
     </div>
 </div>
+<?php endif; ?>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
