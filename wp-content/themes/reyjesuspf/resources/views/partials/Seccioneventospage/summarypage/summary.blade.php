@@ -91,12 +91,12 @@
                         
                         $enlace_whatsapp = "https://wa.me/{$numero_limpio}?text={$mensaje_url}";
                     ?>
-                        <div class="flex flex-col items-center justify-center p-6 bg-green-50 rounded-2xl border border-green-100 mt-4">
+                        <div class="flex flex-col items-center justify-center p-6 rounded-2xl border border-blue-100 mt-4">
                             <h3 class="text-xl font-bold text-gray-900 mb-2 text-center">¡Inscríbete vía WhatsApp!</h3>
                             <p class="text-gray-600 text-center text-sm mb-6">Haz clic en el botón inferior para chatear con nuestro equipo y asegurar tu lugar en este evento.</p>
                             
                             <a href="<?php echo esc_url($enlace_whatsapp); ?>" target="_blank" rel="noopener noreferrer" 
-                               class="w-[340px] md:w-[280px] flex-shrink-0 bg-[#25D366] text-white py-3 px-7 rounded-full hover:bg-green-600 transition-colors flex items-center justify-center font-semibold text-lg hover:shadow-lg transform hover:-translate-y-1">
+                               class="w-auto min-w-[340px] md:min-w-[280px] flex-shrink-0 bg-[#25D366] text-white py-3 px-6 rounded-full hover:bg-green-600 transition-colors flex items-center justify-center font-semibold text-lg hover:shadow-lg transform hover:-translate-y-1 whitespace-nowrap">
                                 <i class="fa-brands fa-whatsapp text-2xl mr-2"></i>
                                 <span class="button-text">Contactar por WhatsApp</span>
                             </a>
