@@ -64,96 +64,136 @@
                 </p>
 
                 <div class="space-y-2 md:order-5 order-5">
-
-                    <!-- 1. Envolvemos todo en una etiqueta <form> -->
-                    <form id="event-registration-form" class="space-y-2">
-                        <input type="hidden" name="recaptcha_response" id="recaptcha_response_event">
-                        <div class="w-full items-center space-y-2 md:space-y-2">
-
-                            <!-- 2. Añadimos un campo oculto para el ID del evento -->
-                            <input type="hidden" name="event_id" value="<?php echo get_the_ID(); ?>">
-
-                            <!-- Nuevo div para email y teléfono, con flex-col -->
-                            <div class="flex flex-col items-center md:flex-row md:justify-center w-full md:space-x-2">
-                                <div class="w-[340px] md:w-[240px] mb-2 md:mb-0">
-                                    <input type="text" name="nombre" placeholder="Nombre Completo"
-                                        class="w-full p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                </div>
-                                <div class="w-[340px] md:w-[240px]">
-                                    <input type="cedula" name="cedula" placeholder="Cedula"
-                                        class="w-full p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                </div>
-                            </div>
-                            <div class="flex flex-col items-center md:flex-row md:justify-center w-full md:space-x-2">
-                                <div class="w-[340px] md:w-[240px] mb-2 md:mb-0">
-                                    <input type="tel" name="phone_number" placeholder="Teléfono"
-                                        class="w-full p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                </div>
-                                <div class="w-[340px] md:w-[240px]">
-                                    <input type="email" name="email" placeholder="Ingresa tu correo electrónico"
-                                        required
-                                        class="w-full p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                </div>
-                            </div>
-                            <div class="flex justify-center items-end space-x-2">
-
-                                <div class="w-full max-w-xs">
-                                    <div class="relative">
-                                        <select id="iglesia" name="iglesia"
-                                            class="w-full appearance-none rounded-full border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder:text-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">
-                                            <option value="" disabled selected>Selecciona una iglesia</option>
-                                            <option value="particular">Particular</option>
-                                            <option value="ERJPF">El Rey Jesús Punto Fijo (ERJPF)</option>
-                                            <option value="Iglesia Cobertura">Iglesia Cobertura</option>
-                                            <option value="Iglesia Local">Iglesia Local</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div id="campo-red" class="w-full max-w-xs hidden">
-                                    <div class="relative">
-                                        <select id="red" name="red"
-                                            class="block w-full appearance-none rounded-full border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder:text-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">
-                                            <option value="" disabled selected>Selecciona tu red</option>
-                                            <option value="1">Red 1</option>
-                                            <option value="2">Red 2</option>
-                                            <option value="3">Red 3</option>
-                                            <option value="4">Red 4</option>
-                                            <option value="5">Red 5</option>
-                                            <option value="6">Red 6</option>
-                                            <option value="7">Red 7</option>
-                                            <option value="8">Red 8</option>
-                                            <option value="9">Red 9</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <!-- Reemplaza tu botón de envío con este -->
-                            <div class="flex justify-center items-center pt-2">
-                                <button type="submit"
-                                    class="w-[340px] md:w-[250px] flex-shrink-0 bg-blue-600 text-white py-2 px-7 rounded-full hover:bg-blue-700 transition-colors flex items-center justify-center">
-                                    <span class="button-text">Registrarme</span>
-                                    <svg class="animate-spin ml-2 h-5 w-5 text-white hidden button-spinner"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <circle class="opacity-25" cx="12" cy="12" r="10"
-                                            stroke="currentColor" stroke-width="4"></circle>
-                                        <path class="opacity-75" fill="currentColor"
-                                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
-                                        </path>
-                                    </svg>
-                                </button>
-                            </div>
+                    
+                    <?php 
+                    // Verificamos si se debe usar WhatsApp en lugar del formulario
+                    $usar_whatsapp = get_field('usar_whatsapp_en_lugar_de_formulario');
+                    
+                    if ($usar_whatsapp) : 
+                        $numero_whatsapp = get_field('numero_de_whatsapp');
+                        $mensaje_personalizado = get_field('mensaje_de_whatsapp_');
+                        
+                        // Fallback si no hay número
+                        if (!$numero_whatsapp) {
+                            $numero_whatsapp = ''; // Añade un número por defecto aquí si lo deseas
+                        }
+                        
+                        // Fallback para el mensaje si está vacío, usando el título del evento
+                        if (!$mensaje_personalizado) {
+                            $mensaje_personalizado = '¡Hola! Me gustaría asistir al evento: ' . get_the_title() . '. ¿Me podrían brindar más información?';
+                        }
+                        
+                        // Limpiamos el número de whatsapp (quitamos +, espacios, etc)
+                        $numero_limpio = preg_replace('/[^0-9]/', '', $numero_whatsapp);
+                        
+                        // Codificamos el mensaje para la URL
+                        $mensaje_url = urlencode($mensaje_personalizado);
+                        
+                        $enlace_whatsapp = "https://wa.me/{$numero_limpio}?text={$mensaje_url}";
+                    ?>
+                        <div class="flex flex-col items-center justify-center p-6 bg-green-50 rounded-2xl border border-green-100 mt-4">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2 text-center">¡Inscríbete vía WhatsApp!</h3>
+                            <p class="text-gray-600 text-center text-sm mb-6">Haz clic en el botón inferior para chatear con nuestro equipo y asegurar tu lugar en este evento.</p>
+                            
+                            <a href="<?php echo esc_url($enlace_whatsapp); ?>" target="_blank" rel="noopener noreferrer" 
+                               class="w-[340px] md:w-[280px] flex-shrink-0 bg-[#25D366] text-white py-3 px-7 rounded-full hover:bg-green-600 transition-colors flex items-center justify-center font-semibold text-lg hover:shadow-lg transform hover:-translate-y-1">
+                                <i class="fa-brands fa-whatsapp text-2xl mr-2"></i>
+                                <span class="button-text">Contactar por WhatsApp</span>
+                            </a>
                         </div>
-                        <!-- 4. Contenedor para mostrar mensajes de éxito o error -->
-                        <div id="form-messages" class="text-sm text-center mt-2"></div>
-                    </form>
+                    <?php else: ?>
+
+                        <!-- 1. Envolvemos todo en una etiqueta <form> -->
+                        <form id="event-registration-form" class="space-y-2">
+                            <input type="hidden" name="recaptcha_response" id="recaptcha_response_event">
+                            <div class="w-full items-center space-y-2 md:space-y-2">
+
+                                <!-- 2. Añadimos un campo oculto para el ID del evento -->
+                                <input type="hidden" name="event_id" value="<?php echo get_the_ID(); ?>">
+
+                                <!-- Nuevo div para email y teléfono, con flex-col -->
+                                <div class="flex flex-col items-center md:flex-row md:justify-center w-full md:space-x-2">
+                                    <div class="w-[340px] md:w-[240px] mb-2 md:mb-0">
+                                        <input type="text" name="nombre" placeholder="Nombre Completo"
+                                            class="w-full p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="w-[340px] md:w-[240px]">
+                                        <input type="cedula" name="cedula" placeholder="Cedula"
+                                            class="w-full p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-center md:flex-row md:justify-center w-full md:space-x-2">
+                                    <div class="w-[340px] md:w-[240px] mb-2 md:mb-0">
+                                        <input type="tel" name="phone_number" placeholder="Teléfono"
+                                            class="w-full p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                    <div class="w-[340px] md:w-[240px]">
+                                        <input type="email" name="email" placeholder="Ingresa tu correo electrónico"
+                                            required
+                                            class="w-full p-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    </div>
+                                </div>
+                                <div class="flex justify-center items-end space-x-2">
+
+                                    <div class="w-full max-w-xs">
+                                        <div class="relative">
+                                            <select id="iglesia" name="iglesia"
+                                                class="w-full appearance-none rounded-full border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder:text-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">
+                                                <option value="" disabled selected>Selecciona una iglesia</option>
+                                                <option value="particular">Particular</option>
+                                                <option value="ERJPF">El Rey Jesús Punto Fijo (ERJPF)</option>
+                                                <option value="Iglesia Cobertura">Iglesia Cobertura</option>
+                                                <option value="Iglesia Local">Iglesia Local</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div id="campo-red" class="w-full max-w-xs hidden">
+                                        <div class="relative">
+                                            <select id="red" name="red"
+                                                class="block w-full appearance-none rounded-full border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder:text-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">
+                                                <option value="" disabled selected>Selecciona tu red</option>
+                                                <option value="1">Red 1</option>
+                                                <option value="2">Red 2</option>
+                                                <option value="3">Red 3</option>
+                                                <option value="4">Red 4</option>
+                                                <option value="5">Red 5</option>
+                                                <option value="6">Red 6</option>
+                                                <option value="7">Red 7</option>
+                                                <option value="8">Red 8</option>
+                                                <option value="9">Red 9</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- Reemplaza tu botón de envío con este -->
+                                <div class="flex justify-center items-center pt-2">
+                                    <button type="submit"
+                                        class="w-[340px] md:w-[250px] flex-shrink-0 bg-blue-600 text-white py-2 px-7 rounded-full hover:bg-blue-700 transition-colors flex items-center justify-center">
+                                        <span class="button-text">Registrarme</span>
+                                        <svg class="animate-spin ml-2 h-5 w-5 text-white hidden button-spinner"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <circle class="opacity-25" cx="12" cy="12" r="10"
+                                                stroke="currentColor" stroke-width="4"></circle>
+                                            <path class="opacity-75" fill="currentColor"
+                                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- 4. Contenedor para mostrar mensajes de éxito o error -->
+                            <div id="form-messages" class="text-sm text-center mt-2"></div>
+                        </form>
 
 
-                    <p class="text-sm md:text-xs text-zinc-500 md:text-gray-500 md:order-6 order-6">
-                        Al hacer clic en Registrarse, confirma que está de acuerdo con nuestros <a href="#"
-                            class="underline">términos y condiciones</a>.
-                    </p>
+                        <p class="text-sm md:text-xs text-zinc-500 md:text-gray-500 md:order-6 order-6">
+                            Al hacer clic en Registrarse, confirma que está de acuerdo con nuestros <a href="#"
+                                class="underline">términos y condiciones</a>.
+                        </p>
+                        
+                    <?php endif; ?>
                 </div>
             </div>
 
